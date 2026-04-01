@@ -134,3 +134,22 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ==========================================
+# Stripe Payment Configuration
+# ==========================================
+import os
+
+# Stripe API Keys - Use environment variables in production
+# Get test keys from: https://dashboard.stripe.com/test/apikeys
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', 'pk_test_YOUR_PUBLISHABLE_KEY_HERE')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', 'sk_test_YOUR_SECRET_KEY_HERE')
+STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET', 'whsec_YOUR_WEBHOOK_SECRET_HERE')
+
+# Stripe Price IDs (create in Stripe Dashboard)
+# Premium subscription price ID for £9.99/month
+STRIPE_PREMIUM_PRICE_ID = os.getenv('STRIPE_PREMIUM_PRICE_ID', 'price_YOUR_PRICE_ID_HERE')
+
+# Currency setting
+STRIPE_CURRENCY = 'gbp'  # British Pounds

@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}Make a Donation - Mindly{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="hero-section text-center">
+    <div class="container">
+        <i class="fas fa-hand-holding-heart" style="font-size: 4rem;"></i>
+        <h1 class="display-4 fw-bold mt-3 mb-2">
+            Make a Donation
+        </h1>
+        <p class="lead">
+            Support mental health resources for people across the UK
+        </p>
+    </div>
+</div>
+
+<!-- Donation Form Section -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow">
+                <div class="card-body p-5">
+                    <h3 class="mb-4">Choose Your Donation Amount</h3>
+                    
+                    <form id="donation-form" method="POST">
+                        {% csrf_token %}
+                        
+                        <!-- Preset Amounts -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Suggested Amounts (£):</label>
+                            <div class="btn-group-vertical w-100" role="group">
+                                <input type="radio" class="btn-check" name="amount" id="amount5" value="5" autocomplete="off">
+                                <label class="btn btn-outline-primary btn-lg mb-2" for="amount5">
+                                    <strong>£5</strong> - Buy a coffee's worth of support
+                                </label>
+                                
+                                <input type="radio" class="btn-check" name="amount" id="amount10" value="10" autocomplete="off" checked>
+                                <label class="btn btn-outline-primary btn-lg mb-2" for="amount10">
+                                    <strong>£10</strong> - Help fund resources for 10 people
+                                </label>
+                                
+                                <input type="radio" class="btn-check" name="amount" id="amount25" value="25" autocomplete="off">
+                                <label class="btn btn-outline-primary btn-lg mb-2" for="amount25">
+                                    <strong>£25</strong> - Support our assessment tools
+                                </label>
+                                
+                                <input type="radio" class="btn-check" name="amount" id="amount50" value="50" autocomplete="off">
+                                <label class="btn btn-outline-primary btn-lg mb-2" for="amount50">
+                                    <strong>£50</strong> - Fund a week of operations
+                                </label>
+                                
+                                <input type="radio" class="btn-check" name="amount" id="custom" value="custom" autocomplete="off">
+                                <label class="btn btn-outline-primary btn-lg" for="custom">
+                                    <strong>Custom Amount</strong>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Custom Amount Input -->
+                        <div class="mb-4" id="custom-amount-div" style="display: none;">
+                            <label for="custom-amount" class="form-label fw-bold">Enter Custom Amount (£):</label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text">£</span>
+                                <input type="number" class="form-control" id="custom-amount" name="custom_amount" 
+                                       min="1" step="0.01" placeholder="Enter amount">
+                            </div>
+                        </div>
+                        
+                        <!-- Optional Message -->
+                        <div class="mb-4">
+                            <label for="message" class="form-label fw-bold">Optional Message:</label>
+                            <textarea class="form-control" id="message" name="message" rows="3" 
+                                      placeholder="Add a message of support (optional)"></textarea>
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-shield-alt me-2"></i>
+                            <strong>Secure Payment:</strong> Your donation is processed securely through Stripe. We never store your card details.
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-lock me-2"></i> Proceed to Secure Payment
+                        </button>
+                        
+                        <p class="text-center text-muted mt-3 mb-0">
+                            <small>Powered by <strong>Stripe</strong> • Payments in GBP (£)</small>
+                        </p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Impact Information -->
+            <div class="card mt-4 bg-light">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-heart text-danger me-2"></i>Your Impact</h5>
+                    <ul class="mb-0">
+                        <li><strong>£5</strong> provides mental health resources for 5 people</li>
+                        <li><strong>£10</strong> funds one week of server hosting</li>
+                        <li><strong>£25</strong> supports development of new assessment tools</li>
+                        <li><strong>£50+</strong> helps us reach even more people in need</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Custom Amount Toggle -->
+<script>
+    // Show/hide custom amount input
+    document.querySelectorAll('input[name="amount"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            const customDiv = document.getElementById('custom-amount-div');
+            const customInput = document.getElementById('custom-amount');
+            
+            if (this.value === 'custom') {
+                customDiv.style.display = 'block';
+                customInput.required = true;
+                customInput.focus();
+            } else {
+                customDiv.style.display = 'none';
+                customInput.required = false;
+                customInput.value = '';
+            }
+        });
+    });
+    
+    // Form validation
+    document.getElementById('donation-form').addEventListener('submit', function(e) {
+        const selectedAmount = document.querySelector('input[name="amount"]:checked');
+        
+        if (selectedAmount.value === 'custom') {
+            const customAmount = document.getElementById('custom-amount').value;
+            if (!customAmount || customAmount <= 0) {
+                e.preventDefault();
+                alert('Please enter a valid donation amount.');
+                return false;
+            }
+        }
+    });
+</script>
+{% endblock %}
