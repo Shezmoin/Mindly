@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block title %}Premium Subscription - Mindly{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="hero-section text-center">
+    <div class="container">
+        <i class="fas fa-crown" style="font-size: 4rem;"></i>
+        <h1 class="display-4 fw-bold mt-3 mb-2">
+            Go Premium
+        </h1>
+        <p class="lead">
+            Unlock exclusive features and priority support
+        </p>
+    </div>
+</div>
+
+<!-- Subscription Plans Section -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            
+            <!-- Premium Plan Card -->
+            <div class="card shadow-lg border-primary">
+                <div class="card-header bg-primary text-white text-center py-4">
+                    <h2 class="h3 mb-0">
+                        <i class="fas fa-star me-2"></i>Premium Plan
+                    </h2>
+                </div>
+                <div class="card-body p-5">
+                    
+                    <!-- Pricing -->
+                    <div class="text-center mb-5">
+                        <h3 class="display-3 fw-bold text-primary mb-0">
+                            £9.99<small class="fs-4 text-muted fw-normal">/month</small>
+                        </h3>
+                        <p class="text-muted">Billed monthly • Cancel anytime</p>
+                    </div>
+                    
+                    <!-- Features List -->
+                    <h4 class="mb-4">What's Included:</h4>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <strong>Unlimited Assessments</strong>
+                                    <p class="text-muted small mb-0">Take as many mental health assessments as you need</p>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <strong>Advanced Mood Tracking</strong>
+                                    <p class="text-muted small mb-0">Detailed analytics and trends over time</p>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <strong>Unlimited Journaling</strong>
+                                    <p class="text-muted small mb-0">Create unlimited private journal entries</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <strong>Priority Support</strong>
+                                    <p class="text-muted small mb-0">Get help faster with priority email support</p>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <strong>Ad-Free Experience</strong>
+                                    <p class="text-muted small mb-0">Enjoy the platform without distractions</p>
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check-circle text-success me-2"></i>
+                                    <strong>Premium Resources</strong>
+                                    <p class="text-muted small mb-0">Access exclusive guides and content</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Subscription Form -->
+                    <form method="POST" id="subscription-form">
+                        {% csrf_token %}
+                        <input type="hidden" name="plan" value="premium_monthly">
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Recurring Subscription:</strong> Your card will be charged <strong>£9.99</strong> monthly. You can cancel anytime from your account settings with no cancellation fees.
+                        </div>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-shield-alt me-2"></i>
+                            <strong>Secure Payment:</strong> Your subscription is processed securely through Stripe. All payments in GBP (£).
+                        </div>
+                        
+                        {% if user.is_authenticated %}
+                            <button type="submit" class="btn btn-primary btn-lg w-100">
+                                <i class="fas fa-lock me-2"></i> Subscribe Now - £9.99/month
+                            </button>
+                        {% else %}
+                            <div class="alert alert-secondary text-center">
+                                <p class="mb-3">You need to be logged in to subscribe</p>
+                                <a href="{% url 'users:register' %}?next={{ request.path }}" class="btn btn-primary me-2">
+                                    <i class="fas fa-user-plus me-2"></i> Create Account
+                                </a>
+                                <a href="{% url 'users:login' %}?next={{ request.path }}" class="btn btn-outline-primary">
+                                    <i class="fas fa-sign-in-alt me-2"></i> Log In
+                                </a>
+                            </div>
+                        {% endif %}
+                        
+                        <p class="text-center text-muted mt-3 mb-0">
+                            <small>Powered by <strong>Stripe</strong> • Secure payments in GBP (£)</small>
+                        </p>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Money-Back Guarantee -->
+            <div class="card mt-4 bg-light">
+                <div class="card-body text-center">
+                    <i class="fas fa-award fa-2x text-primary mb-3"></i>
+                    <h5>30-Day Money-Back Guarantee</h5>
+                    <p class="mb-0">Not satisfied? Get a full refund within the first 30 days, no questions asked.</p>
+                </div>
+            </div>
+            
+            <!-- FAQ -->
+            <div class="mt-5">
+                <h4 class="mb-4">Frequently Asked Questions</h4>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                Can I cancel my subscription?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Yes! You can cancel your subscription at any time from your account settings. You'll continue to have access until the end of your current billing period.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                When will I be charged?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                You'll be charged immediately upon subscribing, then automatically on the same day each month. You'll receive an email receipt for each payment.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                What payment methods do you accept?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                We accept all major debit and credit cards (Visa, Mastercard, American Express) via our secure payment processor, Stripe.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
