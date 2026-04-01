@@ -1,0 +1,110 @@
+/* Custom CSS for Mindly - Mental Wellbeing Platform */
+
+/* Root variables for consistent color scheme - calming mental health theme */
+:root {
+    --mindly-primary: #4A90E2;
+    --mindly-secondary: #7B68EE;
+    --mindly-success: #6BCF7F;
+    --mindly-calm: #E8F4F8;
+    --mindly-dark: #2C3E50;
+}
+
+/* Custom styling for body to ensure smooth scrolling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Calming hero section background gradient */
+.hero-section {
+    background: linear-gradient(135deg, var(--mindly-primary) 0%, var(--mindly-secondary) 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    border-radius: 0 0 50px 50px;
+}
+
+/* Card hover effect for interactive elements */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+}
+
+/* Styling for assessment and journal buttons */
+.btn-mindly {
+    background-color: var(--mindly-primary);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-mindly:hover {
+    background-color: var(--mindly-secondary);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(123, 104, 238, 0.4);
+}
+
+/* Calm background for forms and content sections */
+.calm-bg {
+    background-color: var(--mindly-calm);
+    padding: 30px;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+/* Custom footer styling */
+footer a:hover {
+    color: var(--mindly-success) !important;
+    transition: color 0.3s ease;
+}
+
+/* Navbar brand icon styling */
+.navbar-brand i {
+    margin-right: 8px;
+    color: var(--mindly-success);
+}
+
+/* Responsive text sizing for headings */
+h1, h2, h3 {
+    color: var(--mindly-dark);
+    font-weight: 700;
+}
+
+/* Success message styling */
+.alert-success {
+    background-color: var(--mindly-success);
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+/* Custom journal entry card styling */
+.journal-entry {
+    background: white;
+    padding: 20px;
+    border-left: 4px solid var(--mindly-primary);
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+/* Assessment progress bar custom colors */
+.progress-bar-mindly {
+    background-color: var(--mindly-secondary);
+}
+
+/* Responsive spacing utilities */
+.section-padding {
+    padding: 60px 0;
+}
