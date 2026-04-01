@@ -7,6 +7,10 @@
     --mindly-success: #6BCF7F;
     --mindly-calm: #E8F4F8;
     --mindly-dark: #2C3E50;
+    --bg-body: #f7fbff;
+    --text-body: #1f2b37;
+    --card-bg: #ffffff;
+    --muted-surface: #e8f4f8;
 }
 
 /* Custom styling for body to ensure smooth scrolling */
@@ -14,6 +18,17 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     scroll-behavior: smooth;
+    background-color: var(--bg-body);
+    color: var(--text-body);
+}
+
+[data-theme="dark"] {
+    --bg-body: #0f1720;
+    --text-body: #e7edf6;
+    --card-bg: #162231;
+    --muted-surface: #1c2b3d;
+    --mindly-calm: #1c2b3d;
+    --mindly-dark: #e7edf6;
 }
 
 /* Branding - Logo and tagline styling */
@@ -31,7 +46,10 @@ body {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.7; }
 }
-    scroll-behavior: smooth;
+
+[data-theme="dark"] .navbar,
+[data-theme="dark"] .hero-section {
+    filter: saturate(0.9) brightness(0.9);
 }
 
 /* Calming hero section background gradient */
@@ -47,6 +65,7 @@ body {
 .card-hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: none;
+    background-color: var(--card-bg);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -75,7 +94,7 @@ body {
 
 /* Calm background for forms and content sections */
 .calm-bg {
-    background-color: var(--mindly-calm);
+    background-color: var(--muted-surface);
     padding: 30px;
     border-radius: 15px;
     margin: 20px 0;
@@ -99,6 +118,23 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
+[data-theme="dark"] p,
+[data-theme="dark"] li,
+[data-theme="dark"] .lead,
+[data-theme="dark"] .card-text {
+    color: var(--text-body);
+}
+
+[data-theme="dark"] .btn-outline-light {
+    border-color: #dbe6f5;
+    color: #dbe6f5;
+}
+
+[data-theme="dark"] .btn-outline-light:hover {
+    background-color: #dbe6f5;
+    color: #0f1720;
+}
+
 /* Success message styling */
 .alert-success {
     background-color: var(--mindly-success);
@@ -109,7 +145,7 @@ h1, h2, h3 {
 
 /* Custom journal entry card styling */
 .journal-entry {
-    background: white;
+    background: var(--card-bg);
     padding: 20px;
     border-left: 4px solid var(--mindly-primary);
     margin-bottom: 20px;
