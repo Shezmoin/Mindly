@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Mindly | Mental Wellbeing Platform{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="container text-center">
+        <div class="mb-4">
+            <i class="fas fa-heartbeat" style="font-size: 4rem;"></i>
+        </div>
+        <h1 class="display-3 fw-bold mb-2">
+            Welcome to mindly
+        </h1>
+        <p class="fs-4 fst-italic mb-4">
+            Your mind matters.
+        </p>
+        <p class="lead mb-4">
+            Your journey to better mental health starts here. Take control of your wellbeing with our comprehensive tools and resources.
+        </p>
+        <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+            <a href="{% url 'assessments:index' %}" class="btn btn-mindly btn-lg">
+                <i class="fas fa-clipboard-check"></i> Take an Assessment
+            </a>
+            <a href="{% url 'journal:index' %}" class="btn btn-outline-light btn-lg">
+                <i class="fas fa-book"></i> Start Journaling
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="section-padding">
+    <div class="container">
+        <h2 class="text-center mb-5">How Mindly Can Help You</h2>
+        <div class="row g-4">
+            <!-- Mental Health Assessments -->
+            <div class="col-md-4">
+                <div class="card card-hover h-100 text-center p-4">
+                    <div class="card-body">
+                        <i class="fas fa-clipboard-list fa-3x text-primary mb-3"></i>
+                        <h3 class="h5">Mental Health Assessments</h3>
+                        <p class="card-text">
+                            Take scientifically-backed assessments to understand your mental health better. Track your progress over time.
+                        </p>
+                        <a href="{% url 'assessments:index' %}" class="btn btn-mindly mt-2">Get Started</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personal Journaling -->
+            <div class="col-md-4">
+                <div class="card card-hover h-100 text-center p-4">
+                    <div class="card-body">
+                        <i class="fas fa-pen-fancy fa-3x text-primary mb-3"></i>
+                        <h3 class="h5">Personal Journaling</h3>
+                        <p class="card-text">
+                            Express your thoughts and feelings in a safe, private space. Reflect on your journey and identify patterns.
+                        </p>
+                        <a href="{% url 'journal:index' %}" class="btn btn-mindly mt-2">Start Writing</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Our Mission -->
+            <div class="col-md-4">
+                <div class="card card-hover h-100 text-center p-4">
+                    <div class="card-body">
+                        <i class="fas fa-heart fa-3x text-primary mb-3"></i>
+                        <h3 class="h5">Support Our Mission</h3>
+                        <p class="card-text">
+                            Help us provide mental health resources to everyone. Your support makes a difference in people's lives.
+                        </p>
+                        <a href="{% url 'payments:index' %}" class="btn btn-mindly mt-2">Support Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Why Choose Mindly Section -->
+<div class="calm-bg">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="mb-4">Why Choose Mindly?</h2>
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <strong>Evidence-Based Tools:</strong> Our assessments are grounded in psychological research
+                    </li>
+                    <li class="mb-3">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <strong>Private & Secure:</strong> Your data is encrypted and completely confidential
+                    </li>
+                    <li class="mb-3">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <strong>Track Your Progress:</strong> Monitor your mental health journey over time
+                    </li>
+                    <li class="mb-3">
+                        <i class="fas fa-check-circle text-success me-2"></i>
+                        <strong>Community Support:</strong> You're not alone in your journey to better mental health
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 text-center">
+                <i class="fas fa-user-shield fa-10x text-primary opacity-25"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Call to Action -->
+<div class="section-padding text-center">
+    <div class="container">
+        <h2 class="mb-4">Ready to Start Your Wellbeing Journey?</h2>
+        <p class="lead mb-4">
+            Join thousands of people taking control of their mental health with Mindly.
+        </p>
+        {% if not user.is_authenticated %}
+            <a href="{% url 'users:register' %}" class="btn btn-mindly btn-lg">
+                <i class="fas fa-user-plus"></i> Create Free Account
+            </a>
+        {% else %}
+            <a href="{% url 'assessments:index' %}" class="btn btn-mindly btn-lg">
+                <i class="fas fa-clipboard-check"></i> Take Your First Assessment
+            </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

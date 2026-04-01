@@ -2,7 +2,7 @@
 
 /* Root variables for consistent color scheme - calming mental health theme */
 :root {
-    --mindly-primary: #4A90E2;
+    --mindly-primary: #6B9BD1;
     --mindly-secondary: #7B68EE;
     --mindly-success: #6BCF7F;
     --mindly-calm: #E8F4F8;
@@ -13,6 +13,24 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+/* Branding - Logo and tagline styling */
+.navbar-brand {
+    font-size: 1.25rem;
+    letter-spacing: -0.5px;
+}
+
+.navbar-brand i.fa-heartbeat {
+    color: #E8F4F8;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
     scroll-behavior: smooth;
 }
 
