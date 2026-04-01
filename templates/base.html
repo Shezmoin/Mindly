@@ -22,12 +22,15 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
+    
     <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Main navigation">
         <div class="container">
             <!-- Brand/logo -->
-            <a class="navbar-brand d-flex align-items-center" href="/">
-                <i class="fas fa-heartbeat me-2" style="font-size: 1.5rem;"></i>
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'pages:home' %}">
+                <i class="fas fa-heartbeat me-2" style="font-size: 1.5rem;" aria-hidden="true"></i>
                 <div>
                     <span class="fw-bold">mindly</span>
                     <small class="d-block" style="font-size: 0.65rem; margin-top: -3px;">Your mind matters.</small>
@@ -44,32 +47,44 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link{% if request.resolver_match.url_name == 'home' %} active{% endif %}" 
+                           {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}
+                           href="{% url 'pages:home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/assessments/">Assessments</a>
+                        <a class="nav-link{% if request.resolver_match.namespace == 'assessments' %} active{% endif %}" 
+                           {% if request.resolver_match.namespace == 'assessments' %}aria-current="page"{% endif %}
+                           href="{% url 'assessments:index' %}">Assessments</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/journal/">Journal</a>
+                        <a class="nav-link{% if request.resolver_match.namespace == 'journal' %} active{% endif %}" 
+                           {% if request.resolver_match.namespace == 'journal' %}aria-current="page"{% endif %}
+                           href="{% url 'journal:index' %}">Journal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/payments/">Support Us</a>
+                        <a class="nav-link{% if request.resolver_match.namespace == 'payments' %} active{% endif %}" 
+                           {% if request.resolver_match.namespace == 'payments' %}aria-current="page"{% endif %}
+                           href="{% url 'payments:index' %}">Support Us</a>
                     </li>
                     
                     <!-- User authentication links -->
                     {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/users/profile/">Profile</a>
+                            <a class="nav-link" href="{% url 'users:profile' %}">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/users/logout/">Logout</a>
+                            <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="/users/login/">Login</a>
+                            <a class="nav-link{% if request.resolver_match.url_name == 'login' %} active{% endif %}" 
+                               {% if request.resolver_match.url_name == 'login' %}aria-current="page"{% endif %}
+                               href="{% url 'users:login' %}">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/users/register/">Register</a>
+                            <a class="nav-link{% if request.resolver_match.url_name == 'register' %} active{% endif %}" 
+                               {% if request.resolver_match.url_name == 'register' %}aria-current="page"{% endif %}
+                               href="{% url 'users:register' %}">Register</a>
                         </li>
                     {% endif %}
                 </ul>
@@ -78,7 +93,7 @@
     </nav>
     
     <!-- Main content area -->
-    <main class="container my-4">
+    <main id="main-content" class="container my-4">
         <!-- Django messages for alerts/notifications -->
         {% if messages %}
             {% for message in messages %}
@@ -111,10 +126,11 @@
                 <div class="col-md-4">
                     <h5>Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li><a href="/" class="text-white text-decoration-none">Home</a></li>
-                        <li><a href="/assessments/" class="text-white text-decoration-none">Assessments</a></li>
-                        <li><a href="/journal/" class="text-white text-decoration-none">Journal</a></li>
-                        <li><a href="/payments/" class="text-white text-decoration-none">Support Us</a></li>
+                        <li><a href="{% url 'pages:home' %}" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="{% url 'pages:about' %}" class="text-white text-decoration-none">About</a></li>
+                        <li><a href="{% url 'assessments:index' %}" class="text-white text-decoration-none">Assessments</a></li>
+                        <li><a href="{% url 'journal:index' %}" class="text-white text-decoration-none">Journal</a></li>
+                        <li><a href="{% url 'payments:index' %}" class="text-white text-decoration-none">Support Us</a></li>
                     </ul>
                 </div>
                 

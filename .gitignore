@@ -69,3 +69,6 @@ __pycache__/
 # Error documentation
 errors/
 capture_errors.py
+
+# Validation testing
+validation_test.html

@@ -13,3 +13,15 @@ def login_view(request):
     Placeholder view for user login.
     """
     return render(request, 'users/login.html')
+
+def profile_view(request):
+    """
+    Placeholder view for user profile.
+    """
+    return render(request, 'users/profile.html')
+
+def logout_view(request):
+    """
+    Placeholder view for user logout.
+    """
+    return render(request, 'users/logout.html')
