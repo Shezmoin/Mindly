@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 from decouple import config
 
@@ -140,7 +141,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ==========================================
 # Stripe Payment Configuration
 # ==========================================
-import os
 
 # Stripe API Keys - Use environment variables in production
 # Get test keys from: https://dashboard.stripe.com/test/apikeys

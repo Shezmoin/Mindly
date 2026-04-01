@@ -9,7 +9,7 @@ app_name = 'pages'
 urlpatterns = [
     # Homepage - root path
     path('', views.home_view, name='home'),
-    
+
     # About page
     path('about/', views.about_view, name='about'),
 ]
