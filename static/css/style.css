@@ -2,15 +2,15 @@
 
 /* Root variables for consistent color scheme - calming mental health theme */
 :root {
-    --mindly-primary: #6B9BD1;
-    --mindly-secondary: #7B68EE;
-    --mindly-success: #6BCF7F;
-    --mindly-calm: #E8F4F8;
-    --mindly-dark: #2C3E50;
-    --bg-body: #f7fbff;
-    --text-body: #1f2b37;
-    --card-bg: #ffffff;
-    --muted-surface: #e8f4f8;
+    --mindly-primary: #6b3a30;
+    --mindly-secondary: #9b7553;
+    --mindly-success: #c7a27d;
+    --mindly-calm: #f6ede2;
+    --mindly-dark: #4a2f21;
+    --bg-body: #fbf5ee;
+    --text-body: #3b2a1f;
+    --card-bg: #fffaf5;
+    --muted-surface: #f4e8db;
 }
 
 /* Custom styling for body to ensure smooth scrolling */
@@ -23,12 +23,20 @@ body {
 }
 
 [data-theme="dark"] {
-    --bg-body: #0f1720;
-    --text-body: #e7edf6;
-    --card-bg: #162231;
-    --muted-surface: #1c2b3d;
-    --mindly-calm: #1c2b3d;
-    --mindly-dark: #e7edf6;
+    --bg-body: #1d1511;
+    --text-body: #f2e7db;
+    --card-bg: #2b2019;
+    --muted-surface: #3a2b22;
+    --mindly-calm: #3a2b22;
+    --mindly-dark: #f2e7db;
+}
+
+.mindly-navbar {
+    background: linear-gradient(90deg, #5a2d29 0%, #6b3a30 45%, #9b7553 100%);
+}
+
+.mindly-footer {
+    background: linear-gradient(180deg, #2a1b14 0%, #1f140f 100%);
 }
 
 /* Branding - Logo and tagline styling */
@@ -38,7 +46,7 @@ body {
 }
 
 .navbar-brand i.fa-heartbeat {
-    color: #E8F4F8;
+    color: #f4dfc8;
     animation: pulse 2s ease-in-out infinite;
 }
 
@@ -71,7 +79,7 @@ body {
 
 .card-hover:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+    box-shadow: 0 8px 20px rgba(122, 46, 46, 0.22);
 }
 
 /* Styling for assessment and journal buttons */
@@ -89,7 +97,7 @@ body {
     background-color: var(--mindly-secondary);
     color: white;
     transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(123, 104, 238, 0.4);
+    box-shadow: 0 5px 15px rgba(91, 57, 34, 0.35);
 }
 
 /* Calm background for forms and content sections */
@@ -126,13 +134,13 @@ h1, h2, h3 {
 }
 
 [data-theme="dark"] .btn-outline-light {
-    border-color: #dbe6f5;
-    color: #dbe6f5;
+    border-color: #f4dfc8;
+    color: #f4dfc8;
 }
 
 [data-theme="dark"] .btn-outline-light:hover {
-    background-color: #dbe6f5;
-    color: #0f1720;
+    background-color: #f4dfc8;
+    color: #2a1b14;
 }
 
 /* Success message styling */
