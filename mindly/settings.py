@@ -57,10 +57,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mindly.urls'
 
+# Template configuration - points to project-level templates folder
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Project-level templates directory
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
