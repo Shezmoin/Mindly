@@ -88,6 +88,10 @@
                         </li>
                     {% endif %}
                 </ul>
+                <button id="theme-toggle" class="btn btn-outline-light btn-sm ms-lg-3 mt-3 mt-lg-0" type="button" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon me-1" aria-hidden="true"></i>
+                    <span id="theme-toggle-text">Dark mode</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -155,6 +159,36 @@
     
     <!-- Bootstrap 5 JavaScript bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function () {
+            var root = document.documentElement;
+            var toggleBtn = document.getElementById('theme-toggle');
+            var toggleText = document.getElementById('theme-toggle-text');
+
+            function applyTheme(theme) {
+                root.setAttribute('data-theme', theme);
+                if (toggleText) {
+                    toggleText.textContent = theme === 'dark' ? 'Light mode' : 'Dark mode';
+                }
+            }
+
+            var savedTheme = localStorage.getItem('mindly-theme');
+            if (savedTheme === 'dark' || savedTheme === 'light') {
+                applyTheme(savedTheme);
+            } else {
+                applyTheme('light');
+            }
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function () {
+                    var currentTheme = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+                    var nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                    localStorage.setItem('mindly-theme', nextTheme);
+                    applyTheme(nextTheme);
+                });
+            }
+        })();
+    </script>
     
     <!-- Custom JavaScript block for additional scripts -->
     {% block extra_js %}{% endblock %}
