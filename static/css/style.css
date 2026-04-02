@@ -1,16 +1,22 @@
 /* Custom CSS for Mindly - Mental Wellbeing Platform */
 
-/* Root variables for consistent color scheme - calming mental health theme */
+/* Root variables for consistent color scheme - Forest & Mist theme */
 :root {
-    --mindly-primary: #6b3a30;
-    --mindly-secondary: #9b7553;
-    --mindly-success: #c7a27d;
-    --mindly-calm: #f6ede2;
-    --mindly-dark: #4a2f21;
-    --bg-body: #fbf5ee;
-    --text-body: #3b2a1f;
-    --card-bg: #fffaf5;
-    --muted-surface: #f4e8db;
+    --mindly-primary: #2D6A4F;
+    --mindly-secondary: #95D5B2;
+    --mindly-success: #52B788;
+    --mindly-calm: #F8F4EF;
+    --mindly-dark: #1B4332;
+    --bg-body: #F8F4EF;
+    --text-body: #2C3E31;
+    --card-bg: #FFFFFF;
+    --muted-surface: #EBF7F1;
+    --color-premium: #D4A017;
+    /* Bootstrap primary/secondary overrides */
+    --bs-primary: #2D6A4F;
+    --bs-primary-rgb: 45, 106, 79;
+    --bs-secondary: #52B788;
+    --bs-secondary-rgb: 82, 183, 136;
 }
 
 /* Custom styling for body to ensure smooth scrolling */
@@ -23,20 +29,20 @@ body {
 }
 
 [data-theme="dark"] {
-    --bg-body: #1d1511;
-    --text-body: #f2e7db;
-    --card-bg: #2b2019;
-    --muted-surface: #3a2b22;
-    --mindly-calm: #3a2b22;
-    --mindly-dark: #f2e7db;
+    --bg-body: #0F1F17;
+    --text-body: #E8F5EF;
+    --card-bg: #1A2E23;
+    --muted-surface: #1F362A;
+    --mindly-calm: #1F362A;
+    --mindly-dark: #E8F5EF;
 }
 
 .mindly-navbar {
-    background: linear-gradient(90deg, #5a2d29 0%, #6b3a30 45%, #9b7553 100%);
+    background-color: #2D6A4F;
 }
 
 .mindly-footer {
-    background: linear-gradient(180deg, #2a1b14 0%, #1f140f 100%);
+    background-color: #1B4332;
 }
 
 /* Branding - Logo and tagline styling */
@@ -46,7 +52,7 @@ body {
 }
 
 .navbar-brand i.fa-heartbeat {
-    color: #f4dfc8;
+    color: #95D5B2;
     animation: pulse 2s ease-in-out infinite;
 }
 
@@ -60,9 +66,9 @@ body {
     filter: saturate(0.9) brightness(0.9);
 }
 
-/* Calming hero section background gradient */
+/* Hero section */
 .hero-section {
-    background: linear-gradient(135deg, var(--mindly-primary) 0%, var(--mindly-secondary) 100%);
+    background-color: var(--mindly-primary);
     color: white;
     padding: 80px 0;
     text-align: center;
@@ -79,7 +85,7 @@ body {
 
 .card-hover:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(122, 46, 46, 0.22);
+    box-shadow: 0 8px 20px rgba(45, 106, 79, 0.22);
 }
 
 /* Styling for assessment and journal buttons */
@@ -94,10 +100,10 @@ body {
 }
 
 .btn-mindly:hover {
-    background-color: var(--mindly-secondary);
+    background-color: #1B4332;
     color: white;
     transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(91, 57, 34, 0.35);
+    box-shadow: 0 5px 15px rgba(27, 67, 50, 0.35);
 }
 
 /* Calm background for forms and content sections */
@@ -134,13 +140,13 @@ h1, h2, h3 {
 }
 
 [data-theme="dark"] .btn-outline-light {
-    border-color: #f4dfc8;
-    color: #f4dfc8;
+    border-color: #95D5B2;
+    color: #95D5B2;
 }
 
 [data-theme="dark"] .btn-outline-light:hover {
-    background-color: #f4dfc8;
-    color: #2a1b14;
+    background-color: #95D5B2;
+    color: #1B4332;
 }
 
 /* Success message styling */
@@ -164,6 +170,100 @@ h1, h2, h3 {
 /* Assessment progress bar custom colors */
 .progress-bar-mindly {
     background-color: var(--mindly-secondary);
+}
+
+/* Premium icon colour - gold to complement the Forest & Mist green */
+.text-premium {
+    color: var(--color-premium) !important;
+}
+
+/* ── Bootstrap component overrides ── */
+
+/* btn-primary → deep green */
+.btn-primary {
+    background-color: #2D6A4F;
+    border-color: #2D6A4F;
+    color: #fff;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+    background-color: #1B4332;
+    border-color: #1B4332;
+    color: #fff;
+}
+.btn-check:checked + .btn-primary,
+.btn-check:active + .btn-primary {
+    background-color: #1B4332;
+    border-color: #1B4332;
+    color: #fff;
+}
+
+/* btn-outline-primary → deep green outline */
+.btn-outline-primary {
+    color: #2D6A4F;
+    border-color: #2D6A4F;
+}
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+    background-color: #2D6A4F;
+    border-color: #2D6A4F;
+    color: #fff;
+}
+.btn-check:checked + .btn-outline-primary,
+.btn-check:active + .btn-outline-primary {
+    background-color: #2D6A4F;
+    border-color: #2D6A4F;
+    color: #fff;
+}
+
+/* btn-secondary → sage green */
+.btn-secondary {
+    background-color: #52B788;
+    border-color: #52B788;
+    color: #fff;
+}
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active {
+    background-color: #2D6A4F;
+    border-color: #2D6A4F;
+    color: #fff;
+}
+
+/* text-primary / link colours → deep green */
+.text-primary,
+a.text-primary {
+    color: #2D6A4F !important;
+}
+
+/* border-primary → deep green */
+.border-primary {
+    border-color: #2D6A4F !important;
+}
+
+/* alert-info → soft sage mint (replaces blue) */
+.alert-info {
+    background-color: #D8F3E8;
+    border-color: #95D5B2;
+    color: #1B4332;
+}
+.alert-info .fas,
+.alert-info .far {
+    color: #2D6A4F;
+}
+
+/* alert-warning → warm parchment with olive text (replaces yellow) */
+.alert-warning {
+    background-color: #F4EED8;
+    border-color: #C8A94E;
+    color: #5C4A12;
+}
+.alert-warning .fas,
+.alert-warning .far {
+    color: #C8A94E;
 }
 
 /* Responsive spacing utilities */
