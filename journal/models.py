@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -30,6 +29,3 @@ class JournalEntry(models.Model):
 
 	def __str__(self):
 		return self.title
-=======
-# Create your models here.
->>>>>>> 04c11c74a48edb4abaea6dc8325a8cb21860f238
