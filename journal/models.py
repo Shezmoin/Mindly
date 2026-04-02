@@ -1,10 +1,11 @@
 from django.conf import settings
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
 class MoodEntry(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='mood_entries')
-	mood_score = models.IntegerField()
+	mood_score = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
 	note = models.TextField(blank=True)
 	created_at = models.DateTimeField(auto_now_add=True)
 
