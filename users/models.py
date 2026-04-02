@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -31,6 +30,3 @@ class UserProfile(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
-=======
-# Create your models here.
->>>>>>> 04c11c74a48edb4abaea6dc8325a8cb21860f238
