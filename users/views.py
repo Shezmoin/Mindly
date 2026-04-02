@@ -1,4 +1,6 @@
-from django.contrib import auth
+from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect, render
 
 from .forms import UserRegistrationForm
@@ -18,21 +20,30 @@ def register_view(request):
 
 
 def login_view(request):
-    """
-    Placeholder view for user login.
-    """
-    return render(request, 'users/login.html')
+    next_url = request.GET.get('next') or request.POST.get('next') or 'pages:home'
+
+    if request.user.is_authenticated:
+        return redirect(next_url)
+
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            auth.login(request, form.get_user())
+            messages.success(request, 'Welcome back! You are now logged in.')
+            return redirect(next_url)
+    else:
+        form = AuthenticationForm(request)
+
+    return render(request, 'users/login.html', {'form': form, 'next': next_url})
 
 
+@login_required
 def profile_view(request):
-    """
-    Placeholder view for user profile.
-    """
     return render(request, 'users/profile.html')
 
 
 def logout_view(request):
-    """
-    Placeholder view for user logout.
-    """
+    if request.user.is_authenticated:
+        auth.logout(request)
+        messages.info(request, 'You have been logged out successfully.')
     return render(request, 'users/logout.html')
