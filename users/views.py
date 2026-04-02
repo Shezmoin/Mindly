@@ -1,9 +1,7 @@
-from django.contrib.auth import login
+from django.contrib import auth
 from django.shortcuts import redirect, render
 
 from .forms import UserRegistrationForm
-
-# Create your views here.
 
 
 def register_view(request):
@@ -11,7 +9,7 @@ def register_view(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)
+            auth.login(request, user)
             return redirect('pages:home')
     else:
         form = UserRegistrationForm()
