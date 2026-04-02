@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
@@ -43,3 +44,6 @@ class UserAuthViewsTests(TestCase):
 
 		self.assertEqual(response.status_code, 200)
 		self.assertFalse(response.wsgi_request.user.is_authenticated)
+=======
+# Create your tests here.
+>>>>>>> 04c11c74a48edb4abaea6dc8325a8cb21860f238
