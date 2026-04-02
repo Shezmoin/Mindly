@@ -6,6 +6,7 @@ from django.shortcuts import redirect, render
 from .forms import UserRegistrationForm
 
 
+
 def register_view(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -19,9 +20,11 @@ def register_view(request):
     return render(request, 'users/register.html', {'form': form})
 
 
+
 def login_view(request):
     next_url = request.GET.get('next') or request.POST.get('next') or 'pages:home'
 
+<<<<<<< HEAD
     if request.user.is_authenticated:
         return redirect(next_url)
 
@@ -38,6 +41,9 @@ def login_view(request):
 
 
 @login_required
+=======
+
+>>>>>>> 04c11c74a48edb4abaea6dc8325a8cb21860f238
 def profile_view(request):
     return render(request, 'users/profile.html')
 
