@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login - mindly{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card card-hover p-4">
+            <h1 class="h3 mb-3 text-center">Welcome Back</h1>
+            <p class="text-center mb-4">Sign in to continue your wellbeing journey.</p>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <div class="d-grid mt-3">
+                    <button type="submit" class="btn btn-mindly">Log In</button>
+                </div>
+            </form>
+
+            <p class="text-center mt-3 mb-0">
+                New here?
+                <a href="{% url 'users:register' %}">Create an account</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
