@@ -21,6 +21,7 @@ from django.urls import path, include
 urlpatterns = [
     # Django admin interface
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
 
     # App URLs
     path('', include('pages.urls')),  # Homepage and static pages

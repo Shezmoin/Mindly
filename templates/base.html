@@ -68,18 +68,18 @@
                     </li>
                     
                     <!-- User authentication links -->
-                    {% if user.is_authenticated %}
+                    {% if request.user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'users:profile' %}">Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users:logout' %}">Logout</a>
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link{% if request.resolver_match.url_name == 'login' %} active{% endif %}" 
                                {% if request.resolver_match.url_name == 'login' %}aria-current="page"{% endif %}
-                               href="{% url 'users:login' %}">Login</a>
+                               href="{% url 'login' %}">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link{% if request.resolver_match.url_name == 'register' %} active{% endif %}" 
