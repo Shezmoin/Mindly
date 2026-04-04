@@ -1,4 +1,7 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+
+from users.models import UserProfile
 
 # Create your views here.
 
@@ -27,3 +30,12 @@ def about_view(request):
         Rendered about.html template
     """
     return render(request, 'pages/about.html')
+
+
+@login_required
+def dashboard_view(request):
+    user_profile, _ = UserProfile.objects.get_or_create(user=request.user)
+    context = {
+        'user_profile': user_profile,
+    }
+    return render(request, 'pages/dashboard.html', context)
