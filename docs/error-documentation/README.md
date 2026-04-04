@@ -13,6 +13,8 @@ Error documentation with visual evidence: [`docs/error-documentation/ERROR_LOG.m
 1. **Users App 404 Error** - No root URL configured for `/users/`
 2. **Assessments Template Error** - Missing `templates/assessments/index.html`
 3. **Journal Template Error** - Missing `templates/journal/index.html`
+4. **Assessments Detailed Trace Capture** - Template-loader traceback screenshot for the same missing assessments template
+5. **Journal Detailed Trace Capture** - Template-loader traceback screenshot for the same missing journal template
 
 All errors include:
 - Visual screenshot evidence

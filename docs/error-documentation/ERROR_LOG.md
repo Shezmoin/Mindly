@@ -12,20 +12,15 @@ This document records errors encountered during development with visual evidence
 
 **Date Identified**: April 1, 2026
 
-**Description**: 
-The users app has no root URL route configured. The `users/urls.py` only defines routes for `/users/register/` and `/users/login/`, but not for `/users/` itself.
-
 **Visual Evidence**:
 
 ![Users App 404 Error](users_app_error.png)
 
-**Root Cause**:
-- Missing root path in `users/urls.py`
-- No index view or landing page for the users app
+**Brief Description**:
+Accessing `/users/` returns a 404 because the users app does not define a root route.
 
-**Resolution Required**:
-- Add an index route to `users/urls.py`
-- Create a user dashboard or redirect to login/register
+**Fix**:
+Add a root users route or redirect `/users/` to a valid page such as login, register, or dashboard.
 
 ---
 
@@ -37,22 +32,15 @@ The users app has no root URL route configured. The `users/urls.py` only defines
 
 **Date Identified**: April 1, 2026
 
-**Description**:
-Django cannot find the template `templates/assessments/index.html`. The view exists in `assessments/views.py` and attempts to render the template, but the template file was never created.
-
 **Visual Evidence**:
 
 ![Assessments Template Error](assessments_template_error.png)
 
-**Root Cause**:
-- Template file `templates/assessments/index.html` does not exist
-- Directory `templates/assessments/` may not exist
-- View is calling `render(request, 'assessments/index.html')` for a non-existent file
+**Brief Description**:
+Accessing `/assessments/` raises `TemplateDoesNotExist` because Django cannot find `assessments/index.html`.
 
-**Resolution Required**:
-- Create `templates/assessments/` directory
-- Create `templates/assessments/index.html` template
-- Implement assessment listing functionality
+**Fix**:
+Create `templates/assessments/index.html` and ensure the assessments index view renders that template correctly.
 
 ---
 
@@ -64,32 +52,65 @@ Django cannot find the template `templates/assessments/index.html`. The view exi
 
 **Date Identified**: April 1, 2026
 
-**Description**:
-Django cannot find the template `templates/journal/index.html`. The view exists in `journal/views.py` and attempts to render the template, but the template file was never created.
-
 **Visual Evidence**:
 
 ![Journal Template Error](journal_template_error.png)
 
-**Root Cause**:
-- Template file `templates/journal/index.html` does not exist
-- Directory `templates/journal/` may not exist
-- View is calling `render(request, 'journal/index.html')` for a non-existent file
+**Brief Description**:
+Accessing `/journal/` raises `TemplateDoesNotExist` because Django cannot find `journal/index.html`.
 
-**Resolution Required**:
-- Create `templates/journal/` directory
-- Create `templates/journal/index.html` template
-- Implement journal entry listing functionality
+**Fix**:
+Create `templates/journal/index.html` and ensure the journal index view renders that template correctly.
+
+---
+
+## Error 4: Assessments App - Detailed Trace Capture (500)
+
+**URL**: `http://localhost:8000/assessments/`
+
+**Status**: 500 Internal Server Error
+
+**Date Identified**: April 4, 2026
+
+**Visual Evidence**:
+
+![Assessments Template Error (Detailed)](assessments_template_error.png)
+
+**Brief Description**:
+Accessing `/assessments/` shows the full template-loader traceback, confirming the missing `assessments/index.html` template.
+
+**Fix**:
+Create `templates/assessments/index.html` and ensure the assessments index view points to that template.
+
+---
+
+## Error 5: Journal App - Detailed Trace Capture (500)
+
+**URL**: `http://localhost:8000/journal/`
+
+**Status**: 500 Internal Server Error
+
+**Date Identified**: April 4, 2026
+
+**Visual Evidence**:
+
+![Journal Template Error (Detailed)](journal_template_error.png)
+
+**Brief Description**:
+Accessing `/journal/` shows the full template-loader traceback, confirming the missing `journal/index.html` template.
+
+**Fix**:
+Create `templates/journal/index.html` and ensure the journal index view points to that template.
 
 ---
 
 ## Summary
 
-All three errors represent incomplete features that are placeholders in the current development phase:
+All five recorded errors represent incomplete features and template gaps captured during development:
 
 1. **Users app**: URL routing incomplete
-2. **Assessments app**: Template files not created
-3. **Journal app**: Template files not created
+2. **Assessments app**: Template files not created (plus detailed traceback capture)
+3. **Journal app**: Template files not created (plus detailed traceback capture)
 
 These errors are expected during incremental development and will be resolved as each feature is implemented.
 
@@ -97,4 +118,4 @@ These errors are expected during incremental development and will be resolved as
 
 ---
 
-*Last Updated: April 1, 2026*
+*Last Updated: April 4, 2026*
