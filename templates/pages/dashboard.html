@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - mindly{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-lg-4">
+        <div class="card card-hover p-4 h-100">
+            <h1 class="h3 mb-3">Welcome, {{ request.user.username }}</h1>
+            <p class="mb-2"><strong>Subscription tier:</strong> {{ user_profile.get_subscription_tier_display }}</p>
+            <p class="mb-0"><strong>Joined:</strong> {{ user_profile.joined_date }}</p>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="card card-hover p-4 h-100">
+            <h2 class="h4 mb-3">Your wellbeing overview</h2>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="calm-bg h-100">
+                        <h3 class="h5 mb-2">Mood tracking</h3>
+                        <p class="mb-0">Your recent mood summaries and trends will appear here.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="calm-bg h-100">
+                        <h3 class="h5 mb-2">Journal activity</h3>
+                        <p class="mb-0">Your latest journal entries and reflections will appear here.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
