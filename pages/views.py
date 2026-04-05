@@ -38,31 +38,37 @@ def resources_view(request):
             'title': 'Understanding Anxiety Triggers',
             'category': 'Anxiety',
             'description': 'Practical ways to notice common triggers and respond before stress escalates.',
+            'icon_emoji': '🧠',
         },
         {
             'title': 'Low Mood Recovery Toolkit',
             'category': 'Depression',
             'description': 'Small daily actions that can support energy, routine, and motivation during difficult periods.',
+            'icon_emoji': '🌤️',
         },
         {
             'title': '5-Minute Grounding Practice',
             'category': 'Mindfulness',
             'description': 'A short guided exercise to reset your focus when your mind feels overwhelmed.',
+            'icon_emoji': '🧘',
         },
         {
             'title': 'Sleep Reset Checklist',
             'category': 'Sleep',
             'description': 'Simple bedtime habits to improve sleep quality and reduce next-day mental fatigue.',
+            'icon_emoji': '🌙',
         },
         {
             'title': 'Managing Daily Stress',
             'category': 'Stress',
             'description': 'A structured approach for identifying pressure points and planning calmer routines.',
+            'icon_emoji': '🧩',
         },
         {
             'title': 'Compassionate Self-Talk Guide',
             'category': 'Self-Care',
             'description': 'Learn how to replace harsh inner criticism with supportive language and realistic goals.',
+            'icon_emoji': '💚',
         },
     ]
     return render(request, 'pages/resources.html', {'resources': resources})
