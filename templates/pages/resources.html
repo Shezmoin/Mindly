@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Resources - mindly{% endblock %}
+
+{% block content %}
+<div class="mb-4 text-center">
+    <h1 class="display-6 mb-2">Mental Wellbeing Resources</h1>
+    <p class="lead mb-0">Explore practical articles and guides to support your daily wellbeing.</p>
+</div>
+
+<div class="row g-4">
+    {% for resource in resources %}
+        <div class="col-12 col-lg-4">
+            <div class="card card-hover h-100">
+                <div class="card-body p-4">
+                    <span class="badge text-bg-secondary mb-3">{{ resource.category }}</span>
+                    <h2 class="h5">{{ resource.title }}</h2>
+                    <p class="mb-0">{{ resource.description }}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
