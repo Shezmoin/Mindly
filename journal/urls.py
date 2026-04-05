@@ -8,4 +8,5 @@ app_name = 'journal'
 # URL patterns for journal app
 urlpatterns = [
     path('', views.index_view, name='index'),
+    path('mood/new/', views.mood_create_view, name='mood-create'),
 ]
