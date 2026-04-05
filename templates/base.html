@@ -57,6 +57,11 @@
                            href="{% url 'assessments:index' %}">Assessments</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link{% if request.resolver_match.url_name == 'resources' %} active{% endif %}"
+                           {% if request.resolver_match.url_name == 'resources' %}aria-current="page"{% endif %}
+                           href="{% url 'pages:resources' %}">Resources</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link{% if request.resolver_match.namespace == 'journal' %} active{% endif %}" 
                            {% if request.resolver_match.namespace == 'journal' %}aria-current="page"{% endif %}
                            href="{% url 'journal:index' %}">Journal</a>
@@ -133,6 +138,7 @@
                         <li><a href="{% url 'pages:home' %}" class="text-white text-decoration-none">Home</a></li>
                         <li><a href="{% url 'pages:about' %}" class="text-white text-decoration-none">About</a></li>
                         <li><a href="{% url 'assessments:index' %}" class="text-white text-decoration-none">Assessments</a></li>
+                        <li><a href="{% url 'pages:resources' %}" class="text-white text-decoration-none">Resources</a></li>
                         <li><a href="{% url 'journal:index' %}" class="text-white text-decoration-none">Journal</a></li>
                         <li><a href="{% url 'payments:index' %}" class="text-white text-decoration-none">Support Us</a></li>
                     </ul>

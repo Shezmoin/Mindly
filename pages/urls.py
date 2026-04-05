@@ -10,6 +10,9 @@ urlpatterns = [
     # Homepage - root path
     path('', views.home_view, name='home'),
 
+    # Resources page
+    path('resources/', views.resources_view, name='resources'),
+
     # User dashboard
     path('dashboard/', views.dashboard_view, name='dashboard'),
 
