@@ -8,7 +8,7 @@
     <a href="{% url 'journal:mood-create' %}" class="btn btn-mindly">Log Today's Mood</a>
 </div>
 
-{% if mood_entries %}
+{% if entries %}
     <div class="table-responsive">
         <table class="table table-striped align-middle">
             <thead>
@@ -19,7 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for entry in mood_entries %}
+                {% for entry in entries %}
                     <tr>
                         <td>{{ entry.created_at|date:"d M Y, H:i" }}</td>
                         <td>

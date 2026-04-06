@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import MoodEntry
+from .models import JournalEntry, MoodEntry
 
 
 class MoodEntryForm(forms.ModelForm):
@@ -23,6 +23,27 @@ class MoodEntryForm(forms.ModelForm):
                     'class': 'form-control',
                     'rows': 4,
                     'placeholder': 'Add a note about how you are feeling (optional).',
+                }
+            ),
+        }
+
+
+class JournalEntryForm(forms.ModelForm):
+    class Meta:
+        model = JournalEntry
+        fields = ('title', 'content', 'is_private')
+        widgets = {
+            'title': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Give your entry a short title',
+                }
+            ),
+            'content': forms.Textarea(
+                attrs={
+                    'class': 'form-control',
+                    'rows': 8,
+                    'placeholder': 'Write your thoughts here...',
                 }
             ),
         }

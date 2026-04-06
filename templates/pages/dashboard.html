@@ -31,7 +31,11 @@
                 <div class="col-md-6">
                     <div class="calm-bg h-100">
                         <h3 class="h5 mb-2">Recent Journal Entries</h3>
-                        <p class="mb-0">Your latest journal entries and reflections will appear here.</p>
+                        <p class="mb-3">Your latest journal entries and reflections will appear here.</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="{% url 'journal:journal-create' %}" class="btn btn-sm btn-mindly">Write Entry</a>
+                            <a href="{% url 'journal:journal-list' %}" class="btn btn-sm btn-outline-secondary">View Journal</a>
+                        </div>
                     </div>
                 </div>
             </div>
