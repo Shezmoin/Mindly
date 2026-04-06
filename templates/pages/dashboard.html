@@ -22,7 +22,10 @@
                     <div class="calm-bg h-100">
                         <h3 class="h5 mb-2">Recent Mood Entries</h3>
                         <p class="mb-3">Your recent mood summaries and trends will appear here.</p>
-                        <a href="{% url 'journal:mood-create' %}" class="btn btn-sm btn-mindly">Log Mood Entry</a>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="{% url 'journal:mood-create' %}" class="btn btn-sm btn-mindly">Log Mood Entry</a>
+                            <a href="{% url 'journal:mood-list' %}" class="btn btn-sm btn-outline-secondary">View Mood History</a>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
