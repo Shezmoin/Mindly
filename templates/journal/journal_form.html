@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}New Journal Entry - mindly{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card card-hover p-4">
+            <h1 class="h3 mb-3">Write a Journal Entry</h1>
+            <p class="mb-4">Capture your thoughts, feelings, or reflections for today.</p>
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="{{ form.title.id_for_label }}" class="form-label fw-semibold">Title</label>
+                    {{ form.title }}
+                    {% if form.title.errors %}
+                        <div class="text-danger small mt-2">{{ form.title.errors|join:', ' }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label for="{{ form.content.id_for_label }}" class="form-label fw-semibold">Content</label>
+                    {{ form.content }}
+                    {% if form.content.errors %}
+                        <div class="text-danger small mt-2">{{ form.content.errors|join:', ' }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-check mb-4">
+                    {{ form.is_private }}
+                    <label class="form-check-label" for="{{ form.is_private.id_for_label }}">
+                        Keep this entry private
+                    </label>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-mindly">Save Entry</button>
+                    <a href="{% url 'journal:journal-list' %}" class="btn btn-outline-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

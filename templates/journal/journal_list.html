@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Journal Entries - mindly{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">Your Journal Entries</h1>
+    <a href="{% url 'journal:journal-create' %}" class="btn btn-mindly">New Entry</a>
+</div>
+
+{% if entries %}
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Last Updated</th>
+                    <th scope="col">Visibility</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entries %}
+                    <tr>
+                        <td>{{ entry.title }}</td>
+                        <td>{{ entry.updated_at|date:"d M Y, H:i" }}</td>
+                        <td>
+                            {% if entry.is_private %}
+                                <span class="badge text-bg-secondary">Private</span>
+                            {% else %}
+                                <span class="badge text-bg-success">Public</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <button type="button" class="btn btn-sm btn-outline-primary" disabled>Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-danger" disabled>Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="card card-hover p-4 text-center">
+        <p class="mb-3">No journal entries yet - write your first reflection.</p>
+        <div>
+            <a href="{% url 'journal:journal-create' %}" class="btn btn-mindly">Create First Entry</a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
