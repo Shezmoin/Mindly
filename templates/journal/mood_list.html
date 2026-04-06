@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Mood History - mindly{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 mb-0">Your Mood Entries</h1>
+    <a href="{% url 'journal:mood-create' %}" class="btn btn-mindly">Log Today's Mood</a>
+</div>
+
+{% if mood_entries %}
+    <div class="table-responsive">
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Mood Score</th>
+                    <th scope="col">Note</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in mood_entries %}
+                    <tr>
+                        <td>{{ entry.created_at|date:"d M Y, H:i" }}</td>
+                        <td>
+                            {% if entry.mood_score >= 7 %}
+                                <span class="badge badge-success text-bg-success">{{ entry.mood_score }}/10</span>
+                            {% elif entry.mood_score >= 4 %}
+                                <span class="badge badge-warning text-bg-warning">{{ entry.mood_score }}/10</span>
+                            {% else %}
+                                <span class="badge badge-danger text-bg-danger">{{ entry.mood_score }}/10</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ entry.note|default:"-" }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="card card-hover p-4 text-center">
+        <p class="mb-3">No mood entries yet - log your first mood!</p>
+        <div>
+            <a href="{% url 'journal:mood-create' %}" class="btn btn-mindly">Log Today's Mood</a>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

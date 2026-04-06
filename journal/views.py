@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 
 from .forms import MoodEntryForm
+from .models import MoodEntry
 
 # Create your views here.
 
@@ -28,3 +29,9 @@ def mood_create_view(request):
         form = MoodEntryForm()
 
     return render(request, 'journal/mood_form.html', {'form': form})
+
+
+@login_required
+def mood_list_view(request):
+    mood_entries = MoodEntry.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'journal/mood_list.html', {'mood_entries': mood_entries})
