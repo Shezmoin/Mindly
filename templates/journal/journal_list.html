@@ -8,6 +8,26 @@
     <a href="{% url 'journal:journal-create' %}" class="btn btn-mindly">New Entry</a>
 </div>
 
+<form method="get" class="row g-2 align-items-end mb-4">
+    <div class="col-md-8 col-lg-6">
+        <label for="id_q" class="form-label fw-semibold">Search by title</label>
+        <input
+            type="text"
+            name="q"
+            id="id_q"
+            class="form-control"
+            placeholder="Search your journal entries"
+            value="{{ request.GET.q }}"
+        >
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-outline-primary">Search</button>
+    </div>
+    <div class="col-auto">
+        <a href="{% url 'journal:journal-list' %}" class="btn btn-outline-secondary">Clear</a>
+    </div>
+</form>
+
 {% if entries %}
     <div class="table-responsive">
         <table class="table table-striped align-middle">
@@ -22,7 +42,11 @@
             <tbody>
                 {% for entry in entries %}
                     <tr>
-                        <td>{{ entry.title }}</td>
+                        <td>
+                            <a href="{% url 'journal:journal-detail' entry.pk %}" class="text-decoration-none fw-semibold">
+                                {{ entry.title }}
+                            </a>
+                        </td>
                         <td>{{ entry.updated_at|date:"d M Y, H:i" }}</td>
                         <td>
                             {% if entry.is_private %}

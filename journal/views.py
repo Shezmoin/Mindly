@@ -55,8 +55,18 @@ def journal_create_view(request):
 
 @login_required
 def journal_list_view(request):
-    entries = JournalEntry.objects.filter(user=request.user).order_by('-updated_at')
+    query = request.GET.get('q', '')
+    entries = JournalEntry.objects.filter(
+        user=request.user,
+        title__icontains=query,
+    ).order_by('-updated_at')
     return render(request, 'journal/journal_list.html', {'entries': entries})
+
+
+@login_required
+def journal_detail_view(request, pk):
+    entry = get_object_or_404(JournalEntry, pk=pk, user=request.user)
+    return render(request, 'journal/journal_detail.html', {'entry': entry})
 
 
 @login_required

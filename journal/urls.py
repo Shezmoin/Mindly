@@ -12,6 +12,7 @@ urlpatterns = [
     path('mood/', views.mood_list_view, name='mood-list'),
     path('entries/new/', views.journal_create_view, name='journal-create'),
     path('entries/', views.journal_list_view, name='journal-list'),
+    path('<int:pk>/', views.journal_detail_view, name='journal-detail'),
     path('<int:pk>/edit/', views.journal_edit_view, name='journal-edit'),
     path('<int:pk>/delete/', views.journal_delete_view, name='journal-delete'),
 ]
