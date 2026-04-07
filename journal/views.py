@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .forms import JournalEntryForm, MoodEntryForm
 from .models import JournalEntry, MoodEntry
@@ -57,3 +57,45 @@ def journal_create_view(request):
 def journal_list_view(request):
     entries = JournalEntry.objects.filter(user=request.user).order_by('-updated_at')
     return render(request, 'journal/journal_list.html', {'entries': entries})
+
+
+@login_required
+def journal_edit_view(request, pk):
+    journal_entry = get_object_or_404(JournalEntry, pk=pk, user=request.user)
+
+    if request.method == 'POST':
+        form = JournalEntryForm(request.POST, instance=journal_entry)
+        if form.is_valid():
+            updated_entry = form.save(commit=False)
+            updated_entry.user = request.user
+            updated_entry.save()
+            messages.success(request, 'Journal entry updated successfully.')
+            return redirect('journal:journal-list')
+    else:
+        form = JournalEntryForm(instance=journal_entry)
+
+    return render(
+        request,
+        'journal/journal_form.html',
+        {
+            'form': form,
+            'is_edit': True,
+            'entry': journal_entry,
+        },
+    )
+
+
+@login_required
+def journal_delete_view(request, pk):
+    journal_entry = get_object_or_404(JournalEntry, pk=pk, user=request.user)
+
+    if request.method == 'POST':
+        journal_entry.delete()
+        messages.success(request, 'Journal entry deleted successfully.')
+        return redirect('journal:journal-list')
+
+    return render(
+        request,
+        'journal/journal_confirm_delete.html',
+        {'entry': journal_entry},
+    )

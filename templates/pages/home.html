@@ -22,7 +22,7 @@
             <a href="{% url 'assessments:index' %}" class="btn btn-mindly btn-lg">
                 <i class="fas fa-clipboard-check"></i> Take an Assessment
             </a>
-            <a href="{% url 'journal:index' %}" class="btn btn-outline-light btn-lg">
+            <a href="{% url 'journal:mood-create' %}" class="btn btn-outline-light btn-lg">
                 <i class="fas fa-book"></i> Start Journaling
             </a>
         </div>
@@ -43,7 +43,7 @@
                         <p class="card-text">
                             Monitor your emotional wellbeing with daily mood tracking. Identify patterns and understand what affects your mental health.
                         </p>
-                        <a href="{% url 'journal:index' %}" class="btn btn-mindly mt-2">Start Tracking</a>
+                        <a href="{% url 'journal:mood-create' %}" class="btn btn-mindly mt-2">Start Tracking</a>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                         <p class="card-text">
                             Access expert-curated mental health resources, articles, and guides. Learn evidence-based coping strategies and self-care techniques.
                         </p>
-                        <a href="{% url 'assessments:index' %}" class="btn btn-mindly mt-2">Explore Resources</a>
+                        <a href="{% url 'pages:resources' %}" class="btn btn-mindly mt-2">Explore Resources</a>
                     </div>
                 </div>
             </div>
