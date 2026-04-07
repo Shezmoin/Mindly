@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}New Journal Entry - mindly{% endblock %}
+{% block title %}{% if is_edit %}Edit Journal Entry{% else %}New Journal Entry{% endif %} - mindly{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-lg-8">
         <div class="card card-hover p-4">
-            <h1 class="h3 mb-3">Write a Journal Entry</h1>
-            <p class="mb-4">Capture your thoughts, feelings, or reflections for today.</p>
+            <h1 class="h3 mb-3">{% if is_edit %}Edit Journal Entry{% else %}Write a Journal Entry{% endif %}</h1>
+            <p class="mb-4">{% if is_edit %}Update your reflection and save the changes.{% else %}Capture your thoughts, feelings, or reflections for today.{% endif %}</p>
 
             <form method="post" novalidate>
                 {% csrf_token %}
@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-mindly">Save Entry</button>
+                    <button type="submit" class="btn btn-mindly">{% if is_edit %}Save Changes{% else %}Save Entry{% endif %}</button>
                     <a href="{% url 'journal:journal-list' %}" class="btn btn-outline-secondary">Cancel</a>
                 </div>
             </form>

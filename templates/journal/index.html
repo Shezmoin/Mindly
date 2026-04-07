@@ -6,8 +6,30 @@
 <div class="row justify-content-center">
     <div class="col-lg-9">
         <div class="card card-hover p-4">
-            <h1 class="h3 mb-3">Journal</h1>
-            <p class="mb-0">Your journal area is now available. Entry creation and mood workflows can be added next.</p>
+            <h1 class="h3 mb-3">Journal Hub</h1>
+            <p class="mb-4">Track your mood and write reflections from one place.</p>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="calm-bg h-100">
+                        <h2 class="h5 mb-2">Mood Tracking</h2>
+                        <p class="mb-3">Log daily mood scores and review your history.</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="{% url 'journal:mood-create' %}" class="btn btn-sm btn-mindly">Log Mood</a>
+                            <a href="{% url 'journal:mood-list' %}" class="btn btn-sm btn-outline-secondary">Mood History</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="calm-bg h-100">
+                        <h2 class="h5 mb-2">Journal Entries</h2>
+                        <p class="mb-3">Write entries and review past reflections.</p>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <a href="{% url 'journal:journal-create' %}" class="btn btn-sm btn-mindly">Write Entry</a>
+                            <a href="{% url 'journal:journal-list' %}" class="btn btn-sm btn-outline-secondary">View Journal</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

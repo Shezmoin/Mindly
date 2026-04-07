@@ -32,3 +32,23 @@ A Django-based mental health and wellbeing platform that helps users track their
    ```
 
 4. Open http://localhost:8000 in your browser.
+
+## Pre-Launch Verification (Run Every Time)
+
+Before launching, run this command to catch routing/UI regressions early:
+
+```bash
+python manage.py check && python manage.py test pages journal
+```
+
+If this passes, then launch:
+
+```bash
+python manage.py runserver
+```
+
+On Windows, you can run one command that verifies then launches:
+
+```bash
+launch_safe.bat
+```
