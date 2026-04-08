@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Dashboard - mindly{% endblock %}
+{% block title %}Dashboard — Mindly{% endblock %}
 
 {% block content %}
 <div class="row g-4">
-    <div class="col-lg-4">
+    <div class="col-12 col-lg-4">
         <div class="card card-hover p-4 h-100">
             <h1 class="h3 mb-3">Welcome back, {{ request.user.username }}</h1>
             <p class="mb-2">
@@ -14,11 +14,11 @@
             <p class="mb-0"><strong>Joined:</strong> {{ user_profile.joined_date }}</p>
         </div>
     </div>
-    <div class="col-lg-8">
+    <div class="col-12 col-lg-8">
         <div class="card card-hover p-4 h-100">
             <h2 class="h4 mb-3">Your wellbeing overview</h2>
             <div class="row g-3">
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <div class="calm-bg h-100">
                         <h3 class="h5 mb-2">Recent Mood Entries</h3>
                         <p class="mb-3">Your recent mood summaries and trends will appear here.</p>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-12 col-md-6">
                     <div class="calm-bg h-100">
                         <h3 class="h5 mb-2">Recent Journal Entries</h3>
                         <p class="mb-3">Your latest journal entries and reflections will appear here.</p>

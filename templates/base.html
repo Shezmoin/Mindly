@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Page title - can be overridden in child templates -->
-    <title>{% block title %}Mindly - Mental Wellbeing Platform{% endblock %}</title>
+    <title>{% block title %}Home — Mindly{% endblock %}</title>
     
     <!-- Bootstrap 5 CSS from CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -106,7 +106,7 @@
         <!-- Django messages for alerts/notifications -->
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                <div class="alert {% if 'success' in message.tags %}alert-success{% elif 'error' in message.tags %}alert-danger{% elif 'warning' in message.tags %}alert-warning{% elif 'info' in message.tags %}alert-info{% else %}alert-secondary{% endif %} alert-dismissible fade show" role="alert" data-auto-dismiss="true">
                     {{ message }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
@@ -124,16 +124,16 @@
             <div class="row">
                 <!-- About section -->
                 <div class="col-md-4">
-                    <h5>
+                    <h2 class="h5">
                         <i class="fas fa-heartbeat me-2"></i> mindly
-                    </h5>
+                    </h2>
                     <p class="fst-italic text-muted mb-2">Your mind matters.</p>
                     <p>Your mental wellbeing companion. Supporting your journey to better mental health.</p>
                 </div>
                 
                 <!-- Quick links -->
                 <div class="col-md-4">
-                    <h5>Quick Links</h5>
+                    <h2 class="h5">Quick Links</h2>
                     <ul class="list-unstyled">
                         <li><a href="{% url 'pages:home' %}" class="text-white text-decoration-none">Home</a></li>
                         <li><a href="{% url 'pages:about' %}" class="text-white text-decoration-none">About</a></li>
@@ -146,7 +146,7 @@
                 
                 <!-- Contact/Support -->
                 <div class="col-md-4">
-                    <h5>Need Help?</h5>
+                    <h2 class="h5">Need Help?</h2>
                     <p>If you're in crisis, please contact:</p>
                     <ul class="list-unstyled">
                         <li><i class="fas fa-phone"></i> Crisis Helpline: 1-800-273-8255</li>
@@ -193,6 +193,14 @@
                     applyTheme(nextTheme);
                 });
             }
+
+            // Auto-dismiss Django alerts after 4 seconds.
+            document.querySelectorAll('[data-auto-dismiss="true"]').forEach(function (alertEl) {
+                window.setTimeout(function () {
+                    var alertInstance = bootstrap.Alert.getOrCreateInstance(alertEl);
+                    alertInstance.close();
+                }, 4000);
+            });
         })();
     </script>
     
