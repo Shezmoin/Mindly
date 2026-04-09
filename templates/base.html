@@ -71,6 +71,11 @@
                            {% if request.resolver_match.namespace == 'payments' %}aria-current="page"{% endif %}
                            href="{% url 'payments:index' %}">Support Us</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link{% if request.resolver_match.url_name == 'pricing' and request.resolver_match.namespace == 'payments' %} active{% endif %}"
+                           {% if request.resolver_match.url_name == 'pricing' and request.resolver_match.namespace == 'payments' %}aria-current="page"{% endif %}
+                           href="{% url 'payments:pricing' %}">Pricing</a>
+                    </li>
                     
                     <!-- User authentication links -->
                     {% if request.user.is_authenticated %}
