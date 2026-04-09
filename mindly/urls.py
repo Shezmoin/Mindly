@@ -16,12 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from payments.views import subscribe_view
 
 # Main URL patterns for Mindly project
 urlpatterns = [
     # Django admin interface
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('checkout/', subscribe_view, name='checkout'),
 
     # App URLs
     path('', include('pages.urls')),  # Homepage and static pages
