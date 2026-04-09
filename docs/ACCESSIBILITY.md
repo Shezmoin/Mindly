@@ -1,3 +1,4 @@
+
 # Accessibility Improvements - Documentation
 
 ## Date: April 1, 2026

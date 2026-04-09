@@ -1,7 +1,11 @@
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import stripe
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def index_view(request):
@@ -14,6 +18,16 @@ def index_view(request):
     - FAQ section
     """
     return render(request, 'payments/index.html')
+
+
+def pricing_view(request):
+    """
+    Pricing page showing Free and Premium plans.
+    """
+    context = {
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+    }
+    return render(request, 'payments/pricing.html', context)
 
 
 def donate_view(request):

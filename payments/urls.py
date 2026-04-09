@@ -8,6 +8,7 @@ app_name = 'payments'
 # URL patterns for payments app
 urlpatterns = [
     path('', views.index_view, name='index'),
+    path('pricing/', views.pricing_view, name='pricing'),
     path('donate/', views.donate_view, name='donate'),
     path('subscribe/', views.subscribe_view, name='subscribe'),
     path('success/', views.success_view, name='success'),
