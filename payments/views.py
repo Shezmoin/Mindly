@@ -1,7 +1,9 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 import stripe
 
@@ -86,6 +88,37 @@ def subscribe_view(request):
             return render(request, 'payments/subscribe.html')
 
     return render(request, 'payments/subscribe.html')
+
+
+@login_required
+def checkout_view(request):
+    """
+    Create Stripe Checkout Session for premium subscription and redirect.
+    """
+    success_url = request.build_absolute_uri(reverse('payments:success'))
+    cancel_url = request.build_absolute_uri(reverse('payments:cancel'))
+
+    session_kwargs = {
+        'mode': 'subscription',
+        'line_items': [
+            {
+                'price': settings.STRIPE_PRICE_ID,
+                'quantity': 1,
+            }
+        ],
+        'success_url': success_url,
+        'cancel_url': cancel_url,
+    }
+
+    if request.user.email:
+        session_kwargs['customer_email'] = request.user.email
+
+    try:
+        session = stripe.checkout.Session.create(**session_kwargs)
+        return HttpResponseRedirect(session.url)
+    except Exception:
+        messages.error(request, 'Unable to start checkout right now. Please try again.')
+        return redirect('payments:pricing')
 
 
 def success_view(request):
