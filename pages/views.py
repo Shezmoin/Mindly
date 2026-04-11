@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
+from users.decorators import premium_required
 from users.models import UserProfile
 
 # Create your views here.
@@ -81,3 +82,9 @@ def dashboard_view(request):
         'user_profile': user_profile,
     }
     return render(request, 'pages/dashboard.html', context)
+
+
+@login_required
+@premium_required
+def premium_resources_view(request):
+    return render(request, 'pages/premium_resources.html')
