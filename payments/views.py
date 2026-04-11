@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -146,9 +146,9 @@ def webhook_view(request):
             settings.STRIPE_WEBHOOK_SECRET,
         )
     except ValueError:
-        return JsonResponse({'error': 'Invalid payload'}, status=400)
+        return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError:
-        return JsonResponse({'error': 'Invalid signature'}, status=400)
+        return HttpResponse(status=400)
 
     if event.get('type') == 'checkout.session.completed':
         session = event['data']['object']
@@ -159,7 +159,7 @@ def webhook_view(request):
             user = User.objects.filter(email=customer_email).first()
             if user:
                 profile, _ = UserProfile.objects.get_or_create(user=user)
-                profile.subscription_tier = UserProfile.TIER_PREMIUM
+                profile.subscription_tier = 'premium'
                 profile.save(update_fields=['subscription_tier'])
 
-    return JsonResponse({'status': 'success'})
+    return HttpResponse(status=200)

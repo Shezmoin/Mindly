@@ -13,6 +13,9 @@ urlpatterns = [
     # Resources page
     path('resources/', views.resources_view, name='resources'),
 
+    # Premium-only resources
+    path('resources/premium/', views.premium_resources_view, name='premium-resources'),
+
     # User dashboard
     path('dashboard/', views.dashboard_view, name='dashboard'),
 
