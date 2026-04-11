@@ -5,7 +5,11 @@ from django.http import JsonResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.contrib.auth import get_user_model
 import stripe
+
+from users.models import UserProfile
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -124,19 +128,38 @@ def cancel_view(request):
 
 
 @csrf_exempt
-def webhook_handler(request):
+@require_POST
+def webhook_view(request):
     """
-    Stripe webhook handler for processing payment events.
+    Stripe webhook endpoint.
 
-    Handles:
-    - payment_intent.succeeded (successful donations)
-    - checkout.session.completed (successful subscriptions)
-    - customer.subscription.deleted (subscription cancellations)
-
-    Security: Validates webhook signature using STRIPE_WEBHOOK_SECRET
+    Verifies Stripe signature and upgrades users to premium after
+    checkout.session.completed events.
     """
+    payload = request.body
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE', '')
+
     try:
-        return JsonResponse({'status': 'success'})
+        event = stripe.Webhook.construct_event(
+            payload,
+            sig_header,
+            settings.STRIPE_WEBHOOK_SECRET,
+        )
+    except ValueError:
+        return JsonResponse({'error': 'Invalid payload'}, status=400)
+    except stripe.error.SignatureVerificationError:
+        return JsonResponse({'error': 'Invalid signature'}, status=400)
 
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
+    if event.get('type') == 'checkout.session.completed':
+        session = event['data']['object']
+        customer_email = session.get('customer_email')
+
+        if customer_email:
+            User = get_user_model()
+            user = User.objects.filter(email=customer_email).first()
+            if user:
+                profile, _ = UserProfile.objects.get_or_create(user=user)
+                profile.subscription_tier = UserProfile.TIER_PREMIUM
+                profile.save(update_fields=['subscription_tier'])
+
+    return JsonResponse({'status': 'success'})

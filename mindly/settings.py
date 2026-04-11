@@ -159,6 +159,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY', default='')
 STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY', default='')
 STRIPE_PRICE_ID = config('STRIPE_PRICE_ID', default='')
+STRIPE_WEBHOOK_SECRET = config('STRIPE_WEBHOOK_SECRET', default='')
 
 # Currency setting
 STRIPE_CURRENCY = 'gbp'  # British Pounds
