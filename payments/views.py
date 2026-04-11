@@ -68,26 +68,12 @@ def donate_view(request):
 
 def subscribe_view(request):
     """
-    Premium subscription page for recurring payments at £9.99/month.
-
-    GET: Displays subscription details and benefits
-    POST: Creates Stripe subscription and redirects to checkout
+    Legacy subscription endpoint.
+    Redirects to pricing on GET and to checkout on POST.
     """
     if request.method == 'POST':
-        # Check if user is authenticated
-        if not request.user.is_authenticated:
-            messages.warning(request, 'Please log in to subscribe.')
-            return redirect(f'/users/login/?next={request.path}')
-
-        try:
-            messages.info(request, 'Stripe integration pending. Would create £9.99/month subscription.')
-            return redirect('payments:index')
-
-        except Exception:
-            messages.error(request, 'Unable to process subscription. Please try again.')
-            return render(request, 'payments/subscribe.html')
-
-    return render(request, 'payments/subscribe.html')
+        return redirect('payments:checkout')
+    return redirect('payments:pricing')
 
 
 @login_required

@@ -104,13 +104,44 @@ Create `templates/journal/index.html` and ensure the journal index view points t
 
 ---
 
+## Error 6: Subscription Flow Reverted To Placeholder Message
+
+**URL**: `http://127.0.0.1:8000/payments/subscribe/`
+
+**Status**: Functional Misroute (legacy placeholder path)
+
+**Date Identified**: April 11, 2026
+
+**Visual Evidence**:
+
+![Stripe Subscription Placeholder Popup](stripe_subscription_placeholder_popup_apr11_2026.png)
+
+Image reference: user-provided screenshot from the April 11, 2026 chat session.
+
+**Brief Description**:
+Clicking subscription from the old `/payments/subscribe/` path showed the temporary popup message:
+"Stripe integration pending. Would create £9.99/month subscription"
+and returned users to the initial subscription page instead of Stripe Checkout.
+
+**Fix**:
+1. Updated `subscribe_view` to remove placeholder behavior.
+2. Set `GET /payments/subscribe/` to redirect to `/payments/pricing/`.
+3. Set `POST /payments/subscribe/` to redirect to `/payments/checkout/`.
+4. Kept `checkout_view` as the only Stripe Checkout Session creator.
+
+**Result**:
+Legacy path no longer displays the temporary integration message and now forwards users into the live checkout flow.
+
+---
+
 ## Summary
 
-All five recorded errors represent incomplete features and template gaps captured during development:
+Recorded errors represent incomplete features, template gaps, and payment-flow routing issues captured during development:
 
 1. **Users app**: URL routing incomplete
 2. **Assessments app**: Template files not created (plus detailed traceback capture)
 3. **Journal app**: Template files not created (plus detailed traceback capture)
+4. **Payments app**: Legacy subscription endpoint displayed placeholder messaging instead of forwarding users to checkout
 
 These errors are expected during incremental development and will be resolved as each feature is implemented.
 
@@ -118,4 +149,4 @@ These errors are expected during incremental development and will be resolved as
 
 ---
 
-*Last Updated: April 4, 2026*
+*Last Updated: April 11, 2026*
