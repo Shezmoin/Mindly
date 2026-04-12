@@ -487,8 +487,8 @@ Mindly is deployed following professional security and deployment practices.
 See [**DEPLOYMENT.md**](./docs/DEPLOYMENT.md) for comprehensive deployment documentation including:
 
 * Local development setup
-* Production deployment platform
-* Environment variable configuration
+* Production deployment on Heroku (step-by-step)
+* Environment variable configuration (Heroku config vars)
 * Database setup and migrations
 * Debug mode management
 * Secret key management
