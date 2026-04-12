@@ -269,6 +269,50 @@ JavaScript checked with JSHint/ESLint.
 
 ---
 
+## **Unit Tests**
+
+Comprehensive automated testing implemented using Django's TestCase framework. All 21 tests passing.
+
+### **Page View Tests** (`pages/tests.py`)
+
+| Test Name | Purpose | Result |
+|-----------|---------|--------|
+| test_home_returns_200 | Verify home page loads successfully | ✅ Pass |
+| test_dashboard_without_login_returns_302 | Verify dashboard redirects unauthenticated users to login | ✅ Pass |
+| test_dashboard_with_login_returns_200 | Verify authenticated users can access dashboard | ✅ Pass |
+| test_home_links_to_mood_create | Verify navigation from home to mood creation | ✅ Pass |
+| test_home_links_to_resources_page | Verify navigation from home to resources | ✅ Pass |
+| test_journal_index_hub_contains_feature_links | Verify journal hub links to all features | ✅ Pass |
+
+### **Journal & Mood Entry Tests** (`journal/tests.py`)
+
+| Test Name | Purpose | Result |
+|-----------|---------|--------|
+| test_mood_create_with_score_7_creates_entry_and_redirects | Verify mood entry creation with score=7 and proper redirect | ✅ Pass |
+| test_mood_create_redirects_for_logged_out_user | Verify mood creation requires authentication | ✅ Pass |
+| test_mood_create_renders_slider_widget | Verify mood score slider displays | ✅ Pass |
+| test_journal_create_assigns_logged_in_user | Verify journal entry assigned to current user | ✅ Pass |
+| test_journal_list_only_shows_current_user_entries | Verify data privacy: users see only their entries | ✅ Pass |
+| test_journal_list_orders_by_most_recent_updated_at | Verify entries sorted by modification date (newest first) | ✅ Pass |
+| test_journal_edit_updates_only_current_users_entry | Verify users can only edit own entries | ✅ Pass |
+| test_journal_edit_returns_404_for_other_users_entry | Verify unauthorized edit attempts blocked | ✅ Pass |
+| test_journal_delete_confirmation_page_renders | Verify delete confirmation page displays | ✅ Pass |
+| test_journal_delete_removes_entry_after_confirmation | Verify entry deletion works correctly | ✅ Pass |
+| test_journal_delete_returns_404_for_other_users_entry | Verify unauthorized delete attempts blocked | ✅ Pass |
+| test_mood_list_only_shows_current_user_entries | Verify mood entry privacy in list view | ✅ Pass |
+
+### **User Model Tests** (`users/tests.py`)
+
+| Test Name | Purpose | Result |
+|-----------|---------|--------|
+| test_username_is_saved_correctly | Verify CustomUser username field | ✅ Pass |
+| test_user_profile_is_created | Verify UserProfile created automatically on user creation | ✅ Pass |
+| test_default_subscription_tier_is_free | Verify new users default to 'free' tier | ✅ Pass |
+
+**Summary:** 21/21 tests passing. Tests cover authentication, authorization, CRUD operations, data privacy, form validation, and redirect behavior.
+
+---
+
 ## **Lighthouse Performance Scores**
 
 ### **Desktop**
@@ -313,12 +357,12 @@ All identified issues have been resolved during development.
 
 ## **Future Testing Improvements**
 
-- Add automated Python unit tests (pytest/unittest) beyond current 14+ tests
 - Add JavaScript unit testing framework
 - Implement CI/CD pipeline (GitHub Actions)
 - Add loadtesting for payment processing
 - Add E2E testing (Selenium/Playwright)
 - Expand accessibility testing with screen readers
+- Add integration tests for Stripe webhook scenarios
 
 ---
 
