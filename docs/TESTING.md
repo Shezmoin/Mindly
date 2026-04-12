@@ -1,0 +1,325 @@
+## **Testing - Mindly Application**
+
+This document outlines the comprehensive testing process carried out during development of the **Mindly** application to ensure functionality, security, usability, accessibility, and reliability across all features.
+
+---
+
+## **Testing Strategy**
+
+Testing was conducted continuously throughout development using multiple methodologies to ensure:
+
+- Core features function as expected
+- CRUD operations work correctly on both free and premium tiers
+- User authentication and authorization work securely
+- Stripe payment integration processes correctly
+- Webhook signature verification prevents unauthorized requests
+- The application is responsive across all device sizes
+- Form validation provides clear feedback
+- Database queries are efficient and accurate
+- The application meets accessibility standards (WCAG AA)
+- Errors are handled gracefully without exposing sensitive information
+
+**Testing Methods Used:**
+- Manual feature testing
+- User story validation
+- Form validation testing
+- Browser compatibility testing
+- Responsiveness testing (mobile/tablet/desktop)
+- Accessibility testing (keyboard navigation, screen readers, contrast)
+- Security testing (environment variables, webhook verification)
+- Payment flow testing (test cards, webhooks)
+- Performance testing (Lighthouse scores)
+- Code validation (PEP8, HTML, CSS, JavaScript)
+
+---
+
+## **User Story Testing**
+
+### **First-time Users**
+
+| User Story | Expected Outcome | Result |
+|-----------|-----------------|--------|
+| Understand platform purpose on landing | Purpose is clear and inviting | ✅ Pass |
+| Navigate registration process | Registration form is simple and validates input | ✅ Pass |
+| Navigate intuitively | Navigation structure is clear | ✅ Pass |
+| View on mobile/tablet/desktop | Responsive layout adapts correctly | ✅ Pass |
+| Learn about pricing and premium | Pricing page clearly explains Free/Premium tiers | ✅ Pass |
+
+### **Returning Free Users**
+
+| User Story | Expected Outcome | Result |
+|-----------|-----------------|--------|
+| Log in securely | Login page accepts credentials, session created | ✅ Pass |
+| Create mood entry | Entry saved to database with score and timestamp | ✅ Pass |
+| Create journal entry | Entry saved with title, content, privacy flag | ✅ Pass |
+| View entry history | All entries display in reverse chronological order | ✅ Pass |
+| Edit mood entry | Changes update in database and display immediately | ✅ Pass |
+| Edit journal entry | Content updates correctly, timestamp reflects modification | ✅ Pass |
+| Delete with confirmation | Entry removed after confirmation dialog | ✅ Pass |
+
+### **Premium Subscribers**
+
+| User Story | Expected Outcome | Result |
+|-----------|-----------------|--------|
+| Upgrade to premium | Payment processed, profile tier changes to premium | ✅ Pass |
+| Access premium resources | Premium page accessible to premium users only | ✅ Pass |
+| See subscription status | Dashboard displays "Premium" subscription badge | ✅ Pass |
+
+---
+
+## **Manual Feature Testing**
+
+### **Authentication (CRUD)**
+
+| Feature | Test Case | Result |
+|---------|-----------|--------|
+| Register User | Submit valid registration form | ✅ Pass |
+| Register User | Reject duplicate username | ✅ Pass |
+| Register User | Require email validation | ✅ Pass |
+| Login | Accept valid credentials | ✅ Pass |
+| Login | Reject invalid credentials  | ✅ Pass |
+| Logout | Clear session and redirect to home | ✅ Pass |
+| Profile View | Display authenticated user's profile | ✅ Pass |
+| Unauthorized Access | Redirect to login if not authenticated | ✅ Pass |
+
+---
+
+### **Mood Entry (CRUD)**
+
+| Feature | Test Case | Result |
+|---------|-----------|--------|
+| Create Entry | Submit mood score 1-10 with optional note | ✅ Pass |
+| Create Entry | Save with current timestamp | ✅ Pass |
+| View Entries | Display all entries in reverse chronological order | ✅ Pass |
+| View Entry | Show individual entry details | ✅ Pass |
+| Edit Entry | Update mood score | ✅ Pass |
+| Edit Entry | Update note text | ✅ Pass |
+| Edit Entry | Update modified timestamp | ✅ Pass |
+| Delete Entry | Remove entry after confirmation | ✅ Pass |
+| Data Privacy | Entries only visible to own user | ✅ Pass |
+
+---
+
+### **Journal Entry (CRUD)**
+
+| Feature | Test Case | Result |
+|---------|-----------|--------|
+| Create Entry | Submit title and content | ✅ Pass |
+| Create Entry | Save privacy flag (default private) | ✅ Pass |
+| Create Entry | Save with creation timestamp | ✅ Pass |
+| View Entries | Display all entries with summaries | ✅ Pass |
+| View Entry | Show full entry content | ✅ Pass |
+| Edit Entry | Update title and content | ✅ Pass |
+| Edit Entry | Modify privacy setting | ✅ Pass |
+| Edit Entry | Update modification timestamp | ✅ Pass |
+| Delete Entry | Remove after confirmation | ✅ Pass |
+| Data Privacy | Entries only accessible to own user | ✅ Pass |
+
+---
+
+### **Payment Processing**
+
+| Feature | Test Case | Result |
+|---------|-----------|--------|
+| Access Pricing Page | Login not required, page displays both tiers | ✅ Pass |
+| Click Subscribe | Redirect to Stripe Checkout | ✅ Pass |
+| Test Card (Success) | Card 4242 4242 4242 4242 processes | ✅ Pass |
+| Successful Payment | Redirected to success page | ✅ Pass |
+| Webhook Trigger | Stripe webhook event received | ✅ Pass |
+| Webhook Verification | Signature verification passes | ✅ Pass |
+| Profile Update | UserProfile tier changed to 'premium' | ✅ Pass |
+| Test Card (Declined) | Card 4000 0000 0000 0002 rejected | ✅ Pass |
+| Declined Payment | Profile tier remains 'free' | ✅ Pass |
+| Cancel Checkout | Link back to pricing page | ✅ Pass |
+
+---
+
+### **Premium Access Control**
+
+| Feature | Test Case | Result |
+|---------|-----------|--------|
+| Free User Access | Redirected to pricing page | ✅ Pass |
+| Premium User Access | Can view premium resources page | ✅ Pass |
+| Decorator Applied | @premium_required properly gates view | ✅ Pass |
+| Info Message | Free users see "Premium access required" | ✅ Pass |
+
+---
+
+## **Form Validation Testing**
+
+| Form | Field | Validation Rule | Result |
+|------|-------|-----------------|--------|
+| Register | Username | Required, unique | ✅ Pass |
+| Register | Email | Required, valid format | ✅ Pass |
+| Register | Password | Required, minimum strength | ✅ Pass |
+| Login | Username | Required | ✅ Pass |
+| Login | Password | Required | ✅ Pass |
+| Mood Entry | Mood Score | Required, integer 1-10 | ✅ Pass |
+| Mood Entry | Note | Optional, text | ✅ Pass |
+| Journal | Title | Required, max 255 chars | ✅ Pass |
+| Journal | Content | Required, text | ✅ Pass |
+| Stripe Checkout | Email | Required, valid format | ✅ Pass |
+| Stripe Checkout | Card | Valid format, passes Luhn | ✅ Pass |
+
+---
+
+## **Browser Compatibility**
+
+Tested the application on multiple browsers to ensure consistent functionality.
+
+| Browser | Version | Status |
+|---------|---------|--------|
+| Google Chrome | Latest | ✅ Pass |
+| Mozilla Firefox | Latest | ✅ Pass |
+| Microsoft Edge | Latest | ✅ Pass |
+| Safari | Latest | ✅ Pass |
+
+---
+
+## **Responsiveness Testing**
+
+Tested across multiple device sizes using Chrome DevTools and real devices.
+
+| Device Type | Screen Size | Status |
+|------------|-----------|--------|
+| Mobile | 375px - 480px | ✅ Pass |
+| Mobile | 768px (tablet) | ✅ Pass |
+| Tablet | 768px - 1024px | ✅ Pass |
+| Desktop | 1024px+ | ✅ Pass |
+| Ultra-wide | 1920px+ | ✅ Pass |
+
+---
+
+## **Accessibility Testing**
+
+### **WCAG 2.1 AA Compliance**
+
+| Criterion | Test | Result |
+|-----------|------|--------|
+| 1.4.3 Contrast | Text meets 4.5:1 ratio (WCAG AA) | ✅ Pass |
+| 1.4.4 Text Resizing | Page readable at 200% zoom | ✅ Pass |
+| 2.1.1 Keyboard | All features accessible via keyboard | ✅ Pass |
+| 2.1.2 No Keyboard Trap | Focus visible, can tab through all elements | ✅ Pass |
+| 2.4.3 Focus Order | Tab order is logical and intuitive | ✅ Pass |
+| 3.2.4 Consistent Navigation | Navigation consistent across pages | ✅ Pass |
+| 1.3.1 Info and Relationships | Semantic HTML provides structure | ✅ Pass |
+| 4.1.2 Name, Role, Value | Form labels properly associated | ✅ Pass |
+
+---
+
+## **Security Testing**
+
+| Test | Expected | Result |
+|------|----------|--------|
+| Secret Keys Exposed | No keys in source code | ✅ Pass |
+| Environment Variables | Keys stored in .env (not committed) | ✅ Pass |
+| DEBUG Mode | False in production | ✅ Pass |
+| CSRF Protection | Tokens on all forms | ✅ Pass |
+| SQL Injection | Django ORM prevents injection | ✅ Pass |
+| Password Hashing | Passwords hashed with Django auth | ✅ Pass |
+| Webhook Verification | Stripe signature verified | ✅ Pass |
+| Unauthorized Access | @login_required prevents access | ✅ Pass |
+
+---
+
+## **Code Validation**
+
+### **PEP8 Python Style Compliance**
+
+Flake8 run on payments app with results:
+
+```
+payments/views.py: Clean (no E501 violations after formatting)
+```
+
+**Key fixes applied:**
+- Line length wrapped to <79 characters
+- Proper indentation and spacing
+- Meaningful variable names
+
+### **HTML Validation**
+
+All templates validated with W3C HTML Validator.
+
+[**[Screenshot: W3C HTML Validation Results]**](#)
+
+- No errors
+- All semantic tags properly used
+- Proper heading hierarchy
+
+### **CSS Validation**
+
+Stylesheet validated with W3C CSS Validator.
+
+[**[Screenshot: W3C CSS Validation Results]**](#)
+
+- No errors
+- Vendor prefixes where needed
+- Responsive design rules compliant
+
+### **JavaScript Validation**
+
+JavaScript checked with JSHint/ESLint.
+
+[**[Screenshot: JavaScript Validation Results]**](#)
+
+- No critical errors
+- Proper syntax and structure
+- No unused variables
+
+---
+
+## **Lighthouse Performance Scores**
+
+### **Desktop**
+
+[**[Screenshot: Lighthouse Desktop Score]**](#)
+
+- Performance: 85+
+- Accessibility: 90+
+- Best Practices: 85+
+- SEO: 90+
+
+### **Mobile**
+
+[**[Screenshot: Lighthouse Mobile Score]**](#)
+
+- Performance: 75+
+- Accessibility: 90+
+- Best Practices: 85+
+- SEO: 85+
+
+---
+
+## **Django System Checks**
+
+Ran `python manage.py check --deploy` successfully with all critical checks passed.
+
+```
+System check identified no issues (0 silenced).
+```
+
+---
+
+## **Known Issues**
+
+| Issue | Status | Impact |
+|-------|--------|--------|
+| None currently known | N/A | N/A |
+
+All identified issues have been resolved during development.
+
+---
+
+## **Future Testing Improvements**
+
+- Add automated Python unit tests (pytest/unittest) beyond current 14+ tests
+- Add JavaScript unit testing framework
+- Implement CI/CD pipeline (GitHub Actions)
+- Add loadtesting for payment processing
+- Add E2E testing (Selenium/Playwright)
+- Expand accessibility testing with screen readers
+
+---
+
+**Shehzad Moin, 2026**
