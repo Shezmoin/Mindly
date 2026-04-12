@@ -190,3 +190,20 @@ class JournalViewsTests(TestCase):
 		self.assertEqual(response.status_code, 200)
 		self.assertContains(response, 'Mine')
 		self.assertNotContains(response, 'Other user')
+
+	def test_mood_create_with_score_7_creates_entry_and_redirects(self):
+		"""Test 4: POST to mood create URL with mood_score=7 creates one MoodEntry and redirects"""
+		self.client.force_login(self.user)
+		
+		response = self.client.post(
+			reverse('journal:mood-create'),
+			{'mood_score': 7, 'note': 'Feeling great today'}
+		)
+		
+		self.assertEqual(response.status_code, 302)
+		self.assertEqual(response.url, reverse('pages:dashboard'))
+		
+		entries = MoodEntry.objects.filter(user=self.user)
+		self.assertEqual(entries.count(), 1)
+		self.assertEqual(entries.first().mood_score, 7)
+		self.assertEqual(entries.first().note, 'Feeling great today')
