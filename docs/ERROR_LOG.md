@@ -35,7 +35,7 @@ Initial webhook configuration used placeholder secret `whsec_test_placeholder` i
 endpoint_secret = "whsec_test_placeholder"
 
 # Stripe was sending with:
-endpoint_secret = "whsec_9be2a8e18798e4e813de9131261b162f19471f19ca9140ed5807d2cd151198e8"
+endpoint_secret = "whsec_[REDACTED]"
 ```
 
 Signature verification compared wrong secrets, causing verification to fail.
