@@ -200,6 +200,7 @@ Mindly follows WCAG accessibility best practices:
 * Mobile-optimized interface for all screen sizes
 * Accessible form controls and labels
 * User authentication status visible throughout
+* Dark mode / Light mode toggle (persisted via localStorage)
 
 ### **Authentication Features**
 
@@ -257,7 +258,6 @@ Mindly follows WCAG accessibility best practices:
 * Export entries as PDF or text files
 * Email reminders for daily journaling
 * Shareable mood statistics (with privacy controls)
-* Dark mode / Light mode toggle
 * Notification system for premium content updates
 * Social features (optional shared mood insights with consent)
 
