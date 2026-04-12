@@ -287,16 +287,18 @@ Mindly's data model supports secure user account management, mood tracking, jour
 
 Custom user model extending Django's AbstractUser.
 
-| Column       | Type            | Description                    |
-| ------------ | --------------- | ------------------------------ |
-| id           | INTEGER (PK)    | Unique user ID                 |
-| username     | VARCHAR(150)    | Unique username                |
-| email        | VARCHAR(254)    | User email address             |
-| password     | VARCHAR(128)    | Hashed password                |
-| first_name   | VARCHAR(150)    | User's first name              |
-| last_name    | VARCHAR(150)    | User's last name               |
-| is_active    | BOOLEAN         | Account activation status      |
-| date_joined  | DATETIME        | Account creation timestamp     |
+| Column          | Type            | Description                    |
+| --------------- | --------------- | ------------------------------ |
+| id              | INTEGER (PK)    | Unique user ID                 |
+| username        | VARCHAR(150)    | Unique username                |
+| email           | VARCHAR(254)    | User email address             |
+| password        | VARCHAR(128)    | Hashed password                |
+| first_name      | VARCHAR(150)    | User's first name              |
+| last_name       | VARCHAR(150)    | User's last name               |
+| bio             | TEXT            | Optional short bio             |
+| profile_picture | IMAGE           | Optional profile picture       |
+| is_active       | BOOLEAN         | Account activation status      |
+| date_joined     | DATETIME        | Account creation timestamp     |
 
 ### **UserProfile Table**
 
@@ -306,8 +308,8 @@ Extended user profile for subscription and wellbeing tracking.
 | ---------------- | --------------- | ------------------------------ |
 | id               | INTEGER (PK)    | Unique profile ID              |
 | user_id          | INTEGER (FK)    | Link to CustomUser             |
-| subscription_tier| VARCHAR(50)     | 'free' or 'premium'            |
-| date_joined      | DATETIME        | Profile creation timestamp     |
+| subscription_tier| VARCHAR(10)     | 'free' or 'premium'            |
+| joined_date      | DATE            | Profile creation date          |
 | reminder_time    | TIME (Optional) | Optional reminder time         |
 
 **Subscription Tiers:**
@@ -325,7 +327,6 @@ Daily mood tracking records.
 | mood_score  | INTEGER         | Mood rating 1-10               |
 | note        | TEXT (Optional) | Optional mood note             |
 | created_at  | DATETIME        | Entry creation timestamp       |
-| updated_at  | DATETIME        | Entry modification timestamp   |
 
 ### **JournalEntry Table**
 
@@ -335,11 +336,13 @@ Longer-form reflection and journaling.
 | ----------- | --------------- | ------------------------------ |
 | id          | INTEGER (PK)    | Unique entry ID                |
 | user_id     | INTEGER (FK)    | Link to CustomUser             |
-| title       | VARCHAR(255)    | Entry title                    |
+| title       | VARCHAR(200)    | Entry title                    |
 | content     | TEXT            | Full journal content           |
 | is_private  | BOOLEAN         | Privacy flag (default: True)   |
 | created_at  | DATETIME        | Entry creation timestamp       |
 | updated_at  | DATETIME        | Entry modification timestamp   |
+
+**Note:** `MoodEntry` and `JournalEntry` are both defined in the `journal` app (`journal/models.py`).
 
 ### **Relationships**
 
@@ -384,11 +387,10 @@ mindly/
 │   ├── tests.py                        # Journal tests
 │   └── templates/journal/              # Journal templates
 ├── assessments/                        # Mood tracking app
-│   ├── models.py                       # MoodEntry model
+│   ├── models.py                       # (MoodEntry defined in journal/models.py)
 │   ├── views.py                        # Mood entry views
 │   ├── urls.py                         # Assessment URLs
-│   ├── tests.py                        # Mood tracking tests
-│   └── templates/assessments/          # Mood templates
+│   └── tests.py                        # Mood tracking tests
 ├── payments/                           # Payments & subscription
 │   ├── models.py                       # Payment models (minimal)
 │   ├── views.py                        # Stripe checkout, webhook
@@ -402,17 +404,13 @@ mindly/
 │   └── templates/pages/                # Page templates
 ├── templates/                          # Project-level templates
 │   ├── base.html                       # Base template & navbar
-│   ├── pages/                          # Page templates
-│   ├── journal/                        # Journal templates
-│   ├── assessments/                    # Mood entry templates
-│   ├── payments/                       # Payment templates
-│   └── users/                          # Auth templates
+│   ├── pages/                          # Home, dashboard, resources
+│   ├── journal/                        # Journal & mood entry templates
+│   ├── payments/                       # Pricing, checkout, success pages
+│   └── users/                          # Register, login, profile templates
 ├── static/                             # Static files
-│   ├── css/
-│   │   └── style.css                   # Custom styles
-│   ├── js/
-│   │   └── script.js                   # Custom JavaScript
-│   └── images/                         # Project images
+│   └── css/
+│       └── style.css                   # Custom styles
 ├── docs/                               # Documentation
 │   ├── TESTING.md                      # Testing documentation
 │   ├── DEPLOYMENT.md                   # Deployment guide
@@ -435,7 +433,7 @@ mindly/
 
 * **Django 4.2** - Backend web framework
 * **Django ORM** - Object-relational mapping for database
-* **Jinja2** - Template engine
+* **Django Template Language (DTL)** - Template engine
 * **Bootstrap 5** - Responsive CSS framework
 * **SQLite** - Development database
 * **Stripe** - Payment processing
