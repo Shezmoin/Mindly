@@ -6,16 +6,9 @@ This document provides comprehensive deployment instructions for running Mindly 
 
 ## **Deployment Platform**
 
-Mindly is designed to be deployed on modern cloud platforms supporting Django applications.
+Mindly is deployed on **Heroku** — a cloud platform that supports Django applications with managed PostgreSQL, environment config vars, and automatic HTTPS.
 
-**Recommended Deployment Platforms:**
-- Railway
-- Render
-- Heroku
-- PythonAnywhere
-- AWS/DigitalOcean
-
-[**[Screenshot: Deployment Platform Overview]**](#)
+[**[Screenshot: Heroku Dashboard - Mindly App]**](#)
 
 ---
 
@@ -153,161 +146,141 @@ This script runs system checks and launches the server.
 
 ---
 
-## **Production Deployment**
+## **Production Deployment (Heroku)**
 
-### **Step 1: Set Production Environment Variables**
+### **Prerequisites**
 
-Create `.env` on production server with production values:
+- [Heroku account](https://heroku.com) (free tier available)
+- [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) installed
+- Git repository pushed to GitHub
+
+### **Step 1: Install Heroku CLI and Login**
 
 ```bash
-SECRET_KEY=generate-strong-random-key
-DEBUG=False
-ALLOWED_HOSTS=yourdomain.com,www.yourdomain.com
-
-STRIPE_PUBLIC_KEY=pk_live_[your-live-public-key]
-STRIPE_SECRET_KEY=sk_live_[your-live-secret-key]
-STRIPE_PRICE_ID=price_[your-production-price-id]
-STRIPE_WEBHOOK_SECRET=whsec_[your-production-webhook-secret]
-
-DATABASE_URL=postgresql://user:pass@localhost/mindly_prod
+heroku login
 ```
 
-### **Step 2: Generate Strong SECRET_KEY**
+This opens a browser window for authentication.
 
+### **Step 2: Create Heroku App**
+
+```bash
+heroku create mindly-app
+```
+
+Or choose your own app name. Heroku provides a URL: `https://mindly-app.herokuapp.com`
+
+### **Step 3: Add PostgreSQL Database**
+
+```bash
+heroku addons:create heroku-postgresql:essential-0
+```
+
+Heroku automatically sets `DATABASE_URL` as a config var.
+
+### **Step 4: Add Required Files**
+
+Ensure these files exist in the project root:
+
+**`Procfile`** (no extension):
+```
+web: gunicorn mindly.wsgi
+```
+
+**`runtime.txt`**:
+```
+python-3.13.0
+```
+
+Install `gunicorn` and `whitenoise` for static files if not already present:
+```bash
+pip install gunicorn whitenoise
+pip freeze > requirements.txt
+```
+
+Add `whitenoise` to `MIDDLEWARE` in `settings.py` (after `SecurityMiddleware`):
+```python
+'whitenoise.middleware.WhiteNoiseMiddleware',
+```
+
+Add to `settings.py` for static file serving:
+```python
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+```
+
+### **Step 5: Set Config Vars (Environment Variables)**
+
+```bash
+heroku config:set SECRET_KEY=your-strong-secret-key
+heroku config:set DEBUG=False
+heroku config:set ALLOWED_HOSTS=mindly-app.herokuapp.com
+heroku config:set STRIPE_PUBLIC_KEY=pk_live_...
+heroku config:set STRIPE_SECRET_KEY=sk_live_...
+heroku config:set STRIPE_PRICE_ID=price_...
+heroku config:set STRIPE_WEBHOOK_SECRET=whsec_...
+```
+
+Generate a strong secret key:
 ```bash
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 ```
 
-Copy output and set as `SECRET_KEY` in `.env`.
+Verify all config vars are set:
+```bash
+heroku config
+```
 
-### **Step 3: Configure Production Database**
-
-**Option A: PostgreSQL (Recommended)**
-
-Create PostgreSQL database on production server:
+### **Step 6: Deploy to Heroku**
 
 ```bash
-createdb mindly_prod
+git push heroku main
 ```
 
-Update `DATABASE_URL` in `.env`:
+Heroku detects Django automatically, installs dependencies from `requirements.txt`, and starts the `web` dyno.
 
-```
-DATABASE_URL=postgresql://username:password@localhost:5432/mindly_prod
-```
-
-### **Step 4: Ensure All Dependencies Installed**
+### **Step 7: Apply Database Migrations**
 
 ```bash
-pip install -r requirements.txt
+heroku run python manage.py migrate
 ```
 
-### **Step 5: Apply Migrations on Production**
+### **Step 8: Create Superuser**
 
 ```bash
-python manage.py migrate
+heroku run python manage.py createsuperuser
 ```
 
-### **Step 6: Collect Static Files**
+### **Step 9: Collect Static Files**
 
 ```bash
-python manage.py collectstatic --noinput
+heroku run python manage.py collectstatic --noinput
 ```
 
-This collects all CSS/JS/images into a single directory for web server serving.
-
-### **Step 7: Configure Web Server**
-
-**Option A: Using Gunicorn + Nginx**
-
-Install Gunicorn:
-```bash
-pip install gunicorn
-```
-
-Create systemd service file `/etc/systemd/system/mindly.service`:
-
-```ini
-[Unit]
-Description=Mindly Django Application
-After=network.target
-
-[Service]
-Type=notify
-User=www-data
-Group=www-data
-WorkingDirectory=/path/to/mindly
-ExecStart=/path/to/mindly/venv/bin/gunicorn \
-    --workers 3 \
-    --bind unix:/path/to/mindly/mindly.sock \
-    mindly.wsgi:application
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Enable and start:
-```bash
-sudo systemctl enable mindly
-sudo systemctl start mindly
-```
-
-Configure Nginx as reverse proxy (`/etc/nginx/sites-available/mindly`):
-
-```nginx
-server {
-    listen 80;
-    server_name yourdomain.com;
-    
-    location /static/ {
-        alias /path/to/mindly/static/;
-    }
-    
-    location / {
-        proxy_pass http://unix:/path/to/mindly/mindly.sock;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-}
-```
-
-Enable site:
-```bash
-sudo ln -s /etc/nginx/sites-available/mindly /etc/nginx/sites-enabled/
-sudo nginx -s reload
-```
-
-### **Step 8: Set Up HTTPS**
-
-Install Certbot for SSL:
-```bash
-sudo apt install certbot python3-certbot-nginx
-sudo certbot --nginx -d yourdomain.com
-```
-
-Auto-renewal:
-```bash
-sudo systemctl enable certbot.timer
-```
-
-### **Step 9: Configure Stripe Webhooks**
+### **Step 10: Configure Stripe Webhook**
 
 In Stripe Dashboard:
 
 1. Go to **Developers → Webhooks**
-2. Create new endpoint: `https://yourdomain.com/payments/webhook/`
-3. Events to subscribe:
-   - `checkout.session.completed`
-4. Copy webhook secret and add to `.env` as `STRIPE_WEBHOOK_SECRET`
-5. Restart application
-
-### **Step 10: Verify Productions Deployment**
-
+2. Create new endpoint: `https://mindly-app.herokuapp.com/payments/webhook/`
+3. Events to subscribe: `checkout.session.completed`
+4. Copy webhook signing secret
+5. Update Heroku config var:
 ```bash
-curl https://yourdomain.com/
+heroku config:set STRIPE_WEBHOOK_SECRET=whsec_...
 ```
 
-Should return HTML response (not error).
+### **Step 11: Verify Deployment**
+
+```bash
+heroku open
+```
+
+Or visit `https://mindly-app.herokuapp.com` in your browser.
+
+Check logs if there are any errors:
+```bash
+heroku logs --tail
+```
 
 ---
 
@@ -319,8 +292,8 @@ Should return HTML response (not error).
 |----------|-------|---------|
 | `SECRET_KEY` | Random 50+ char string | Django session/CSRF security |
 | `DEBUG` | False | Disable debug mode in production |
-| `ALLOWED_HOSTS` | yourdomain.com,www.yourdomain.com | Prevent Host header attacks |
-| `DATABASE_URL` | See below | Database connection string |
+| `ALLOWED_HOSTS` | mindly-app.herokuapp.com | Prevent Host header attacks |
+| `DATABASE_URL` | Set automatically by Heroku | Database connection string |
 
 ### **Database Configuration**
 
@@ -359,24 +332,28 @@ python manage.py migrate
 
 Creates `db.sqlite3` in project root.
 
-### **Production (PostgreSQL)**
+### **Production (PostgreSQL on Heroku)**
 
-1. Install PostgreSQL on server
-2. Create database user and database
-3. Set `DATABASE_URL` in `.env`
-4. Run migrations:
+Heroku automatically provisions a PostgreSQL database when you run:
 
 ```bash
-python manage.py migrate
+heroku addons:create heroku-postgresql:essential-0
+```
+
+`DATABASE_URL` is set automatically as a Heroku config var — no manual configuration needed.
+
+Run migrations on Heroku:
+```bash
+heroku run python manage.py migrate
 ```
 
 ### **Creating Admin User**
 
 ```bash
-python manage.py createsuperuser
+heroku run python manage.py createsuperuser
 ```
 
-Access admin at `https://yourdomain.com/admin`
+Access admin at `https://mindly-app.herokuapp.com/admin`
 
 ---
 
@@ -413,14 +390,14 @@ stripe listen --forward-to 127.0.0.1:8000/payments/webhook/
 
 Copy printed webhook secret to `.env`.
 
-**Production Webhook:**
+**Production Webhook (Heroku):**
 
 1. Stripe dashboard → **Developers → Webhooks**
 2. Create endpoint
-3. URL: `https://yourdomain.com/payments/webhook/`
+3. URL: `https://mindly-app.herokuapp.com/payments/webhook/`
 4. Events: `checkout.session.completed`
-5. Copy secret to `.env`
-6. Restart application
+5. Copy signing secret
+6. Run: `heroku config:set STRIPE_WEBHOOK_SECRET=whsec_...`
 
 ---
 
@@ -432,8 +409,8 @@ Copy printed webhook secret to `.env`.
 
 **Solution:**
 ```bash
-python manage.py migrate --run-syncdb
-python manage.py migrate
+heroku run python manage.py migrate --run-syncdb
+heroku run python manage.py migrate
 ```
 
 ### **Problem: Static Files Missing**
@@ -442,8 +419,10 @@ python manage.py migrate
 
 **Solution:**
 ```bash
-python manage.py collectstatic --clear --noinput
+heroku run python manage.py collectstatic --clear --noinput
 ```
+
+Also ensure `whitenoise` is installed and configured (see Step 4 above).
 
 ### **Problem: Secret Key Issues**
 
@@ -454,24 +433,27 @@ python manage.py collectstatic --clear --noinput
 # Generate new key
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 
-# Add to .env
-SECRET_KEY=<output_from_above>
+# Set on Heroku
+heroku config:set SECRET_KEY=<output_from_above>
 ```
 
 ### **Problem: DEBUG Mode Exposed**
 
 **Symptom:** Stack traces showing in browser
 
-**Solution:** Ensure `.env` has `DEBUG=False` in production, restart server
+**Solution:**
+```bash
+heroku config:set DEBUG=False
+```
 
 ### **Problem: Webhook Failing (400 Errors)**
 
 **Symptom:** Webhook returns [400] responses
 
 **Solution:**
-1. Verify `STRIPE_WEBHOOK_SECRET` is correct (no spaces/truncation)
-2. Ensure webhook endpoint allows POST requests
-3. Check Django DEBUG mode settings
+1. Verify `STRIPE_WEBHOOK_SECRET` config var is correct on Heroku
+2. Confirm webhook URL matches Heroku app URL exactly
+3. Check `heroku logs --tail` for error details
 4. Verify signature verification code in `payments/views.py`
 
 ### **Problem: Database Connection Failed**
@@ -479,27 +461,49 @@ SECRET_KEY=<output_from_above>
 **Symptom:** `django.db.utils.OperationalError: could not connect to server`
 
 **Solution:**
-1. Verify PostgreSQL is running
-2. Check `DATABASE_URL` format
-3. Verify database user has permissions
-4. Test with: `psql <DATABASE_URL>`
+1. Verify PostgreSQL addon is provisioned: `heroku addons`
+2. Check `DATABASE_URL` is set: `heroku config | grep DATABASE_URL`
+3. Re-run migrations: `heroku run python manage.py migrate`
+
+### **Problem: H10 App Crashed (Heroku)**
+
+**Symptom:** H10 error, app not starting
+
+**Solution:**
+1. Check `Procfile` exists with `web: gunicorn mindly.wsgi`
+2. Check `requirements.txt` includes `gunicorn`
+3. Check logs: `heroku logs --tail`
+4. Verify all required config vars are set: `heroku config`
+
+### **Problem: Static Files Not Loading**
+
+**Symptom:** CSS/JS missing on Heroku
+
+**Solution:**
+1. Ensure `whitenoise` is in `requirements.txt` and `MIDDLEWARE`
+2. Run: `heroku run python manage.py collectstatic --noinput`
+3. Verify `STATICFILES_STORAGE` is set to WhiteNoise in `settings.py`
 
 ---
 
-## **Deployment Checklist**
+## **Deployment Checklist (Heroku)**
 
 Before going live, verify:
 
-- [ ] DEBUG = False
-- [ ] ALLOWED_HOSTS configured
-- [ ] SECRET_KEY is strong and random
-- [ ] Database migrations applied
-- [ ] Static files collected
-- [ ] HTTPS/SSL certificate installed
+- [ ] Heroku app created and CLI authenticated
+- [ ] `Procfile` present with `web: gunicorn mindly.wsgi`
+- [ ] `runtime.txt` specifies Python version
+- [ ] `gunicorn` and `whitenoise` in `requirements.txt`
+- [ ] `DEBUG = False` set via `heroku config:set`
+- [ ] `ALLOWED_HOSTS` set to Heroku app domain
+- [ ] `SECRET_KEY` is strong and set via `heroku config:set`
+- [ ] PostgreSQL addon provisioned
+- [ ] Database migrations applied (`heroku run python manage.py migrate`)
+- [ ] Static files collected (`heroku run python manage.py collectstatic`)
+- [ ] HTTPS enabled (automatic on Heroku)
 - [ ] Stripe keys are production (pk_live_, sk_live_)
-- [ ] Webhook endpoint configured
-- [ ] Admin user created
-- [ ] Email configuration (if applicable)
+- [ ] Stripe webhook endpoint configured with Heroku URL
+- [ ] Admin user created (`heroku run python manage.py createsuperuser`)
 - [ ] Database backups enabled
 - [ ] Error logging configured
 - [ ] Uptime monitoring enabled
@@ -509,15 +513,14 @@ Before going live, verify:
 
 ## **Deployment Notes**
 
-- Always backup database before deploying
-- Use environment variables for all secrets
-- Keep dependency versions updated (security patches)
-- Monitor application logs regularly
-- Set up uptime monitoring and alerts
-- Implement rate limiting for API endpoints
-- Regularly test disaster recovery/restore procedures
-- Use strong passwords for admin and database users
-- Consider CDN for static file delivery in production
+- Always backup the database before deploying: `heroku pg:backups:capture`
+- Use Heroku config vars for all secrets (never hardcode or commit)
+- Keep dependency versions updated for security patches
+- Monitor logs with `heroku logs --tail`
+- Use Heroku Postgres automatic daily backups (paid plans)
+- Scale dynos if needed: `heroku ps:scale web=2`
+- Heroku provides automatic HTTPS — no manual SSL setup required
+- Use `heroku run` for any management commands on production
 
 ---
 
