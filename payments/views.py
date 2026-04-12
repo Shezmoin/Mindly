@@ -44,7 +44,8 @@ def donate_view(request):
     """
     Donation form page for one-time payments in GBP.
 
-    GET: Displays donation form with preset amounts (£5/10/25/50) and custom option
+    GET: Displays donation form with preset amounts (£5/10/25/50)
+    and custom option
     POST: Processes donation and redirects to Stripe checkout
     """
     if request.method == 'POST':
@@ -61,14 +62,24 @@ def donate_view(request):
 
             # Validate amount
             if amount < 1:
-                messages.error(request, 'Donation amount must be at least £1.')
+                messages.error(
+                    request,
+                    'Donation amount must be at least £1.',
+                )
                 return render(request, 'payments/donate.html')
 
-            messages.info(request, f'Stripe integration pending. Would process £{amount:.2f} donation.')
+            donation_msg = (
+                'Stripe integration pending. '
+                f'Would process £{amount:.2f} donation.'
+            )
+            messages.info(request, donation_msg)
             return redirect('payments:index')
 
         except (ValueError, KeyError):
-            messages.error(request, 'Invalid donation amount. Please try again.')
+            messages.error(
+                request,
+                'Invalid donation amount. Please try again.',
+            )
             return render(request, 'payments/donate.html')
 
     return render(request, 'payments/donate.html')
@@ -111,7 +122,10 @@ def checkout_view(request):
         session = stripe.checkout.Session.create(**session_kwargs)
         return HttpResponseRedirect(session.url)
     except Exception:
-        messages.error(request, 'Unable to start checkout right now. Please try again.')
+        messages.error(
+            request,
+            'Unable to start checkout right now. Please try again.',
+        )
         return redirect('payments:pricing')
 
 
