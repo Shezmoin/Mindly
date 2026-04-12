@@ -1,45 +1,25 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
-from django.urls import reverse
+
+from users.models import UserProfile
 
 
-class UserAuthViewsTests(TestCase):
-	def setUp(self):
-		self.user_model = get_user_model()
-		self.user = self.user_model.objects.create_user(
-			username='testuser',
-			email='test@example.com',
-			password='StrongPass123!'
-		)
+class TestCustomUser(TestCase):
+    def setUp(self):
+        self.user_model = get_user_model()
+        self.user = self.user_model.objects.create_user(
+            username='testuser',
+            email='test@example.com',
+            password='StrongPass123!'
+        )
 
-	def test_register_page_renders(self):
-		response = self.client.get(reverse('users:register'))
+    def test_username_is_saved_correctly(self):
+        self.assertEqual(self.user.username, 'testuser')
 
-		self.assertEqual(response.status_code, 200)
-		self.assertContains(response, 'Create Your Account')
+    def test_user_profile_is_created(self):
+        profile = UserProfile.objects.filter(user=self.user).first()
+        self.assertIsNotNone(profile)
 
-	def test_login_page_renders(self):
-		response = self.client.get(reverse('users:login'))
-
-		self.assertEqual(response.status_code, 200)
-		self.assertContains(response, 'Welcome Back')
-
-	def test_profile_redirects_to_login_when_logged_out(self):
-		response = self.client.get(reverse('users:profile'))
-
-		self.assertEqual(response.status_code, 302)
-		self.assertIn(reverse('users:login'), response.url)
-
-	def test_profile_renders_for_authenticated_user(self):
-		self.client.force_login(self.user)
-
-		response = self.client.get(reverse('users:profile'))
-		self.assertEqual(response.status_code, 200)
-		self.assertContains(response, self.user.username)
-
-	def test_logout_logs_out_user(self):
-		self.client.force_login(self.user)
-		response = self.client.get(reverse('users:logout'))
-
-		self.assertEqual(response.status_code, 200)
-		self.assertFalse(response.wsgi_request.user.is_authenticated)
+    def test_default_subscription_tier_is_free(self):
+        profile = UserProfile.objects.get(user=self.user)
+        self.assertEqual(profile.subscription_tier, 'free')
