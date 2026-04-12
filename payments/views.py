@@ -8,9 +8,12 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth import get_user_model
 import json
+import logging
 import stripe
 
 from users.models import UserProfile
+
+logger = logging.getLogger(__name__)
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -152,7 +155,8 @@ def webhook_view(request):
         )
     except ValueError:
         return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError:
+    except stripe.error.SignatureVerificationError as e:
+        logger.warning('Invalid signature: %s', e)
         # Local-dev fallback: allow Stripe CLI forwarded events in DEBUG mode.
         if not settings.DEBUG:
             return HttpResponse(status=400)
