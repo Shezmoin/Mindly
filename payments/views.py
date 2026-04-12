@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth import get_user_model
+import json
 import stripe
 
 from users.models import UserProfile
@@ -137,18 +138,28 @@ def webhook_view(request):
     checkout.session.completed events.
     """
     payload = request.body
-    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE', '')
+    sig_header = (request.META.get('HTTP_STRIPE_SIGNATURE', '') or '').strip()
+    endpoint_secret = (settings.STRIPE_WEBHOOK_SECRET or '').strip()
+
+    if not sig_header or not endpoint_secret:
+        return HttpResponse(status=400)
 
     try:
         event = stripe.Webhook.construct_event(
-            payload,
+            payload.decode('utf-8'),
             sig_header,
-            settings.STRIPE_WEBHOOK_SECRET,
+            endpoint_secret,
         )
     except ValueError:
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError:
-        return HttpResponse(status=400)
+        # Local-dev fallback: allow Stripe CLI forwarded events in DEBUG mode.
+        if not settings.DEBUG:
+            return HttpResponse(status=400)
+        try:
+            event = json.loads(payload.decode('utf-8'))
+        except (ValueError, TypeError):
+            return HttpResponse(status=400)
 
     if event.get('type') == 'checkout.session.completed':
         session = event['data']['object']
