@@ -204,10 +204,10 @@ Mindly follows WCAG accessibility best practices:
 
 ### **Authentication Features**
 
-* Secure user registration with validation
-* Email-based login with password verification
+* Secure user registration with username and email
+* Username-based login with password verification
 * Secure logout functionality
-* Profile management for logged-in users
+* Profile page for logged-in users (view only)
 * @login_required decorators on protected views
 * CSRF protection on all forms
 
@@ -227,7 +227,7 @@ Mindly follows WCAG accessibility best practices:
 * Edit journal entries to update content
 * Delete journal entries with confirmation
 * View all journal entries with summaries
-* Rich text support for journal content
+* Search journal entries by title
 * Timestamp tracking for entry creation/modification
 
 ### **Premium Features**
@@ -260,6 +260,7 @@ Mindly follows WCAG accessibility best practices:
 * Shareable mood statistics (with privacy controls)
 * Notification system for premium content updates
 * Social features (optional shared mood insights with consent)
+* Profile editing (update bio and profile picture)
 
 ### **Premium Content Expansion**
 
@@ -415,6 +416,8 @@ mindly/
 │   ├── TESTING.md                      # Testing documentation
 │   ├── DEPLOYMENT.md                   # Deployment guide
 │   └── ERROR_LOG.md                    # Error log with fixes
+├── errors/                             # Error capture logs and session records
+│   └── README.md                       # Error notes
 └── venv/                               # Python virtual environment
 ```
 
