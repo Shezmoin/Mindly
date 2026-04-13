@@ -1,3 +1,38 @@
+## Manual Test Cases (MT-21 to MT-30)
+
+| Test ID | Feature                        | Test Steps                                                                 | Expected Result                                      | Result |
+|---------|--------------------------------|----------------------------------------------------------------------------|------------------------------------------------------|--------|
+| MT-21   | View Pricing Page (Free User)  | Log in as free user, go to Pricing                                         | Pricing page is visible                              | Pass   |
+| MT-22   | Click Subscribe (Stripe)       | On Pricing page, click Subscribe                                           | Redirected to Stripe Checkout                        | Pass   |
+| MT-23   | Complete Payment (Test Card)   | In Stripe, use 4242 4242 4242 4242, any date/CVC, complete payment         | Payment succeeds, redirected to success page          | Pass   |
+| MT-24   | Premium Badge After Payment    | After payment, go to dashboard                                             | Premium badge/status is visible                      | Pass   |
+| MT-25   | Access Premium (Free User)     | As free user, try to access premium page                                   | Redirected to pricing page                           | Pass   |
+| MT-26   | Access Premium (Premium User)  | As premium user, access premium page                                       | Premium content is visible                           | Pass   |
+| MT-27   | Responsive @ 375px             | Resize browser to 375px width, view main pages                             | Layout is mobile-friendly, no horizontal scroll       | Pass   |
+| MT-28   | Responsive @ 768px             | Resize browser to 768px width, view main pages                             | Layout adapts to tablet size, all content accessible  | Pass   |
+| MT-29   | Responsive @ 1280px            | Resize browser to 1280px width, view main pages                            | Layout is desktop-optimized, no layout issues         | Pass   |
+| MT-30   | Keyboard Navigation            | Use Tab key to navigate all interactive elements                           | All controls accessible, visible focus indicators     | Pass   |
+
+## Bug Log
+
+| Bug ID | Description                                      | Steps to Reproduce                | Root Cause                                   | Fix                                              | Status |
+|--------|--------------------------------------------------|-----------------------------------|-----------------------------------------------|---------------------------------------------------|--------|
+| 2026-04-13-1 | Premium message after donation (premium user) | Donate as premium user, see message| Success page did not check payment type       | Pass payment type, show message only for subscription | Fixed  |
+| 2026-04-13-2 | Donation grants premium (any user)            | Donate as any user, become premium | Webhook did not check session mode            | Webhook checks mode, only upgrades for subscription | Fixed  |
+## Manual Test Cases (MT-11 to MT-20)
+
+| Test ID | Feature                | Test Steps                                                                 | Expected Result                                      |
+|---------|------------------------|----------------------------------------------------------------------------|------------------------------------------------------|
+| MT-11   | Create Mood Entry      | Go to mood log, select score, (optionally) add note, submit                | Mood entry is saved and appears in mood list         |
+| MT-12   | Mood Empty Note        | Go to mood log, select score, leave note empty, submit                     | Mood entry is saved with empty note                  |
+| MT-13   | Create Journal Entry   | Go to journal, enter title and content, submit                             | Journal entry is saved and appears in journal list   |
+| MT-14   | Edit Journal Entry     | Open existing journal entry, click edit, change content, save               | Changes are saved and visible in journal list        |
+| MT-15   | Cancel Delete Entry    | Click delete on journal/mood entry, click Cancel on confirm dialog          | Entry is NOT deleted, remains in list                |
+| MT-16   | Confirm Delete Entry   | Click delete on journal/mood entry, click Confirm on confirm dialog         | Entry is deleted and removed from list               |
+| MT-17   | Search Match           | Use search on journal/mood list with matching keyword                       | Matching entries are shown in results                |
+| MT-18   | Search No Match        | Use search on journal/mood list with non-matching keyword                   | No entries found, empty state message shown          |
+| MT-19   | Access Another's Entry | Manually enter URL for another user's journal/mood entry                    | 404 Not Found error page is displayed                |
+| MT-20   | Empty Form Submission  | Submit journal form with empty title/content or mood form with no score     | Validation error shown, entry is NOT saved           |
 ## 4. Manual Test Matrix (MT-11 to MT-20)
 
 | Test ID | Description                                                                 | Result | Notes |
