@@ -1,3 +1,11 @@
+
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.shortcuts import get_object_or_404, redirect, render
+from .forms import JournalEntryForm, MoodEntryForm
+from .models import JournalEntry, MoodEntry
+
+
 @login_required
 def mood_delete_view(request, pk):
     mood_entry = get_object_or_404(MoodEntry, pk=pk, user=request.user)
@@ -12,12 +20,6 @@ def mood_delete_view(request, pk):
         'journal/mood_confirm_delete.html',
         {'entry': mood_entry},
     )
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404, redirect, render
-
-from .forms import JournalEntryForm, MoodEntryForm
-from .models import JournalEntry, MoodEntry
 
 # Create your views here.
 
