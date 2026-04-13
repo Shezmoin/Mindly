@@ -69,6 +69,21 @@ Testing was conducted continuously throughout development using multiple methodo
 
 ## **Manual Feature Testing**
 
+### **Manual Test Matrix (MT-01 to MT-10)**
+
+| Test ID | Feature | Test Steps | Expected Result | Actual Result | Pass/Fail |
+|---------|---------|------------|-----------------|---------------|-----------|
+| MT-01 | Register new user | Open Register page, enter valid username/email/password, submit form | Account is created and user is logged in or redirected appropriately | Registration succeeded with valid user details | Pass |
+| MT-02 | Login with valid credentials | Open Login page, enter valid username and password, submit | User is authenticated and redirected to dashboard/home | Valid credentials authenticated and redirected successfully | Pass |
+| MT-03 | Login with wrong password | Open Login page, enter valid username and incorrect password, submit | Login fails and validation error is shown | Invalid password was rejected and validation message displayed | Pass |
+| MT-04 | Login with non-existent username | Open Login page, enter unknown username and any password, submit | Login fails and validation error is shown | Non-existent username was rejected with validation message | Pass |
+| MT-05 | Logout | While logged in, click Logout | Session ends and user is redirected to home/login page | Logout ended session and redirected correctly | Pass |
+| MT-06 | Access /dashboard/ while logged out | Log out, then navigate directly to /dashboard/ URL | Redirects to login page (HTTP 302 behavior) | Logged-out dashboard access redirected to login | Pass |
+| MT-07 | Access /dashboard/ while logged in | Log in, then navigate to /dashboard/ | Dashboard loads successfully (HTTP 200 behavior) | Logged-in dashboard access loaded successfully | Pass |
+| MT-08 | Navbar links on desktop | On desktop width, click each navbar link once | All links route to the correct pages without errors | All desktop navbar links worked as expected | Pass |
+| MT-09 | Navbar on 375px mobile | Open DevTools, set viewport to 375px, open menu and test links | Mobile navbar is usable and links work correctly | Mobile navbar menu and links worked correctly | Pass |
+| MT-10 | Skip-to-content accessibility | Reload page, press Tab once, activate Skip to content link | Keyboard focus jumps to main content area | Skip-to-content link worked with Tab and Enter | Pass |
+
 ### **Authentication (CRUD)**
 
 | Feature | Test Case | Result |
