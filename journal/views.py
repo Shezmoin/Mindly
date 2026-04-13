@@ -1,3 +1,17 @@
+@login_required
+def mood_delete_view(request, pk):
+    mood_entry = get_object_or_404(MoodEntry, pk=pk, user=request.user)
+
+    if request.method == 'POST':
+        mood_entry.delete()
+        messages.success(request, 'Mood entry deleted successfully.')
+        return redirect('journal:mood-list')
+
+    return render(
+        request,
+        'journal/mood_confirm_delete.html',
+        {'entry': mood_entry},
+    )
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
