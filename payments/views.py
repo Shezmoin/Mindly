@@ -68,17 +68,49 @@ def donate_view(request):
                 )
                 return render(request, 'payments/donate.html')
 
-            donation_msg = (
-                'Stripe integration pending. '
-                f'Would process £{amount:.2f} donation.'
-            )
-            messages.info(request, donation_msg)
-            return redirect('payments:index')
+            # Stripe expects amount in pence (GBP)
+            stripe_amount = int(amount * 100)
+
+            # Create Stripe Checkout session for one-time payment
+            success_url = request.build_absolute_uri(reverse('payments:success')) + '?type=donation'
+            cancel_url = request.build_absolute_uri(reverse('payments:cancel'))
+
+            session_kwargs = {
+                'payment_method_types': ['card'],
+                'mode': 'payment',
+                'line_items': [
+                    {
+                        'price_data': {
+                            'currency': 'gbp',
+                            'product_data': {
+                                'name': 'Mindly Donation',
+                            },
+                            'unit_amount': stripe_amount,
+                        },
+                        'quantity': 1,
+                    }
+                ],
+                'success_url': success_url,
+                'cancel_url': cancel_url,
+            }
+
+            if request.user.is_authenticated and request.user.email:
+                session_kwargs['customer_email'] = request.user.email
+
+            session = stripe.checkout.Session.create(**session_kwargs)
+            return HttpResponseRedirect(session.url)
 
         except (ValueError, KeyError):
             messages.error(
                 request,
                 'Invalid donation amount. Please try again.',
+            )
+            return render(request, 'payments/donate.html')
+        except Exception as e:
+            logger.error(f"Stripe error: {e}")
+            messages.error(
+                request,
+                'Unable to start donation checkout. Please try again later.',
             )
             return render(request, 'payments/donate.html')
 
@@ -100,7 +132,7 @@ def checkout_view(request):
     """
     Create Stripe Checkout Session for premium subscription and redirect.
     """
-    success_url = request.build_absolute_uri(reverse('payments:success'))
+    success_url = request.build_absolute_uri(reverse('payments:success')) + '?type=subscription'
     cancel_url = request.build_absolute_uri(reverse('payments:cancel'))
 
     session_kwargs = {
@@ -134,7 +166,8 @@ def success_view(request):
     Payment success confirmation page.
     Displayed after successful Stripe checkout (donation or subscription).
     """
-    return render(request, 'payments/success.html')
+    payment_type = request.GET.get('type', '')
+    return render(request, 'payments/success.html', {'payment_type': payment_type})
 
 
 def cancel_view(request):
@@ -167,6 +200,25 @@ def webhook_view(request):
             sig_header,
             endpoint_secret,
         )
+
+        # Only upgrade to premium if the session is a subscription
+        if event['type'] == 'checkout.session.completed':
+            session = event['data']['object']
+            mode = session.get('mode')
+            customer_email = session.get('customer_email')
+            if mode == 'subscription' and customer_email:
+                User = get_user_model()
+                try:
+                    user = User.objects.get(email=customer_email)
+                    profile, _ = UserProfile.objects.get_or_create(user=user)
+                    profile.subscription_tier = 'premium'
+                    profile.save()
+                except User.DoesNotExist:
+                    logger.warning(f"No user found for email {customer_email}")
+            elif mode == 'payment':
+                # Optionally, record the donation here (future enhancement)
+                logger.info(f"Donation received from {customer_email}")
+        return HttpResponse(status=200)
     except ValueError:
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
