@@ -3,12 +3,39 @@
 {% block title %}Journal Entries — Mindly{% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4">
-    <h1 class="h3 mb-0">Your Journal Entries</h1>
-    <a href="{% url 'journal:journal-create' %}" class="btn btn-mindly">New Entry</a>
-</div>
+<style>
+    .mindly-panel {
+        background-color: #e9f7e7;
+        border: 3px solid #2D6A4F;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .mindly-panel-soft {
+        background: #f8fef9;
+        border-radius: 12px;
+        padding: 12px;
+    }
+    [data-theme="dark"] .mindly-panel {
+        background-color: #1A2E23;
+        border-color: #587766;
+    }
+    [data-theme="dark"] .mindly-panel-soft {
+        background: #22362B;
+        color: #E8F5EF;
+    }
+</style>
 
-<form method="get" class="row g-2 align-items-end mb-4">
+<div class="row justify-content-center">
+    <div class="col-12 col-xl-10">
+        <div class="mindly-panel p-4 p-md-5">
+            <div class="text-center mb-4">
+                <h1 class="display-6 mb-2" style="color:#1B4332;">Your Journal Entries</h1>
+                <p class="lead mb-3">Review and manage your reflections in a calm, organised space.</p>
+                <a href="{% url 'journal:journal-create' %}" class="btn btn-mindly">New Entry</a>
+            </div>
+
+            <div class="mindly-panel-soft mb-4">
+                <form method="get" class="row g-2 justify-content-center align-items-end mb-0">
     <div class="col-md-8 col-lg-6">
         <label for="id_q" class="form-label fw-semibold">Search by title</label>
         <input
@@ -26,11 +53,12 @@
     <div class="col-auto">
         <a href="{% url 'journal:journal-list' %}" class="btn btn-outline-secondary">Clear</a>
     </div>
-</form>
+                </form>
+            </div>
 
 {% if entries %}
-    <div class="table-responsive">
-        <table class="table table-striped align-middle">
+    <div class="table-responsive mindly-panel-soft">
+        <table class="table table-striped align-middle mb-0">
             <thead>
                 <tr>
                     <th scope="col">Title</th>
@@ -67,11 +95,14 @@
         </table>
     </div>
 {% else %}
-    <div class="card card-hover p-4 text-center">
+    <div class="mindly-panel-soft text-center">
         <p class="mb-3">No journal entries yet - write your first reflection.</p>
         <div>
             <a href="{% url 'journal:journal-create' %}" class="btn btn-mindly">Create First Entry</a>
         </div>
     </div>
 {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}

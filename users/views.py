@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect, render
 
-from .forms import UserRegistrationForm
+from .forms import UserProfileEditForm, UserRegistrationForm
 
 
 
@@ -43,6 +43,19 @@ def login_view(request):
 def profile_view(request):
     return render(request, 'users/profile.html')
 
+
+@login_required
+def profile_edit_view(request):
+    if request.method == 'POST':
+        form = UserProfileEditForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully.')
+            return redirect('users:profile')
+    else:
+        form = UserProfileEditForm(instance=request.user)
+
+    return render(request, 'users/profile_edit.html', {'form': form})
 
 def logout_view(request):
     if request.user.is_authenticated:

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Profile — Mindly{% endblock %}
+
+{% block content %}
+<style>
+    .profile-edit-panel {
+        background-color: #e9f7e7;
+        border: 3px solid #2D6A4F;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    [data-theme="dark"] .profile-edit-panel {
+        background-color: #1A2E23;
+        border-color: #587766;
+    }
+</style>
+
+<div class="text-center mb-4">
+    <h1 class="display-6 mb-2" style="color:#1B4332;">Edit Profile</h1>
+    <p class="lead mb-0">Update your email and bio details.</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="profile-edit-panel p-4 p-md-5">
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="{{ form.email.id_for_label }}" class="form-label fw-semibold">Email</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <div class="text-danger small mt-2">{{ form.email.errors|join:', ' }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-4">
+                    <label for="{{ form.bio.id_for_label }}" class="form-label fw-semibold">Bio</label>
+                    {{ form.bio }}
+                    {% if form.bio.errors %}
+                        <div class="text-danger small mt-2">{{ form.bio.errors|join:', ' }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="d-flex justify-content-center gap-2 flex-wrap">
+                    <button type="submit" class="btn btn-mindly">Save Changes</button>
+                    <a href="{% url 'users:profile' %}" class="btn btn-mindly">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,5 +1,25 @@
 ## Manual Test Cases (MT-21 to MT-30)
 
+| Test ID | Feature                        | Test Steps                                                                 | Expected Result                                      |
+|---------|--------------------------------|----------------------------------------------------------------------------|------------------------------------------------------|
+| MT-21   | View Pricing Page (Free User)  | Log in as free user, go to Pricing                                         | Pricing page is visible                              |
+| MT-22   | Checkout Redirect (Subscribe)  | On Pricing page, click Subscribe                                           | Redirected to Stripe Checkout                        |
+| MT-23   | Test Card Payment              | In Stripe, use 4242 4242 4242 4242, any date/CVC, complete payment         | Payment succeeds, redirected to success page          |
+| MT-24   | Premium Badge After Payment    | After payment, go to dashboard                                             | Premium badge/status is visible                      |
+| MT-25   | Premium Gating (Free User)     | As free user, try to access premium page                                   | Redirected to pricing page                           |
+| MT-26   | Premium Access (Premium User)  | As premium user, access premium page                                       | Premium content is visible                           |
+| MT-27   | Responsive @ 375px             | Resize browser to 375px width, view main pages                             | Layout is mobile-friendly, no horizontal scroll       |
+| MT-28   | Responsive @ 768px             | Resize browser to 768px width, view main pages                             | Layout adapts to tablet size, all content accessible  |
+| MT-29   | Responsive @ 1280px            | Resize browser to 1280px width, view main pages                            | Layout is desktop-optimized, no layout issues         |
+| MT-30   | Keyboard Navigation            | Use Tab key to navigate all interactive elements                           | All controls accessible, visible focus indicators     |
+
+## Bug Log Template
+
+| Bug ID | Description | Steps to Reproduce | Root Cause | Fix Applied | Status |
+|--------|-------------|--------------------|------------|-------------|--------|
+
+## Manual Test Cases (MT-21 to MT-30)
+
 | Test ID | Feature                        | Test Steps                                                                 | Expected Result                                      | Result |
 |---------|--------------------------------|----------------------------------------------------------------------------|------------------------------------------------------|--------|
 | MT-21   | View Pricing Page (Free User)  | Log in as free user, go to Pricing                                         | Pricing page is visible                              | Pass   |

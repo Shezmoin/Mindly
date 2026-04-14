@@ -3,20 +3,42 @@
 {% block title %}Log Mood — Mindly{% endblock %}
 
 {% block content %}
+<style>
+    #id_mood_score {
+        accent-color: #1B4332;
+    }
+
+    #id_mood_score::-webkit-slider-thumb {
+        background: #1B4332;
+    }
+
+    #id_mood_score::-moz-range-thumb {
+        background: #1B4332;
+        border: none;
+    }
+
+    .mood-value-badge {
+        background-color: #1B4332;
+        color: #fff;
+        font-size: 0.95rem;
+        padding: 0.45rem 0.7rem;
+        border-radius: 999px;
+    }
+</style>
 <div class="row justify-content-center">
     <div class="col-lg-7">
         <div class="card card-hover p-4">
-            <h1 class="h3 mb-3">Log Your Mood</h1>
-            <p class="mb-4">Use the slider to choose your mood score from 1 (low) to 10 (great).</p>
+            <h1 class="h3 mb-3" style="color:#1B4332;">Log Your Mood</h1>
+            <p class="mb-4" style="color:#2C3E31;">Use the slider to choose your mood score from 1 (low) to 10 (great).</p>
 
             <form method="post" novalidate>
                 {% csrf_token %}
 
                 <div class="mb-4">
-                    <label for="id_mood_score" class="form-label fw-semibold">Mood Score</label>
+                    <label for="id_mood_score" class="form-label fw-semibold" style="color:#1B4332;">Mood Score</label>
                     {{ form.mood_score }}
-                    <div class="mt-2">
-                        Current value: <span id="mood-score-value" class="badge text-bg-secondary">{{ form.mood_score.value|default:5 }}</span>
+                    <div class="mt-2" style="color:#2C3E31;">
+                        Current value: <span id="mood-score-value" class="badge mood-value-badge">{{ form.mood_score.value|default:5 }}</span>
                     </div>
                     {% if form.mood_score.errors %}
                         <div class="text-danger small mt-2">{{ form.mood_score.errors|join:', ' }}</div>
@@ -24,7 +46,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="{{ form.note.id_for_label }}" class="form-label fw-semibold">Note</label>
+                    <label for="{{ form.note.id_for_label }}" class="form-label fw-semibold" style="color:#1B4332;">Note</label>
                     {{ form.note }}
                     {% if form.note.errors %}
                         <div class="text-danger small mt-2">{{ form.note.errors|join:', ' }}</div>
@@ -33,7 +55,7 @@
 
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-mindly">Save Mood</button>
-                    <a href="{% url 'pages:dashboard' %}" class="btn btn-outline-secondary">Cancel</a>
+                    <a href="{% url 'pages:dashboard' %}" class="btn btn-mindly">Cancel</a>
                 </div>
             </form>
         </div>
@@ -51,8 +73,18 @@
         return;
     }
 
+    function moodEmoji(score) {
+        if (score >= 9) return '🤩';
+        if (score >= 7) return '😄';
+        if (score >= 6) return '🙂';
+        if (score === 5) return '😐';
+        if (score >= 3) return '🙁';
+        return '😢';
+    }
+
     function updateValue() {
-        valueDisplay.textContent = slider.value;
+        var score = Number(slider.value);
+        valueDisplay.textContent = score + ' ' + moodEmoji(score);
     }
 
     slider.addEventListener('input', updateValue);

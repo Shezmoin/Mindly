@@ -3,40 +3,65 @@
 {% block title %}Profile — Mindly{% endblock %}
 
 {% block content %}
+<style>
+    .profile-panel {
+        background-color: #e9f7e7;
+        border: 3px solid #2D6A4F;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .profile-box {
+        background: #f8fef9;
+        border-radius: 12px;
+        padding: 16px;
+        height: 100%;
+    }
+    [data-theme="dark"] .profile-panel {
+        background-color: #1A2E23;
+        border-color: #587766;
+    }
+    [data-theme="dark"] .profile-box {
+        background: #22362B;
+        color: #E8F5EF;
+    }
+</style>
+<div class="text-center mb-4">
+    <h1 class="display-6 mb-2" style="color:#1B4332;">Your Profile</h1>
+    <p class="lead mb-0">View your details and account information in one place.</p>
+</div>
 <div class="row justify-content-center">
     <div class="col-lg-8">
-        <div class="card card-hover p-4">
-            <h1 class="h3 mb-4">Your Profile</h1>
-
+        <div class="profile-panel p-4 p-md-5">
             <div class="row g-3">
                 <div class="col-md-6">
-                    <div class="p-3 calm-bg">
-                        <h2 class="h6 mb-2">Username</h2>
+                    <div class="profile-box">
+                        <h2 class="h6 mb-2" style="color:#1B4332; font-weight:700;">Username</h2>
                         <p class="mb-0">{{ user.username }}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="p-3 calm-bg">
-                        <h2 class="h6 mb-2">Email</h2>
+                    <div class="profile-box">
+                        <h2 class="h6 mb-2" style="color:#1B4332; font-weight:700;">Email</h2>
                         <p class="mb-0">{{ user.email|default:'Not set' }}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="p-3 calm-bg">
-                        <h2 class="h6 mb-2">Bio</h2>
+                    <div class="profile-box">
+                        <h2 class="h6 mb-2" style="color:#1B4332; font-weight:700;">Bio</h2>
                         <p class="mb-0">{{ user.bio|default:'No bio yet' }}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="p-3 calm-bg">
-                        <h2 class="h6 mb-2">Joined</h2>
+                    <div class="profile-box">
+                        <h2 class="h6 mb-2" style="color:#1B4332; font-weight:700;">Joined</h2>
                         <p class="mb-0">{{ user.date_joined|date:'F j, Y' }}</p>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-4">
-                <a href="{% url 'users:logout' %}" class="btn btn-outline-secondary">Log Out</a>
+            <div class="mt-4 text-center d-flex justify-content-center gap-2 flex-wrap">
+                <a href="{% url 'users:profile-edit' %}" class="btn btn-mindly">Edit Profile</a>
+                <a href="{% url 'users:logout' %}" class="btn btn-mindly">Log Out</a>
             </div>
         </div>
     </div>

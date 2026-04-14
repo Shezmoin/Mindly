@@ -3,29 +3,53 @@
 {% block title %}Journal — Mindly{% endblock %}
 
 {% block content %}
+<style>
+    .journal-hub-panel {
+        background-color: #e9f7e7;
+        border: 3px solid #2D6A4F;
+        border-radius: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    .journal-hub-box {
+        background: #f8fef9;
+        border-radius: 12px;
+        padding: 1.25rem;
+        height: 100%;
+    }
+    [data-theme="dark"] .journal-hub-panel {
+        background-color: #1A2E23;
+        border-color: #587766;
+    }
+    [data-theme="dark"] .journal-hub-box {
+        background: #22362B;
+        color: #E8F5EF;
+    }
+</style>
+<div class="text-center mb-4">
+    <h1 class="display-6 mb-2" style="color:#1B4332;">Journal Hub</h1>
+    <p class="lead mb-0">Track your mood and write reflections from one place.</p>
+</div>
 <div class="row justify-content-center">
-    <div class="col-lg-9">
-        <div class="card card-hover p-4">
-            <h1 class="h3 mb-3">Journal Hub</h1>
-            <p class="mb-4">Track your mood and write reflections from one place.</p>
+    <div class="col-lg-10">
+        <div class="journal-hub-panel p-4 p-md-5">
             <div class="row g-3">
                 <div class="col-md-6">
-                    <div class="calm-bg h-100">
+                    <div class="journal-hub-box h-100 text-center">
                         <h2 class="h5 mb-2">Mood Tracking</h2>
                         <p class="mb-3">Log daily mood scores and review your history.</p>
-                        <div class="d-flex gap-2 flex-wrap">
+                        <div class="d-flex gap-2 flex-wrap justify-content-center">
                             <a href="{% url 'journal:mood-create' %}" class="btn btn-sm btn-mindly">Log Mood</a>
-                            <a href="{% url 'journal:mood-list' %}" class="btn btn-sm btn-outline-secondary">Mood History</a>
+                            <a href="{% url 'journal:mood-list' %}" class="btn btn-sm btn-mindly">Mood History</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="calm-bg h-100">
+                    <div class="journal-hub-box h-100 text-center">
                         <h2 class="h5 mb-2">Journal Entries</h2>
                         <p class="mb-3">Write entries and review past reflections.</p>
-                        <div class="d-flex gap-2 flex-wrap">
+                        <div class="d-flex gap-2 flex-wrap justify-content-center">
                             <a href="{% url 'journal:journal-create' %}" class="btn btn-sm btn-mindly">Write Entry</a>
-                            <a href="{% url 'journal:journal-list' %}" class="btn btn-sm btn-outline-secondary">View Journal</a>
+                            <a href="{% url 'journal:journal-list' %}" class="btn btn-sm btn-mindly">View Journal</a>
                         </div>
                     </div>
                 </div>
