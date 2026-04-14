@@ -218,6 +218,7 @@ Mindly follows WCAG accessibility best practices:
 * Edit mood entries to update score or note
 * Delete mood entries with confirmation
 * Mood entry metadata (date/time created and updated)
+* Monthly journal limit for free users is enforced and clearly communicated
 * Responsive mood entry display across devices
 
 ### **Journal Features**
@@ -230,7 +231,21 @@ Mindly follows WCAG accessibility best practices:
 * Search journal entries by title
 * Timestamp tracking for entry creation/modification
 
+### **Assessment Features**
+
+* Dedicated assessment hub with interactive self-check tools
+* Includes a Mood Self-Check, Stress Self-Check, and Sleep Habits Check
+* Supportive results are displayed instantly after submission
+* Assessment content is informational and not intended as a diagnosis
+
 ### **Premium Features**
+
+### **Resource Library**
+
+* Six professionally presented mental wellbeing resource pages are available in the platform.
+* Free users can access Anxiety, Depression, and Stress guides.
+* Premium users can additionally access Mindfulness, Sleep, and Self-Care guides.
+* Each resource page includes structured wellbeing guidance and a reference section linking to reputable sources such as NHS, Mind, Sleep Foundation, and the Mental Health Foundation.
 
 * Premium resources page (gated by subscription)
 * Subscription tier stored securely in UserProfile
@@ -251,7 +266,8 @@ Mindly follows WCAG accessibility best practices:
 ---
 
 ## **Future Features**
-
+* Expand the resource library with clinician-reviewed articles and downloadable worksheets.
+* Add searchable categories and saved favourites for premium users.
 ### **User Experience Improvements**
 
 * Mood analytics with charts and trends
@@ -485,7 +501,7 @@ See [**ERROR_LOG.md**](./docs/ERROR_LOG.md) for complete error documentation inc
 
 Mindly is deployed following professional security and deployment practices.
 
-See [**DEPLOYMENT.md**](./docs/DEPLOYMENT.md) for comprehensive deployment documentation including:
+See [**DEPLOYMENT.md**](docs/DEPLOYMENT.md) for comprehensive deployment documentation including:
 
 * Local development setup
 * Production deployment on Heroku (step-by-step)

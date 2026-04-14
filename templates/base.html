@@ -21,7 +21,7 @@
     <!-- Custom CSS block for additional styles -->
     {% block extra_css %}{% endblock %}
 </head>
-<body>
+<body class="mindly-site-shell">
     <!-- Skip to main content link for screen readers -->
     <a href="#main-content" class="visually-hidden-focusable">Skip to main content</a>
     
@@ -30,7 +30,7 @@
         <div class="container">
             <!-- Brand/logo -->
             <a class="navbar-brand d-flex align-items-center" href="{% url 'pages:home' %}">
-                <i class="fas fa-heartbeat me-2" style="font-size: 1.5rem;" aria-hidden="true"></i>
+                <i class="fas fa-heartbeat me-2" style="font-size: 2.5rem;" aria-hidden="true"></i>
                 <div>
                     <span class="fw-bold">mindly</span>
                     <small class="d-block" style="font-size: 0.65rem; margin-top: -3px;">Your mind matters.</small>
@@ -98,7 +98,7 @@
                         </li>
                     {% endif %}
                 </ul>
-                <button id="theme-toggle" class="btn btn-outline-light btn-sm ms-lg-3 mt-3 mt-lg-0" type="button" aria-label="Toggle dark mode">
+                <button id="theme-toggle" class="btn btn-outline-light btn-sm ms-lg-3 mt-3 mt-lg-0 px-3 py-2 rounded-pill" type="button" aria-label="Toggle dark mode">
                     <i class="fas fa-moon me-1" aria-hidden="true"></i>
                     <span id="theme-toggle-text">Dark mode</span>
                 </button>
@@ -107,61 +107,71 @@
     </nav>
     
     <!-- Main content area -->
-    <main id="main-content" class="container my-4">
-        <!-- Django messages for alerts/notifications -->
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert {% if 'success' in message.tags %}alert-success{% elif 'error' in message.tags %}alert-danger{% elif 'warning' in message.tags %}alert-warning{% elif 'info' in message.tags %}alert-info{% else %}alert-secondary{% endif %} alert-dismissible fade show" role="alert" data-auto-dismiss="true">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
-        {% endif %}
-        
-        <!-- Content block - will be replaced by child templates -->
-        {% block content %}
-        {% endblock %}
+    <main id="main-content" class="container my-4 site-main">
+        <div class="site-content">
+            <!-- Django messages for alerts/notifications -->
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {% if 'success' in message.tags %}alert-success{% elif 'error' in message.tags %}alert-danger{% elif 'warning' in message.tags %}alert-warning{% elif 'info' in message.tags %}alert-info{% else %}alert-secondary{% endif %} alert-dismissible fade show" role="alert" data-auto-dismiss="true">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            
+            <!-- Content block - will be replaced by child templates -->
+            {% block content %}
+            {% endblock %}
+        </div>
     </main>
     
     <!-- Footer -->
-    <footer class="mindly-footer text-white mt-5 py-4">
-        <div class="container">
-            <div class="row">
+    <footer class="mindly-footer text-white py-4">
+        <div class="container-fluid px-4 px-md-5">
+            <div class="row align-items-start justify-content-between gy-4 text-center text-md-start">
                 <!-- About section -->
-                <div class="col-md-4">
-                    <h2 class="h5">
-                        <i class="fas fa-heartbeat me-2"></i> mindly
+                <div class="col-md-4 col-lg-3 pe-md-4" style="padding-left: 12.5rem !important;">
+                    <h2 class="h4 d-flex align-items-center justify-content-center justify-content-md-start mb-3">
+                        <i class="fas fa-heartbeat me-2" style="font-size: 1.8rem;"></i> mindly
                     </h2>
-                    <p class="fst-italic text-muted mb-2">Your mind matters.</p>
-                    <p>Your mental wellbeing companion. Supporting your journey to better mental health.</p>
+                    <p class="mb-2" style="color:#FFFFFF;">Your mind matters.</p>
+                    <p class="mb-0" style="font-size: 0.95rem;">Calm support for your mental health journey.</p>
                 </div>
                 
                 <!-- Quick links -->
-                <div class="col-md-4">
-                    <h2 class="h5">Quick Links</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="{% url 'pages:home' %}" class="text-white text-decoration-none">Home</a></li>
-                        <li><a href="{% url 'pages:about' %}" class="text-white text-decoration-none">About</a></li>
-                        <li><a href="{% url 'assessments:index' %}" class="text-white text-decoration-none">Assessments</a></li>
-                        <li><a href="{% url 'pages:resources' %}" class="text-white text-decoration-none">Resources</a></li>
-                        <li><a href="{% url 'journal:index' %}" class="text-white text-decoration-none">Journal</a></li>
-                        <li><a href="{% url 'payments:index' %}" class="text-white text-decoration-none">Support Us</a></li>
-                    </ul>
+                <div class="col-md-4 col-lg-3">
+                    <div class="row justify-content-center gx-4 text-start">
+                        <div class="col-auto">
+                            <h2 class="h5 mb-3">Quick Links</h2>
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="{% url 'pages:home' %}" class="text-white text-decoration-none">Home</a></li>
+                                <li><a href="{% url 'pages:about' %}" class="text-white text-decoration-none">About</a></li>
+                                <li><a href="{% url 'assessments:index' %}" class="text-white text-decoration-none">Assessments</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-auto" style="padding-top: 2.1rem;">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="{% url 'pages:resources' %}" class="text-white text-decoration-none">Resources</a></li>
+                                <li><a href="{% url 'journal:index' %}" class="text-white text-decoration-none">Journal</a></li>
+                                <li><a href="{% url 'payments:index' %}" class="text-white text-decoration-none">Support Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Contact/Support -->
-                <div class="col-md-4">
-                    <h2 class="h5">Need Help?</h2>
-                    <p>If you're in crisis, please contact:</p>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-phone"></i> Crisis Helpline: 1-800-273-8255</li>
+                <div class="col-md-4 col-lg-3 ps-lg-4">
+                    <h2 class="h5 mb-3">Need Help?</h2>
+                    <p class="mb-2">If you're in crisis, please contact:</p>
+                    <ul class="list-unstyled mb-0">
+                        <li><i class="fas fa-phone"></i> Crisis Helpline: 0800 123 4567</li>
                         <li><i class="fas fa-envelope"></i> support@mindly.com</li>
                     </ul>
                 </div>
             </div>
             
             <!-- Copyright -->
-            <hr class="bg-white">
+            <hr class="bg-white mt-4">
             <div class="text-center">
                 <p class="mb-0">&copy; 2026 Mindly. All rights reserved. | Mental Health Wellbeing Platform</p>
             </div>

@@ -8,18 +8,113 @@
     <p class="lead mb-0">Explore practical articles and guides to support your daily wellbeing.</p>
 </div>
 
-<div class="row g-4">
+<style>
+    .resource-card-premium {
+        background-color: #e9f7e7;
+        border: 3px solid #D4A017;
+    }
+    .resource-card-free {
+        background-color: #e9f7e7;
+        border: 3px solid #2D6A4F;
+    }
+    .resource-header {
+        background: #95D5B2;
+        color: #2D6A4F;
+        font-weight: 600;
+        text-align: center;
+        border-radius: 10px 10px 0 0;
+        padding: 10px 0 0 0;
+        margin-bottom: 0.5rem;
+        position: relative;
+    }
+    .premium-crown {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+        margin-left: 6px;
+    }
+    .premium-upgrade-message {
+        background: #FFF9E5;
+        color: #7C5A1A;
+        border: 1px solid #E6C77B;
+        border-radius: 8px;
+        padding: 16px;
+        margin-top: 12px;
+        text-align: center;
+        font-size: 1.05rem;
+        font-weight: 500;
+    }
+</style>
+<script>
+    function showPremiumMessage(idx) {
+        document.getElementById('premium-msg-' + idx).style.display = 'block';
+    }
+    function hidePremiumMessage(idx) {
+        document.getElementById('premium-msg-' + idx).style.display = 'none';
+    }
+</script>
+<div class="row g-5 mb-4">
     {% for resource in resources %}
-        <div class="col-12 col-md-4">
-            <div class="card card-hover h-100">
-                <div class="card-body p-4">
-                    <span class="badge text-bg-secondary mb-3">{{ resource.category }}</span>
-                    <div class="fs-3 mb-2" aria-hidden="true">{{ resource.icon_emoji }}</div>
-                    <h2 class="h5">{{ resource.title }}</h2>
-                    <p class="mb-0">{{ resource.description }}</p>
+        {% if not resource.is_premium %}
+            {% if forloop.first %}
+                <!-- Free resources row start -->
+            {% endif %}
+            <div class="col-12 col-md-4">
+                <a href="{% url resource.url_name %}" class="text-decoration-none">
+                <div class="card card-hover h-100 resource-card-free">
+                    <div class="card-body p-4">
+                        <div class="resource-header">
+                            <span class="fs-2" aria-hidden="true">{{ resource.icon_emoji }}</span>
+                            <span class="h5 d-inline-block mx-2">{{ resource.title }}</span>
+                        </div>
+                        <div class="text-center mb-2">
+                            <span class="badge" style="background:#2D6A4F; color:#fff;">{{ resource.category }}</span>
+                        </div>
+                        <div class="mb-0 text-center" style="background:#f8fef9; color:#2C3E31; border-radius:0 0 10px 10px; padding:12px 8px 8px 8px; min-height:54px; font-size:1rem;">{{ resource.description }}</div>
+                    </div>
                 </div>
+                </a>
             </div>
-        </div>
+            {% if forloop.last or resources|length == forloop.counter %}
+                <!-- Free resources row end -->
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</div>
+<div class="row g-5 mt-1">
+    {% for resource in resources %}
+        {% if resource.is_premium %}
+            <div class="col-12 col-md-4">
+                {% if is_premium %}
+                    <a href="{% url resource.url_name %}" class="text-decoration-none">
+                {% endif %}
+                <div class="card card-hover h-100 resource-card-premium" {% if not is_premium %}onclick="showPremiumMessage({{ forloop.counter0 }})" style="cursor:pointer;"{% endif %}>
+                    <div class="card-body p-4">
+                        <div class="resource-header" style="user-select:none;">
+                            <span class="fs-2" aria-hidden="true">{{ resource.icon_emoji }}</span>
+                            <span class="h5 d-inline-block mx-2">{{ resource.title }}</span>
+                            <br><span class="fw-bold" style="color:#2D6A4F; display:inline-flex; align-items:center; gap:4px; font-size:1.15rem;">
+                                Premium <span style="font-size:1.15rem; line-height:1; display:inline-block;">👑</span>
+                            </span>
+                        </div>
+                        <div class="text-center mb-2">
+                            <span class="badge" style="background:#2D6A4F; color:#fff;">{{ resource.category }}</span>
+                        </div>
+                        <div class="mb-0 text-center" style="background:#f8fef9; color:#2C3E31; border-radius:0 0 10px 10px; padding:12px 8px 8px 8px; min-height:54px; font-size:1rem;">{{ resource.description }}</div>
+                        {% if not is_premium %}
+                            <div id="premium-msg-{{ forloop.counter0 }}" class="premium-upgrade-message mt-3" style="display:none;">
+                                Unlock this resource and more with <strong>Mindly Premium</strong> to view this guide and the full premium library.<br>
+                                <a href="/subscribe/" class="btn btn-sm btn-warning mt-2">Upgrade to Premium</a>
+                                <div><button class="btn btn-link btn-sm mt-2" onclick="hidePremiumMessage({{ forloop.counter0 }});event.stopPropagation();">Close</button></div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if is_premium %}
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
     {% endfor %}
 </div>
 {% endblock %}

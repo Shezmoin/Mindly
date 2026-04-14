@@ -207,3 +207,28 @@ class JournalViewsTests(TestCase):
 		self.assertEqual(entries.count(), 1)
 		self.assertEqual(entries.first().mood_score, 7)
 		self.assertEqual(entries.first().note, 'Feeling great today')
+
+	def test_free_user_cannot_create_more_than_five_journal_entries_in_a_month(self):
+		self.client.force_login(self.user)
+
+		for index in range(5):
+			JournalEntry.objects.create(
+				user=self.user,
+				title=f'Entry {index}',
+				content='Existing entry',
+				is_private=True,
+			)
+
+		response = self.client.post(
+			reverse('journal:journal-create'),
+			{
+				'title': 'Sixth entry',
+				'content': 'This should be blocked.',
+				'is_private': 'on',
+			},
+			follow=True,
+		)
+
+		self.assertEqual(response.status_code, 200)
+		self.assertEqual(JournalEntry.objects.filter(user=self.user).count(), 5)
+		self.assertContains(response, 'Free users can only create 5 journal entries per month')

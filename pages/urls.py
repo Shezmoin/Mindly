@@ -21,4 +21,12 @@ urlpatterns = [
 
     # About page
     path('about/', views.about_view, name='about'),
+
+    # Resource detail pages
+    path('resources/anxiety/', views.resource_anxiety_view, name='resource-anxiety'),
+    path('resources/depression/', views.resource_depression_view, name='resource-depression'),
+    path('resources/mindfulness/', views.resource_mindfulness_view, name='resource-mindfulness'),
+    path('resources/sleep/', views.resource_sleep_view, name='resource-sleep'),
+    path('resources/stress/', views.resource_stress_view, name='resource-stress'),
+    path('resources/selfcare/', views.resource_selfcare_view, name='resource-selfcare'),
 ]
