@@ -67,8 +67,8 @@
                            href="{% url 'journal:index' %}">Journal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link{% if request.resolver_match.namespace == 'payments' %} active{% endif %}" 
-                           {% if request.resolver_match.namespace == 'payments' %}aria-current="page"{% endif %}
+                                <a class="nav-link{% if request.resolver_match.namespace == 'payments' and request.resolver_match.url_name != 'pricing' %} active{% endif %}" 
+                                    {% if request.resolver_match.namespace == 'payments' and request.resolver_match.url_name != 'pricing' %}aria-current="page"{% endif %}
                            href="{% url 'payments:index' %}">Support Us</a>
                     </li>
                     <li class="nav-item">

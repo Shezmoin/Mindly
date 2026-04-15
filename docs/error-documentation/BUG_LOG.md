@@ -61,3 +61,13 @@
   2. Scroll to the lower section of the screen.
   3. Observe that the footer now remains at the bottom of the viewport.
 - Fix: A global flex layout rule was added to the shared site template styling
+
+### 6. Pricing page underlined both "Support Us" and "Pricing" in navbar
+- Description: When opening the Pricing page, both navigation items were underlined at the same time, which created conflicting active-state feedback.
+- Expected: On the Pricing page, only "Pricing" should be underlined.
+- Status: Fixed
+- Steps to Reproduce:
+  1. Open the Pricing page.
+  2. Observe the navbar active state.
+  3. Confirm only "Pricing" is underlined now.
+- Fix: Updated base navbar active-link condition so "Support Us" is active only for payments routes except pricing.
