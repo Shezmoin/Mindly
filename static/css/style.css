@@ -78,7 +78,7 @@ footer.mindly-footer {
 
 /* Branding - Logo and tagline styling */
 .navbar-brand {
-    font-size: 3rem;
+    font-size: calc(3rem + 1.5px);
     letter-spacing: -0.5px;
 }
 
@@ -87,7 +87,7 @@ footer.mindly-footer {
 }
 
 .navbar-nav .nav-link {
-    font-size: 1.08rem;
+    font-size: calc(1.08rem + 1.5px);
     font-weight: 500;
     color: #F4FFF9 !important;
     margin: 0 0.15rem;
@@ -120,7 +120,7 @@ footer.mindly-footer {
 }
 
 .premium-profile-crown {
-    font-size: 0.86rem;
+    font-size: calc(0.86rem + 1.5px);
 }
 
 [data-theme="dark"] .premium-nav-chip {
@@ -148,9 +148,9 @@ footer.mindly-footer {
 .hero-section {
     background-color: var(--mindly-primary);
     color: white;
-    padding: 56px 0;
+    padding: 36px 0;
     text-align: center;
-    border-radius: 50px;
+    border-radius: 38px;
 }
 
 /* Card hover effect for interactive elements */
