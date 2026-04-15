@@ -42,3 +42,27 @@ class TestCustomUser(TestCase):
         self.assertEqual(self.user.email, 'updated@example.com')
         self.assertEqual(self.user.bio, 'Updated profile bio')
         self.assertContains(response, 'Profile updated successfully')
+
+    def test_premium_user_can_cancel_from_profile(self):
+        self.user.profile.subscription_tier = UserProfile.TIER_PREMIUM
+        self.user.profile.save(update_fields=['subscription_tier'])
+        self.client.force_login(self.user)
+
+        response = self.client.post(reverse('users:cancel-premium'), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.user.profile.refresh_from_db()
+        self.assertEqual(self.user.profile.subscription_tier, UserProfile.TIER_FREE)
+        self.assertRedirects(response, reverse('pages:home'))
+        self.assertContains(response, 'Premium cancellation is being processed')
+
+    def test_free_user_cancel_endpoint_keeps_plan_unchanged(self):
+        self.client.force_login(self.user)
+
+        response = self.client.post(reverse('users:cancel-premium'), follow=True)
+
+        self.assertEqual(response.status_code, 200)
+        self.user.profile.refresh_from_db()
+        self.assertEqual(self.user.profile.subscription_tier, UserProfile.TIER_FREE)
+        self.assertRedirects(response, reverse('users:profile'))
+        self.assertContains(response, 'already on the free plan')

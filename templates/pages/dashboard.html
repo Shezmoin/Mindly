@@ -5,26 +5,26 @@
 {% block content %}
 <div class="row g-4">
     <div class="col-12 col-lg-4">
-        <div class="card card-hover p-4 h-100">
-            <h1 class="h3 mb-3">Welcome back, {{ request.user.username }}</h1>
-            <p class="mb-2">
+        <div class="card card-hover mindly-panel p-4 h-100">
+            <h1 class="h3 mb-3 mindly-panel-title">Welcome back, {{ request.user.username }}</h1>
+            <p class="mb-2 mindly-panel-text">
                 <strong>Subscription tier:</strong>
-                <span class="badge text-bg-secondary">{{ user_profile.get_subscription_tier_display }}</span>
+                <span class="mindly-tier-badge">{{ user_profile.get_subscription_tier_display }}</span>
             </p>
-            <p class="mb-0"><strong>Joined:</strong> {{ user_profile.joined_date }}</p>
+            <p class="mb-0 mindly-panel-text"><strong>Joined:</strong> {{ user_profile.joined_date }}</p>
         </div>
     </div>
     <div class="col-12 col-lg-8">
-        <div class="card card-hover p-4 h-100">
-            <h2 class="h4 mb-3">Your wellbeing overview</h2>
+        <div class="card card-hover mindly-panel p-4 h-100">
+            <h2 class="h4 mb-3 mindly-panel-title">Your wellbeing overview</h2>
             <div class="row g-3">
                 <div class="col-12 col-md-6">
                     <div class="calm-bg h-100">
                         <h3 class="h5 mb-2">Recent Mood Entries</h3>
                         <p class="mb-3">Your recent mood summaries and trends will appear here.</p>
-                        <div class="d-flex gap-2 flex-wrap">
-                            <a href="{% url 'journal:mood-create' %}" class="btn btn-sm btn-mindly">Log Mood Entry</a>
-                            <a href="{% url 'journal:mood-list' %}" class="btn btn-sm btn-outline-secondary">View Mood History</a>
+                        <div class="d-flex gap-2 flex-nowrap align-items-center">
+                            <a href="{% url 'journal:mood-create' %}" class="btn btn-sm btn-mindly">Log Mood</a>
+                            <a href="{% url 'journal:mood-list' %}" class="btn btn-sm btn-mindly">View History</a>
                         </div>
                     </div>
                 </div>
@@ -32,9 +32,9 @@
                     <div class="calm-bg h-100">
                         <h3 class="h5 mb-2">Recent Journal Entries</h3>
                         <p class="mb-3">Your latest journal entries and reflections will appear here.</p>
-                        <div class="d-flex gap-2 flex-wrap">
+                        <div class="d-flex gap-2 flex-nowrap align-items-center">
                             <a href="{% url 'journal:journal-create' %}" class="btn btn-sm btn-mindly">Write Entry</a>
-                            <a href="{% url 'journal:journal-list' %}" class="btn btn-sm btn-outline-secondary">View Journal</a>
+                            <a href="{% url 'journal:journal-list' %}" class="btn btn-sm btn-mindly">View Journal</a>
                         </div>
                     </div>
                 </div>

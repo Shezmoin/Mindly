@@ -30,7 +30,7 @@
         <div class="container">
             <!-- Brand/logo -->
             <a class="navbar-brand d-flex align-items-center" href="{% url 'pages:home' %}">
-                <i class="fas fa-heartbeat me-2" style="font-size: 2.5rem;" aria-hidden="true"></i>
+                <i class="fas fa-heartbeat me-2" style="font-size: 3.75rem;" aria-hidden="true"></i>
                 <div>
                     <span class="fw-bold">mindly</span>
                     <small class="d-block" style="font-size: 0.65rem; margin-top: -3px;">Your mind matters.</small>
@@ -79,8 +79,18 @@
                     
                     <!-- User authentication links -->
                     {% if request.user.is_authenticated %}
+                        {% if is_premium_user %}
+                            <li class="nav-item d-flex align-items-center mt-2 mt-lg-0 me-lg-2">
+                                <span class="premium-nav-chip" aria-label="Premium member">
+                                    <i class="fas fa-crown" aria-hidden="true"></i>
+                                    Premium
+                                </span>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users:profile' %}">Profile</a>
+                            <a class="nav-link" href="{% url 'users:profile' %}">
+                                Profile{% if is_premium_user %} <i class="fas fa-crown premium-profile-crown" aria-hidden="true"></i>{% endif %}
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
@@ -140,16 +150,14 @@
                 
                 <!-- Quick links -->
                 <div class="col-md-4 col-lg-3">
-                    <div class="row justify-content-center gx-4 text-start">
-                        <div class="col-auto">
-                            <h2 class="h5 mb-3">Quick Links</h2>
+                    <div class="footer-quick-links text-start">
+                        <h2 class="h5 mb-3">Quick Links</h2>
+                        <div class="footer-quick-links-grid">
                             <ul class="list-unstyled mb-0">
                                 <li><a href="{% url 'pages:home' %}" class="text-white text-decoration-none">Home</a></li>
                                 <li><a href="{% url 'pages:about' %}" class="text-white text-decoration-none">About</a></li>
                                 <li><a href="{% url 'assessments:index' %}" class="text-white text-decoration-none">Assessments</a></li>
                             </ul>
-                        </div>
-                        <div class="col-auto" style="padding-top: 2.1rem;">
                             <ul class="list-unstyled mb-0">
                                 <li><a href="{% url 'pages:resources' %}" class="text-white text-decoration-none">Resources</a></li>
                                 <li><a href="{% url 'journal:index' %}" class="text-white text-decoration-none">Journal</a></li>
