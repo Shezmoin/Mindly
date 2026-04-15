@@ -4,6 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect, render
 
 from .forms import UserProfileEditForm, UserRegistrationForm
+from .models import UserProfile
 
 
 
@@ -56,6 +57,27 @@ def profile_edit_view(request):
         form = UserProfileEditForm(instance=request.user)
 
     return render(request, 'users/profile_edit.html', {'form': form})
+
+
+@login_required
+def cancel_premium_view(request):
+    if request.method != 'POST':
+        return redirect('users:profile')
+
+    profile, _ = UserProfile.objects.get_or_create(user=request.user)
+    if profile.subscription_tier != UserProfile.TIER_PREMIUM:
+        messages.info(request, 'Your account is already on the free plan.')
+        return redirect('users:profile')
+
+    profile.subscription_tier = UserProfile.TIER_FREE
+    profile.save(update_fields=['subscription_tier'])
+
+    messages.success(
+        request,
+        'Premium cancellation is being processed. Sorry to see you go. '
+        'You can join back any time and continue using free content.',
+    )
+    return redirect('pages:home')
 
 def logout_view(request):
     if request.user.is_authenticated:

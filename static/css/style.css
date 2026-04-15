@@ -78,7 +78,7 @@ footer.mindly-footer {
 
 /* Branding - Logo and tagline styling */
 .navbar-brand {
-    font-size: 2rem;
+    font-size: 3rem;
     letter-spacing: -0.5px;
 }
 
@@ -98,6 +98,35 @@ footer.mindly-footer {
     color: #FFFFFF !important;
     text-decoration: underline;
     text-underline-offset: 4px;
+}
+
+.premium-nav-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(18, 54, 40, 0.45);
+    color: #F2CD72;
+    border: 1px solid #F2CD72;
+    border-radius: 999px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: 0.28rem 0.54rem;
+}
+
+.premium-nav-chip i,
+.premium-profile-crown {
+    color: #F2CD72;
+}
+
+.premium-profile-crown {
+    font-size: 0.86rem;
+}
+
+[data-theme="dark"] .premium-nav-chip {
+    background: rgba(10, 24, 18, 0.6);
+    color: #F6D98C;
+    border-color: #F6D98C;
 }
 
 .navbar-brand i.fa-heartbeat {
@@ -163,7 +192,66 @@ footer.mindly-footer {
     margin: 20px 0;
 }
 
+.mindly-panel {
+    background-color: #f8fef9;
+    border: 2px solid #2D6A4F;
+    border-radius: 16px;
+}
+
+.mindly-panel-title {
+    color: #1B4332;
+}
+
+.mindly-panel-text,
+.mindly-panel .form-label,
+.mindly-panel label {
+    color: #2C3E31;
+}
+
+.mindly-tier-badge {
+    background-color: #2D6A4F;
+    color: #ffffff;
+    border-radius: 999px;
+    padding: 0.35rem 0.65rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+[data-theme="dark"] .mindly-panel {
+    background-color: #1A2E23;
+    border-color: #587766;
+}
+
+[data-theme="dark"] .mindly-panel-title,
+[data-theme="dark"] .mindly-panel-text,
+[data-theme="dark"] .mindly-panel .form-label,
+[data-theme="dark"] .mindly-panel label {
+    color: #E8F5EF;
+}
+
 /* Custom footer styling */
+.footer-quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    column-gap: 1.75rem;
+}
+
+.footer-quick-links-grid li {
+    margin-bottom: 0.2rem;
+}
+
+@media (max-width: 767.98px) {
+    .footer-quick-links {
+        text-align: center;
+    }
+
+    .footer-quick-links-grid {
+        justify-content: center;
+    }
+}
+
 footer a:hover {
     color: var(--mindly-success) !important;
     transition: color 0.3s ease;

@@ -6,9 +6,9 @@
 {% block content %}
 <div class="row justify-content-center">
     <div class="col-md-8 col-lg-6">
-        <div class="card card-hover p-4">
-            <h1 class="h3 mb-3 text-center">Welcome Back</h1>
-            <p class="text-center mb-4">Sign in to continue your wellbeing journey.</p>
+        <div class="card card-hover mindly-panel p-4">
+            <h1 class="h3 mb-3 text-center mindly-panel-title">Welcome Back</h1>
+            <p class="text-center mb-4 mindly-panel-text">Sign in to continue your wellbeing journey.</p>
 
             <form method="post" novalidate>
                 {% csrf_token %}
@@ -18,7 +18,7 @@
                 </div>
             </form>
 
-            <p class="text-center mt-3 mb-0">
+            <p class="text-center mt-3 mb-0 mindly-panel-text">
                 New here?
                 <a href="{% url 'users:register' %}">Create an account</a>
             </p>

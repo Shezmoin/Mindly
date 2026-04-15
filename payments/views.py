@@ -18,6 +18,32 @@ logger = logging.getLogger(__name__)
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
+def _upgrade_user_to_premium_from_session(session_data):
+    """Upgrade a user to premium from Stripe checkout session payload."""
+    User = get_user_model()
+
+    metadata = session_data.get('metadata') or {}
+    user_id = metadata.get('user_id')
+    user = None
+
+    if user_id:
+        user = User.objects.filter(id=user_id).first()
+
+    if not user:
+        customer_email = session_data.get('customer_email')
+        if customer_email:
+            user = User.objects.filter(email=customer_email).first()
+
+    if not user:
+        logger.warning('No matching user found for completed subscription session.')
+        return False
+
+    profile, _ = UserProfile.objects.get_or_create(user=user)
+    profile.subscription_tier = UserProfile.TIER_PREMIUM
+    profile.save(update_fields=['subscription_tier'])
+    return True
+
+
 def index_view(request):
     """
     Main payments support page showing both donation and subscription options.
@@ -132,7 +158,7 @@ def checkout_view(request):
     """
     Create Stripe Checkout Session for premium subscription and redirect.
     """
-    success_url = request.build_absolute_uri(reverse('payments:success')) + '?type=subscription'
+    success_url = request.build_absolute_uri(reverse('payments:success')) + '?type=subscription&session_id={CHECKOUT_SESSION_ID}'
     cancel_url = request.build_absolute_uri(reverse('payments:cancel'))
 
     session_kwargs = {
@@ -145,6 +171,9 @@ def checkout_view(request):
         ],
         'success_url': success_url,
         'cancel_url': cancel_url,
+        'metadata': {
+            'user_id': str(request.user.id),
+        },
     }
 
     if request.user.email:
@@ -167,6 +196,17 @@ def success_view(request):
     Displayed after successful Stripe checkout (donation or subscription).
     """
     payment_type = request.GET.get('type', '')
+
+    if payment_type == 'subscription' and request.user.is_authenticated:
+        session_id = request.GET.get('session_id', '').strip()
+        if session_id:
+            try:
+                session = stripe.checkout.Session.retrieve(session_id)
+                if session.get('mode') == 'subscription' and session.get('status') == 'complete':
+                    _upgrade_user_to_premium_from_session(session)
+            except Exception as exc:
+                logger.warning('Unable to confirm subscription on success page: %s', exc)
+
     return render(request, 'payments/success.html', {'payment_type': payment_type})
 
 
@@ -206,15 +246,8 @@ def webhook_view(request):
             session = event['data']['object']
             mode = session.get('mode')
             customer_email = session.get('customer_email')
-            if mode == 'subscription' and customer_email:
-                User = get_user_model()
-                try:
-                    user = User.objects.get(email=customer_email)
-                    profile, _ = UserProfile.objects.get_or_create(user=user)
-                    profile.subscription_tier = 'premium'
-                    profile.save()
-                except User.DoesNotExist:
-                    logger.warning(f"No user found for email {customer_email}")
+            if mode == 'subscription':
+                _upgrade_user_to_premium_from_session(session)
             elif mode == 'payment':
                 # Optionally, record the donation here (future enhancement)
                 logger.info(f"Donation received from {customer_email}")
@@ -233,14 +266,7 @@ def webhook_view(request):
 
     if event.get('type') == 'checkout.session.completed':
         session = event['data']['object']
-        customer_email = session.get('customer_email')
-
-        if customer_email:
-            User = get_user_model()
-            user = User.objects.filter(email=customer_email).first()
-            if user:
-                profile, _ = UserProfile.objects.get_or_create(user=user)
-                profile.subscription_tier = 'premium'
-                profile.save(update_fields=['subscription_tier'])
+        if session.get('mode') == 'subscription':
+            _upgrade_user_to_premium_from_session(session)
 
     return HttpResponse(status=200)

@@ -16,6 +16,20 @@
         padding: 16px;
         height: 100%;
     }
+    .btn-cancel-premium {
+        background: #f6ecd0;
+        color: #7a4a00;
+        border: 1px solid #d4a017;
+        border-radius: 25px;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+    .btn-cancel-premium:hover {
+        background: #efdfb4;
+        color: #643c00;
+        border-color: #b8890d;
+    }
     [data-theme="dark"] .profile-panel {
         background-color: #1A2E23;
         border-color: #587766;
@@ -23,6 +37,11 @@
     [data-theme="dark"] .profile-box {
         background: #22362B;
         color: #E8F5EF;
+    }
+    [data-theme="dark"] .btn-cancel-premium {
+        background: #4a3a18;
+        color: #f3d88b;
+        border-color: #c59b33;
     }
 </style>
 <div class="text-center mb-4">
@@ -62,8 +81,35 @@
             <div class="mt-4 text-center d-flex justify-content-center gap-2 flex-wrap">
                 <a href="{% url 'users:profile-edit' %}" class="btn btn-mindly">Edit Profile</a>
                 <a href="{% url 'users:logout' %}" class="btn btn-mindly">Log Out</a>
+                {% if is_premium_user %}
+                    <form method="post" action="{% url 'users:cancel-premium' %}" class="d-inline" id="cancel-premium-form">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-cancel-premium">Cancel Premium</button>
+                    </form>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
+
+{% if is_premium_user %}
+<script>
+    (function () {
+        var cancelForm = document.getElementById('cancel-premium-form');
+        if (!cancelForm) {
+            return;
+        }
+
+        cancelForm.addEventListener('submit', function (event) {
+            var shouldCancel = window.confirm('Are you sure you want to cancel your premium subscription?');
+            if (!shouldCancel) {
+                event.preventDefault();
+                return;
+            }
+
+            window.alert('Cancellation is being processed. Sorry to see you go. You can still join back any time and continue with free content.');
+        });
+    })();
+</script>
+{% endif %}
 {% endblock %}
