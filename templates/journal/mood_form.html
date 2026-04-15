@@ -73,18 +73,18 @@
         return;
     }
 
-    function moodEmoji(score) {
-        if (score >= 9) return '🤩';
-        if (score >= 7) return '😄';
-        if (score >= 6) return '🙂';
-        if (score === 5) return '😐';
-        if (score >= 3) return '🙁';
-        return '😢';
+    function moodLabel(score) {
+        if (score >= 9) return 'Very happy';
+        if (score >= 7) return 'Happy';
+        if (score >= 6) return 'Okay';
+        if (score === 5) return 'Neutral';
+        if (score >= 3) return 'Low';
+        return 'Very low';
     }
 
     function updateValue() {
         var score = Number(slider.value);
-        valueDisplay.textContent = score + ' ' + moodEmoji(score);
+        valueDisplay.textContent = score + ' (' + moodLabel(score) + ')';
     }
 
     slider.addEventListener('input', updateValue);

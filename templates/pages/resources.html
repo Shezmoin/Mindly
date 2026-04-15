@@ -28,10 +28,11 @@
         position: relative;
     }
     .premium-crown {
-        width: 24px;
-        height: 24px;
-        vertical-align: middle;
-        margin-left: 6px;
+        color: #FFD166;
+        font-size: 1.2rem;
+        line-height: 1;
+        margin-left: 2px;
+        text-shadow: 0 0 1px rgba(122, 74, 0, 0.35);
     }
     .premium-upgrade-message {
         background: #FFF9E5;
@@ -64,7 +65,6 @@
                 <div class="card card-hover h-100 resource-card-free">
                     <div class="card-body p-4">
                         <div class="resource-header">
-                            <span class="fs-2" aria-hidden="true">{{ resource.icon_emoji }}</span>
                             <span class="h5 d-inline-block mx-2">{{ resource.title }}</span>
                         </div>
                         <div class="text-center mb-2">
@@ -91,10 +91,9 @@
                 <div class="card card-hover h-100 resource-card-premium" {% if not is_premium %}onclick="showPremiumMessage({{ forloop.counter0 }})" style="cursor:pointer;"{% endif %}>
                     <div class="card-body p-4">
                         <div class="resource-header" style="user-select:none;">
-                            <span class="fs-2" aria-hidden="true">{{ resource.icon_emoji }}</span>
                             <span class="h5 d-inline-block mx-2">{{ resource.title }}</span>
                             <br><span class="fw-bold" style="color:#2D6A4F; display:inline-flex; align-items:center; gap:4px; font-size:1.15rem;">
-                                Premium <span style="font-size:1.15rem; line-height:1; display:inline-block;">👑</span>
+                                Premium <i class="fas fa-crown premium-crown" aria-hidden="true"></i>
                             </span>
                         </div>
                         <div class="text-center mb-2">
