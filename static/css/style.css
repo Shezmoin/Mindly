@@ -294,9 +294,29 @@ footer.mindly-footer {
     color: #f8e3aa;
 }
 
+[data-theme="dark"] .support-card-body p,
+[data-theme="dark"] .support-card-body h3,
+[data-theme="dark"] .support-card-body h4,
+[data-theme="dark"] .support-card-body li,
+[data-theme="dark"] .support-card-body strong,
+[data-theme="dark"] .support-card-body small,
+[data-theme="dark"] .support-card-body .text-muted,
+[data-theme="dark"] .support-card-body .alert,
+[data-theme="dark"] .support-card-body .fw-bold,
+[data-theme="dark"] .support-card-body .btn-outline-primary,
+[data-theme="dark"] .support-card-body .premium-benefit-item {
+    color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .support-card-body .alert,
+[data-theme="dark"] .support-card-body .alert *,
+[data-theme="dark"] .support-card-body .alert i {
+    color: #1B4332 !important;
+}
+
 [data-theme="dark"] .premium-benefits-grid .premium-benefit-item {
     border-color: #6f8a7d;
-    color: #d8e7df;
+    color: #FFFFFF;
 }
 
 [data-theme="dark"] .premium-benefits-grid .premium-benefit-item i {

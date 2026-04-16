@@ -71,3 +71,13 @@
   2. Observe the navbar active state.
   3. Confirm only "Pricing" is underlined now.
 - Fix: Updated base navbar active-link condition so "Support Us" is active only for payments routes except pricing.
+
+### 7. Mood slider used 10 values but only displayed 6 mood states
+- Description: The mood slider allowed values from 1 to 10, but the displayed current-value feedback collapsed those into only 6 emoji states, which made the feedback inconsistent and unclear.
+- Expected: All 10 slider positions should map cleanly to displayed mood states, and the helper text should describe the same emotional scale shown to the user.
+- Status: Fixed
+- Steps to Reproduce:
+  1. Open the mood logging page.
+  2. Move the slider across all positions from 1 to 10.
+  3. Confirm each position now shows a distinct emoji/text state and the helper text matches the emotional scale.
+- Fix: Replaced the compressed 6-state display logic with a full 10-step emoji mapping and updated the helper copy.
