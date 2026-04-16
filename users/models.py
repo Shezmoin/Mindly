@@ -8,6 +8,9 @@ class CustomUser(AbstractUser):
     bio = models.TextField(blank=True)
     profile_picture = models.ImageField(blank=True, null=True)
 
+    def __str__(self):
+        return self.username
+
 
 class UserProfile(models.Model):
     TIER_FREE = 'free'

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout Error — Mindly{% endblock %}
+
+{% block content %}
+<div class="container text-center my-5">
+    <h1 class="display-6 mb-3">{{ error_title|default:'Checkout unavailable' }}</h1>
+    <p class="lead mb-4">{{ error_message|default:'We could not start checkout at the moment.' }}</p>
+    <div class="d-flex justify-content-center gap-2 flex-wrap">
+        <a href="{% url 'payments:pricing' %}" class="btn btn-primary btn-lg">Try Again</a>
+        <a href="{% url 'pages:home' %}" class="btn btn-outline-primary btn-lg">Return to Home</a>
+    </div>
+</div>
+{% endblock %}

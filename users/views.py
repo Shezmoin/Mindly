@@ -9,6 +9,7 @@ from .models import UserProfile
 
 
 def register_view(request):
+    """Register a new user account and sign the user in."""
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -23,6 +24,7 @@ def register_view(request):
 
 
 def login_view(request):
+    """Authenticate a user and redirect to the requested destination."""
     next_url = request.GET.get('next') or request.POST.get('next') or 'pages:home'
 
     if request.user.is_authenticated:
@@ -42,11 +44,13 @@ def login_view(request):
 
 @login_required
 def profile_view(request):
+    """Render the logged-in user's profile page."""
     return render(request, 'users/profile.html')
 
 
 @login_required
 def profile_edit_view(request):
+    """Update profile fields for the logged-in user."""
     if request.method == 'POST':
         form = UserProfileEditForm(request.POST, instance=request.user)
         if form.is_valid():
@@ -61,6 +65,7 @@ def profile_edit_view(request):
 
 @login_required
 def cancel_premium_view(request):
+    """Downgrade a premium user back to the free subscription tier."""
     if request.method != 'POST':
         return redirect('users:profile')
 
@@ -80,6 +85,7 @@ def cancel_premium_view(request):
     return redirect('pages:home')
 
 def logout_view(request):
+    """Log out the current user and render the logout confirmation page."""
     if request.user.is_authenticated:
         auth.logout(request)
         messages.info(request, 'You have been logged out successfully.')

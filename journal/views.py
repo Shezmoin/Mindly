@@ -8,6 +8,7 @@ from .models import JournalEntry, MoodEntry
 
 @login_required
 def mood_delete_view(request, pk):
+    """Delete a selected mood entry for the logged-in user."""
     mood_entry = get_object_or_404(MoodEntry, pk=pk, user=request.user)
 
     if request.method == 'POST':
@@ -25,14 +26,13 @@ def mood_delete_view(request, pk):
 
 
 def index_view(request):
-    """
-    Placeholder view for journal index page.
-    """
+    """Render the Journal Hub overview page."""
     return render(request, 'journal/index.html')
 
 
 @login_required
 def mood_create_view(request):
+    """Create a new mood entry for the current user."""
     if request.method == 'POST':
         form = MoodEntryForm(request.POST)
         if form.is_valid():
@@ -49,12 +49,14 @@ def mood_create_view(request):
 
 @login_required
 def mood_list_view(request):
+    """List mood entries for the current user."""
     entries = MoodEntry.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'journal/mood_list.html', {'entries': entries})
 
 
 @login_required
 def journal_create_view(request):
+    """Create a journal entry while enforcing free-tier monthly limits."""
     user_profile = getattr(request.user, 'profile', None)
     is_free = getattr(user_profile, 'subscription_tier', 'free') == 'free'
     from datetime import datetime
@@ -85,6 +87,7 @@ def journal_create_view(request):
 
 @login_required
 def journal_list_view(request):
+    """List journal entries for the current user with title filtering."""
     query = request.GET.get('q', '')
     entries = JournalEntry.objects.filter(
         user=request.user,
@@ -95,12 +98,14 @@ def journal_list_view(request):
 
 @login_required
 def journal_detail_view(request, pk):
+    """Render a single journal entry owned by the current user."""
     entry = get_object_or_404(JournalEntry, pk=pk, user=request.user)
     return render(request, 'journal/journal_detail.html', {'entry': entry})
 
 
 @login_required
 def journal_edit_view(request, pk):
+    """Edit an existing journal entry owned by the current user."""
     journal_entry = get_object_or_404(JournalEntry, pk=pk, user=request.user)
 
     if request.method == 'POST':
@@ -127,6 +132,7 @@ def journal_edit_view(request, pk):
 
 @login_required
 def journal_delete_view(request, pk):
+    """Delete a journal entry owned by the current user."""
     journal_entry = get_object_or_404(JournalEntry, pk=pk, user=request.user)
 
     if request.method == 'POST':
