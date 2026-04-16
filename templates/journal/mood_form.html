@@ -12,12 +12,33 @@
         color: #1B4332;
     }
 
+    .mood-form-card h1,
+    .mood-form-card h2,
+    .mood-form-card h3 {
+        color: #1B4332;
+    }
+
+    .mood-helper-text {
+        color: #1B4332 !important;
+    }
+
+    [data-theme="dark"] .mood-helper-text {
+        color: #FFFFFF !important;
+    }
+
     #id_mood_score {
         accent-color: #1B4332;
+        background: transparent;
     }
 
     #id_mood_score::-webkit-slider-thumb {
         background: #1B4332;
+    }
+
+    #id_mood_score::-webkit-slider-runnable-track {
+        background: #BFE6D3;
+        border-radius: 999px;
+        height: 0.45rem;
     }
 
     #id_mood_score::-moz-range-thumb {
@@ -25,21 +46,99 @@
         border: none;
     }
 
-    .mood-value-badge {
-        background-color: #1B4332;
-        color: #fff;
-        font-size: 1.2rem;
-        font-weight: 700;
-        padding: 0.45rem 0.7rem;
+    #id_mood_score::-moz-range-track {
+        background: #BFE6D3;
         border-radius: 999px;
+        height: 0.45rem;
+    }
+
+    .mood-current-value {
+        margin-top: 0.9rem;
+    }
+
+    .mood-value-label {
+        color: #1B4332;
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.55rem;
+    }
+
+    .mood-value-card {
+        align-items: center;
+        background: #E9F7E7;
+        border: 2px solid #2D6A4F;
+        border-radius: 18px;
+        display: inline-flex;
+        gap: 0.75rem;
+        min-width: 220px;
+        padding: 0.7rem 1rem;
+    }
+
+    .mood-value-emoji {
+        display: inline-block;
+        font-size: 1.9rem;
         line-height: 1;
+    }
+
+    .mood-value-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+        line-height: 1.2;
+    }
+
+    .mood-value-title {
+        color: #1B4332;
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+    }
+
+    .mood-value-desc {
+        color: #1B4332;
+        font-size: 1.05rem;
+        font-weight: 700;
+    }
+
+    [data-theme="dark"] .mood-form-card,
+    [data-theme="dark"] .mood-form-card p,
+    [data-theme="dark"] .mood-form-card label,
+    [data-theme="dark"] .mood-form-card .form-label,
+    [data-theme="dark"] .mood-form-card .mood-current-value,
+    [data-theme="dark"] .mood-form-card h1,
+    [data-theme="dark"] .mood-form-card h2,
+    [data-theme="dark"] .mood-form-card h3,
+    [data-theme="dark"] .mood-value-label,
+    [data-theme="dark"] .mood-value-title,
+    [data-theme="dark"] .mood-value-desc {
+        color: #FFFFFF;
+    }
+
+    [data-theme="dark"] #id_mood_score::-webkit-slider-runnable-track {
+        background: #F4FFF9;
+    }
+
+    [data-theme="dark"] #id_mood_score::-moz-range-track {
+        background: #F4FFF9;
+    }
+
+    [data-theme="dark"] .mood-value-card {
+        background: #224233;
+        border-color: #95D5B2;
+    }
+
+    [data-theme="dark"] .mood-form-card textarea,
+    [data-theme="dark"] .mood-form-card input,
+    [data-theme="dark"] .mood-form-card textarea::placeholder {
+        color: #F4FFF9;
     }
 </style>
 <div class="row justify-content-center">
     <div class="col-lg-7">
         <div class="card card-hover p-4 mood-form-card">
             <h1 class="h3 mb-3">Log Your Mood</h1>
-            <p class="mb-4">Use the slider to choose your mood score from 1 (low) to 10 (great).</p>
+            <p class="mb-4 mood-helper-text">Use the slider to show how you feel today, from very low to very happy.</p>
 
             <form method="post" novalidate>
                 {% csrf_token %}
@@ -48,7 +147,14 @@
                     <label for="id_mood_score" class="form-label fw-semibold">Mood Score</label>
                     {{ form.mood_score }}
                     <div class="mt-2 mood-current-value">
-                        Current value: <span id="mood-score-value" class="badge mood-value-badge">🙂 (Okay)</span>
+                        <span class="mood-value-label">Current value</span>
+                        <div class="mood-value-card">
+                            <span id="mood-score-emoji" class="mood-value-emoji" aria-hidden="true">😐</span>
+                            <div class="mood-value-text">
+                                <span class="mood-value-title">Today's mood</span>
+                                <span id="mood-score-value" class="mood-value-desc">Steady</span>
+                            </div>
+                        </div>
                     </div>
                     {% if form.mood_score.errors %}
                         <div class="text-danger small mt-2">{{ form.mood_score.errors|join:', ' }}</div>
@@ -77,24 +183,35 @@
 <script>
 (function () {
     var slider = document.getElementById('id_mood_score');
+    var emojiDisplay = document.getElementById('mood-score-emoji');
     var valueDisplay = document.getElementById('mood-score-value');
 
-    if (!slider || !valueDisplay) {
+    if (!slider || !valueDisplay || !emojiDisplay) {
         return;
     }
 
     function moodDisplay(score) {
-        if (score >= 9) return '🤩 (Very happy)';
-        if (score >= 7) return '😄 (Happy)';
-        if (score === 6) return '🙂 (Okay)';
-        if (score === 5) return '😐 (Neutral)';
-        if (score >= 3) return '🙁 (Low)';
-        return '😢 (Very low)';
+        var moodMap = {
+            1: { emoji: '😣', label: 'Very low' },
+            2: { emoji: '😕', label: 'Low' },
+            3: { emoji: '🙁', label: 'Flat' },
+            4: { emoji: '😔', label: 'Heavy' },
+            5: { emoji: '😐', label: 'Steady' },
+            6: { emoji: '🙂', label: 'Okay' },
+            7: { emoji: '😊', label: 'Good' },
+            8: { emoji: '😄', label: 'Bright' },
+            9: { emoji: '😁', label: 'Great' },
+            10: { emoji: '🤩', label: 'Very happy' }
+        };
+
+        return moodMap[score] || moodMap[5];
     }
 
     function updateValue() {
         var score = Number(slider.value);
-        valueDisplay.textContent = moodDisplay(score);
+        var mood = moodDisplay(score);
+        emojiDisplay.textContent = mood.emoji;
+        valueDisplay.textContent = mood.label;
     }
 
     slider.addEventListener('input', updateValue);
