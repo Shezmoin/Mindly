@@ -14,13 +14,9 @@
     }
 
     .pricing-action-box {
-        width: 100%;
-        background-color: #2D6A4F;
-        color: #ffffff;
-        border-radius: 0.5rem;
-        padding: 0.66rem 1rem;
-        text-align: center;
-        font-weight: 600;
+        cursor: default;
+        pointer-events: none;
+        opacity: 1;
     }
 
     [data-theme="dark"] .pricing-green-text,
@@ -30,7 +26,7 @@
 </style>
 <div class="text-center mb-5">
     <h1 class="display-6 mb-2">Choose Your Plan</h1>
-    <p class="lead pricing-green-text">Start free and upgrade whenever you are ready.</p>
+    <p class="lead pricing-green-text page-hero-subtitle">Start free and upgrade whenever you are ready.</p>
 </div>
 
 <div class="row g-4 justify-content-center">
@@ -48,7 +44,7 @@
                 </ul>
                 <div class="mt-auto">
                     <div class="pricing-price fw-bold">£0<span class="fs-6 pricing-green-text">/month</span></div>
-                    <div class="pricing-action-box mt-3">No Subscription Reequired</div>
+                    <div class="btn btn-primary w-100 btn-lg pricing-action-box mt-3" role="button" aria-disabled="true">No Subscription Required</div>
                 </div>
             </div>
         </div>
