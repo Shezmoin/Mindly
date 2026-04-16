@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.index_view, name='index'),
     path('mood/new/', views.mood_create_view, name='mood-create'),
     path('mood/', views.mood_list_view, name='mood-list'),
+    path('mood/<int:pk>/edit/', views.mood_edit_view, name='mood-edit'),
     path('mood/<int:pk>/delete/', views.mood_delete_view, name='mood-delete'),
     path('entries/new/', views.journal_create_view, name='journal-create'),
     path('entries/', views.journal_list_view, name='journal-list'),

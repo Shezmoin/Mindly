@@ -95,6 +95,7 @@ Testing was conducted continuously throughout development using multiple methodo
 | Login | Reject invalid credentials  | ✅ Pass |
 | Logout | Clear session and redirect to home | ✅ Pass |
 | Profile View | Display authenticated user's profile | ✅ Pass |
+| Profile Edit | Update email and bio only | ✅ Pass |
 | Unauthorized Access | Redirect to login if not authenticated | ✅ Pass |
 
 ---
@@ -106,10 +107,10 @@ Testing was conducted continuously throughout development using multiple methodo
 | Create Entry | Submit mood score 1-10 with optional note | ✅ Pass |
 | Create Entry | Save with current timestamp | ✅ Pass |
 | View Entries | Display all entries in reverse chronological order | ✅ Pass |
-| View Entry | Show individual entry details | ✅ Pass |
+| Edit Entry | Update mood score and note | ✅ Pass |
+| Edit Entry | Reject edit access to other user's entry (404) | ✅ Pass |
 | Edit Entry | Update mood score | ✅ Pass |
 | Edit Entry | Update note text | ✅ Pass |
-| Edit Entry | Update modified timestamp | ✅ Pass |
 | Delete Entry | Remove entry after confirmation | ✅ Pass |
 | Data Privacy | Entries only visible to own user | ✅ Pass |
 
@@ -241,16 +242,36 @@ Tested across multiple device sizes using Chrome DevTools and real devices.
 
 ### **PEP8 Python Style Compliance**
 
-Flake8 run on payments app with results:
+Flake8 run on the full project with results:
 
 ```
-payments/views.py: Clean (no E501 violations after formatting)
+flake8 . : Clean (no E or W violations)
 ```
 
 **Key fixes applied:**
 - Line length wrapped to <79 characters
 - Proper indentation and spacing
 - Meaningful variable names
+
+### **Django System and Test Validation**
+
+Latest full validation run:
+
+```bash
+python manage.py check
+python manage.py test
+```
+
+Result:
+- System check identified no issues
+- Full test suite passed cleanly
+
+### **Planned Additional Validation (Post-MVP)**
+
+The following checks are intentionally scheduled for later release stages:
+- Heroku environment verification end-to-end
+- Stripe production-mode payment and webhook verification
+- PostgreSQL migration and runtime behavior verification
 
 ### **HTML Validation**
 

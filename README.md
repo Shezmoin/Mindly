@@ -207,7 +207,8 @@ Mindly follows WCAG accessibility best practices:
 * Secure user registration with username and email
 * Username-based login with password verification
 * Secure logout functionality
-* Profile page for logged-in users (view only)
+* Profile page for logged-in users with editable email and bio
+* Premium users can cancel subscription from the profile page
 * @login_required decorators on protected views
 * CSRF protection on all forms
 
@@ -217,7 +218,7 @@ Mindly follows WCAG accessibility best practices:
 * View all past mood entries in reverse chronological order
 * Edit mood entries to update score or note
 * Delete mood entries with confirmation
-* Mood entry metadata (date/time created and updated)
+* Mood entry metadata (date/time created)
 * Monthly journal limit for free users is enforced and clearly communicated
 * Responsive mood entry display across devices
 
@@ -268,6 +269,7 @@ Mindly follows WCAG accessibility best practices:
 ## **Future Features**
 * Expand the resource library with clinician-reviewed articles and downloadable worksheets.
 * Add searchable categories and saved favourites for premium users.
+* Complete final deployment and payment verification checks for Heroku, Stripe, and PostgreSQL.
 ### **User Experience Improvements**
 
 * Mood analytics with charts and trends
@@ -391,31 +393,31 @@ mindly/
 │   └── asgi.py                         # ASGI application
 ├── users/                              # Authentication & profile app
 │   ├── models.py                       # CustomUser, UserProfile models
-│   ├── views.py                        # Auth views (register, login, profile)
+│   ├── views.py                        # Auth views (register/login/logout), profile edit, premium cancellation
 │   ├── urls.py                         # User URLs
 │   ├── decorators.py                   # @premium_required decorator
 │   ├── tests.py                        # User model tests
 │   ├── forms.py                        # Auth forms
 │   └── templates/users/                # User templates
 ├── journal/                            # Journal app
-│   ├── models.py                       # JournalEntry model
-│   ├── views.py                        # Journal CRUD views
+│   ├── models.py                       # JournalEntry and MoodEntry models
+│   ├── views.py                        # Journal and mood CRUD views
 │   ├── urls.py                         # Journal URLs
 │   ├── tests.py                        # Journal tests
 │   └── templates/journal/              # Journal templates
-├── assessments/                        # Mood tracking app
-│   ├── models.py                       # (MoodEntry defined in journal/models.py)
-│   ├── views.py                        # Mood entry views
+├── assessments/                        # Assessment self-check tools
+│   ├── models.py                       # (No persisted models; tool definitions are in views)
+│   ├── views.py                        # Mood/stress/sleep self-check logic
 │   ├── urls.py                         # Assessment URLs
-│   └── tests.py                        # Mood tracking tests
+│   └── tests.py                        # Assessment tests
 ├── payments/                           # Payments & subscription
 │   ├── models.py                       # Payment models (minimal)
-│   ├── views.py                        # Stripe checkout, webhook
+│   ├── views.py                        # Stripe checkout, success recovery, webhook
 │   ├── urls.py                         # Payment URLs
 │   ├── tests.py                        # Payment tests
-│   └── templates/payments/             # Pricing, success pages
+│   └── templates/payments/             # Pricing, checkout, success/cancel/error pages
 ├── pages/                              # Static pages & premium resources
-│   ├── views.py                        # Home, pricing, premium resources
+│   ├── views.py                        # Home/about/dashboard, resources, premium resources
 │   ├── urls.py                         # Static page URLs
 │   ├── tests.py                        # Page tests
 │   └── templates/pages/                # Page templates
@@ -460,6 +462,10 @@ mindly/
 * **Git & GitHub** - Version control
 * **Windows/CMD** - Development environment
 * **VS Code** - Code editor
+
+### **Current Status Note**
+
+Core application functionality is implemented and actively tested. Additional staged checks for Heroku deployment, Stripe production behavior, and PostgreSQL verification are planned before final sign-off.
 
 ---
 
