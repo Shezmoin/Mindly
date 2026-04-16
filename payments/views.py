@@ -45,21 +45,12 @@ def _upgrade_user_to_premium_from_session(session_data):
 
 
 def index_view(request):
-    """
-    Main payments support page showing both donation and subscription options.
-
-    Displays:
-    - One-time donation options (£5, £10, £25, custom)
-    - Premium subscription at £9.99/month
-    - FAQ section
-    """
+    """Render the payments support page with donation and premium options."""
     return render(request, 'payments/index.html')
 
 
 def pricing_view(request):
-    """
-    Pricing page showing Free and Premium plans.
-    """
+    """Render the pricing page for free and premium plans."""
     context = {
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
     }
@@ -67,13 +58,7 @@ def pricing_view(request):
 
 
 def donate_view(request):
-    """
-    Donation form page for one-time payments in GBP.
-
-    GET: Displays donation form with preset amounts (£5/10/25/50)
-    and custom option
-    POST: Processes donation and redirects to Stripe checkout
-    """
+    """Render and process one-time donation checkout requests."""
     if request.method == 'POST':
         try:
             # Get donation amount from form
@@ -144,10 +129,7 @@ def donate_view(request):
 
 
 def subscribe_view(request):
-    """
-    Legacy subscription endpoint.
-    Redirects to pricing on GET and to checkout on POST.
-    """
+    """Handle legacy subscription routing for pricing and checkout."""
     if request.method == 'POST':
         return redirect('payments:checkout')
     return redirect('payments:pricing')
@@ -155,9 +137,7 @@ def subscribe_view(request):
 
 @login_required
 def checkout_view(request):
-    """
-    Create Stripe Checkout Session for premium subscription and redirect.
-    """
+    """Create a Stripe Checkout session for premium subscriptions."""
     success_url = request.build_absolute_uri(reverse('payments:success')) + '?type=subscription&session_id={CHECKOUT_SESSION_ID}'
     cancel_url = request.build_absolute_uri(reverse('payments:cancel'))
 
@@ -182,19 +162,32 @@ def checkout_view(request):
     try:
         session = stripe.checkout.Session.create(**session_kwargs)
         return HttpResponseRedirect(session.url)
-    except Exception:
-        messages.error(
+    except stripe.error.StripeError as exc:
+        logger.exception('Stripe checkout setup failed: %s', exc)
+        return render(
             request,
-            'Unable to start checkout right now. Please try again.',
+            'payments/checkout_error.html',
+            {
+                'error_title': 'Checkout is temporarily unavailable',
+                'error_message': 'We could not start secure checkout right now. Please try again shortly.',
+            },
+            status=503,
         )
-        return redirect('payments:pricing')
+    except Exception as exc:
+        logger.exception('Unexpected checkout setup error: %s', exc)
+        return render(
+            request,
+            'payments/checkout_error.html',
+            {
+                'error_title': 'Something went wrong',
+                'error_message': 'An unexpected issue occurred while starting checkout. Please try again.',
+            },
+            status=500,
+        )
 
 
 def success_view(request):
-    """
-    Payment success confirmation page.
-    Displayed after successful Stripe checkout (donation or subscription).
-    """
+    """Render the payment success page and finalize subscription upgrades."""
     payment_type = request.GET.get('type', '')
 
     if payment_type == 'subscription' and request.user.is_authenticated:
@@ -211,22 +204,14 @@ def success_view(request):
 
 
 def cancel_view(request):
-    """
-    Payment cancellation page.
-    Displayed when user cancels Stripe checkout.
-    """
+    """Render the checkout cancellation page."""
     return render(request, 'payments/cancel.html')
 
 
 @csrf_exempt
 @require_POST
 def webhook_view(request):
-    """
-    Stripe webhook endpoint.
-
-    Verifies Stripe signature and upgrades users to premium after
-    checkout.session.completed events.
-    """
+    """Handle Stripe webhook events and apply subscription upgrades."""
     payload = request.body
     sig_header = (request.META.get('HTTP_STRIPE_SIGNATURE', '') or '').strip()
     endpoint_secret = (settings.STRIPE_WEBHOOK_SECRET or '').strip()

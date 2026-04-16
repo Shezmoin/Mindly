@@ -87,6 +87,7 @@ def build_result(tool_key, total_score):
 
 
 def index_view(request):
+    """Render assessment tools and compute optional posted results."""
     selected_key = request.POST.get('assessment_type') or request.GET.get('tool', 'mood')
     if selected_key not in ASSESSMENTS:
         selected_key = 'mood'

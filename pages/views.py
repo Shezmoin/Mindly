@@ -8,32 +8,17 @@ from users.models import UserProfile
 
 
 def home_view(request):
-    """
-    Renders the homepage with welcome content and feature overview.
-
-    Args:
-        request: The HTTP request object
-
-    Returns:
-        Rendered home.html template
-    """
+    """Render the homepage with core Mindly highlights."""
     return render(request, 'pages/home.html')
 
 
 def about_view(request):
-    """
-    Renders the about page with mission, values, and platform information.
-
-    Args:
-        request: The HTTP request object
-
-    Returns:
-        Rendered about.html template
-    """
+    """Render the about page with mission and platform information."""
     return render(request, 'pages/about.html')
 
 
 def resources_view(request):
+    """Render free and premium resource cards with user access flags."""
     # Mark premium resources
     resources = [
         {
@@ -84,34 +69,41 @@ def resources_view(request):
     return render(request, 'pages/resources.html', {'resources': resources, 'is_premium': is_premium})
 
 def resource_anxiety_view(request):
+    """Render the anxiety resource detail page."""
     return render(request, 'pages/resources/anxiety.html')
 
 def resource_depression_view(request):
+    """Render the depression resource detail page."""
     return render(request, 'pages/resources/depression.html')
 
 
 @login_required
 @premium_required
 def resource_mindfulness_view(request):
+    """Render the premium mindfulness resource detail page."""
     return render(request, 'pages/resources/mindfulness.html')
 
 
 @login_required
 @premium_required
 def resource_sleep_view(request):
+    """Render the premium sleep resource detail page."""
     return render(request, 'pages/resources/sleep.html')
 
 def resource_stress_view(request):
+    """Render the stress resource detail page."""
     return render(request, 'pages/resources/stress.html')
 
 
 @login_required
 @premium_required
 def resource_selfcare_view(request):
+    """Render the premium self-care resource detail page."""
     return render(request, 'pages/resources/selfcare.html')
 
 @login_required
 def dashboard_view(request):
+    """Render the authenticated user dashboard with profile context."""
     user_profile, _ = UserProfile.objects.get_or_create(user=request.user)
     context = {
         'user_profile': user_profile,
@@ -122,4 +114,5 @@ def dashboard_view(request):
 @login_required
 @premium_required
 def premium_resources_view(request):
+    """Render the premium-only resources landing page."""
     return render(request, 'pages/premium_resources.html')
