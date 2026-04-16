@@ -208,6 +208,39 @@ class JournalViewsTests(TestCase):
 		self.assertEqual(entries.first().mood_score, 7)
 		self.assertEqual(entries.first().note, 'Feeling great today')
 
+	def test_mood_edit_updates_only_current_users_entry(self):
+		entry = MoodEntry.objects.create(
+			user=self.user,
+			mood_score=5,
+			note='Before update',
+		)
+
+		self.client.force_login(self.user)
+		response = self.client.post(
+			reverse('journal:mood-edit', args=[entry.pk]),
+			{'mood_score': 8, 'note': 'After update'},
+		)
+
+		self.assertEqual(response.status_code, 302)
+		self.assertEqual(response.url, reverse('journal:mood-list'))
+
+		entry.refresh_from_db()
+		self.assertEqual(entry.mood_score, 8)
+		self.assertEqual(entry.note, 'After update')
+		self.assertEqual(entry.user, self.user)
+
+	def test_mood_edit_returns_404_for_other_users_entry(self):
+		entry = MoodEntry.objects.create(
+			user=self.other_user,
+			mood_score=4,
+			note='Other user mood',
+		)
+
+		self.client.force_login(self.user)
+		response = self.client.get(reverse('journal:mood-edit', args=[entry.pk]))
+
+		self.assertEqual(response.status_code, 404)
+
 	def test_free_user_cannot_create_more_than_five_journal_entries_in_a_month(self):
 		self.client.force_login(self.user)
 

@@ -34,6 +34,7 @@
                         </td>
                         <td>{{ entry.note|default:"-" }}</td>
                         <td>
+                            <a href="{% url 'journal:mood-edit' entry.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
                             <a href="{% url 'journal:mood-delete' entry.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
                         </td>
                     </tr>

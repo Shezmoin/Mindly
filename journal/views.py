@@ -48,6 +48,33 @@ def mood_create_view(request):
 
 
 @login_required
+def mood_edit_view(request, pk):
+    """Edit a mood entry owned by the current user."""
+    mood_entry = get_object_or_404(MoodEntry, pk=pk, user=request.user)
+
+    if request.method == 'POST':
+        form = MoodEntryForm(request.POST, instance=mood_entry)
+        if form.is_valid():
+            updated_entry = form.save(commit=False)
+            updated_entry.user = request.user
+            updated_entry.save()
+            messages.success(request, 'Mood entry updated successfully.')
+            return redirect('journal:mood-list')
+    else:
+        form = MoodEntryForm(instance=mood_entry)
+
+    return render(
+        request,
+        'journal/mood_form.html',
+        {
+            'form': form,
+            'is_edit': True,
+            'entry': mood_entry,
+        },
+    )
+
+
+@login_required
 def mood_list_view(request):
     """List mood entries for the current user."""
     entries = MoodEntry.objects.filter(user=request.user).order_by('-created_at')
