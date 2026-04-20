@@ -93,6 +93,23 @@ footer.mindly-footer {
     margin: 0 0.15rem;
 }
 
+.navbar-nav .nav-link-button {
+    display: block;
+    width: 100%;
+    padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+    text-align: left;
+    line-height: var(--bs-nav-link-line-height);
+    font: inherit;
+    color: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+}
+
+.navbar-nav .nav-logout-form {
+    margin: 0;
+}
+
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-link.active {
     color: #FFFFFF !important;
