@@ -2,6 +2,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import redirect, render
+from django.views.decorators.http import require_POST
 
 from .forms import UserProfileEditForm, UserRegistrationForm
 from .models import UserProfile
@@ -83,9 +84,10 @@ def cancel_premium_view(request):
     return redirect('pages:home')
 
 
+@login_required
+@require_POST
 def logout_view(request):
     """Log out the current user and render the logout confirmation page."""
-    if request.user.is_authenticated:
-        auth.logout(request)
-        messages.info(request, 'You have been logged out successfully.')
+    auth.logout(request)
+    messages.info(request, 'You have been logged out successfully.')
     return render(request, 'users/logout.html')

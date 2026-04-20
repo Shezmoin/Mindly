@@ -1,3 +1,4 @@
+from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -86,8 +87,6 @@ def journal_create_view(request):
     """Create a journal entry while enforcing free-tier monthly limits."""
     user_profile = getattr(request.user, 'profile', None)
     is_free = getattr(user_profile, 'subscription_tier', 'free') == 'free'
-
-    from datetime import datetime
 
     now = datetime.now()
     current_month_entries = JournalEntry.objects.filter(
