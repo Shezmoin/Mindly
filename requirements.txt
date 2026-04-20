@@ -6,6 +6,7 @@ click==8.3.0
 colorama==0.4.6
 crispy-bootstrap5==0.7
 distlib==0.4.0
+dj-database-url==3.1.2
 Django==4.2
 django-crispy-forms==2.0
 filelock==3.25.2
