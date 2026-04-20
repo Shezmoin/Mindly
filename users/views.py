@@ -7,7 +7,6 @@ from .forms import UserProfileEditForm, UserRegistrationForm
 from .models import UserProfile
 
 
-
 def register_view(request):
     """Register a new user account and sign the user in."""
     if request.method == 'POST':
@@ -20,7 +19,6 @@ def register_view(request):
         form = UserRegistrationForm()
 
     return render(request, 'users/register.html', {'form': form})
-
 
 
 def login_view(request):
@@ -83,6 +81,7 @@ def cancel_premium_view(request):
         'You can join back any time and continue using free content.',
     )
     return redirect('pages:home')
+
 
 def logout_view(request):
     """Log out the current user and render the logout confirmation page."""

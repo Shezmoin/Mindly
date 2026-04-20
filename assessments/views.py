@@ -26,7 +26,10 @@ ASSESSMENTS = {
     },
     'sleep': {
         'title': 'Sleep Habits Check',
-        'summary': 'A practical review of whether your current routine is supporting restful sleep.',
+        'summary': (
+            'A practical review of whether your current routine is '
+            'supporting restful sleep.'
+        ),
         'accent': '#D4A017',
         'questions': [
             {'name': 'q1', 'text': 'I have struggled to fall asleep at a reasonable time.'},
@@ -56,26 +59,73 @@ def build_result(tool_key, total_score):
 
     guidance = {
         'mood': {
-            'Low concern': 'Your answers suggest your mood is relatively steady right now. Keep using routines that support rest, structure, and connection.',
-            'Moderate concern': 'Your answers suggest some strain in mood. It may help to reduce pressure, keep a gentle routine, and speak to someone you trust.',
-            'Higher concern': 'Your answers suggest your mood may need closer support. If these feelings continue or worsen, speaking with a GP or qualified professional would be a sensible next step.',
+            'Low concern': (
+                'Your answers suggest your mood is relatively steady right '
+                'now. Keep using routines that support rest, structure, '
+                'and connection.'
+            ),
+            'Moderate concern': (
+                'Your answers suggest some strain in mood. It may help to '
+                'reduce pressure, keep a gentle routine, and speak to '
+                'someone you trust.'
+            ),
+            'Higher concern': (
+                'Your answers suggest your mood may need closer support. '
+                'If these feelings continue or worsen, speaking with a GP '
+                'or qualified professional would be a sensible next step.'
+            ),
         },
         'stress': {
-            'Low concern': 'Your responses suggest stress is present but may be manageable. Short breaks, movement, and realistic boundaries can help keep it that way.',
-            'Moderate concern': 'Your stress levels may be building. It could help to identify the main pressure points and choose one practical action to reduce overload.',
-            'Higher concern': 'Your responses suggest stress may be affecting your wellbeing more strongly. Consider reaching out for support and reviewing workload, sleep, and recovery time.',
+            'Low concern': (
+                'Your responses suggest stress is present but may be '
+                'manageable. Short breaks, movement, and realistic '
+                'boundaries can help keep it that way.'
+            ),
+            'Moderate concern': (
+                'Your stress levels may be building. It could help to '
+                'identify the main pressure points and choose one '
+                'practical action to reduce overload.'
+            ),
+            'Higher concern': (
+                'Your responses suggest stress may be affecting your '
+                'wellbeing more strongly. Consider reaching out for '
+                'support and reviewing workload, sleep, and recovery time.'
+            ),
         },
         'sleep': {
-            'Low concern': 'Your sleep habits look reasonably steady. A consistent wake-up time and calm evening routine can help maintain that progress.',
-            'Moderate concern': 'Your answers suggest your sleep routine may need some attention. Small changes to bedtime habits and screen use may help.',
-            'Higher concern': 'Your answers suggest sleep difficulties may be having a stronger impact. If the pattern continues, it would be sensible to speak with a healthcare professional.',
+            'Low concern': (
+                'Your sleep habits look reasonably steady. A consistent '
+                'wake-up time and calm evening routine can help maintain '
+                'that progress.'
+            ),
+            'Moderate concern': (
+                'Your answers suggest your sleep routine may need some '
+                'attention. Small changes to bedtime habits and screen use '
+                'may help.'
+            ),
+            'Higher concern': (
+                'Your answers suggest sleep difficulties may be having a '
+                'stronger impact. If the pattern continues, it would be '
+                'sensible to speak with a healthcare professional.'
+            ),
         },
     }
 
     next_steps = {
-        'mood': 'Suggested next step: choose one small, supportive action today such as getting outside, messaging someone you trust, or completing one manageable task.',
-        'stress': 'Suggested next step: write down the top one or two stressors and decide what can be done today, what can wait, and what support may be needed.',
-        'sleep': 'Suggested next step: try a calmer wind-down routine tonight and keep your wake-up time consistent tomorrow morning.',
+        'mood': (
+            'Suggested next step: choose one small, supportive action '
+            'today such as getting outside, messaging someone you trust, '
+            'or completing one manageable task.'
+        ),
+        'stress': (
+            'Suggested next step: write down the top one or two stressors '
+            'and decide what can be done today, what can wait, and what '
+            'support may be needed.'
+        ),
+        'sleep': (
+            'Suggested next step: try a calmer wind-down routine tonight '
+            'and keep your wake-up time consistent tomorrow morning.'
+        ),
     }
 
     return {

@@ -4,28 +4,38 @@ from django.db import models
 
 
 class MoodEntry(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='mood_entries')
-	mood_score = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10)])
-	note = models.TextField(blank=True)
-	created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='mood_entries',
+    )
+    mood_score = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(10)],
+    )
+    note = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
-	class Meta:
-		ordering = ['-created_at']
+    class Meta:
+        ordering = ['-created_at']
 
-	def __str__(self):
-		return f"{self.user.username} mood {self.mood_score}"
+    def __str__(self):
+        return f"{self.user.username} mood {self.mood_score}"
 
 
 class JournalEntry(models.Model):
-	user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='journal_entries')
-	title = models.CharField(max_length=200)
-	content = models.TextField()
-	is_private = models.BooleanField(default=True)
-	created_at = models.DateTimeField(auto_now_add=True)
-	updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='journal_entries',
+    )
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    is_private = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
-	class Meta:
-		ordering = ['-created_at']
+    class Meta:
+        ordering = ['-created_at']
 
-	def __str__(self):
-		return self.title
+    def __str__(self):
+        return self.title
