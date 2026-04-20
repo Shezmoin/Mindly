@@ -80,7 +80,10 @@
 
             <div class="mt-4 text-center d-flex justify-content-center gap-2 flex-wrap">
                 <a href="{% url 'users:profile-edit' %}" class="btn btn-mindly">Edit Profile</a>
-                <a href="{% url 'users:logout' %}" class="btn btn-mindly">Log Out</a>
+                <form method="post" action="{% url 'users:logout' %}" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-mindly">Log Out</button>
+                </form>
                 {% if is_premium_user %}
                     <form method="post" action="{% url 'users:cancel-premium' %}" class="d-inline" id="cancel-premium-form">
                         {% csrf_token %}
