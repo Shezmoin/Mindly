@@ -93,9 +93,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <form method="post" action="{% url 'users:logout' %}" class="d-inline">
+                            <form method="post" action="{% url 'users:logout' %}" class="nav-logout-form m-0">
                                 {% csrf_token %}
-                                <button type="submit" class="nav-link btn btn-link p-0 border-0">Logout</button>
+                                <button type="submit" class="nav-link nav-link-button border-0">Logout</button>
                             </form>
                         </li>
                     {% else %}
