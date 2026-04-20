@@ -138,7 +138,10 @@ def subscribe_view(request):
 @login_required
 def checkout_view(request):
     """Create a Stripe Checkout session for premium subscriptions."""
-    success_url = request.build_absolute_uri(reverse('payments:success')) + '?type=subscription&session_id={CHECKOUT_SESSION_ID}'
+    success_url = (
+        request.build_absolute_uri(reverse('payments:success'))
+        + '?type=subscription&session_id={CHECKOUT_SESSION_ID}'
+    )
     cancel_url = request.build_absolute_uri(reverse('payments:cancel'))
 
     session_kwargs = {
@@ -169,7 +172,10 @@ def checkout_view(request):
             'payments/checkout_error.html',
             {
                 'error_title': 'Checkout is temporarily unavailable',
-                'error_message': 'We could not start secure checkout right now. Please try again shortly.',
+                'error_message': (
+                    'We could not start secure checkout right now. '
+                    'Please try again shortly.'
+                ),
             },
             status=503,
         )
@@ -180,7 +186,10 @@ def checkout_view(request):
             'payments/checkout_error.html',
             {
                 'error_title': 'Something went wrong',
-                'error_message': 'An unexpected issue occurred while starting checkout. Please try again.',
+                'error_message': (
+                    'An unexpected issue occurred while starting '
+                    'checkout. Please try again.'
+                ),
             },
             status=500,
         )

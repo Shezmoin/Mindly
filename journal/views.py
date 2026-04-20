@@ -86,16 +86,22 @@ def journal_create_view(request):
     """Create a journal entry while enforcing free-tier monthly limits."""
     user_profile = getattr(request.user, 'profile', None)
     is_free = getattr(user_profile, 'subscription_tier', 'free') == 'free'
+
     from datetime import datetime
+
     now = datetime.now()
     current_month_entries = JournalEntry.objects.filter(
         user=request.user,
         created_at__year=now.year,
-        created_at__month=now.month
+        created_at__month=now.month,
     ).count()
 
     if is_free and current_month_entries >= 5:
-        messages.error(request, 'Free users can only create 5 journal entries per month. Upgrade to Premium for unlimited entries!')
+        messages.error(
+            request,
+            'Free users can only create 5 journal entries per month. '
+            'Upgrade to Premium for unlimited entries!',
+        )
         return redirect('journal:journal-list')
 
     if request.method == 'POST':

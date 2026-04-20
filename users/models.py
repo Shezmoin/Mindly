@@ -20,8 +20,16 @@ class UserProfile(models.Model):
         (TIER_PREMIUM, 'Premium'),
     ]
 
-    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='profile')
-    subscription_tier = models.CharField(max_length=10, choices=SUBSCRIPTION_CHOICES, default=TIER_FREE)
+    user = models.OneToOneField(
+        CustomUser,
+        on_delete=models.CASCADE,
+        related_name='profile',
+    )
+    subscription_tier = models.CharField(
+        max_length=10,
+        choices=SUBSCRIPTION_CHOICES,
+        default=TIER_FREE,
+    )
     joined_date = models.DateField(auto_now_add=True)
     reminder_time = models.TimeField(blank=True, null=True)
 
