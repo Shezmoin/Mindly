@@ -399,6 +399,12 @@ footer.mindly-footer {
 }
 
 @media (max-width: 767.98px) {
+    .page-hero-subtitle {
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
     .footer-quick-links {
         text-align: center !important;
     }
