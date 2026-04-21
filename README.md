@@ -4,9 +4,9 @@
 
 Mindly is a full-stack web application that empowers users to track their mental wellbeing, journal their thoughts, and access premium support services. The platform combines mood tracking, journaling, and optional premium content behind a secure Stripe subscription system.
 
-This project demonstrates professional backend development, full-stack integration, relational database design, payment processing, and industry-standard security practices using Django 4.2, Bootstrap 5, SQLite, and Stripe payment processing.
+This project demonstrates professional backend development, full-stack integration, relational database design, payment processing, and industry-standard security practices using Django 4.2, Bootstrap 5, SQLite, and Stripe.
 
-Screenshot placeholder pending upload: `docs/screenshots/dashboard-overview.png`
+Screenshot placeholder pending upload: `docs/screenshots/readme-01-dashboard-overview.png`
 
 ---
 
@@ -21,7 +21,7 @@ Screenshot placeholder pending upload: `docs/screenshots/dashboard-overview.png`
     <ul style="list-style-type: disc;">
       <li><a href="#user-stories">User Stories</a></li>
       <li><a href="#first-time-users">First-time Users</a></li>
-      <li><a href="#returning-premium-users">Returning & Premium Users</a></li>
+      <li><a href="#returning-premium-users">Returning Premium Users</a></li>
     </ul>
   </li>
   <li><a href="#design">Design</a>
@@ -49,8 +49,10 @@ Screenshot placeholder pending upload: `docs/screenshots/dashboard-overview.png`
   <li><a href="#testing">Testing</a></li>
   <li><a href="#errors">Errors</a></li>
   <li><a href="#deployment">Deployment</a></li>
+  <li><a href="#security">Security</a></li>
   <li><a href="#stripe-integration">Stripe Integration</a></li>
-  <li><a href="#credits">Credits</a></li>
+  <li><a href="#credits--acknowledgements">Credits & Acknowledgements</a></li>
+  <li><a href="#known-bugs">Known Bugs</a></li>
 </ol>
 
 ---
@@ -79,11 +81,11 @@ The live application is available here: [**Mindly on Heroku**](https://mindly-sh
 
 The following screenshots are still pending capture/upload and should be added under `docs/screenshots/`:
 
-* Home page: `docs/screenshots/home.png`
-* Dashboard page: `docs/screenshots/dashboard.png`
-* Journal index/page: `docs/screenshots/journal.png`
-* Mood form page: `docs/screenshots/mood-form.png`
-* Pricing page: `docs/screenshots/pricing.png`
+* Home page: `docs/screenshots/readme-02-home-page.png`
+* Dashboard page: `docs/screenshots/readme-03-dashboard-page.png`
+* Journal index/page: `docs/screenshots/readme-04-journal-page.png`
+* Mood form page: `docs/screenshots/readme-05-mood-form-page.png`
+* Pricing page: `docs/screenshots/readme-06-pricing-page.png`
 
 ---
 
@@ -133,7 +135,7 @@ The following screenshots are still pending capture/upload and should be added u
 
 ---
 
-### **Returning & Premium Users**
+### **Returning Premium Users**
 
 * As a returning user, I want to log in securely and access my personal data immediately.
 * As a returning user, I want to create, edit, and delete my mood entries and journal entries.
@@ -149,7 +151,7 @@ The following screenshots are still pending capture/upload and should be added u
 
 Mindly is designed to be calm, supportive, and user-friendly. The interface prioritises clarity, accessibility, and ease of use to encourage consistent wellbeing tracking and journaling without overwhelming the user.
 
-Screenshot placeholder pending upload: `docs/screenshots/design-overview.png`
+Screenshot placeholder pending upload: `docs/screenshots/readme-07-design-overview.png`
 
 ---
 
@@ -157,7 +159,7 @@ Screenshot placeholder pending upload: `docs/screenshots/design-overview.png`
 
 A warm, supportive colour palette is chosen to create a positive, welcoming environment that encourages mental health reflection and action.
 
-Screenshot placeholder pending upload: `docs/screenshots/colour-scheme-chart.png`
+Screenshot placeholder pending upload: `docs/screenshots/readme-08-colour-scheme-chart.png`
 
 #### **Primary Colours:**
 
@@ -182,7 +184,7 @@ Screenshot placeholder pending upload: `docs/screenshots/colour-scheme-chart.png
 * **Body Text:** Soft, approachable sans-serif for calm reading experience.
 * **Font Family:** System fonts optimized for accessibility and performance.
 
-Screenshot placeholder pending upload: `docs/screenshots/typography-examples.png`
+Screenshot placeholder pending upload: `docs/screenshots/readme-09-typography-examples.png`
 
 ---
 
@@ -513,12 +515,18 @@ mindly/
 ### **Frameworks, Libraries & Tools**
 
 * **Django 4.2** - Backend web framework
-* **Django ORM** - Object-relational mapping for database
-* **Django Template Language (DTL)** - Template engine
+* **django-crispy-forms** - Cleaner and consistent Django form rendering
+* **crispy-bootstrap5** - Bootstrap 5 template pack for crispy forms
 * **Bootstrap 5** - Responsive CSS framework
 * **SQLite** - Development database
+* **PostgreSQL (Heroku)** - Production relational database
+* **dj-database-url** - Database URL parsing for environment-based config
+* **psycopg2-binary** - PostgreSQL adapter used by Django on Heroku
 * **Stripe** - Payment processing
 * **Python Decouple** - Environment variable management
+* **WhiteNoise** - Static file serving in production
+* **Gunicorn** - Production WSGI HTTP server for Django
+* **Pillow** - Image processing support for profile image uploads
 * **Git & GitHub** - Version control
 * **Windows/CMD** - Development environment
 * **VS Code** - Code editor
@@ -533,7 +541,12 @@ Core application functionality is implemented and actively tested. Heroku deploy
 
 Comprehensive testing has been carried out to ensure functionality, security, usability, and reliability across all features.
 
+Automated Django test modules are maintained across the main apps (`users`, `journal`, `payments`, `pages`, `assessments`) and are run with `python manage.py test` as part of routine verification.
+
 See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including:
+
+* Automated test coverage summary
+* Manual test matrix (MT-01 to MT-10): [Jump to manual test table](./docs/TESTING.md#manual-test-matrix-mt-01-to-mt-10)
 
 * Testing strategy and methodology
 * User story validation
@@ -579,6 +592,20 @@ See [**DEPLOYMENT.md**](docs/DEPLOYMENT.md) for comprehensive deployment documen
 * Deployment verification steps
 * Troubleshooting guide
 
+For Heroku setup from scratch, follow the numbered production steps in [**DEPLOYMENT.md - Production Deployment (Heroku)**](./docs/DEPLOYMENT.md#production-deployment-heroku).
+
+---
+
+## **Security**
+
+Security controls are implemented in both code and deployment configuration:
+
+* **Environment variables**: Sensitive values are loaded from environment variables (`SECRET_KEY`, `DEBUG`, `ALLOWED_HOSTS`, Stripe keys, webhook secret)
+* **Production debug policy**: `DEBUG=False` is required for production deployments
+* **CSRF protection**: Django CSRF middleware is enabled and form submissions use CSRF tokens
+* **Stripe webhook verification**: Webhook signatures are verified with `STRIPE_WEBHOOK_SECRET` before processing events
+* **Transport/session hardening**: HTTPS redirect, secure cookies, and HSTS are enabled when `DEBUG=False`
+
 ---
 
 ## **Stripe Integration**
@@ -606,7 +633,7 @@ stripe login
 stripe listen --forward-to 127.0.0.1:8000/payments/webhook/
 ```
 
-See DEPLOYMENT.md for complete Stripe setup and testing instructions.
+See [**DEPLOYMENT.md**](./docs/DEPLOYMENT.md) for complete Stripe setup and testing instructions.
 
 ---
 
@@ -624,7 +651,7 @@ Mindly adheres to WCAG 2.1 AA accessibility standards:
 
 ---
 
-## **Credits**
+## **Credits & Acknowledgements**
 
 ### **Code**
 
@@ -637,6 +664,17 @@ All images are placeholders or placeholder sources. Final images to be sourced f
 ### **Acknowledgements**
 
 Developed as a professional portfolio project demonstrating full-stack development capabilities.
+
+---
+
+## **Known Bugs**
+
+No confirmed functional bugs are currently open in production-critical flows.
+
+Current known non-functional gaps:
+
+* README and testing/deployment screenshots are still placeholders pending capture/upload
+* Final visual evidence capture (validation and Lighthouse screenshots) is still pending documentation completion
 
 ---
 
