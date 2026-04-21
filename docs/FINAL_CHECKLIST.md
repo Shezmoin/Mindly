@@ -36,11 +36,14 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Confirm whether AI trace/chat records must be retained or removed before submission
 - [ ] If retained: move required summaries into approved documentation only
 - [ ] If removed: delete `docs/CHAT_HISTORY.md` and any unnecessary transcript artifacts before final commit
+- [ ] Final requirement: remove Project Chat History and any AI input traces before final submission
+- [ ] Final requirement: remove `docs/FINAL_CHECKLIST.md` itself at end of project cleanup, together with all remaining AI/chat trace artifacts
 
 ## D) Cleanup and Delivery Gate
 - [ ] Remove unused files/screenshots/error artifacts that are not part of final deliverables
 - [ ] Confirm sensitive content is not committed (keys, secrets, private traces)
 - [ ] Re-run final checks after cleanup changes
+- [ ] Final docs update: when all work is complete, update accessibility status line `Last Updated: April 1, 2026 Status: All accessibility improvements complete and tested` to the final completion date/status
 - [ ] Confirm working tree clean and release-ready
 
 ## E) Detailed Future Action Plan
