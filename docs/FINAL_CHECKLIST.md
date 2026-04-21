@@ -15,7 +15,9 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 
 ## B) On-Hold Items (to complete at the end)
 - [ ] Add README Stripe "Error Handling & Recovery" subsection (checkout error page, 404/500 pages, subscription recovery notes)
-- [ ] Replace README placeholder links (live app and screenshots)
+- [ ] Replace README screenshot placeholder links with real assets from `docs/screenshots/`
+- [ ] Capture and store required UI screenshots in `docs/screenshots/` (home, dashboard, journal, mood form, pricing)
+- [ ] Embed captured screenshots in README sections and verify links render correctly
 - [ ] Manual check: custom `404.html` rendering with `DEBUG=False` and valid `ALLOWED_HOSTS`
 - [ ] Manual check: custom `500.html` rendering with `DEBUG=False`
 - [ ] Manual check: Stripe checkout failure UX shows `templates/payments/checkout_error.html`
