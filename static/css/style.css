@@ -255,6 +255,10 @@ footer.mindly-footer {
     column-gap: 1.75rem;
 }
 
+.footer-about-col {
+    padding-left: 12.5rem;
+}
+
 .footer-quick-links-grid li {
     margin-bottom: 0.2rem;
 }
@@ -396,7 +400,11 @@ footer.mindly-footer {
 
 @media (max-width: 767.98px) {
     .footer-quick-links {
-        text-align: center;
+        text-align: center !important;
+    }
+
+    footer.mindly-footer .text-start {
+        text-align: center !important;
     }
 
     .footer-quick-links-grid {
@@ -418,10 +426,7 @@ footer.mindly-footer {
         margin-bottom: 1.5rem;
     }
 
-    footer.mindly-footer .col-md-4[style*="padding-left"],
-    footer.mindly-footer .col-lg-3[style*="padding-left"],
-    footer.mindly-footer .col-md-4[style*="padding-right"],
-    footer.mindly-footer .col-lg-3[style*="padding-right"] {
+    footer.mindly-footer .footer-about-col {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
