@@ -6,7 +6,7 @@ Mindly is a full-stack web application that empowers users to track their mental
 
 This project demonstrates professional backend development, full-stack integration, relational database design, payment processing, and industry-standard security practices using Django 4.2, Bootstrap 5, SQLite, and Stripe payment processing.
 
-[**[Screenshot: Dashboard Overview]**](#)
+Screenshot placeholder pending upload: `docs/screenshots/dashboard-overview.png`
 
 ---
 
@@ -73,7 +73,17 @@ The goal of this project was to design and build a full-stack mental health and 
 
 Mindly is deployed and accessible for public testing.
 
-The live application is available here: [**[Deployed Application Link]**](#)
+The live application is available here: [**Mindly on Heroku**](https://mindly-shez-9ca695ee4969.herokuapp.com/)
+
+### **Screenshot Placeholders (Pending Upload)**
+
+The following screenshots are still pending capture/upload and should be added under `docs/screenshots/`:
+
+* Home page: `docs/screenshots/home.png`
+* Dashboard page: `docs/screenshots/dashboard.png`
+* Journal index/page: `docs/screenshots/journal.png`
+* Mood form page: `docs/screenshots/mood-form.png`
+* Pricing page: `docs/screenshots/pricing.png`
 
 ---
 
@@ -139,7 +149,7 @@ The live application is available here: [**[Deployed Application Link]**](#)
 
 Mindly is designed to be calm, supportive, and user-friendly. The interface prioritises clarity, accessibility, and ease of use to encourage consistent wellbeing tracking and journaling without overwhelming the user.
 
-[**[Screenshot: Design Overview - Dashboard & Features]**](#)
+Screenshot placeholder pending upload: `docs/screenshots/design-overview.png`
 
 ---
 
@@ -147,7 +157,7 @@ Mindly is designed to be calm, supportive, and user-friendly. The interface prio
 
 A warm, supportive colour palette is chosen to create a positive, welcoming environment that encourages mental health reflection and action.
 
-[**[Screenshot: Colour Scheme Chart]**](#)
+Screenshot placeholder pending upload: `docs/screenshots/colour-scheme-chart.png`
 
 #### **Primary Colours:**
 
@@ -172,7 +182,7 @@ A warm, supportive colour palette is chosen to create a positive, welcoming envi
 * **Body Text:** Soft, approachable sans-serif for calm reading experience.
 * **Font Family:** System fonts optimized for accessibility and performance.
 
-[**[Screenshot: Typography Examples]**](#)
+Screenshot placeholder pending upload: `docs/screenshots/typography-examples.png`
 
 ---
 
@@ -269,7 +279,6 @@ Mindly follows WCAG accessibility best practices:
 ## **Future Features**
 * Expand the resource library with clinician-reviewed articles and downloadable worksheets.
 * Add searchable categories and saved favourites for premium users.
-* Complete final deployment and payment verification checks for Heroku, Stripe, and PostgreSQL.
 ### **User Experience Improvements**
 
 * Mood analytics with charts and trends
@@ -369,6 +378,57 @@ Longer-form reflection and journaling.
 - `CustomUser` → `MoodEntry` (1-to-many)
 - `CustomUser` → `JournalEntry` (1-to-many)
 
+### **ERD (ASCII)**
+
+```text
+┌──────────────────────┐
+│      CustomUser      │
+│ id (PK)              │
+│ username             │
+│ email                │
+│ ...                  │
+└─────────┬────────────┘
+          │ 1
+          │
+          │ 1
+┌─────────▼────────────┐
+│      UserProfile     │
+│ id (PK)              │
+│ user_id (FK, unique) │
+│ subscription_tier    │
+│ joined_date          │
+└──────────────────────┘
+
+┌──────────────────────┐
+│      CustomUser      │
+└─────────┬────────────┘
+          │ 1
+          │
+          │ N
+┌─────────▼────────────┐
+│       MoodEntry      │
+│ id (PK)              │
+│ user_id (FK)         │
+│ mood_score           │
+│ note                 │
+└──────────────────────┘
+
+┌──────────────────────┐
+│      CustomUser      │
+└─────────┬────────────┘
+          │ 1
+          │
+          │ N
+┌─────────▼────────────┐
+│     JournalEntry     │
+│ id (PK)              │
+│ user_id (FK)         │
+│ title                │
+│ content              │
+│ is_private           │
+└──────────────────────┘
+```
+
 All entries are scoped to logged-in user via `request.user` for data privacy.
 
 ---
@@ -465,7 +525,7 @@ mindly/
 
 ### **Current Status Note**
 
-Core application functionality is implemented and actively tested. Additional staged checks for Heroku deployment, Stripe production behavior, and PostgreSQL verification are planned before final sign-off.
+Core application functionality is implemented and actively tested. Heroku deployment, PostgreSQL setup, Stripe webhook delivery, and production verification checks have been completed.
 
 ---
 
