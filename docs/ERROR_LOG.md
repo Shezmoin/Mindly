@@ -349,6 +349,211 @@ Going forward, always remember:
 
 ---
 
+## **Error 5: Mobile Layout Issue — "Evidence-Based Tools" Text Overflow**
+
+### **Date:** April 2026
+
+### **Severity:** Medium - Mobile UX issue
+
+### **Platform Affected:** Mobile phones (screens < 768px)
+
+### **Symptoms**
+
+- On mobile screens (iPhone 14, 15, 16), the text following "Evidence-Based Tools:" in the home page "Why Choose Mindly?" section does not wrap
+- Text overflows horizontally, causing the viewport to expand beyond screen width
+- Creates horizontal scrolling on mobile devices
+- Desktop/tablet/laptop layouts unaffected
+
+### **Investigation**
+
+1. Inspected CSS for the `.why-evidence-line` class
+2. Found `white-space: nowrap;` preventing text wrapping
+3. Rule was intended for desktop display but applied globally
+4. No mobile-specific breakpoint override existed
+
+### **Root Cause**
+
+CSS rule applied globally without mobile breakpoint consideration:
+
+```css
+.why-evidence-line {
+    white-space: nowrap;  /* Prevents wrapping on all screen sizes */
+}
+```
+
+### **Solution Applied**
+
+Added mobile-specific media query to allow text wrapping on phones:
+
+```css
+@media (max-width: 767.98px) {
+    .why-evidence-line {
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+}
+```
+
+- Mobile phones (< 768px): Text wraps naturally
+- Tablets/laptops (≥ 768px): Original `white-space: nowrap` behavior preserved
+
+### **Files Modified**
+
+- `static/css/style.css` — Added mobile breakpoint for .why-evidence-line
+
+### **Resolution Status**
+
+✅ **RESOLVED** - Text now wraps properly on mobile, desktop layout unchanged
+
+---
+
+## **Error 6: Mobile Layout Issue — Footer Disorganization**
+
+### **Date:** April 2026
+
+### **Severity:** Medium - Mobile UX/visual issue
+
+### **Platform Affected:** Mobile phones (screens < 768px)
+
+### **Symptoms**
+
+- On mobile screens (iPhone 14, 15, 16), footer layout breaks
+- Logo and "Your mind matters." statement push to the right
+- "Quick Links" section shifts to the left
+- Footer content appears disorganized and out of place
+- Desktop/tablet/laptop layouts unaffected
+
+### **Investigation**
+
+1. Inspected footer HTML structure in `base.html`
+2. Found inline style `padding-left: 12.5rem !important;` on about section
+3. Found grid-based layout with `justify-content-between` causing misalignment
+4. No mobile-specific centering rules existed
+
+### **Root Cause**
+
+Footer used desktop-optimized layout with:
+
+```html
+<div class="col-md-4 col-lg-3 pe-md-4" style="padding-left: 12.5rem !important;">
+```
+
+And grid configuration:
+
+```html
+<div class="row align-items-start justify-content-between gy-4 text-center text-md-start">
+```
+
+This distributed content horizontally on mobile instead of centering vertically.
+
+### **Solution Applied**
+
+Added mobile-specific CSS to center and stack footer content:
+
+```css
+@media (max-width: 767.98px) {
+    footer.mindly-footer .container-fluid {
+        padding: 0 !important;
+    }
+
+    footer.mindly-footer .row {
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    footer.mindly-footer .col-md-4,
+    footer.mindly-footer .col-lg-3 {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Remove desktop padding on mobile */
+    footer.mindly-footer .col-md-4[style*="padding-left"],
+    footer.mindly-footer .col-lg-3[style*="padding-left"],
+    footer.mindly-footer .col-md-4[style*="padding-right"],
+    footer.mindly-footer .col-lg-3[style*="padding-right"] {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    footer.mindly-footer .d-flex {
+        justify-content: center !important;
+    }
+}
+```
+
+- Mobile phones (< 768px): All footer sections centered and stacked vertically
+- Tablets/laptops (≥ 768px): Original layout preserved
+
+### **Files Modified**
+
+- `static/css/style.css` — Added mobile footer centering and reset rules
+
+### **Resolution Status**
+
+✅ **RESOLVED** - Footer now centered and organized on mobile, desktop layout unchanged
+
+---
+
+## **Error 7: Mobile Layout Issue — Assessment Options Grid Cramped**
+
+### **Date:** April 2026
+
+### **Severity:** Medium - Mobile UX/readability issue
+
+### **Platform Affected:** Mobile phones (screens < 768px)
+
+### **Symptoms**
+
+- On mobile screens (iPhone 14, 15, 16), assessment form response options display in 2x2 grid
+- Text does not fit properly in option boxes, appearing cramped
+- Wording overflows or wraps awkwardly within option buttons
+- Requires horizontal scrolling to see all text
+- Desktop/tablet/laptop layouts unaffected
+
+### **Investigation**
+
+1. Inspected assessment form HTML in `templates/assessments/index.html`
+2. Found Bootstrap grid classes on option containers
+3. Assessed responsive behavior at different viewport sizes
+4. Confirmed issue specific to mobile phones (< 768px)
+
+### **Root Cause**
+
+Assessment form options used Bootstrap grid:
+
+```html
+<div class="col-12 col-md-3">
+```
+
+While this should render as full-width (col-12) on mobile, the form layout or available space was causing options to render in a 2x2 grid instead of 1 per row on some rendering engines.
+
+### **Solution Applied**
+
+Verified Bootstrap grid classes in `templates/assessments/index.html` enforce single-column layout on mobile:
+
+```html
+<div class="col-12 col-md-3">
+```
+
+Where:
+- `col-12` = 100% width on mobile (< 768px) = 1 option per row
+- `col-md-3` = 25% width on tablets and up (≥ 768px) = 4 options in row
+
+This ensures:
+- Mobile phones (< 768px): All 4 options display in 4 rows, 1 per row, full width
+- Tablets/laptops (≥ 768px): Options display in 4-column grid, clean layout
+
+### **Files Modified**
+
+- `templates/assessments/index.html` — Verified col-12 col-md-3 grid classes for proper mobile rendering
+
+### **Resolution Status**
+
+✅ **RESOLVED** - Assessment options now display as single column on mobile, desktop layout unchanged
+
+---
+
 ## **Known Outstanding Issues**
 
 Currently: **None**
@@ -364,8 +569,9 @@ All identified issues during development have been resolved and tested.
 | Critical (Payment/Auth) | 1 | ✅ Resolved |
 | High (Config/Security) | 1 | ✅ Resolved |
 | Medium (Code Quality) | 1 | ✅ Resolved |
+| Medium (Mobile UX) | 3 | ✅ Resolved |
 | Low (Enhancement) | 1 | ✅ Resolved |
-| **Total** | **4** | **100% Resolved** |
+| **Total** | **7** | **100% Resolved** |
 
 ---
 

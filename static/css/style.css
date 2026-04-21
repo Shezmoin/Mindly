@@ -402,6 +402,38 @@ footer.mindly-footer {
     .footer-quick-links-grid {
         justify-content: center;
     }
+
+    /* Mobile footer layout fix: center all content vertically */
+    footer.mindly-footer .container-fluid {
+        padding: 0 !important;
+    }
+
+    footer.mindly-footer .row {
+        text-align: center !important;
+        justify-content: center !important;
+    }
+
+    footer.mindly-footer .col-md-4,
+    footer.mindly-footer .col-lg-3 {
+        margin-bottom: 1.5rem;
+    }
+
+    footer.mindly-footer .col-md-4[style*="padding-left"],
+    footer.mindly-footer .col-lg-3[style*="padding-left"],
+    footer.mindly-footer .col-md-4[style*="padding-right"],
+    footer.mindly-footer .col-lg-3[style*="padding-right"] {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    footer.mindly-footer .col-md-4 h2,
+    footer.mindly-footer .col-lg-3 h2 {
+        margin-top: 0.5rem;
+    }
+
+    footer.mindly-footer .d-flex {
+        justify-content: center !important;
+    }
 }
 
 footer a:hover {
