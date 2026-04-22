@@ -709,3 +709,111 @@ a.text-primary {
 .section-padding {
     padding: 60px 0;
 }
+
+/* Inline-style replacements — consolidated utility classes */
+.mindly-icon-xl {
+    font-size: 3.75rem;
+}
+
+.mindly-tagline-sm {
+    font-size: 0.65rem;
+    margin-top: -3px;
+}
+
+.mindly-icon-footer {
+    font-size: 1.8rem;
+}
+
+.mindly-footer-tagline {
+    color: #FFFFFF;
+}
+
+.mindly-footer-sub {
+    font-size: 0.95rem;
+}
+
+.mindly-heading-green {
+    color: #1B4332;
+}
+
+.mindly-heading-teal {
+    color: #2D6A4F;
+}
+
+.mindly-icon-hero {
+    font-size: 4.75rem;
+}
+
+.mindly-icon-about {
+    font-size: 3rem;
+    color: var(--mindly-primary);
+}
+
+.mindly-icon-donate {
+    font-size: 4rem;
+}
+
+.mindly-icon-cancel {
+    font-size: 5rem;
+}
+
+.mindly-icon-5rem {
+    font-size: 5rem;
+}
+
+.mindly-crown-gold {
+    color: #D4A017;
+}
+
+.mindly-price-lg {
+    color: var(--mindly-primary);
+    font-size: 2rem;
+}
+
+.pre-line {
+    white-space: pre-line;
+}
+
+.resource-hero-card {
+    background: #e9f7e7;
+    border-left: 6px solid #2D6A4F;
+}
+
+.resource-hero-card-premium {
+    background: #e9f7e7;
+    border-left: 6px solid #D4A017;
+}
+
+.resource-card-light {
+    background: #f8fef9;
+}
+
+.resource-desc-card {
+    background: #f8fef9;
+    color: #2C3E31;
+    border-radius: 0 0 10px 10px;
+    padding: 12px 8px 8px 8px;
+    min-height: 54px;
+    font-size: 1rem;
+}
+
+.badge-mindly-primary {
+    background: #2D6A4F;
+    color: #fff;
+}
+
+.resource-title-link {
+    color: #2D6A4F;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 1.15rem;
+}
+
+.no-select {
+    user-select: none;
+}
+
+.clickable {
+    cursor: pointer;
+}

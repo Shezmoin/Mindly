@@ -45,7 +45,7 @@
     }
 </style>
 <div class="text-center mb-4">
-    <h1 class="display-6 mb-2" style="color:#1B4332;">Your Profile</h1>
+    <h1 class="display-6 mb-2 mindly-heading-green">Your Profile</h1>
     <p class="lead mb-0 page-hero-subtitle">View your details and account information in one place.</p>
 </div>
 <div class="row justify-content-center">
@@ -54,25 +54,25 @@
             <div class="row g-3">
                 <div class="col-md-6">
                     <div class="profile-box">
-                        <h2 class="h6 mb-2" style="color:#1B4332; font-weight:700;">Username</h2>
+                        <h2 class="h6 mb-2 mindly-heading-green fw-bold">Username</h2>
                         <p class="mb-0">{{ user.username }}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="profile-box">
-                        <h2 class="h6 mb-2" style="color:#1B4332; font-weight:700;">Email</h2>
+                        <h2 class="h6 mb-2 mindly-heading-green fw-bold">Email</h2>
                         <p class="mb-0">{{ user.email|default:'Not set' }}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="profile-box">
-                        <h2 class="h6 mb-2" style="color:#1B4332; font-weight:700;">Bio</h2>
+                        <h2 class="h6 mb-2 mindly-heading-green fw-bold">Bio</h2>
                         <p class="mb-0">{{ user.bio|default:'No bio yet' }}</p>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="profile-box">
-                        <h2 class="h6 mb-2" style="color:#1B4332; font-weight:700;">Joined</h2>
+                        <h2 class="h6 mb-2 mindly-heading-green fw-bold">Joined</h2>
                         <p class="mb-0">{{ user.date_joined|date:'F j, Y' }}</p>
                     </div>
                 </div>
