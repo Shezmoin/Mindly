@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import AssessmentResult
+
 
 ASSESSMENTS = {
     'mood': {
@@ -146,10 +148,25 @@ def index_view(request):
     result = None
 
     if request.method == 'POST':
+        question_scores = {}
         total_score = 0
         for question in selected_assessment['questions']:
-            total_score += int(request.POST.get(question['name'], 0))
+            score = int(request.POST.get(question['name'], 0))
+            question_scores[question['name']] = score
+            total_score += score
         result = build_result(selected_key, total_score)
+
+        if request.user.is_authenticated:
+            AssessmentResult.objects.create(
+                user=request.user,
+                assessment_type=selected_key,
+                q1_score=question_scores.get('q1', 0),
+                q2_score=question_scores.get('q2', 0),
+                q3_score=question_scores.get('q3', 0),
+                q4_score=question_scores.get('q4', 0),
+                total_score=total_score,
+                level=result['level'],
+            )
 
     context = {
         'assessments': ASSESSMENTS,

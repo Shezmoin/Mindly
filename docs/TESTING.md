@@ -133,6 +133,31 @@ Testing was conducted continuously throughout development using multiple methodo
 
 ---
 
+### **Assessment Result Data Operations**
+
+| Feature | Test Case | Result |
+|---------|-----------|--------|
+| Interactive Tool Submit | Mood/stress/sleep tools calculate result levels correctly | ✅ Pass |
+| Persist Result (Authenticated) | Logged-in submissions create an AssessmentResult record | ✅ Pass |
+| Privacy Guard | Anonymous users can use tools but no AssessmentResult is stored | ✅ Pass |
+| Historical Integrity | Result stores per-question scores, total score, level, and timestamp | ✅ Pass |
+
+---
+
+## **CRUD Coverage Matrix by Model**
+
+| Model | Create | Read | Update | Delete | Evidence |
+|------|--------|------|--------|--------|----------|
+| CustomUser | Registration form | Auth/profile views | Profile edit | Admin/user lifecycle | users views/tests |
+| UserProfile | Auto-created via signal | Profile/dashboard context | Tier update via Stripe webhook, profile fields | Cascade with user | users models, payments webhook tests |
+| MoodEntry | Mood create form | Mood list view | Mood edit view | Mood delete view | journal tests + manual CRUD table |
+| JournalEntry | Journal create form | Journal list/detail views | Journal edit view | Journal delete view | journal tests + manual CRUD table |
+| AssessmentResult | Saved on authenticated assessment submit | Admin/query-level read, test verification | Not user-editable by design (append-only record) | Admin lifecycle/cascade delete | assessments tests + model design |
+
+**AssessmentResult design note:** This model is intentionally append-only for data integrity and auditability of self-check outcomes.
+
+---
+
 ### **Payment Processing**
 
 | Feature | Test Case | Result |
@@ -307,7 +332,7 @@ JavaScript checked with JSHint/ESLint.
 
 ## **Unit Tests**
 
-Comprehensive automated testing implemented using Django's TestCase framework. All 21 tests passing.
+Comprehensive automated testing implemented using Django's TestCase framework.
 
 ### **Page View Tests** (`pages/tests.py`)
 
@@ -345,7 +370,17 @@ Comprehensive automated testing implemented using Django's TestCase framework. A
 | test_user_profile_is_created | Verify UserProfile created automatically on user creation | ✅ Pass |
 | test_default_subscription_tier_is_free | Verify new users default to 'free' tier | ✅ Pass |
 
-**Summary:** 21/21 tests passing. Tests cover authentication, authorization, CRUD operations, data privacy, form validation, and redirect behavior.
+### **Assessment Tests** (`assessments/tests.py`)
+
+| Test Name | Purpose | Result |
+|-----------|---------|--------|
+| test_assessment_hub_renders_tools | Verify all self-check tools are visible | ✅ Pass |
+| test_mood_self_check_returns_result | Verify mood tool returns a supportive result | ✅ Pass |
+| test_stress_self_check_returns_result | Verify stress tool returns a supportive result | ✅ Pass |
+| test_authenticated_user_submission_is_persisted | Verify authenticated submissions create AssessmentResult rows | ✅ Pass |
+| test_anonymous_submission_is_not_persisted | Verify anonymous submissions do not persist data | ✅ Pass |
+
+**Summary:** 37/37 automated tests pass cleanly and cover authentication, authorization, CRUD operations, data privacy, assessment persistence rules, form validation, and redirect behavior.
 
 ---
 
@@ -373,9 +408,12 @@ Comprehensive automated testing implemented using Django's TestCase framework. A
 
 ## **Django System Checks**
 
-Ran `python manage.py check --deploy` successfully with all critical checks passed.
+Ran `python manage.py check` successfully with no issues.
+
+`python manage.py check --deploy` was also run in local development and returned expected warnings when local `DEBUG=True`/non-production secrets are used. These warnings are addressed in production by Heroku environment configuration (`DEBUG=False`, secure cookies, HTTPS redirect, HSTS).
 
 ```
+python manage.py check
 System check identified no issues (0 silenced).
 ```
 
