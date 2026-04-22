@@ -4,7 +4,7 @@ from django.shortcuts import render
 from users.decorators import premium_required
 from users.models import UserProfile
 
-# Create your views here.
+# View definitions
 
 
 def home_view(request):

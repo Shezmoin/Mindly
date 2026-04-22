@@ -380,7 +380,21 @@ Comprehensive automated testing implemented using Django's TestCase framework.
 | test_authenticated_user_submission_is_persisted | Verify authenticated submissions create AssessmentResult rows | ✅ Pass |
 | test_anonymous_submission_is_not_persisted | Verify anonymous submissions do not persist data | ✅ Pass |
 
-**Summary:** 37/37 automated tests pass cleanly and cover authentication, authorization, CRUD operations, data privacy, assessment persistence rules, form validation, and redirect behavior.
+### **Payments Tests** (`payments/tests.py`)
+
+| Test Name | Purpose | Result |
+|-----------|---------|--------|
+| test_checkout_sets_user_metadata_for_mapping | Verify checkout session includes user mapping metadata | ✅ Pass |
+| test_success_view_upgrades_premium_from_session_metadata | Verify successful subscription upgrades user tier | ✅ Pass |
+| test_success_view_donation_does_not_upgrade_subscription | Verify donation success does not upgrade subscription tier | ✅ Pass |
+| test_success_view_subscription_payment_mode_does_not_upgrade | Verify payment-mode session does not upgrade premium tier | ✅ Pass |
+| test_webhook_subscription_event_upgrades_profile | Verify subscription webhook upgrades profile tier | ✅ Pass |
+| test_webhook_payment_event_does_not_upgrade_profile | Verify payment webhook does not upgrade profile tier | ✅ Pass |
+| test_webhook_without_signature_returns_400 | Verify missing signature returns 400 | ✅ Pass |
+| test_webhook_invalid_signature_returns_400_in_non_debug | Verify invalid signature returns 400 with DEBUG=False | ✅ Pass |
+| test_webhook_debug_fallback_parses_payload_and_upgrades | Verify DEBUG fallback handles valid JSON payload correctly | ✅ Pass |
+
+**Summary:** 44/44 automated tests pass cleanly and cover authentication, authorization, CRUD operations, payment/webhook edge cases, data privacy, assessment persistence rules, form validation, and redirect behavior.
 
 ---
 

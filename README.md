@@ -516,6 +516,26 @@ All entries are scoped to logged-in user via `request.user` for data privacy.
 6. `UserProfile.subscription_tier` is updated to `premium`
 7. Premium-protected views become accessible through the `@premium_required` gate
 
+### **Sequence Diagram: Premium Upgrade Request-Response Path**
+
+```mermaid
+sequenceDiagram
+  participant Browser
+  participant DjangoView as payments/checkout_view
+  participant Stripe
+  participant Webhook as payments/webhook_view
+  participant DB as UserProfile
+
+  Browser->>DjangoView: Click "Go Premium"
+  DjangoView->>Stripe: Create Checkout Session
+  Stripe-->>Browser: Hosted checkout URL
+  Stripe->>Webhook: checkout.session.completed
+  Webhook->>Webhook: Verify webhook signature
+  Webhook->>DB: Update subscription_tier to premium
+  DB-->>Webhook: Save successful
+  Webhook-->>Stripe: HTTP 200
+```
+
 ---
 
 ## **Mindly Project Structure**
