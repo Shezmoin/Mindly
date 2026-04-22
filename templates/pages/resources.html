@@ -68,9 +68,9 @@
                             <span class="h5 d-inline-block mx-2">{{ resource.title }}</span>
                         </div>
                         <div class="text-center mb-2">
-                            <span class="badge" style="background:#2D6A4F; color:#fff;">{{ resource.category }}</span>
+                            <span class="badge badge-mindly-primary">{{ resource.category }}</span>
                         </div>
-                        <div class="mb-0 text-center" style="background:#f8fef9; color:#2C3E31; border-radius:0 0 10px 10px; padding:12px 8px 8px 8px; min-height:54px; font-size:1rem;">{{ resource.description }}</div>
+                        <div class="mb-0 text-center resource-desc-card">{{ resource.description }}</div>
                     </div>
                 </div>
                 </a>
@@ -88,18 +88,18 @@
                 {% if is_premium %}
                     <a href="{% url resource.url_name %}" class="text-decoration-none">
                 {% endif %}
-                <div class="card card-hover h-100 resource-card-premium" {% if not is_premium %}onclick="showPremiumMessage({{ forloop.counter0 }})" style="cursor:pointer;"{% endif %}>
+                <div class="card card-hover h-100 resource-card-premium" {% if not is_premium %}onclick="showPremiumMessage({{ forloop.counter0 }})" class="clickable"{% endif %}>
                     <div class="card-body p-4">
-                        <div class="resource-header" style="user-select:none;">
+                        <div class="resource-header no-select">
                             <span class="h5 d-inline-block mx-2">{{ resource.title }}</span>
-                            <br><span class="fw-bold" style="color:#2D6A4F; display:inline-flex; align-items:center; gap:4px; font-size:1.15rem;">
+                            <br><span class="fw-bold resource-title-link">
                                 Premium <i class="fas fa-crown premium-crown" aria-hidden="true"></i>
                             </span>
                         </div>
                         <div class="text-center mb-2">
-                            <span class="badge" style="background:#2D6A4F; color:#fff;">{{ resource.category }}</span>
+                            <span class="badge badge-mindly-primary">{{ resource.category }}</span>
                         </div>
-                        <div class="mb-0 text-center" style="background:#f8fef9; color:#2C3E31; border-radius:0 0 10px 10px; padding:12px 8px 8px 8px; min-height:54px; font-size:1rem;">{{ resource.description }}</div>
+                        <div class="mb-0 text-center resource-desc-card">{{ resource.description }}</div>
                         {% if not is_premium %}
                             <div id="premium-msg-{{ forloop.counter0 }}" class="premium-upgrade-message mt-3" style="display:none;">
                                 Unlock this resource and more with <strong>Mindly Premium</strong> to view this guide and the full premium library.<br>
