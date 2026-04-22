@@ -31,6 +31,7 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 
 ## C) Evidence, Snipping Tool, and AI Trace/Chat Records
 - [ ] Confirm which screenshots are required for final submission
+- [x] Initialize screenshot folder structure (`docs/screenshots/readme`, `docs/screenshots/test`, `docs/screenshots/error`, `docs/screenshots/audit`)
 - [ ] Capture required screenshots using Snipping Tool (or equivalent) and store in agreed docs folder
 - [ ] Verify image filenames follow a consistent convention by purpose (`readme-`, `test-`, `error-`, `audit-`) and are mapped to checklist/test IDs
 - [ ] Confirm whether AI trace/chat records must be retained or removed before submission
@@ -182,11 +183,11 @@ Master checklist owner note:
 
 ### Full CRUD Coverage Evidence
 - [x] Add a CRUD mapping table in `docs/TESTING.md` listing each model and where Create/Read/Update/Delete is implemented and tested
-- [ ] Add/expand automated tests for edit/delete flows where currently under-covered, especially premium/payment edge paths
+- [x] Add/expand automated tests for edit/delete flows where currently under-covered, especially premium/payment edge paths
 
 ### Backend-Frontend Integration Clarity
 - [x] Add a concise "request-to-response" flow section in README for two journeys: journal CRUD and premium upgrade via Stripe webhook
-- [ ] Include one diagram or sequence description showing how forms/views/models/templates interact
+- [x] Include one diagram or sequence description showing how forms/views/models/templates interact
 
 ### Publishable Professional Quality Checks
 - [x] Run and record `python manage.py test`, `flake8 .`, and `python manage.py check --deploy` outputs in `docs/TESTING.md`

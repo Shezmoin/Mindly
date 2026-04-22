@@ -23,7 +23,7 @@ def mood_delete_view(request, pk):
         {'entry': mood_entry},
     )
 
-# Create your views here.
+# View definitions
 
 
 def index_view(request):
