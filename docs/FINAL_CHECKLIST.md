@@ -168,3 +168,35 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 Master checklist owner note:
 - Do not maintain parallel checklists elsewhere.
 - When new "last minute" actions appear, append them here only.
+
+## F) Distinction Gap Action Plan (Assessor-Focused)
+
+### Project Rationale and Development Plan
+- [ ] Add a short "Why this app solves a real-world problem" rationale section in `README.md` with target users, pain points, and measurable outcomes
+- [ ] Add a short "Development strategy" section in `README.md` that explains architecture choices (Django apps, Stripe, deployment) and why they were selected
+
+### Data Modelling Depth and Domain Fitness
+- [ ] Add an `AssessmentResult` model (or equivalent persisted model) to store completed self-check runs per user with timestamp and score breakdown
+- [ ] Document model relationships in README with a simple ER-style explanation (users, profile, mood entries, journal entries, payments/subscription state, assessment results)
+- [ ] Confirm each persisted model has clear CRUD operations or justify read-only/reference-only entities in docs
+
+### Full CRUD Coverage Evidence
+- [ ] Add a CRUD mapping table in `docs/TESTING.md` listing each model and where Create/Read/Update/Delete is implemented and tested
+- [ ] Add/expand automated tests for edit/delete flows where currently under-covered, especially premium/payment edge paths
+
+### Backend-Frontend Integration Clarity
+- [ ] Add a concise "request-to-response" flow section in README for two journeys: journal CRUD and premium upgrade via Stripe webhook
+- [ ] Include one diagram or sequence description showing how forms/views/models/templates interact
+
+### Publishable Professional Quality Checks
+- [ ] Run and record `python manage.py test`, `flake8 .`, and `python manage.py check --deploy` outputs in `docs/TESTING.md`
+- [ ] Complete final accessibility and responsive evidence capture for 320px/375px/768px and dark mode
+- [ ] Resolve remaining inline style hotspots by moving reusable styling into `static/css/style.css` where practical
+
+### App Boundary and Reuse Review
+- [ ] Add an "App structure justification" section in README explaining why each Django app exists and what domain boundary it owns
+- [ ] Verify shared user subscription state remains centralized in `users.UserProfile` and is referenced, not duplicated, across apps
+
+### Originality and Craftsmanship Evidence
+- [ ] Add a short originality statement in README describing unique project choices and how this differs from walkthrough/tutorial builds
+- [ ] Add a brief code craftsmanship note in README highlighting naming, owner-scoped queries, validation, and error handling patterns
