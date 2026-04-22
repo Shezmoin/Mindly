@@ -747,6 +747,21 @@ Security controls are implemented in both code and deployment configuration:
 * Custom @premium_required decorator for tier verification
 * Debug mode disabled in production
 
+### **Error Handling & Recovery**
+
+| Scenario | Behaviour |
+|----------|-----------|
+| User cancels at Stripe checkout | Redirected to `payments/cancel/` — subscription is **not** created, account unchanged |
+| Stripe checkout fails (card declined, etc.) | Stripe shows an in-page error on the hosted checkout; user can retry or exit |
+| User exits checkout without completing | Session expires; `checkout.session.completed` is never fired; no upgrade occurs |
+| Webhook receives unexpected event type | Handler returns `200 OK` silently — only `checkout.session.completed` triggers upgrade logic |
+| Webhook signature verification fails | Returns `400 Bad Request`; event is discarded without processing |
+| `checkout.session.completed` has no email | Falls back to matching `client_reference_id` (user ID); if neither matches, no upgrade and error is logged |
+| Donation payment (one-time) received | Webhook detects `mode != subscription`; marks donation only — premium tier is **not** set |
+| User reaches `/payments/success/` without a valid session | View attempts session recovery; redirects to home if session cannot be found |
+| Custom 404 page | Served by `templates/404.html` when `DEBUG=False` and a route is not found |
+| Custom 500 page | Served by `templates/500.html` when `DEBUG=False` and an unhandled exception occurs |
+
 ### **Local Webhook Testing**
 
 ```bash
