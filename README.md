@@ -48,12 +48,14 @@ Screenshot placeholder pending upload: `docs/screenshots/readme-01-dashboard-ove
   <li><a href="#data-model--schema">Data Model / Schema</a></li>
   <li><a href="#backend-frontend-flow-examples">Backend-Frontend Flow Examples</a></li>
   <li><a href="#mindly-project-structure">Project Structure</a></li>
+  <li><a href="#app-structure-justification">App Structure Justification</a></li>
   <li><a href="#technologies-used">Technologies Used</a></li>
   <li><a href="#testing">Testing</a></li>
   <li><a href="#errors">Errors</a></li>
   <li><a href="#deployment">Deployment</a></li>
   <li><a href="#security">Security</a></li>
   <li><a href="#stripe-integration">Stripe Integration</a></li>
+  <li><a href="#originality-statement">Originality Statement</a></li>
   <li><a href="#credits--acknowledgements">Credits & Acknowledgements</a></li>
   <li><a href="#known-bugs">Known Bugs</a></li>
 </ol>
@@ -606,6 +608,22 @@ mindly/
 
 ---
 
+## **App Structure Justification**
+
+Each Django app in Mindly has a single, well-defined domain responsibility. The table below explains why each boundary was drawn where it was.
+
+| App | Domain | Reason for boundary |
+|-----|---------|---------------------|
+| `users` | Authentication, profiles, premium state | Handles all identity concerns independently so auth logic never leaks into feature apps |
+| `journal` | Journal entries and mood tracking | Groups related CRUD models (`JournalEntry`, `MoodEntry`) under one owner-scoped domain |
+| `assessments` | Guided self-check tools and result persistence | Isolated so self-check scoring and result history can evolve without touching journal or payment logic |
+| `payments` | Stripe checkout, webhooks, subscription management | Payment concerns are sensitive and externally integrated — strict isolation reduces risk and simplifies testing |
+| `pages` | Static pages, dashboard, public and premium resources | Thin presentation layer; separating it keeps feature apps free of generic page routing |
+
+Cross-app communication is handled exclusively through model relationships and Django's URL routing. No app imports another app's views directly, preserving clean separation of concerns.
+
+---
+
 ## **Technologies Used**
 
 ### **Languages Used**
@@ -751,6 +769,20 @@ Mindly adheres to WCAG 2.1 AA accessibility standards:
 * **Responsive Design** - Works at all viewport sizes from 320px upward
 * **Screen Reader Compatibility** - Semantic markup ensures screen reader usability
 * **Focus Management** - Visible focus indicators on all interactive elements
+
+---
+
+## **Originality Statement**
+
+Mindly is an independently designed and implemented project. It is not based on a Code Institute walkthrough or any tutorial project. Specific choices that distinguish it:
+
+- **Domain**: Mental wellness tracking with self-assessment tools, premium content gating, and a recurring subscription model — not a blog, e-commerce store, or social network.
+- **Data model**: Five custom models across five apps (`CustomUser`/`UserProfile`, `JournalEntry`, `MoodEntry`, `AssessmentResult`, and payment state on `UserProfile`), with owner-scoped queries throughout.
+- **Stripe integration**: Full Checkout and Webhook lifecycle built from first principles against the Stripe Python SDK, including donation vs. subscription differentiation in the webhook handler, session-based success recovery, and premium cancellation through the Django user model.
+- **UX decisions**: Dark mode toggle with `localStorage` persistence, per-question scoring in assessments with band-based feedback, premium content chip badges, and a custom `@premium_required` decorator — none of these patterns appear in standard CI walkthroughs.
+- **Testing**: Structured coverage across CRUD, authentication guards, and Stripe edge cases (missing signatures, invalid payloads, debug fallback paths) using Django's `TestCase` and `unittest.mock`.
+
+All code, architecture decisions, and documentation were produced by the developer with AI-assisted pair programming (GitHub Copilot), in line with current industry practice.
 
 ---
 
