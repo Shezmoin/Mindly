@@ -14,6 +14,8 @@ Screenshot placeholder pending upload: `docs/screenshots/readme-01-dashboard-ove
 
 <ol>
   <li><a href="#project-goals">Project Goals</a></li>
+  <li><a href="#real-world-rationale">Real-World Rationale</a></li>
+  <li><a href="#development-strategy">Development Strategy</a></li>
   <li><a href="#live-project">Live Project</a></li>
   <li><a href="#repository">Repository</a></li>
   <li><a href="#badges">Badges</a></li>
@@ -44,6 +46,7 @@ Screenshot placeholder pending upload: `docs/screenshots/readme-01-dashboard-ove
   </li>
   <li><a href="#future-features">Future Features</a></li>
   <li><a href="#data-model--schema">Data Model / Schema</a></li>
+  <li><a href="#backend-frontend-flow-examples">Backend-Frontend Flow Examples</a></li>
   <li><a href="#mindly-project-structure">Project Structure</a></li>
   <li><a href="#technologies-used">Technologies Used</a></li>
   <li><a href="#testing">Testing</a></li>
@@ -68,6 +71,31 @@ The goal of this project was to design and build a full-stack mental health and 
 - Professional security practices (environment variables, secret management, DEBUG disabled)
 - Comprehensive testing and validation
 - Industry-standard deployment practices
+
+## **Real-World Rationale**
+
+Mindly addresses a practical real-world problem: many users need a private, low-friction place to monitor mental wellbeing, reflect consistently, and access supportive resources without switching between multiple tools.
+
+The app is designed for two clear user groups:
+- **Free users** who need reliable daily support (mood tracking, journaling, and core resources)
+- **Premium users** who need deeper guidance and expanded content access
+
+This domain focus justified building secure authentication, user-owned records, and subscription-aware access controls instead of a static content site.
+
+## **Development Strategy**
+
+Mindly was developed using a domain-driven multi-app Django structure so each app maps to a natural product boundary:
+- `users`: identity, profile, subscription state
+- `journal`: mood/journal CRUD operations
+- `assessments`: interactive self-check tools and persisted result records
+- `payments`: Stripe checkout, webhook processing, and premium upgrade flow
+- `pages`: static and premium resource views
+
+Key architecture decisions:
+- Use Django ORM for safe relational data handling and owner-scoped query patterns
+- Use Stripe Checkout + webhook verification for secure payment lifecycle handling
+- Use Bootstrap + custom CSS for responsive UI consistency across mobile/desktop
+- Deploy on Heroku with environment-variable based secrets and production hardening
 
 ---
 
@@ -372,6 +400,23 @@ Longer-form reflection and journaling.
 | created_at  | DATETIME        | Entry creation timestamp       |
 | updated_at  | DATETIME        | Entry modification timestamp   |
 
+### **AssessmentResult Table**
+
+Persisted self-check submissions for authenticated users.
+
+| Column          | Type            | Description                                 |
+| --------------- | --------------- | ------------------------------------------- |
+| id              | INTEGER (PK)    | Unique result ID                            |
+| user_id         | INTEGER (FK)    | Link to CustomUser                          |
+| assessment_type | VARCHAR(20)     | Tool key (`mood`, `stress`, `sleep`)        |
+| q1_score        | INTEGER         | Question 1 score (0-3)                      |
+| q2_score        | INTEGER         | Question 2 score (0-3)                      |
+| q3_score        | INTEGER         | Question 3 score (0-3)                      |
+| q4_score        | INTEGER         | Question 4 score (0-3)                      |
+| total_score     | INTEGER         | Sum of all question scores (0-12)           |
+| level           | VARCHAR(20)     | Result level (`Low/Moderate/Higher concern`)|
+| created_at      | DATETIME        | Submission timestamp                         |
+
 **Note:** `MoodEntry` and `JournalEntry` are both defined in the `journal` app (`journal/models.py`).
 
 ### **Relationships**
@@ -379,6 +424,7 @@ Longer-form reflection and journaling.
 - `CustomUser` → `UserProfile` (1-to-1)
 - `CustomUser` → `MoodEntry` (1-to-many)
 - `CustomUser` → `JournalEntry` (1-to-many)
+- `CustomUser` → `AssessmentResult` (1-to-many)
 
 ### **ERD (ASCII)**
 
@@ -429,9 +475,46 @@ Longer-form reflection and journaling.
 │ content              │
 │ is_private           │
 └──────────────────────┘
+
+┌──────────────────────┐
+│      CustomUser      │
+└─────────┬────────────┘
+          │ 1
+          │
+          │ N
+┌─────────▼────────────┐
+│   AssessmentResult   │
+│ id (PK)              │
+│ user_id (FK)         │
+│ assessment_type      │
+│ q1_score ... q4_score│
+│ total_score          │
+│ level                │
+└──────────────────────┘
 ```
 
 All entries are scoped to logged-in user via `request.user` for data privacy.
+
+## **Backend-Frontend Flow Examples**
+
+### **Flow 1: Journal CRUD (Create example)**
+
+1. User submits the journal form in the template (`templates/journal/journal_form.html`)
+2. POST request is handled by `journal_create_view` in `journal/views.py`
+3. Django form validates inputs and binds the entry to `request.user`
+4. ORM saves `JournalEntry` into the database
+5. User is redirected to journal list with a success message
+6. Template renders updated list using query results for that logged-in user only
+
+### **Flow 2: Premium Upgrade via Stripe Webhook**
+
+1. User starts checkout from pricing/support page
+2. `payments/checkout_view` creates Stripe Checkout Session
+3. Stripe sends `checkout.session.completed` event to `payments/webhook/`
+4. Webhook verifies signature with `STRIPE_WEBHOOK_SECRET`
+5. Matching user is identified from metadata/email
+6. `UserProfile.subscription_tier` is updated to `premium`
+7. Premium-protected views become accessible through the `@premium_required` gate
 
 ---
 
@@ -468,7 +551,7 @@ mindly/
 │   ├── tests.py                        # Journal tests
 │   └── templates/journal/              # Journal templates
 ├── assessments/                        # Assessment self-check tools
-│   ├── models.py                       # (No persisted models; tool definitions are in views)
+│   ├── models.py                       # AssessmentResult model for persisted self-check submissions
 │   ├── views.py                        # Mood/stress/sleep self-check logic
 │   ├── urls.py                         # Assessment URLs
 │   └── tests.py                        # Assessment tests

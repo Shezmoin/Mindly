@@ -172,24 +172,24 @@ Master checklist owner note:
 ## F) Distinction Gap Action Plan (Assessor-Focused)
 
 ### Project Rationale and Development Plan
-- [ ] Add a short "Why this app solves a real-world problem" rationale section in `README.md` with target users, pain points, and measurable outcomes
-- [ ] Add a short "Development strategy" section in `README.md` that explains architecture choices (Django apps, Stripe, deployment) and why they were selected
+- [x] Add a short "Why this app solves a real-world problem" rationale section in `README.md` with target users, pain points, and measurable outcomes
+- [x] Add a short "Development strategy" section in `README.md` that explains architecture choices (Django apps, Stripe, deployment) and why they were selected
 
 ### Data Modelling Depth and Domain Fitness
-- [ ] Add an `AssessmentResult` model (or equivalent persisted model) to store completed self-check runs per user with timestamp and score breakdown
-- [ ] Document model relationships in README with a simple ER-style explanation (users, profile, mood entries, journal entries, payments/subscription state, assessment results)
-- [ ] Confirm each persisted model has clear CRUD operations or justify read-only/reference-only entities in docs
+- [x] Add an `AssessmentResult` model (or equivalent persisted model) to store completed self-check runs per user with timestamp and score breakdown
+- [x] Document model relationships in README with a simple ER-style explanation (users, profile, mood entries, journal entries, payments/subscription state, assessment results)
+- [x] Confirm each persisted model has clear CRUD operations or justify read-only/reference-only entities in docs
 
 ### Full CRUD Coverage Evidence
-- [ ] Add a CRUD mapping table in `docs/TESTING.md` listing each model and where Create/Read/Update/Delete is implemented and tested
+- [x] Add a CRUD mapping table in `docs/TESTING.md` listing each model and where Create/Read/Update/Delete is implemented and tested
 - [ ] Add/expand automated tests for edit/delete flows where currently under-covered, especially premium/payment edge paths
 
 ### Backend-Frontend Integration Clarity
-- [ ] Add a concise "request-to-response" flow section in README for two journeys: journal CRUD and premium upgrade via Stripe webhook
+- [x] Add a concise "request-to-response" flow section in README for two journeys: journal CRUD and premium upgrade via Stripe webhook
 - [ ] Include one diagram or sequence description showing how forms/views/models/templates interact
 
 ### Publishable Professional Quality Checks
-- [ ] Run and record `python manage.py test`, `flake8 .`, and `python manage.py check --deploy` outputs in `docs/TESTING.md`
+- [x] Run and record `python manage.py test`, `flake8 .`, and `python manage.py check --deploy` outputs in `docs/TESTING.md`
 - [ ] Complete final accessibility and responsive evidence capture for 320px/375px/768px and dark mode
 - [ ] Resolve remaining inline style hotspots by moving reusable styling into `static/css/style.css` where practical
 
