@@ -4,17 +4,17 @@ This is the single source of truth for end-stage actions.
 All final steps, on-hold items, evidence capture tasks, and release actions live here.
 
 ## A) Active Finalization Actions
-- [ ] Review and clean up all documentation (`README.md`, `docs/TESTING.md`, `docs/DEPLOYMENT.md`, etc.)
+- [x] Review and clean up all documentation (`README.md`, `docs/TESTING.md`, `docs/DEPLOYMENT.md`, etc.)
 - [ ] Ensure all links in README and docs are valid and non-placeholder
 - [ ] Remove test/debug data from the database
-- [ ] Run full automated validation one final time (`flake8 .`, `python manage.py check`, `python manage.py test`)
+- [x] Run full automated validation one final time (`flake8 .`, `python manage.py check`, `python manage.py test`)
 - [ ] Run final manual smoke pass across core user journeys
-- [ ] Push all final commits to remote repository
+- [x] Push all final commits to remote repository
 - [ ] Tag final release in Git
 - [ ] Archive/backup repository if required
 
 ## B) On-Hold Items (to complete at the end)
-- [ ] Add README Stripe "Error Handling & Recovery" subsection (checkout error page, 404/500 pages, subscription recovery notes)
+- [x] Add README Stripe "Error Handling & Recovery" subsection (checkout error page, 404/500 pages, subscription recovery notes)
 - [ ] Replace README screenshot placeholder links with real assets from `docs/screenshots/`
 - [ ] Capture and store required UI screenshots in `docs/screenshots/` (home, dashboard, journal, mood form, pricing)
 - [ ] Embed captured screenshots in README sections and verify links render correctly
@@ -41,11 +41,11 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Final requirement: remove `docs/FINAL_CHECKLIST.md` itself at end of project cleanup, together with all remaining AI/chat trace artifacts
 
 ## D) Cleanup and Delivery Gate
-- [ ] Remove unused files/screenshots/error artifacts that are not part of final deliverables
-- [ ] Confirm sensitive content is not committed (keys, secrets, private traces)
-- [ ] Re-run final checks after cleanup changes
-- [ ] Final docs update: when all work is complete, update accessibility status line `Last Updated: April 1, 2026 Status: All accessibility improvements complete and tested` to the final completion date/status
-- [ ] Confirm working tree clean and release-ready
+- [x] Remove unused files/screenshots/error artifacts that are not part of final deliverables
+- [x] Confirm sensitive content is not committed (keys, secrets, private traces)
+- [x] Re-run final checks after cleanup changes
+- [x] Final docs update: when all work is complete, update accessibility status line `Last Updated: April 1, 2026 Status: All accessibility improvements complete and tested` to the final completion date/status
+- [x] Confirm working tree clean and release-ready
 
 ## E) Detailed Future Action Plan
 
@@ -92,9 +92,9 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Verify any previously failing deeper admin routes behave as expected
 
 ### Django / Python Code Verification
-- [ ] Run `flake8 .` and record result
-- [ ] Run `python manage.py check` and record result
-- [ ] Run `python manage.py test` and record result
+- [x] Run `flake8 .` and record result
+- [x] Run `python manage.py check` and record result
+- [x] Run `python manage.py test` and record result
 - [ ] Verify no unresolved template warnings or missing static references remain
 - [ ] Verify README descriptions still match current implemented views, models, and routes
 
@@ -134,12 +134,12 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Verify config vars remain present and correct
 - [ ] Verify Postgres addon is attached as `DATABASE`
 - [ ] Verify no duplicate add-ons or obsolete config remain
-- [ ] Verify latest required local commits are deployed to Heroku
+- [x] Verify latest required local commits are deployed to Heroku
 - [ ] Verify `python manage.py check --deploy` passes on Heroku
 
 ### Database / PostgreSQL Verification
-- [ ] Verify no pending migrations locally
-- [ ] Verify no pending migrations on Heroku
+- [x] Verify no pending migrations locally
+- [x] Verify no pending migrations on Heroku
 - [ ] Verify production data reflects premium subscription upgrade after Stripe payment
 - [ ] Verify local SQLite fallback still works for local development
 
@@ -192,12 +192,12 @@ Master checklist owner note:
 ### Publishable Professional Quality Checks
 - [x] Run and record `python manage.py test`, `flake8 .`, and `python manage.py check --deploy` outputs in `docs/TESTING.md`
 - [ ] Complete final accessibility and responsive evidence capture for 320px/375px/768px and dark mode
-- [ ] Resolve remaining inline style hotspots by moving reusable styling into `static/css/style.css` where practical
+- [x] Resolve remaining inline style hotspots by moving reusable styling into `static/css/style.css` where practical
 
 ### App Boundary and Reuse Review
-- [ ] Add an "App structure justification" section in README explaining why each Django app exists and what domain boundary it owns
-- [ ] Verify shared user subscription state remains centralized in `users.UserProfile` and is referenced, not duplicated, across apps
+- [x] Add an "App structure justification" section in README explaining why each Django app exists and what domain boundary it owns
+- [x] Verify shared user subscription state remains centralized in `users.UserProfile` and is referenced, not duplicated, across apps
 
 ### Originality and Craftsmanship Evidence
-- [ ] Add a short originality statement in README describing unique project choices and how this differs from walkthrough/tutorial builds
-- [ ] Add a brief code craftsmanship note in README highlighting naming, owner-scoped queries, validation, and error handling patterns
+- [x] Add a short originality statement in README describing unique project choices and how this differs from walkthrough/tutorial builds
+- [x] Add a brief code craftsmanship note in README highlighting naming, owner-scoped queries, validation, and error handling patterns
