@@ -201,3 +201,30 @@ Master checklist owner note:
 ### Originality and Craftsmanship Evidence
 - [x] Add a short originality statement in README describing unique project choices and how this differs from walkthrough/tutorial builds
 - [x] Add a brief code craftsmanship note in README highlighting naming, owner-scoped queries, validation, and error handling patterns
+
+---
+
+## G) Pre-Submission Cleanup Gate (DO LAST — in this exact order)
+
+These steps must be done **after all other work is complete and screenshots are embedded**. Do not do these early.
+
+### Step 1 — Remove development/tooling files not needed in submission
+- [ ] Delete `capture_errors.py` from the project root (Playwright error-capture automation script — not part of the app)
+- [ ] Delete `launch_safe.bat` from the project root if it contains local dev paths or secrets
+- [ ] Delete `validation_test.html` from the project root if it was created during HTML validation testing
+- [ ] Delete any other one-off scripts in the root (e.g. `scan_emoji.py`, `clean_emoji.py`) if not already gone
+
+### Step 2 — Remove AI trace and chat history artifacts
+- [ ] Confirm whether `docs/CHAT_HISTORY.md` exists — if so, delete it
+- [ ] Confirm whether any other AI conversation transcripts or Copilot session logs are tracked in git — delete them
+- [ ] Remove all GitHub Copilot chat session artifacts from `docs/` if present
+
+### Step 3 — Remove this checklist itself
+- [ ] Delete `docs/FINAL_CHECKLIST.md` (this file) — it is a working document, not a submission deliverable
+
+### Step 4 — Final commit after cleanup
+- [ ] Run `git status` to confirm only expected deletions are staged
+- [ ] Run `git add -A && git commit -m "chore: pre-submission cleanup — remove dev tools and AI trace artifacts"`
+- [ ] Run `git push origin main && git push heroku main`
+- [ ] Run `python manage.py test` one final time to confirm nothing was broken by file removals
+- [ ] Confirm working tree is clean: `git status --short`
