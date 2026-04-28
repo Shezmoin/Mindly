@@ -14,11 +14,19 @@ class AssessmentViewTests(TestCase):
         self.assertContains(response, 'Stress Self-Check')
         self.assertContains(response, 'Sleep Habits Check')
 
+    def test_assessment_detail_renders_for_each_tool(self):
+        for tool in ('mood', 'stress', 'sleep'):
+            response = self.client.get(reverse('assessments:detail', args=[tool]))
+            self.assertEqual(response.status_code, 200)
+
+    def test_assessment_detail_invalid_tool_returns_404(self):
+        response = self.client.get(reverse('assessments:detail', args=['invalid']))
+        self.assertEqual(response.status_code, 404)
+
     def test_mood_self_check_returns_result(self):
         response = self.client.post(
-            reverse('assessments:index'),
+            reverse('assessments:detail', args=['mood']),
             {
-                'assessment_type': 'mood',
                 'q1': '2',
                 'q2': '2',
                 'q3': '1',
@@ -32,9 +40,8 @@ class AssessmentViewTests(TestCase):
 
     def test_stress_self_check_returns_result(self):
         response = self.client.post(
-            reverse('assessments:index'),
+            reverse('assessments:detail', args=['stress']),
             {
-                'assessment_type': 'stress',
                 'q1': '3',
                 'q2': '2',
                 'q3': '2',
@@ -55,9 +62,8 @@ class AssessmentViewTests(TestCase):
         self.client.force_login(user)
 
         response = self.client.post(
-            reverse('assessments:index'),
+            reverse('assessments:detail', args=['sleep']),
             {
-                'assessment_type': 'sleep',
                 'q1': '3',
                 'q2': '2',
                 'q3': '1',
@@ -73,9 +79,8 @@ class AssessmentViewTests(TestCase):
 
     def test_anonymous_submission_is_not_persisted(self):
         self.client.post(
-            reverse('assessments:index'),
+            reverse('assessments:detail', args=['mood']),
             {
-                'assessment_type': 'mood',
                 'q1': '1',
                 'q2': '1',
                 'q3': '1',

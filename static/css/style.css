@@ -817,3 +817,124 @@ a.text-primary {
 .clickable {
     cursor: pointer;
 }
+
+/* ── Assessment hub ── */
+.assessment-hub-panel {
+    background-color: #e9f7e7;
+    border: 3px solid #2D6A4F;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.assessment-hub-card {
+    background: #f8fef9;
+    border-radius: 12px;
+    padding: 1.25rem;
+    height: 100%;
+    text-align: center;
+}
+
+.assessment-hub-card h2,
+.assessment-hub-card p {
+    color: #1B4332;
+}
+
+.assessment-hub-header {
+    background: #95D5B2;
+    color: #2D6A4F;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 1rem;
+}
+
+/* ── Assessment detail page ── */
+.assessment-option {
+    background: #f8fef9;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+    border: 1px solid #dcefe2;
+}
+
+.result-box {
+    background: #FFF9E5;
+    color: #6b4f13;
+    border: 1px solid #E6C77B;
+    border-radius: 12px;
+    padding: 18px;
+}
+
+/* ── Go Back button ── */
+.btn-go-back {
+    background-color: #1B4332;
+    border-color: #1B4332;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+}
+
+.btn-go-back:hover,
+.btn-go-back:focus {
+    background-color: #2D6A4F;
+    border-color: #2D6A4F;
+    color: #fff;
+}
+
+/* ── Assessment dark mode ── */
+[data-theme="dark"] .assessment-hub-panel {
+    background-color: #1A2E23;
+    border-color: #587766;
+}
+
+[data-theme="dark"] .assessment-hub-card {
+    background: #22362B;
+    color: #E8F5EF;
+}
+
+[data-theme="dark"] .assessment-hub-card h2,
+[data-theme="dark"] .assessment-hub-card p {
+    color: #E8F5EF;
+}
+
+[data-theme="dark"] .assessment-hub-header {
+    background: #294437;
+    color: #E8F5EF;
+}
+
+[data-theme="dark"] .assessment-option {
+    background: #22362B;
+    border-color: #496555;
+    color: #E8F5EF;
+}
+
+[data-theme="dark"] .assessment-option .bg-white {
+    background: #183026 !important;
+    color: #E8F5EF !important;
+    border-color: #496555 !important;
+}
+
+[data-theme="dark"] .result-box {
+    background: #3E3418;
+    color: #F5E7B8;
+    border-color: #C8A85A;
+}
+
+[data-theme="dark"] .btn-go-back {
+    background-color: #2D6A4F;
+    border-color: #2D6A4F;
+    color: #fff;
+}
+
+[data-theme="dark"] .btn-go-back:hover,
+[data-theme="dark"] .btn-go-back:focus {
+    background-color: #52B788;
+    border-color: #52B788;
+    color: #1B4332;
+}

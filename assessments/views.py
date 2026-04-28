@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 
 from .models import AssessmentResult
@@ -139,27 +140,34 @@ def build_result(tool_key, total_score):
 
 
 def index_view(request):
-    """Render assessment tools and compute optional posted results."""
-    selected_key = request.POST.get('assessment_type') or request.GET.get('tool', 'mood')
-    if selected_key not in ASSESSMENTS:
-        selected_key = 'mood'
+    """Render the assessment hub — shows all available assessment cards."""
+    context = {
+        'assessments': ASSESSMENTS,
+    }
+    return render(request, 'assessments/index.html', context)
 
-    selected_assessment = ASSESSMENTS[selected_key]
+
+def assessment_view(request, tool):
+    """Render a single assessment form and compute result on POST."""
+    if tool not in ASSESSMENTS:
+        raise Http404
+
+    assessment = ASSESSMENTS[tool]
     result = None
 
     if request.method == 'POST':
         question_scores = {}
         total_score = 0
-        for question in selected_assessment['questions']:
+        for question in assessment['questions']:
             score = int(request.POST.get(question['name'], 0))
             question_scores[question['name']] = score
             total_score += score
-        result = build_result(selected_key, total_score)
+        result = build_result(tool, total_score)
 
         if request.user.is_authenticated:
             AssessmentResult.objects.create(
                 user=request.user,
-                assessment_type=selected_key,
+                assessment_type=tool,
                 q1_score=question_scores.get('q1', 0),
                 q2_score=question_scores.get('q2', 0),
                 q3_score=question_scores.get('q3', 0),
@@ -169,10 +177,9 @@ def index_view(request):
             )
 
     context = {
-        'assessments': ASSESSMENTS,
-        'selected_key': selected_key,
-        'selected_assessment': selected_assessment,
+        'tool': tool,
+        'assessment': assessment,
         'response_options': RESPONSE_OPTIONS,
         'result': result,
     }
-    return render(request, 'assessments/index.html', context)
+    return render(request, 'assessments/detail.html', context)

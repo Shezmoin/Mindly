@@ -1,129 +1,28 @@
 {% extends 'base.html' %}
 
-{% block title %}Assessments — Mindly{% endblock %}
+{% block title %}Wellbeing Assessments — Mindly{% endblock %}
 
 {% block content %}
-<div class="mb-4 text-center">
-    <h1 class="display-6 mb-2">Wellbeing Assessments</h1>
+<div class="text-center mb-4">
+    <h1 class="display-6 mb-2 mindly-heading-green">Wellbeing Assessments</h1>
     <p class="lead mb-0 page-hero-subtitle">Use a short self-check to reflect on mood, stress, or sleep. These tools are supportive and informational only.</p>
-</div>
-
-<style>
-    .assessment-card {
-        background-color: #e9f7e7;
-        border: 3px solid #2D6A4F;
-        border-radius: 16px;
-    }
-    .assessment-card-gold {
-        background-color: #e9f7e7;
-        border: 3px solid #2D6A4F;
-        border-radius: 16px;
-    }
-    .assessment-header {
-        background: #95D5B2;
-        color: #2D6A4F;
-        font-weight: 600;
-        text-align: center;
-        border-radius: 12px;
-        padding: 14px;
-    }
-    .assessment-option {
-        background: #f8fef9;
-        border-radius: 12px;
-        padding: 14px;
-        margin-bottom: 12px;
-        border: 1px solid #dcefe2;
-    }
-    .result-box {
-        background: #FFF9E5;
-        color: #6b4f13;
-        border: 1px solid #E6C77B;
-        border-radius: 12px;
-        padding: 18px;
-    }
-    [data-theme="dark"] .assessment-card,
-    [data-theme="dark"] .assessment-card-gold {
-        background-color: #1A2E23;
-    }
-    [data-theme="dark"] .assessment-header {
-        background: #294437;
-        color: #E8F5EF;
-    }
-    [data-theme="dark"] .assessment-option {
-        background: #22362B;
-        border-color: #496555;
-        color: #E8F5EF;
-    }
-    [data-theme="dark"] .assessment-option .bg-white {
-        background: #183026 !important;
-        color: #E8F5EF !important;
-        border-color: #496555 !important;
-    }
-    [data-theme="dark"] .result-box {
-        background: #3E3418;
-        color: #F5E7B8;
-        border-color: #C8A85A;
-    }
-</style>
-
-<div class="row g-4 mb-4">
-    {% for key, item in assessments.items %}
-        <div class="col-12 col-md-4">
-            <div class="card card-hover h-100 {% if item.accent == '#D4A017' %}assessment-card-gold{% else %}assessment-card{% endif %}">
-                <div class="card-body p-4">
-                    <div class="assessment-header mb-3">
-                        <h2 class="h5 mb-1">{{ item.title }}</h2>
-                        <p class="mb-0 small">{{ item.summary }}</p>
-                    </div>
-                    <div class="text-center">
-                        <a href="?tool={{ key }}" class="btn btn-mindly">Open self-check</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {% endfor %}
 </div>
 
 <div class="row justify-content-center">
     <div class="col-lg-10">
-        <div class="card shadow-sm border-0">
-            <div class="card-body p-4 p-md-5">
-                <h2 class="h3 mb-2 mindly-heading-teal">{{ selected_assessment.title }}</h2>
-                <p class="text-muted mb-4">Answer each statement based on how things have felt recently.</p>
-
-                <form method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="assessment_type" value="{{ selected_key }}">
-
-                    {% for question in selected_assessment.questions %}
-                        <div class="assessment-option">
-                            <p class="fw-semibold mb-3">{{ forloop.counter }}. {{ question.text }}</p>
-                            <div class="row g-2">
-                                {% for value, label in response_options %}
-                                    <div class="col-12 col-md-3">
-                                        <label class="form-check-label d-block border rounded p-2 bg-white">
-                                            <input class="form-check-input me-2" type="radio" name="{{ question.name }}" value="{{ value }}" required>
-                                            {{ label }}
-                                        </label>
-                                    </div>
-                                {% endfor %}
-                            </div>
+        <div class="assessment-hub-panel p-4 p-md-5">
+            <div class="row g-4 justify-content-center">
+                {% for key, item in assessments.items %}
+                <div class="col-12 col-md-4">
+                    <div class="assessment-hub-card">
+                        <div class="assessment-hub-header">
+                            <h2 class="h5 mb-1">{{ item.title }}</h2>
+                            <p class="mb-0 small">{{ item.summary }}</p>
                         </div>
-                    {% endfor %}
-
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-mindly px-4">See result</button>
+                        <a href="{% url 'assessments:detail' key %}" class="btn btn-mindly mt-2">Open self-check</a>
                     </div>
-                </form>
-
-                {% if result %}
-                    <div class="result-box mt-4">
-                        <h3 class="h4 mb-2">Your result</h3>
-                        <p class="mb-2"><strong>Level:</strong> {{ result.level }}</p>
-                        <p class="mb-2">{{ result.message }}</p>
-                        <p class="mb-0"><strong>{{ result.next_step }}</strong></p>
-                    </div>
-                {% endif %}
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
