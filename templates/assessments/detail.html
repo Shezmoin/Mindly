@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="mb-3">
-    <a href="{% url 'assessments:index' %}" class="btn btn-go-back">&#8592; Go Back</a>
+    <a href="{% url 'assessments:index' %}" class="btn btn-go-back">Go Back</a>
 </div>
 
 <div class="text-center mb-4">
@@ -16,6 +16,16 @@
     <div class="col-lg-8">
         <div class="card shadow-sm border-0">
             <div class="card-body p-4 p-md-5">
+
+                {% if result %}
+                    <div class="result-box mb-4">
+                        <h3 class="h4 mb-2">Your result</h3>
+                        <p class="mb-2"><strong>Level:</strong> {{ result.level }}</p>
+                        <p class="mb-2">{{ result.message }}</p>
+                        <p class="mb-0"><strong>{{ result.next_step }}</strong></p>
+                    </div>
+                {% endif %}
+
                 <p class="text-muted mb-4">Answer each statement based on how things have felt recently.</p>
 
                 <form method="post">
@@ -43,14 +53,8 @@
                 </form>
 
                 {% if result %}
-                    <div class="result-box mt-4">
-                        <h3 class="h4 mb-2">Your result</h3>
-                        <p class="mb-2"><strong>Level:</strong> {{ result.level }}</p>
-                        <p class="mb-2">{{ result.message }}</p>
-                        <p class="mb-0"><strong>{{ result.next_step }}</strong></p>
-                    </div>
                     <div class="text-center mt-4">
-                        <a href="{% url 'assessments:index' %}" class="btn btn-go-back">&#8592; Go Back</a>
+                        <a href="{% url 'assessments:index' %}" class="btn btn-go-back">Go Back</a>
                     </div>
                 {% endif %}
             </div>
