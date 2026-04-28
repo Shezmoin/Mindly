@@ -4,6 +4,21 @@ This document records errors encountered during development, along with investig
 
 ---
 
+## Table of Contents
+
+- [Error 1: Webhook Returning [400] on Stripe Events](#error-1-webhook-returning-400-on-stripe-events)
+- [Error 2: flake8 Violations (E501 Line Length)](#error-2-flake8-violations-e501-line-length)
+- [Error 3: Missing Import for JSON Payload Decoding](#error-3-missing-import-for-json-payload-decoding)
+- [Error 4: Environment Variable Not Loaded on Django Start](#error-4-environment-variable-not-loaded-on-django-start)
+- [Error 5: Mobile Layout Issue — Text Overflow](#error-5-mobile-layout-issue--text-overflow)
+- [Error 6: Mobile Layout Issue — Footer Disorganization](#error-6-mobile-layout-issue--footer-disorganization)
+- [Error 7: Mobile Layout Issue — Assessment Options Grid Cramped](#error-7-mobile-layout-issue--assessment-options-grid-cramped)
+- [Known Outstanding Issues](#known-outstanding-issues)
+- [Error Resolution Statistics](#error-resolution-statistics)
+- [Prevention Lessons Learned](#prevention-lessons-learned)
+
+---
+
 ## **Error 1: Webhook Returning [400] on Stripe Events**
 
 ### **Date:** December 2024

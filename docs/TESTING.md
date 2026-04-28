@@ -4,6 +4,26 @@ This document outlines the comprehensive testing process carried out during deve
 
 ---
 
+## Table of Contents
+
+- [Testing Strategy](#testing-strategy)
+- [User Story Testing](#user-story-testing)
+- [Manual Feature Testing](#manual-feature-testing)
+- [CRUD Coverage Matrix by Model](#crud-coverage-matrix-by-model)
+- [Form Validation Testing](#form-validation-testing)
+- [Browser Compatibility](#browser-compatibility)
+- [Responsiveness Testing](#responsiveness-testing)
+- [Accessibility Testing](#accessibility-testing)
+- [Security Testing](#security-testing)
+- [Code Validation](#code-validation)
+- [Unit Tests](#unit-tests)
+- [Lighthouse Performance Scores](#lighthouse-performance-scores)
+- [Django System Checks](#django-system-checks)
+- [Known Issues](#known-issues)
+- [Future Testing Improvements](#future-testing-improvements)
+
+---
+
 ## **Testing Strategy**
 
 Testing was conducted continuously throughout development using multiple methodologies to ensure:
