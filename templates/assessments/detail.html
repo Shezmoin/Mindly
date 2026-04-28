@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ assessment.title }} — Mindly{% endblock %}
+
+{% block content %}
+<div class="mb-3">
+    <a href="{% url 'assessments:index' %}" class="btn btn-go-back">&#8592; Go Back</a>
+</div>
+
+<div class="text-center mb-4">
+    <h1 class="display-6 mb-2 mindly-heading-green">{{ assessment.title }}</h1>
+    <p class="lead mb-0 page-hero-subtitle">{{ assessment.summary }}</p>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4 p-md-5">
+                <p class="text-muted mb-4">Answer each statement based on how things have felt recently.</p>
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    {% for question in assessment.questions %}
+                        <div class="assessment-option">
+                            <p class="fw-semibold mb-3">{{ forloop.counter }}. {{ question.text }}</p>
+                            <div class="row g-2">
+                                {% for value, label in response_options %}
+                                    <div class="col-12 col-sm-6 col-md-3">
+                                        <label class="form-check-label d-block border rounded p-2 bg-white w-100">
+                                            <input class="form-check-input me-2" type="radio" name="{{ question.name }}" value="{{ value }}" required>
+                                            {{ label }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-mindly px-4">See my result</button>
+                    </div>
+                </form>
+
+                {% if result %}
+                    <div class="result-box mt-4">
+                        <h3 class="h4 mb-2">Your result</h3>
+                        <p class="mb-2"><strong>Level:</strong> {{ result.level }}</p>
+                        <p class="mb-2">{{ result.message }}</p>
+                        <p class="mb-0"><strong>{{ result.next_step }}</strong></p>
+                    </div>
+                    <div class="text-center mt-4">
+                        <a href="{% url 'assessments:index' %}" class="btn btn-go-back">&#8592; Go Back</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
