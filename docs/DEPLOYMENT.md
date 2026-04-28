@@ -4,6 +4,20 @@ This document provides comprehensive deployment instructions for running Mindly 
 
 ---
 
+## Table of Contents
+
+- [Deployment Platform](#deployment-platform)
+- [Local Development Deployment](#local-development-deployment)
+- [Production Deployment (Heroku)](#production-deployment-heroku)
+- [Environment Variables Reference](#environment-variables-reference)
+- [Database Setup](#database-setup)
+- [Stripe Setup](#stripe-setup)
+- [Troubleshooting](#troubleshooting)
+- [Deployment Checklist (Heroku)](#deployment-checklist-heroku)
+- [Deployment Notes](#deployment-notes)
+
+---
+
 ## **Deployment Platform**
 
 Mindly is deployed on **Heroku** — a cloud platform that supports Django applications with managed PostgreSQL, environment config vars, and automatic HTTPS.

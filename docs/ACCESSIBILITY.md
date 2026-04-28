@@ -5,6 +5,16 @@
 
 ---
 
+## Table of Contents
+
+- [Completed Improvements](#completed-improvements)
+- [Additional Changes Made](#additional-changes-made)
+- [Testing Checklist](#testing-checklist)
+- [Accessibility Compliance Summary](#accessibility-compliance-summary)
+- [References](#references)
+
+---
+
 ## Completed Improvements
 
 ### 1. Dynamic URL Tags ({% url %})
