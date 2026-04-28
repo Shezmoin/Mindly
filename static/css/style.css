@@ -379,6 +379,38 @@ footer.mindly-footer {
     color: #FFFFFF;
 }
 
+[data-theme="dark"] .resource-hero-card {
+    background: #1A2E23;
+    border-left-color: #52B788;
+    color: #E8F5EF;
+}
+
+[data-theme="dark"] .resource-hero-card h1,
+[data-theme="dark"] .resource-hero-card p {
+    color: #E8F5EF;
+}
+
+[data-theme="dark"] .resource-hero-card-premium {
+    background: #2A2410;
+    border-left-color: #D4A017;
+    color: #F5E7B8;
+}
+
+[data-theme="dark"] .resource-hero-card-premium h1,
+[data-theme="dark"] .resource-hero-card-premium p {
+    color: #F5E7B8;
+}
+
+[data-theme="dark"] .resource-card-light {
+    background: #1A2E23;
+    color: #E8F5EF;
+}
+
+[data-theme="dark"] .resource-desc-card {
+    background: #22362B;
+    color: #E8F5EF;
+}
+
 [data-theme="dark"] .premium-benefits-grid .premium-benefit-item {
     border-color: #6f8a7d;
     color: #FFFFFF;
