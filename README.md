@@ -6,7 +6,7 @@ Mindly is a full-stack web application that empowers users to track their mental
 
 This project demonstrates professional backend development, full-stack integration, relational database design, payment processing, and industry-standard security practices using Django 4.2, Bootstrap 5, SQLite, and Stripe.
 
-Screenshot placeholder pending upload: `docs/screenshots/readme-01-dashboard-overview.png`
+![Dashboard Overview](docs/screenshots/readme-01-dashboard-overview.png)
 
 ---
 
@@ -107,15 +107,22 @@ Mindly is deployed and accessible for public testing.
 
 The live application is available here: [**Mindly on Heroku**](https://mindly-shez-9ca695ee4969.herokuapp.com/)
 
-### **Screenshot Placeholders (Pending Upload)**
+### **Key Interface Screenshots**
 
-The following screenshots are still pending capture/upload and should be added under `docs/screenshots/`:
+#### Home Page
+![Home Page](docs/screenshots/readme-02-home-page.png)
 
-* Home page: `docs/screenshots/readme-02-home-page.png`
-* Dashboard page: `docs/screenshots/readme-03-dashboard-page.png`
-* Journal index/page: `docs/screenshots/readme-04-journal-page.png`
-* Mood form page: `docs/screenshots/readme-05-mood-form-page.png`
-* Pricing page: `docs/screenshots/readme-06-pricing-page.png`
+#### Dashboard Page
+![Dashboard Page](docs/screenshots/readme-03-dashboard-page.png)
+
+#### Journal Page
+![Journal Page](docs/screenshots/readme-04-journal-page.png)
+
+#### Mood Form Page
+![Mood Form Page](docs/screenshots/readme-05-mood-form-page.png)
+
+#### Pricing Page
+![Pricing Page](docs/screenshots/readme-06-pricing-page.png)
 
 ---
 
@@ -181,7 +188,7 @@ The following screenshots are still pending capture/upload and should be added u
 
 Mindly is designed to be calm, supportive, and user-friendly. The interface prioritises clarity, accessibility, and ease of use to encourage consistent wellbeing tracking and journaling without overwhelming the user.
 
-Screenshot placeholder pending upload: `docs/screenshots/readme-07-design-overview.png`
+![Design Overview](docs/screenshots/readme-07-design-overview.png)
 
 ---
 
@@ -189,7 +196,7 @@ Screenshot placeholder pending upload: `docs/screenshots/readme-07-design-overvi
 
 A warm, supportive colour palette is chosen to create a positive, welcoming environment that encourages mental health reflection and action.
 
-Screenshot placeholder pending upload: `docs/screenshots/readme-08-colour-scheme-chart.png`
+![Colour Scheme](docs/screenshots/readme-08-colour-scheme-chart.png)
 
 #### **Primary Colours:**
 
@@ -214,7 +221,7 @@ Screenshot placeholder pending upload: `docs/screenshots/readme-08-colour-scheme
 * **Body Text:** Soft, approachable sans-serif for calm reading experience.
 * **Font Family:** System fonts optimized for accessibility and performance.
 
-Screenshot placeholder pending upload: `docs/screenshots/readme-09-typography-examples.png`
+![Typography Examples](docs/screenshots/readme-09-typography-examples.png)
 
 ---
 
