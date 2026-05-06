@@ -838,10 +838,6 @@ Developed as a professional portfolio project demonstrating full-stack developme
 
 No confirmed functional bugs are currently open in production-critical flows.
 
-Current known non-functional gaps:
-
-* Final visual evidence capture for validation and Lighthouse sections is still pending documentation completion
-
 ---
 
 **Shehzad Moin, 2026**
