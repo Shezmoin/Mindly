@@ -675,7 +675,7 @@ Automated Django test modules are maintained across the main apps (`users`, `jou
 
 Python checked with flake8.
 
-[**[Screenshot: Python Validation Results]**](docs/screenshots/testing-validation-python.png)
+![Python Validation Results](docs/screenshots/testing-validation-python.png)
 
 * No critical errors
 * Proper syntax and structure
