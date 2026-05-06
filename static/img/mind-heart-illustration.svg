@@ -1,0 +1,31 @@
+<svg viewBox="0 0 320 320" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Minimal dashboard wellbeing illustration</title>
+  <g fill="none" stroke="#2D6A4F" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="42" y="58" width="236" height="194" rx="20" stroke-width="6" />
+    <path stroke-width="5" d="M42 96h236" />
+    <circle cx="62" cy="77" r="4" stroke-width="3" />
+    <circle cx="76" cy="77" r="4" stroke-width="3" />
+    <circle cx="90" cy="77" r="4" stroke-width="3" />
+
+    <rect x="60" y="116" width="88" height="116" rx="12" stroke-width="5" />
+    <path stroke-width="4" d="M74 136h60" />
+    <path stroke-width="4" d="M74 154h50" />
+    <path stroke-width="4" d="M74 172h56" />
+    <path stroke-width="4" d="M74 190h40" />
+    <path stroke-width="4" d="M74 208h44" />
+
+    <rect x="162" y="116" width="98" height="60" rx="12" stroke-width="5" />
+    <path stroke-width="5" d="M176 162l15-15 14 10 20-20 21 9" />
+    <circle cx="176" cy="162" r="2.5" stroke-width="3" />
+    <circle cx="191" cy="147" r="2.5" stroke-width="3" />
+    <circle cx="205" cy="157" r="2.5" stroke-width="3" />
+    <circle cx="225" cy="137" r="2.5" stroke-width="3" />
+    <circle cx="246" cy="146" r="2.5" stroke-width="3" />
+
+    <path stroke-width="5" d="M176 219c0-10 8-18 18-18 6 0 11 3 14 8 3-5 8-8 14-8 10 0 18 8 18 18 0 16-17 25-32 37-15-12-32-21-32-37z" />
+
+    <path stroke-width="4" d="M26 222c13-8 28-8 42 0" />
+    <path stroke-width="4" d="M256 58c13-8 28-8 42 0" />
+    <path stroke-width="4" d="M262 268c10-6 21-6 31 0" />
+  </g>
+</svg>
