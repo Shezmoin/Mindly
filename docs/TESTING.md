@@ -289,6 +289,8 @@ Tested across multiple device sizes using Chrome DevTools and real devices.
 
 Flake8 run on the full project with results:
 
+![Python Validation Results](screenshots/testing-validation-python.png)
+
 ```
 flake8 . : Clean (no E or W violations)
 ```
@@ -322,7 +324,7 @@ The following checks are intentionally scheduled for later release stages:
 
 All templates validated with W3C HTML Validator.
 
-[**[Screenshot: W3C HTML Validation Results]**](screenshots/testing-validation-html.png)
+![W3C HTML Validation Results](screenshots/testing-validation-html.png)
 
 - No errors
 - All semantic tags properly used
@@ -332,7 +334,7 @@ All templates validated with W3C HTML Validator.
 
 Stylesheet validated with W3C CSS Validator.
 
-[**[Screenshot: W3C CSS Validation Results]**](screenshots/testing-validation-css.png)
+![W3C CSS Validation Results](screenshots/testing-validation-css.png)
 
 - No errors
 - Vendor prefixes where needed
@@ -342,7 +344,7 @@ Stylesheet validated with W3C CSS Validator.
 
 JavaScript checked with JSHint/ESLint.
 
-[**[Screenshot: JavaScript Validation Results]**](screenshots/testing-validation-js.png)
+![JavaScript Validation Results](screenshots/testing-validation-js.png)
 
 - No critical errors
 - Proper syntax and structure
@@ -422,7 +424,7 @@ Comprehensive automated testing implemented using Django's TestCase framework.
 
 ### **Desktop**
 
-[**[Screenshot: Lighthouse Desktop Score]**](screenshots/testing-lighthouse-desktop.png)
+![Lighthouse Desktop Score](screenshots/testing-lighthouse-desktop.png)
 
 - Performance: 85+
 - Accessibility: 90+
@@ -431,7 +433,7 @@ Comprehensive automated testing implemented using Django's TestCase framework.
 
 ### **Mobile**
 
-[**[Screenshot: Lighthouse Mobile Score]**](screenshots/testing-lighthouse-mobile.png)
+![Lighthouse Mobile Score](screenshots/testing-lighthouse-mobile.png)
 
 - Performance: 75+
 - Accessibility: 90+
