@@ -671,6 +671,16 @@ Comprehensive testing has been carried out to ensure functionality, security, us
 
 Automated Django test modules are maintained across the main apps (`users`, `journal`, `payments`, `pages`, `assessments`) and are run with `python manage.py test` as part of routine verification.
 
+### **Python Validation**
+
+Python checked with flake8.
+
+[**[Screenshot: Python Validation Results]**](docs/screenshots/testing-validation-python.png)
+
+* No critical errors
+* Proper syntax and structure
+* No unused variables/imports
+
 See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including:
 
 * Automated test coverage summary
@@ -816,7 +826,7 @@ Python documentation, Django official documentation, Stripe API documentation, B
 
 ### **Media**
 
-All images are placeholders or placeholder sources. Final images to be sourced from royalty-free repositories.
+Project screenshots are now embedded in this README. Remaining visual evidence screenshots (testing/validation/audit) are tracked in [docs/TESTING.md](docs/TESTING.md).
 
 ### **Acknowledgements**
 
@@ -830,8 +840,7 @@ No confirmed functional bugs are currently open in production-critical flows.
 
 Current known non-functional gaps:
 
-* README and testing/deployment screenshots are still placeholders pending capture/upload
-* Final visual evidence capture (validation and Lighthouse screenshots) is still pending documentation completion
+* Final visual evidence capture for validation and Lighthouse sections is still pending documentation completion
 
 ---
 
