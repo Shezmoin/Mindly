@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from users.decorators import premium_required
 from users.models import UserProfile
@@ -7,6 +8,7 @@ from users.models import UserProfile
 # View definitions
 
 
+@xframe_options_exempt
 def home_view(request):
     """Render the homepage with core Mindly highlights."""
     return render(request, 'pages/home.html')
