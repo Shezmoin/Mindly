@@ -75,6 +75,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# Temporary for screenshot capture tools that load pages in iframes.
+# Revert to DENY after screenshots are completed.
+X_FRAME_OPTIONS = 'ALLOWALL'
+
 ROOT_URLCONF = 'mindly.urls'
 
 # Template configuration - points to project-level templates folder
