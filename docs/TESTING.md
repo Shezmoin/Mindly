@@ -324,7 +324,7 @@ The following checks are intentionally scheduled for later release stages:
 
 All templates validated with W3C HTML Validator.
 
-![W3C HTML Validation Results](screenshots/testing-validation-html.png)
+<img src="screenshots/testing-validation-html.png" alt="W3C HTML Validation Results" width="75%">
 
 - No errors
 - All semantic tags properly used
@@ -334,7 +334,7 @@ All templates validated with W3C HTML Validator.
 
 Stylesheet validated with W3C CSS Validator.
 
-![W3C CSS Validation Results](screenshots/testing-validation-css.png)
+<img src="screenshots/testing-validation-css.png" alt="W3C CSS Validation Results" width="75%">
 
 - No errors
 - Vendor prefixes where needed
@@ -342,9 +342,9 @@ Stylesheet validated with W3C CSS Validator.
 
 ### **JavaScript Validation**
 
-JavaScript checked with JSHint/ESLint.
+JavaScript checked with Esprima.
 
-![JavaScript Validation Results](screenshots/testing-validation-js.png)
+<img src="screenshots/testing-validation-js.png" alt="JavaScript Validation Results" width="75%">
 
 - No critical errors
 - Proper syntax and structure
@@ -424,7 +424,7 @@ Comprehensive automated testing implemented using Django's TestCase framework.
 
 ### **Desktop**
 
-![Lighthouse Desktop Score](screenshots/testing-lighthouse-desktop.png)
+<img src="screenshots/testing-lighthouse-desktop.png" alt="Lighthouse Desktop Score" width="75%">
 
 - Performance: 85+
 - Accessibility: 90+
@@ -433,7 +433,7 @@ Comprehensive automated testing implemented using Django's TestCase framework.
 
 ### **Mobile**
 
-![Lighthouse Mobile Score](screenshots/testing-lighthouse-mobile.png)
+<img src="screenshots/testing-lighthouse-mobile.png" alt="Lighthouse Mobile Score" width="75%">
 
 - Performance: 75+
 - Accessibility: 90+
