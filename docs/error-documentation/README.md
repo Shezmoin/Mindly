@@ -1,31 +1,16 @@
-# 🐛 Error Documentation
+# Error Documentation
 
-This section documents errors encountered during development for academic transparency and debugging reference.
+This folder stores historical error screenshots and supporting records used by the main project error log.
 
-## 📁 Location
+## Canonical Error Log
 
-Error documentation with visual evidence: [`docs/error-documentation/ERROR_LOG.md`](docs/error-documentation/ERROR_LOG.md)
+Use the single canonical log at:
 
-## 📋 Documented Errors
+[docs/ERROR_LOG.md](../ERROR_LOG.md)
 
-### Development Phase Errors
+## Supporting Files in This Folder
 
-1. **Users App 404 Error** - No root URL configured for `/users/`
-2. **Assessments Template Error** - Missing `templates/assessments/index.html`
-3. **Journal Template Error** - Missing `templates/journal/index.html`
-4. **Assessments Detailed Trace Capture** - Template-loader traceback screenshot for the same missing assessments template
-5. **Journal Detailed Trace Capture** - Template-loader traceback screenshot for the same missing journal template
+- `BUG_LOG.md` for tracked bug items
+- Error screenshots referenced from [docs/ERROR_LOG.md](../ERROR_LOG.md)
 
-All errors include:
-- Visual screenshot evidence
-- Error description and status code
-- Root cause analysis
-- Resolution steps
-
-## 🔧 Resolution Status
-
-As features are implemented, errors are resolved and marked complete in the error log.
-
----
-
-*For detailed error information with screenshots, see [ERROR_LOG.md](docs/error-documentation/ERROR_LOG.md)*
+No duplicate `ERROR_LOG.md` is maintained in this folder.
