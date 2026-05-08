@@ -50,14 +50,14 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 ## E) Detailed Future Action Plan
 
 ### README / Final Screenshot Capture Order
-- [ ] Capture README screenshot: home page and save as `docs/screenshots/readme-02-home-page.png`
-- [ ] Capture README screenshot: dashboard page and save as `docs/screenshots/readme-03-dashboard-page.png`
-- [ ] Capture README screenshot: journal page and save as `docs/screenshots/readme-04-journal-page.png`
-- [ ] Capture README screenshot: mood form page and save as `docs/screenshots/readme-05-mood-form-page.png`
-- [ ] Capture README screenshot: pricing page and save as `docs/screenshots/readme-06-pricing-page.png`
-- [ ] Capture README screenshot: design overview and save as `docs/screenshots/readme-07-design-overview.png`
-- [ ] Capture README screenshot: colour scheme chart and save as `docs/screenshots/readme-08-colour-scheme-chart.png`
-- [ ] Capture README screenshot: typography examples and save as `docs/screenshots/readme-09-typography-examples.png`
+- [x] Capture README screenshot: home page and save as `docs/screenshots/readme-02-home-page.png`
+- [x] Capture README screenshot: dashboard page and save as `docs/screenshots/readme-03-dashboard-page.png`
+- [x] Capture README screenshot: journal page and save as `docs/screenshots/readme-04-journal-page.png`
+- [x] Capture README screenshot: mood form page and save as `docs/screenshots/readme-05-mood-form-page.png`
+- [x] Capture README screenshot: pricing page and save as `docs/screenshots/readme-06-pricing-page.png`
+- [x] Capture README screenshot: design overview and save as `docs/screenshots/readme-07-design-overview.png`
+- [x] Capture README screenshot: colour scheme chart and save as `docs/screenshots/readme-08-colour-scheme-chart.png`
+- [x] Capture README screenshot: typography examples and save as `docs/screenshots/readme-09-typography-examples.png`
 - [ ] Capture README screenshot: premium-only resource/content page and save as `docs/screenshots/readme-10-premium-content-page.png`
 - [ ] Capture README screenshot: payment success page and save as `docs/screenshots/readme-11-payment-success-page.png`
 - [ ] Replace each README screenshot placeholder with the correct embedded image path
@@ -99,7 +99,7 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Verify README descriptions still match current implemented views, models, and routes
 
 ### HTML Verification
-- [ ] Validate key rendered HTML pages for structural issues
+- [x] Validate key rendered HTML pages for structural issues
 - [ ] Check home page HTML output
 - [ ] Check dashboard page HTML output
 - [ ] Check journal page HTML output
@@ -108,7 +108,7 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Note any unavoidable framework-generated warnings separately from real issues
 
 ### CSS Verification
-- [ ] Validate project CSS for syntax issues
+- [x] Validate project CSS for syntax issues
 - [ ] Verify navbar alignment in logged-in and logged-out states
 - [ ] Verify dark mode styles on home, dashboard, journal, pricing, profile, and premium pages
 - [ ] Verify responsive layout at 320px, 375px, 768px, and desktop widths
@@ -144,11 +144,11 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Verify local SQLite fallback still works for local development
 
 ### Lighthouse / Performance / Accessibility Evidence
-- [ ] Run Lighthouse on home page (desktop)
-- [ ] Run Lighthouse on home page (mobile)
+- [x] Run Lighthouse on home page (desktop)
+- [x] Run Lighthouse on home page (mobile)
 - [ ] Run Lighthouse on dashboard page (desktop if authenticated run is available)
-- [ ] Capture Lighthouse screenshots/reports as evidence if required
-- [ ] Record performance, accessibility, best practices, and SEO scores
+- [x] Capture Lighthouse screenshots/reports as evidence if required
+- [x] Record performance, accessibility, best practices, and SEO scores
 - [ ] Note any non-critical third-party or environment-related warnings separately
 
 ### Error and Edge-Case Evidence
