@@ -110,19 +110,19 @@ The live application is available here: [**Mindly on Heroku**](https://mindly-sh
 ### **Key Interface Screenshots**
 
 #### Home Page
-![Home Page](docs/screenshots/readme-02-home-page.png)
+<img src="docs/screenshots/readme-02-home-page.png" alt="Home Page" width="75%">
 
 #### Dashboard Page
-![Dashboard Page](docs/screenshots/readme-03-dashboard-page.png)
+<img src="docs/screenshots/readme-03-dashboard-page.png" alt="Dashboard Page" width="75%">
 
 #### Journal Page
-![Journal Page](docs/screenshots/readme-04-journal-page.png)
+<img src="docs/screenshots/readme-04-journal-page.png" alt="Journal Page" width="75%">
 
 #### Mood Form Page
-![Mood Form Page](docs/screenshots/readme-05-mood-form-page.png)
+<img src="docs/screenshots/readme-05-mood-form-page.png" alt="Mood Form Page" width="75%">
 
 #### Pricing Page
-![Pricing Page](docs/screenshots/readme-06-pricing-page.png)
+<img src="docs/screenshots/readme-06-pricing-page.png" alt="Pricing Page" width="75%">
 
 ---
 
@@ -188,7 +188,7 @@ The live application is available here: [**Mindly on Heroku**](https://mindly-sh
 
 Mindly is designed to be calm, supportive, and user-friendly. The interface prioritises clarity, accessibility, and ease of use to encourage consistent wellbeing tracking and journaling without overwhelming the user.
 
-![Design Overview](docs/screenshots/readme-07-design-overview.png)
+<img src="docs/screenshots/readme-07-design-overview.png" alt="Design Overview" width="75%">
 
 ---
 
@@ -196,7 +196,7 @@ Mindly is designed to be calm, supportive, and user-friendly. The interface prio
 
 A warm, supportive colour palette is chosen to create a positive, welcoming environment that encourages mental health reflection and action.
 
-![Colour Scheme](docs/screenshots/readme-08-colour-scheme-chart.png)
+<img src="docs/screenshots/readme-08-colour-scheme-chart.png" alt="Colour Scheme" width="75%">
 
 #### **Primary Colours:**
 
@@ -221,7 +221,7 @@ A warm, supportive colour palette is chosen to create a positive, welcoming envi
 * **Body Text:** Soft, approachable sans-serif for calm reading experience.
 * **Font Family:** System fonts optimized for accessibility and performance.
 
-![Typography Examples](docs/screenshots/readme-09-typography-examples.png)
+<img src="docs/screenshots/readme-09-typography-examples.png" alt="Typography Examples" width="75%">
 
 ---
 
