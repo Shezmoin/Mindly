@@ -289,7 +289,7 @@ Tested across multiple device sizes using Chrome DevTools and real devices.
 
 Flake8 run on the full project with results:
 
-![Python Validation Results](screenshots/testing-validation-python.png)
+<img src="screenshots/testing-validation-python.jpg" alt="Python Validation Results" width="75%">
 
 ```
 flake8 . : Clean (no E or W violations)
