@@ -8,16 +8,16 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Ensure all links in README and docs are valid and non-placeholder
 - [ ] Remove test/debug data from the database
 - [x] Run full automated validation one final time (`flake8 .`, `python manage.py check`, `python manage.py test`)
-- [ ] Run final manual smoke pass across core user journeys
+- [x] Run final manual smoke pass across core user journeys
 - [x] Push all final commits to remote repository
 - [ ] Tag final release in Git
 - [ ] Archive/backup repository if required
 
 ## B) On-Hold Items (to complete at the end)
 - [x] Add README Stripe "Error Handling & Recovery" subsection (checkout error page, 404/500 pages, subscription recovery notes)
-- [ ] Replace README screenshot placeholder links with real assets from `docs/screenshots/`
-- [ ] Capture and store required UI screenshots in `docs/screenshots/` (home, dashboard, journal, mood form, pricing)
-- [ ] Embed captured screenshots in README sections and verify links render correctly
+- [x] Replace README screenshot placeholder links with real assets from `docs/screenshots/`
+- [x] Capture and store required UI screenshots in `docs/screenshots/` (home, dashboard, journal, mood form, pricing)
+- [x] Embed captured screenshots in README sections and verify links render correctly
 - [ ] Manual check: custom `404.html` rendering with `DEBUG=False` and valid `ALLOWED_HOSTS`
 - [ ] Manual check: custom `500.html` rendering with `DEBUG=False`
 - [ ] Manual check: Stripe checkout failure UX shows `templates/payments/checkout_error.html`
@@ -58,9 +58,9 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [x] Capture README screenshot: design overview and save as `docs/screenshots/readme-07-design-overview.png`
 - [x] Capture README screenshot: colour scheme chart and save as `docs/screenshots/readme-08-colour-scheme-chart.png`
 - [x] Capture README screenshot: typography examples and save as `docs/screenshots/readme-09-typography-examples.png`
-- [ ] Capture README screenshot: premium-only resource/content page and save as `docs/screenshots/readme-10-premium-content-page.png`
-- [ ] Capture README screenshot: payment success page and save as `docs/screenshots/readme-11-payment-success-page.png`
-- [ ] Replace each README screenshot placeholder with the correct embedded image path
+- [x] Capture README screenshot: premium-only resource/content page and save as `docs/screenshots/readme-10-premium-content-page.png`
+- [x] Capture README screenshot: payment success page and save as `docs/screenshots/readme-11-payment-success-page.png`
+- [x] Replace each README screenshot placeholder with the correct embedded image path
 
 ### Manual User Journey Evidence
 - [ ] Capture test evidence: registration success screen as `docs/screenshots/test-01-register-success.png`
@@ -75,18 +75,18 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Capture test evidence: cancellation flow outcome as `docs/screenshots/test-10-premium-cancellation.png`
 
 ### Django Functional Verification
-- [ ] Verify registration works with valid inputs
-- [ ] Verify login works with valid username/password
+- [x] Verify registration works with valid inputs
+- [x] Verify login works with valid username/password
 - [ ] Verify invalid login shows correct error handling
-- [ ] Verify logout works and returns expected page/state
-- [ ] Verify profile page loads for authenticated user only
+- [x] Verify logout works and returns expected page/state
+- [x] Verify profile page loads for authenticated user only
 - [ ] Verify profile edit updates persisted data correctly
 - [ ] Verify mood CRUD is owner-scoped and works end-to-end
-- [ ] Verify journal CRUD is owner-scoped and works end-to-end
-- [ ] Verify assessment pages load and return supportive results
-- [ ] Verify premium-only views deny free users and allow premium users
+- [x] Verify journal CRUD is owner-scoped and works end-to-end
+- [x] Verify assessment pages load and return supportive results
+- [x] Verify premium-only views deny free users and allow premium users
 - [ ] Verify donation flow does not incorrectly upgrade subscription tier
-- [ ] Verify subscription flow upgrades premium tier via webhook
+- [x] Verify subscription flow upgrades premium tier via webhook
 - [ ] Verify premium cancellation returns user to free state if expected by current app logic
 - [ ] Verify admin root loads for the deployed superuser
 - [ ] Verify any previously failing deeper admin routes behave as expected
@@ -120,16 +120,16 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Verify Stripe-related client-side redirects/buttons behave correctly
 
 ### Stripe Verification
-- [ ] Verify Stripe test-mode checkout still works after latest code/docs changes
+- [x] Verify Stripe test-mode checkout still works after latest code/docs changes
 - [ ] Verify `checkout.session.completed` webhook delivery shows `200 OK`
 - [ ] Verify Stripe webhook secret on Heroku matches current Stripe destination secret
-- [ ] Verify payment success route behavior for subscription mode
+- [x] Verify payment success route behavior for subscription mode
 - [ ] Verify payment success route behavior for one-time payment/donation mode
 - [ ] Verify failed checkout / cancellation UX matches documented behavior
 - [ ] Capture Stripe delivery evidence screenshots if required
 
 ### Heroku Verification
-- [ ] Verify current Heroku app loads publicly over HTTPS
+- [x] Verify current Heroku app loads publicly over HTTPS
 - [ ] Verify dyno state is up
 - [ ] Verify config vars remain present and correct
 - [ ] Verify Postgres addon is attached as `DATABASE`
@@ -140,7 +140,7 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 ### Database / PostgreSQL Verification
 - [x] Verify no pending migrations locally
 - [x] Verify no pending migrations on Heroku
-- [ ] Verify production data reflects premium subscription upgrade after Stripe payment
+- [x] Verify production data reflects premium subscription upgrade after Stripe payment
 - [ ] Verify local SQLite fallback still works for local development
 
 ### Lighthouse / Performance / Accessibility Evidence
@@ -152,17 +152,17 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Note any non-critical third-party or environment-related warnings separately
 
 ### Error and Edge-Case Evidence
-- [ ] Capture custom 404 page as `docs/screenshots/error-01-404-page.png`
+- [x] Capture custom 404 page as `docs/screenshots/error-01-404-page.png`
 - [ ] Capture custom 500 page if reproducible/safe as `docs/screenshots/error-02-500-page.png`
-- [ ] Capture checkout error or failure state as `docs/screenshots/error-03-checkout-error.png`
-- [ ] Capture unauthorized premium access behavior as `docs/screenshots/error-04-premium-access-denied.png`
+- [x] Capture checkout error or failure state as `docs/screenshots/error-03-checkout-error.png`
+- [x] Capture unauthorized premium access behavior as `docs/screenshots/error-04-premium-access-denied.png`
 
 ### Responsive / Visual Audit Evidence
-- [ ] Capture mobile home page at 320px as `docs/screenshots/audit-01-home-320px.png`
-- [ ] Capture mobile dashboard at 375px as `docs/screenshots/audit-02-dashboard-375px.png`
-- [ ] Capture dark mode dashboard as `docs/screenshots/audit-03-dashboard-dark.png`
-- [ ] Capture pricing page at high zoom as `docs/screenshots/audit-04-pricing-200zoom.png`
-- [ ] Capture premium content page in dark mode as `docs/screenshots/audit-05-premium-dark.png`
+- [x] Capture mobile home page at 320px as `docs/screenshots/audit-01-home-320px.png`
+- [x] Capture mobile dashboard at 375px as `docs/screenshots/audit-02-dashboard-375px.png`
+- [x] Capture dark mode dashboard as `docs/screenshots/audit-03-dashboard-dark.png`
+- [x] Capture pricing page at high zoom as `docs/screenshots/audit-04-pricing-200zoom.png`
+- [x] Capture premium content page in dark mode as `docs/screenshots/audit-05-premium-dark.png`
 
 ---
 
