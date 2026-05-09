@@ -504,24 +504,24 @@ heroku config:set DEBUG=False
 
 Before going live, verify:
 
-- [ ] Heroku app created and CLI authenticated
-- [ ] `Procfile` present with `web: gunicorn mindly.wsgi`
-- [ ] `runtime.txt` specifies Python version
-- [ ] `gunicorn` and `whitenoise` in `requirements.txt`
-- [ ] `DEBUG = False` set via `heroku config:set`
-- [ ] `ALLOWED_HOSTS` set to Heroku app domain
-- [ ] `SECRET_KEY` is strong and set via `heroku config:set`
-- [ ] PostgreSQL addon provisioned
-- [ ] Database migrations applied (`heroku run python manage.py migrate`)
-- [ ] Static files collected (`heroku run python manage.py collectstatic`)
-- [ ] HTTPS enabled (automatic on Heroku)
-- [ ] Stripe keys are production (pk_live_, sk_live_)
-- [ ] Stripe webhook endpoint configured with Heroku URL
-- [ ] Admin user created (`heroku run python manage.py createsuperuser`)
-- [ ] Database backups enabled
-- [ ] Error logging configured
-- [ ] Uptime monitoring enabled
-- [ ] Security headers set (HSTS, X-Frame-Options, etc.)
+- [x] Heroku app created and CLI authenticated
+- [x] `Procfile` present with `web: gunicorn mindly.wsgi`
+- [x] `runtime.txt` specifies Python version
+- [x] `gunicorn` and `whitenoise` in `requirements.txt`
+- [x] `DEBUG = False` set via `heroku config:set`
+- [x] `ALLOWED_HOSTS` set to Heroku app domain
+- [x] `SECRET_KEY` is strong and set via `heroku config:set`
+- [x] PostgreSQL addon provisioned
+- [x] Database migrations applied (`heroku run python manage.py migrate`)
+- [x] Static files collected (`heroku run python manage.py collectstatic`)
+- [x] HTTPS enabled (automatic on Heroku)
+- [x] Stripe keys are production (pk_live_, sk_live_)
+- [x] Stripe webhook endpoint configured with Heroku URL
+- [x] Admin user created (`heroku run python manage.py createsuperuser`)
+- [x] Database backups enabled
+- [x] Error logging configured
+- [x] Uptime monitoring enabled
+- [x] Security headers set (HSTS, X-Frame-Options, etc.)
 
 ---
 
