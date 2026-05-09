@@ -2,6 +2,8 @@
 
 This is the single source of truth for development errors, investigation notes, visual evidence, and resolutions. All 11 errors identified during development have been resolved and verified.
 
+**Scope:** Development-time infrastructure, routing, template, environment, and validation issues discovered while building the application.
+
 ---
 
 ## Table of Contents

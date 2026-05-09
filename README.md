@@ -720,7 +720,7 @@ See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including
 * Form validation testing
 * Browser compatibility testing
 * Responsiveness testing
-* Accessibility testing (WCAG compliance)
+* Accessibility testing (WCAG 2.1 AA/AAA contrast verification; see [ACCESSIBILITY.md](./docs/ACCESSIBILITY.md) for the 8.08:1 contrast ratio used in the navbar)
 * Security testing
 * Lighthouse performance scores
 * Code validation (PEP8, HTML, CSS, JavaScript)

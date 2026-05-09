@@ -1,5 +1,7 @@
 # BUG LOG
 
+**Scope:** Feature-level functional bugs and requirement gaps discovered during application testing and refinement.
+
 ## [2026-04-14]
 
 ### 0. Resource cards had no linked detail content

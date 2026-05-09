@@ -98,6 +98,8 @@ STRIPE_PRICE_ID=price_1234...
 STRIPE_WEBHOOK_SECRET=whsec_test_1234...
 ```
 
+See the [Environment Variables Reference](#environment-variables-reference) table below for the full set of local and production values, their purpose, and example formats.
+
 ### **Step 5: Apply Database Migrations**
 
 ```bash
