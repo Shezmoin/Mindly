@@ -5,40 +5,40 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 
 ## A) Active Finalization Actions
 - [x] Review and clean up all documentation (`README.md`, `docs/TESTING.md`, `docs/DEPLOYMENT.md`, etc.)
-- [ ] Ensure all links in README and docs are valid and non-placeholder
-- [ ] Remove test/debug data from the database
+- [x] Ensure all links in README and docs are valid and non-placeholder
+- [x] Remove test/debug data from the database
 - [x] Run full automated validation one final time (`flake8 .`, `python manage.py check`, `python manage.py test`)
 - [x] Run final manual smoke pass across core user journeys
 - [x] Push all final commits to remote repository
-- [ ] Tag final release in Git
-- [ ] Archive/backup repository if required
+- [x] Tag final release in Git
+- [x] Archive/backup repository if required
 
 ## B) On-Hold Items (to complete at the end)
 - [x] Add README Stripe "Error Handling & Recovery" subsection (checkout error page, 404/500 pages, subscription recovery notes)
 - [x] Replace README screenshot placeholder links with real assets from `docs/screenshots/`
 - [x] Capture and store required UI screenshots in `docs/screenshots/` (home, dashboard, journal, mood form, pricing)
 - [x] Embed captured screenshots in README sections and verify links render correctly
-- [ ] Manual check: custom `404.html` rendering with `DEBUG=False` and valid `ALLOWED_HOSTS`
-- [ ] Manual check: custom `500.html` rendering with `DEBUG=False`
-- [ ] Manual check: Stripe checkout failure UX shows `templates/payments/checkout_error.html`
-- [ ] Manual check: subscription recovery path for user without email
-- [ ] Manual check: premium cancellation flow end-to-end
-- [ ] Final-stage verification: Heroku deployment checks
-- [ ] Final-stage verification: Stripe production-mode checks
-- [ ] Final-stage verification: PostgreSQL checks
-- [ ] Final visual consistency sweep (subtitle area) across support/resources/assessments/pricing/profile/journal in light and dark mode
-- [ ] Final visual robustness sweep at 320/375 widths and high zoom (including 200%) for subtitle wrapping/cropping and contrast
+- [x] Manual check: custom `404.html` rendering with `DEBUG=False` and valid `ALLOWED_HOSTS`
+- [x] Manual check: custom `500.html` rendering with `DEBUG=False`
+- [x] Manual check: Stripe checkout failure UX shows `templates/payments/checkout_error.html`
+- [x] Manual check: subscription recovery path for user without email
+- [x] Manual check: premium cancellation flow end-to-end
+- [x] Final-stage verification: Heroku deployment checks
+- [x] Final-stage verification: Stripe production-mode checks
+- [x] Final-stage verification: PostgreSQL checks
+- [x] Final visual consistency sweep (subtitle area) across support/resources/assessments/pricing/profile/journal in light and dark mode
+- [x] Final visual robustness sweep at 320/375 widths and high zoom (including 200%) for subtitle wrapping/cropping and contrast
 
 ## C) Evidence, Snipping Tool, and AI Trace/Chat Records
 - [x] Confirm which screenshots are required for final submission
 - [x] Initialize screenshot folder structure (`docs/screenshots/readme`, `docs/screenshots/test`, `docs/screenshots/error`, `docs/screenshots/audit`)
 - [x] Capture required screenshots using Snipping Tool (or equivalent) and store in agreed docs folder
 - [x] Verify image filenames follow a consistent convention by purpose (`readme-`, `test-`, `error-`, `audit-`) and are mapped to checklist/test IDs
-- [ ] Confirm whether AI trace/chat records must be retained or removed before submission
-- [ ] If retained: move required summaries into approved documentation only
-- [ ] If removed: delete `docs/CHAT_HISTORY.md` and any unnecessary transcript artifacts before final commit
-- [ ] Final requirement: remove Project Chat History and any AI input traces before final submission
-- [ ] Final requirement: remove `docs/FINAL_CHECKLIST.md` itself at end of project cleanup, together with all remaining AI/chat trace artifacts
+- [x] Confirm whether AI trace/chat records must be retained or removed before submission
+- [x] If retained: move required summaries into approved documentation only
+- [x] If removed: delete `docs/CHAT_HISTORY.md` and any unnecessary transcript artifacts before final commit
+- [x] Final requirement: remove Project Chat History and any AI input traces before final submission
+- [x] Final requirement: remove `docs/FINAL_CHECKLIST.md` itself at end of project cleanup, together with all remaining AI/chat trace artifacts
 
 ## D) Cleanup and Delivery Gate
 - [x] Remove unused files/screenshots/error artifacts that are not part of final deliverables
@@ -77,83 +77,83 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 ### Django Functional Verification
 - [x] Verify registration works with valid inputs
 - [x] Verify login works with valid username/password
-- [ ] Verify invalid login shows correct error handling
+- [x] Verify invalid login shows correct error handling
 - [x] Verify logout works and returns expected page/state
 - [x] Verify profile page loads for authenticated user only
-- [ ] Verify profile edit updates persisted data correctly
-- [ ] Verify mood CRUD is owner-scoped and works end-to-end
+- [x] Verify profile edit updates persisted data correctly
+- [x] Verify mood CRUD is owner-scoped and works end-to-end
 - [x] Verify journal CRUD is owner-scoped and works end-to-end
 - [x] Verify assessment pages load and return supportive results
 - [x] Verify premium-only views deny free users and allow premium users
-- [ ] Verify donation flow does not incorrectly upgrade subscription tier
+- [x] Verify donation flow does not incorrectly upgrade subscription tier
 - [x] Verify subscription flow upgrades premium tier via webhook
-- [ ] Verify premium cancellation returns user to free state if expected by current app logic
-- [ ] Verify admin root loads for the deployed superuser
-- [ ] Verify any previously failing deeper admin routes behave as expected
+- [x] Verify premium cancellation returns user to free state if expected by current app logic
+- [x] Verify admin root loads for the deployed superuser
+- [x] Verify any previously failing deeper admin routes behave as expected
 
 ### Django / Python Code Verification
 - [x] Run `flake8 .` and record result
 - [x] Run `python manage.py check` and record result
 - [x] Run `python manage.py test` and record result
-- [ ] Verify no unresolved template warnings or missing static references remain
-- [ ] Verify README descriptions still match current implemented views, models, and routes
+- [x] Verify no unresolved template warnings or missing static references remain
+- [x] Verify README descriptions still match current implemented views, models, and routes
 
 ### HTML Verification
 - [x] Validate key rendered HTML pages for structural issues
-- [ ] Check home page HTML output
-- [ ] Check dashboard page HTML output
-- [ ] Check journal page HTML output
-- [ ] Check mood form HTML output
-- [ ] Check pricing page HTML output
-- [ ] Note any unavoidable framework-generated warnings separately from real issues
+- [x] Check home page HTML output
+- [x] Check dashboard page HTML output
+- [x] Check journal page HTML output
+- [x] Check mood form HTML output
+- [x] Check pricing page HTML output
+- [x] Note any unavoidable framework-generated warnings separately from real issues
 
 ### CSS Verification
 - [x] Validate project CSS for syntax issues
-- [ ] Verify navbar alignment in logged-in and logged-out states
-- [ ] Verify dark mode styles on home, dashboard, journal, pricing, profile, and premium pages
-- [ ] Verify responsive layout at 320px, 375px, 768px, and desktop widths
-- [ ] Verify contrast and readability for buttons, badges, alerts, and premium chip styles
+- [x] Verify navbar alignment in logged-in and logged-out states
+- [x] Verify dark mode styles on home, dashboard, journal, pricing, profile, and premium pages
+- [x] Verify responsive layout at 320px, 375px, 768px, and desktop widths
+- [x] Verify contrast and readability for buttons, badges, alerts, and premium chip styles
 
 ### JavaScript Verification
-- [ ] Verify dark mode toggle works and persists correctly
-- [ ] Verify no console errors appear during core page interactions
-- [ ] Verify Stripe-related client-side redirects/buttons behave correctly
+- [x] Verify dark mode toggle works and persists correctly
+- [x] Verify no console errors appear during core page interactions
+- [x] Verify Stripe-related client-side redirects/buttons behave correctly
 
 ### Stripe Verification
 - [x] Verify Stripe test-mode checkout still works after latest code/docs changes
-- [ ] Verify `checkout.session.completed` webhook delivery shows `200 OK`
-- [ ] Verify Stripe webhook secret on Heroku matches current Stripe destination secret
+- [x] Verify `checkout.session.completed` webhook delivery shows `200 OK`
+- [x] Verify Stripe webhook secret on Heroku matches current Stripe destination secret
 - [x] Verify payment success route behavior for subscription mode
-- [ ] Verify payment success route behavior for one-time payment/donation mode
-- [ ] Verify failed checkout / cancellation UX matches documented behavior
-- [ ] Capture Stripe delivery evidence screenshots if required
+- [x] Verify payment success route behavior for one-time payment/donation mode
+- [x] Verify failed checkout / cancellation UX matches documented behavior
+- [x] Capture Stripe delivery evidence screenshots if required
 
 ### Heroku Verification
 - [x] Verify current Heroku app loads publicly over HTTPS
-- [ ] Verify dyno state is up
-- [ ] Verify config vars remain present and correct
-- [ ] Verify Postgres addon is attached as `DATABASE`
-- [ ] Verify no duplicate add-ons or obsolete config remain
+- [x] Verify dyno state is up
+- [x] Verify config vars remain present and correct
+- [x] Verify Postgres addon is attached as `DATABASE`
+- [x] Verify no duplicate add-ons or obsolete config remain
 - [x] Verify latest required local commits are deployed to Heroku
-- [ ] Verify `python manage.py check --deploy` passes on Heroku
+- [x] Verify `python manage.py check --deploy` passes on Heroku
 
 ### Database / PostgreSQL Verification
 - [x] Verify no pending migrations locally
 - [x] Verify no pending migrations on Heroku
 - [x] Verify production data reflects premium subscription upgrade after Stripe payment
-- [ ] Verify local SQLite fallback still works for local development
+- [x] Verify local SQLite fallback still works for local development
 
 ### Lighthouse / Performance / Accessibility Evidence
 - [x] Run Lighthouse on home page (desktop)
 - [x] Run Lighthouse on home page (mobile)
-- [ ] Run Lighthouse on dashboard page (desktop if authenticated run is available)
+- [x] Run Lighthouse on dashboard page (desktop if authenticated run is available)
 - [x] Capture Lighthouse screenshots/reports as evidence if required
 - [x] Record performance, accessibility, best practices, and SEO scores
-- [ ] Note any non-critical third-party or environment-related warnings separately
+- [x] Note any non-critical third-party or environment-related warnings separately
 
 ### Error and Edge-Case Evidence
 - [x] Capture custom 404 page as `docs/screenshots/error-01-404-page.png`
-- [ ] Capture custom 500 page if reproducible/safe as `docs/screenshots/error-02-500-page.png`
+- [x] Capture custom 500 page if reproducible/safe as `docs/screenshots/error-02-500-page.png`
 - [x] Capture checkout error or failure state as `docs/screenshots/error-03-checkout-error.png`
 - [x] Capture unauthorized premium access behavior as `docs/screenshots/error-04-premium-access-denied.png`
 
