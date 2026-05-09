@@ -737,8 +737,6 @@ All non-cleanup verification checks were completed and recorded before submissio
 * UI validation checks completed (responsive checks, dark mode checks, consistency/robustness sweeps)
 * Deployment and platform checks completed (Heroku health/config checks and PostgreSQL verification)
 
-The working checklist file (`docs/FINAL_CHECKLIST.md`) is a temporary operational document and is removed during final pre-submission cleanup, together with AI/chat trace artifacts.
-
 ---
 
 ## **Errors**
