@@ -124,6 +124,12 @@ The live application is available here: [**Mindly on Heroku**](https://mindly-sh
 #### Pricing Page
 <img src="docs/screenshots/readme-06-pricing-page.png" alt="Pricing Page" width="75%">
 
+#### Premium Content Page
+<img src="docs/screenshots/readme-10-premium-content-page.png" alt="Premium Content Page" width="75%">
+
+#### Payment Success Page
+<img src="docs/screenshots/readme-11-payment-success-page.png" alt="Payment Success Page" width="75%">
+
 ---
 
 ### **Repository**
