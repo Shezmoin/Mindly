@@ -63,16 +63,16 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [x] Replace each README screenshot placeholder with the correct embedded image path
 
 ### Manual User Journey Evidence
-- [ ] Capture test evidence: registration success screen as `docs/screenshots/test-01-register-success.png`
-- [ ] Capture test evidence: login success/dashboard load as `docs/screenshots/test-02-login-success.png`
-- [ ] Capture test evidence: mood entry creation as `docs/screenshots/test-03-mood-create.png`
-- [ ] Capture test evidence: journal entry creation as `docs/screenshots/test-04-journal-create.png`
-- [ ] Capture test evidence: pricing page before subscription as `docs/screenshots/test-05-pricing-free-user.png`
-- [ ] Capture test evidence: Stripe checkout page as `docs/screenshots/test-06-stripe-checkout.png`
-- [ ] Capture test evidence: payment success page as `docs/screenshots/test-07-payment-success.png`
-- [ ] Capture test evidence: premium badge/subscriber UI as `docs/screenshots/test-08-premium-upgrade.png`
-- [ ] Capture test evidence: premium-only page access after upgrade as `docs/screenshots/test-09-premium-resource-access.png`
-- [ ] Capture test evidence: cancellation flow outcome as `docs/screenshots/test-10-premium-cancellation.png`
+- [x] Capture test evidence: registration success screen as `docs/screenshots/test-01-register-success.png`
+- [x] Capture test evidence: login success/dashboard load as `docs/screenshots/test-02-login-success.png`
+- [x] Capture test evidence: mood entry creation as `docs/screenshots/test-03-mood-create.png`
+- [x] Capture test evidence: journal entry creation as `docs/screenshots/test-04-journal-create.png`
+- [x] Capture test evidence: pricing page before subscription as `docs/screenshots/test-05-pricing-free-user.png`
+- [x] Capture test evidence: Stripe checkout page as `docs/screenshots/test-06-stripe-checkout.png`
+- [x] Capture test evidence: payment success page as `docs/screenshots/test-07-payment-success.png`
+- [x] Capture test evidence: premium badge/subscriber UI as `docs/screenshots/test-08-premium-upgrade.png`
+- [x] Capture test evidence: premium-only page access after upgrade as `docs/screenshots/test-09-premium-resource-access.png`
+- [x] Capture test evidence: cancellation flow outcome as `docs/screenshots/test-10-premium-cancellation.png`
 
 ### Django Functional Verification
 - [x] Verify registration works with valid inputs
