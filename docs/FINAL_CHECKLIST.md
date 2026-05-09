@@ -30,10 +30,10 @@ All final steps, on-hold items, evidence capture tasks, and release actions live
 - [ ] Final visual robustness sweep at 320/375 widths and high zoom (including 200%) for subtitle wrapping/cropping and contrast
 
 ## C) Evidence, Snipping Tool, and AI Trace/Chat Records
-- [ ] Confirm which screenshots are required for final submission
+- [x] Confirm which screenshots are required for final submission
 - [x] Initialize screenshot folder structure (`docs/screenshots/readme`, `docs/screenshots/test`, `docs/screenshots/error`, `docs/screenshots/audit`)
-- [ ] Capture required screenshots using Snipping Tool (or equivalent) and store in agreed docs folder
-- [ ] Verify image filenames follow a consistent convention by purpose (`readme-`, `test-`, `error-`, `audit-`) and are mapped to checklist/test IDs
+- [x] Capture required screenshots using Snipping Tool (or equivalent) and store in agreed docs folder
+- [x] Verify image filenames follow a consistent convention by purpose (`readme-`, `test-`, `error-`, `audit-`) and are mapped to checklist/test IDs
 - [ ] Confirm whether AI trace/chat records must be retained or removed before submission
 - [ ] If retained: move required summaries into approved documentation only
 - [ ] If removed: delete `docs/CHAT_HISTORY.md` and any unnecessary transcript artifacts before final commit
@@ -191,7 +191,7 @@ Master checklist owner note:
 
 ### Publishable Professional Quality Checks
 - [x] Run and record `python manage.py test`, `flake8 .`, and `python manage.py check --deploy` outputs in `docs/TESTING.md`
-- [ ] Complete final accessibility and responsive evidence capture for 320px/375px/768px and dark mode
+- [x] Complete final accessibility and responsive evidence capture for 320px/375px/768px and dark mode
 - [x] Resolve remaining inline style hotspots by moving reusable styling into `static/css/style.css` where practical
 
 ### App Boundary and Reuse Review

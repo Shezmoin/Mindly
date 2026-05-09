@@ -55,6 +55,7 @@ This project demonstrates professional backend development, full-stack integrati
   <li><a href="#deployment">Deployment</a></li>
   <li><a href="#security">Security</a></li>
   <li><a href="#stripe-integration">Stripe Integration</a></li>
+  <li><a href="#accessibility">Accessibility</a></li>
   <li><a href="#originality-statement">Originality Statement</a></li>
   <li><a href="#credits--acknowledgements">Credits & Acknowledgements</a></li>
   <li><a href="#known-bugs">Known Bugs</a></li>
