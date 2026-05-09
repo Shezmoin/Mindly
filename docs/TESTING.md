@@ -19,6 +19,8 @@ This document outlines the comprehensive testing process carried out during deve
 - [Unit Tests](#unit-tests)
 - [Lighthouse Performance Scores](#lighthouse-performance-scores)
 - [Django System Checks](#django-system-checks)
+- [Additional Manual Test Cases](#additional-manual-test-cases-mt-21-to-mt-30)
+- [Payment & Webhook Bug Log](#payment--webhook-bug-log)
 - [Known Issues](#known-issues)
 - [Future Testing Improvements](#future-testing-improvements)
 
@@ -498,6 +500,38 @@ System check identified no issues (0 silenced).
 | None currently known | N/A | N/A |
 
 All identified issues have been resolved during development.
+
+---
+
+## **Additional Manual Test Cases (MT-21 to MT-30)**
+
+Supplementary tests covering premium features, responsiveness edge cases, and accessibility patterns.
+
+| Test ID | Feature                        | Test Steps                                                                 | Expected Result                                      | Result |
+|---------|--------------------------------|----------------------------------------------------------------------------|------------------------------------------------------|--------|
+| MT-21   | View Pricing Page (Free User)  | Log in as free user, go to Pricing                                         | Pricing page is visible                              | Pass   |
+| MT-22   | Click Subscribe (Stripe)       | On Pricing page, click Subscribe                                           | Redirected to Stripe Checkout                        | Pass   |
+| MT-23   | Complete Payment (Test Card)   | In Stripe, use 4242 4242 4242 4242, any date/CVC, complete payment         | Payment succeeds, redirected to success page          | Pass   |
+| MT-24   | Premium Badge After Payment    | After payment, go to dashboard                                             | Premium badge/status is visible                      | Pass   |
+| MT-25   | Access Premium (Free User)     | As free user, try to access premium page                                   | Redirected to pricing page                           | Pass   |
+| MT-26   | Access Premium (Premium User)  | As premium user, access premium page                                       | Premium content is visible                           | Pass   |
+| MT-27   | Responsive @ 375px             | Resize browser to 375px width, view main pages                             | Layout is mobile-friendly, no horizontal scroll       | Pass   |
+| MT-28   | Responsive @ 768px             | Resize browser to 768px width, view main pages                             | Layout adapts to tablet size, all content accessible  | Pass   |
+| MT-29   | Responsive @ 1280px            | Resize browser to 1280px width, view main pages                            | Layout is desktop-optimized, no layout issues         | Pass   |
+| MT-30   | Keyboard Navigation            | Use Tab key to navigate all interactive elements                           | All controls accessible, visible focus indicators     | Pass   |
+
+---
+
+## **Payment & Webhook Bug Log**
+
+Critical issues identified and fixed during payment integration testing:
+
+| Bug ID | Description                                      | Steps to Reproduce                | Root Cause                                   | Fix                                              | Status |
+|--------|--------------------------------------------------|-----------------------------------|-----------------------------------------------|---------------------------------------------------|--------|
+| 2026-04-13-1 | Premium message after donation (premium user) | Donate as premium user, see message| Success page did not check payment type       | Pass payment type, show message only for subscription | Fixed  |
+| 2026-04-13-2 | Donation grants premium (any user)            | Donate as any user, become premium | Webhook did not check session mode            | Webhook checks mode, only upgrades for subscription | Fixed  |
+
+**Impact:** Both issues affected subscription/donation distinction. Fixes ensure donations don't falsely upgrade tier and success messages are type-appropriate.
 
 ---
 
