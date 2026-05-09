@@ -125,10 +125,31 @@ The live application is available here: [**Mindly on Heroku**](https://mindly-sh
 <img src="docs/screenshots/readme-06-pricing-page.png" alt="Pricing Page" width="75%">
 
 #### Premium Content Page
-<img src="docs/screenshots/readme-10-premium-content-page.png" alt="Premium Content Page" width="50%">
+<img src="docs/screenshots/readme-11-payment-success-page.png" alt="Premium Content Page" width="50%">
 
 #### Payment Success Page
-<img src="docs/screenshots/readme-11-payment-success-page.png" alt="Payment Success Page" width="50%">
+<img src="docs/screenshots/readme-10-premium-content-page.png" alt="Payment Success Page" width="50%">
+
+---
+
+### **Error & Edge-Case Screenshots**
+
+These screenshots demonstrate how Mindly handles error states and access-control boundaries.
+
+#### 404 – Page Not Found
+Navigating to an invalid URL displays Mindly's custom 404 error page.
+
+<img src="docs/screenshots/error/error-01-404-page.png" alt="Custom 404 Page" width="50%">
+
+#### Stripe Checkout Error
+An invalid or declined card triggers a clear error message on the Stripe checkout page.
+
+<img src="docs/screenshots/error/error-03-checkout-error.png" alt="Stripe Checkout Error" width="50%">
+
+#### Premium Access Denied
+A free-tier user attempting to access premium content is blocked and redirected with an appropriate message.
+
+<img src="docs/screenshots/error/error-04-premium-access-denied.png" alt="Premium Access Denied" width="50%">
 
 ---
 
