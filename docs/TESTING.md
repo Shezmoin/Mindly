@@ -104,6 +104,42 @@ Testing was conducted continuously throughout development using multiple methodo
 | MT-09 | Navbar on 375px mobile | Open DevTools, set viewport to 375px, open menu and test links | Mobile navbar is usable and links work correctly | Mobile navbar menu and links worked correctly | Pass |
 | MT-10 | Skip-to-content accessibility | Reload page, press Tab once, activate Skip to content link | Keyboard focus jumps to main content area | Skip-to-content link worked with Tab and Enter | Pass |
 
+### **Manual Test Evidence Screenshots**
+
+Visual evidence of each core user journey captured during live testing on Heroku:
+
+#### MT-01: Registration Success
+<img src="docs/screenshots/test/test-01-register-success.png" alt="Registration Success - Home Page After Registration" width="50%">
+
+#### MT-02: Login Success
+<img src="docs/screenshots/test/test-02-login-success.png" alt="Login Success - Dashboard Page" width="50%">
+
+#### MT-03: Mood Entry Creation
+<img src="docs/screenshots/test/test-03-mood-create.png" alt="Mood Entry - Form Filled" width="50%">
+
+#### MT-04: Journal Entry Creation
+<img src="docs/screenshots/test/test-04-journal-create.png" alt="Journal Entry - Form Filled" width="50%">
+
+#### MT-05: Pricing Page (Free User)
+<img src="docs/screenshots/test/test-05-pricing-free-user.png" alt="Pricing Page - Free User View" width="50%">
+
+#### MT-06: Stripe Checkout Page
+<img src="docs/screenshots/test/test-06-stripe-checkout.png" alt="Stripe Checkout - Payment Form" width="50%">
+
+#### MT-07: Payment Success
+<img src="docs/screenshots/test/test-07-payment-success.png" alt="Payment Success Page" width="50%">
+
+#### MT-08: Premium Upgrade (Dashboard)
+<img src="docs/screenshots/test/test-08-premium-upgrade.png" alt="Dashboard - Premium User Badge" width="50%">
+
+#### MT-09: Premium Resource Access
+<img src="docs/screenshots/test/test-09-premium-resource-access.png" alt="Resources Page - Premium User Access" width="50%">
+
+#### MT-10: Premium Subscription Cancellation
+<img src="docs/screenshots/test/test-10-premium-cancellation.png" alt="Profile Page - Cancel Premium Button" width="50%">
+
+---
+
 ### **Authentication (CRUD)**
 
 | Feature | Test Case | Result |
