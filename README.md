@@ -853,8 +853,6 @@ Mindly is an independently designed and implemented project. It is not based on 
 - **UX decisions**: Dark mode toggle with `localStorage` persistence, per-question scoring in assessments with band-based feedback, premium content chip badges, and a custom `@premium_required` decorator — none of these patterns appear in standard CI walkthroughs.
 - **Testing**: Structured coverage across CRUD, authentication guards, and Stripe edge cases (missing signatures, invalid payloads, debug fallback paths) using Django's `TestCase` and `unittest.mock`.
 
-All code, architecture decisions, and documentation were produced by the developer with AI-assisted pair programming (GitHub Copilot), in line with current industry practice.
-
 ---
 
 ## **Credits & Acknowledgements**
