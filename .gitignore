@@ -72,3 +72,29 @@ capture_errors.py
 
 # Validation testing
 validation_test.html
+
+# Generated static files
+staticfiles/
+
+# Virtual environments (additional)
+.venv/
+
+# Git rewrite artifacts
+.git-rewrite/
+
+# Temporary scripts
+fix_commit.py
+git-editor.bat
+reword_commits.py
+audit_check.py
+filter_message.py
+
+# Git rewrite artifacts
+.git-rewrite/
+
+# Temporary scripts
+fix_commit.py
+git-editor.bat
+reword_commits.py
+audit_check.py
+filter_message.py

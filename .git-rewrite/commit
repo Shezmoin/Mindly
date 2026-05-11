@@ -1,6 +1,0 @@
-tree 69772d5b6e32562a2ddb776d83f4c1e5f6238338
-parent f9f5a09655f0dedc0f47f0d953dea471f75051e2
-author Shezmoin <shezmoin@hotmail.com> 1778359335 +0100
-committer Shezmoin <shezmoin@hotmail.com> 1778359335 +0100
-
-test: fix all screenshots - reduce viewport height (1280x600) to eliminate excess whitespace

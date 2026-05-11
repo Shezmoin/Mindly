@@ -173,7 +173,7 @@ High - Payment UX and conversion flow interruption
 
 ### Visual Evidence
 
-![Stripe Subscription Placeholder Popup](error-documentation/stripe_subscription_placeholder_popup_apr11_2026.png)
+<img src="screenshots/error/error-03-checkout-error.png" alt="Stripe Checkout Error" width="75%">
 
 ### Root Cause
 
@@ -209,6 +209,10 @@ Critical - Payment flow broken
 - Stripe webhook events returned HTTP 400
 - Successful test card payments did not upgrade user tier
 - `subscription_tier` stayed `free` after checkout completion
+
+### Visual Evidence
+
+<img src="screenshots/error/error-03-checkout-error.png" alt="Stripe Checkout Error - Webhook 400" width="75%">
 
 ### Investigation
 
@@ -248,6 +252,10 @@ Low - Robustness and diagnostics
 - Potential decode and parse failures had weak fallback behavior
 - Troubleshooting invalid payload/signature events was difficult
 
+### Visual Evidence
+
+<img src="screenshots/error/error-04-premium-access-denied.png" alt="Premium Access Denied - Payload Handling" width="75%">
+
 ### Root Cause
 
 Webhook path lacked complete error handling for payload decoding, JSON parsing, and local testing fallback.
@@ -280,6 +288,10 @@ High - Configuration management pitfall
 - `.env` values changed but runtime behavior did not update
 - Webhook and secret-dependent behavior continued using stale values
 
+### Visual Evidence
+
+<img src="screenshots/error/error-04-premium-access-denied.png" alt="Premium Access Denied - Stale Environment State" width="75%">
+
 ### Root Cause
 
 Environment variables are loaded and cached at process startup. Runtime reload does not occur automatically.
@@ -311,6 +323,10 @@ Medium - Code quality issue
 
 - `flake8 payments/views.py` reported multiple E501 violations.
 
+### Visual Evidence
+
+<img src="screenshots/testing-validation-python.jpg" alt="Python Validation - flake8 Clean Output" width="75%">
+
 ### Root Cause
 
 Long message strings exceeded PEP8 line-length limits.
@@ -340,6 +356,10 @@ Medium - Mobile readability issue
 
 - Text in home evidence line overflowed on phones and caused horizontal scroll.
 
+### Visual Evidence
+
+<img src="screenshots/audit/audit-01-home-320px.png" alt="Home Page at 320px - Mobile Text Layout" width="75%">
+
 ### Root Cause
 
 Global `white-space: nowrap` applied to mobile with no override.
@@ -367,6 +387,10 @@ Medium - Mobile layout/visual issue
 ### Symptoms
 
 - Footer sections shifted and misaligned on phone layouts.
+
+### Visual Evidence
+
+<img src="screenshots/audit/audit-02-dashboard-375px.png" alt="Dashboard at 375px - Mobile Footer Layout" width="75%">
 
 ### Root Cause
 
@@ -396,6 +420,10 @@ Medium - Mobile UX/readability issue
 ### Symptoms
 
 - Assessment options appeared cramped on phones and readability dropped.
+
+### Visual Evidence
+
+<img src="error-documentation/take_assessment_alignment_issue.png" alt="Assessment Alignment Issue - Mobile Grid" width="75%">
 
 ### Root Cause
 
