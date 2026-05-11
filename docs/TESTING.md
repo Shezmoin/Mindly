@@ -111,34 +111,34 @@ Testing was conducted continuously throughout development using multiple methodo
 Visual evidence of each core user journey captured during live testing on Heroku:
 
 #### MT-01: Registration Success
-*Screenshot removed - test evidence archived*
+![Registration Success - Home Page After Registration](screenshots/test/test-01-register-success.png)
 
 #### MT-02: Login Success
-*Screenshot removed - test evidence archived*
+![Login Success - Dashboard Page](screenshots/test/test-02-login-success.png)
 
 #### MT-03: Mood Entry Creation
-*Screenshot removed - test evidence archived*
+![Mood Entry - Form Filled](screenshots/test/test-03-mood-create.png)
 
 #### MT-04: Journal Entry Creation
-*Screenshot removed - test evidence archived*
+![Journal Entry - Form Filled](screenshots/test/test-04-journal-create.png)
 
 #### MT-05: Pricing Page (Free User)
-*Screenshot removed - test evidence archived*
+![Pricing Page - Free User View](screenshots/test/test-05-pricing-free-user.png)
 
 #### MT-06: Stripe Checkout Page
-*Screenshot removed - test evidence archived*
+![Stripe Checkout - Payment Form](screenshots/test/test-06-stripe-checkout.png)
 
 #### MT-07: Payment Success
-*Screenshot removed - test evidence archived*
+![Payment Success Page](screenshots/test/test-07-payment-success.png)
 
 #### MT-08: Premium Upgrade (Dashboard)
-*Screenshot removed - test evidence archived*
+![Dashboard - Premium User Badge](screenshots/test/test-08-premium-upgrade.png)
 
 #### MT-09: Premium Resource Access
-*Screenshot removed - test evidence archived*
+![Resources Page - Premium User Access](screenshots/test/test-09-premium-resource-access.png)
 
 #### MT-10: Premium Subscription Cancellation
-*Screenshot removed - test evidence archived*
+![Profile Page - Cancel Premium Button](screenshots/test/test-10-premium-cancellation.png)
 
 ---
 
