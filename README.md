@@ -150,7 +150,7 @@ An invalid or declined card triggers a clear error message on the Stripe checkou
 #### Premium Access Denied
 A free-tier user attempting to access premium content is blocked and redirected with an appropriate message.
 
-<img src="docs/screenshots/error/error-04-premium-access-denied.png" alt="Premium Access Denied" width="50%">
+<img src="docs/screenshots/error/error-04-premium-access-denied-v2.png" alt="Premium Access Denied" width="50%">
 
 ---
 
