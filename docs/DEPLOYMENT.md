@@ -108,8 +108,8 @@ python manage.py migrate
 
 This creates the SQLite database and applies all migrations:
 - Users (CustomUser, UserProfile)
-- Journal (JournalEntry)
-- Assessments (MoodEntry)
+- Journal (JournalEntry, MoodEntry)
+- Assessments (saved assessment result records)
 - Payments (minimal setup)
 
 ### **Step 6: Create Superuser (Admin Account)**
@@ -155,10 +155,10 @@ Server starts at `http://127.0.0.1:8000/`
 On Windows, run all steps in one command:
 
 ```bash
-launch_safe.bat
+python manage.py runserver
 ```
 
-This script runs system checks and launches the server.
+This starts the local development server after you complete the setup steps above.
 
 ---
 

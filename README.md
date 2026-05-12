@@ -12,6 +12,8 @@ This project demonstrates professional backend development, full-stack integrati
 
 ## **Table of Contents**
 
+Wireframe preparation is listed in the Design section below so the planning work is easy to find.
+
 <ol>
   <li><a href="#project-goals">Project Goals</a></li>
   <li><a href="#real-world-rationale">Real-World Rationale</a></li>
@@ -28,6 +30,7 @@ This project demonstrates professional backend development, full-stack integrati
   </li>
   <li><a href="#design">Design</a>
     <ul style="list-style-type: disc;">
+      <li><a href="#wireframes--planning">Wireframes & Planning</a></li>
       <li><a href="#overview">Overview</a></li>
       <li><a href="#colour-scheme">Colour Scheme</a></li>
       <li><a href="#typography">Typography</a></li>
@@ -117,6 +120,12 @@ Key architecture decisions:
 - Treated webhook signature verification as mandatory in production
 - Prioritized clarity over complexity in UI and feature flows
 - Focused on traceable evidence: tests, screenshots, and deployment checks
+
+### **Development Process and Version Control**
+
+The project was built in small stages and committed to GitHub regularly during development. I used Git and GitHub throughout the project to save progress, track changes, and keep a clear record of feature work, fixes, testing updates, and documentation updates.
+
+This matters for the project criteria because version control is not only about having a repository. It is also evidence that the project was developed in a steady and traceable way rather than uploaded all at once at the end.
 
 ---
 
@@ -229,6 +238,42 @@ A free-tier user attempting to access premium content is blocked and redirected 
 ---
 
 ## **Design**
+
+### **Wireframes & Planning**
+
+This section is for the early wireframes used to plan the main pages before final styling and content were added. These wireframes show the intended layout, content structure, and key navigation areas for the main user journey.
+
+#### **Home Page Wireframe**
+
+This wireframe shows the landing page structure, including the welcome section, key call-to-action areas, and the main route into registration, login, and premium information.
+
+| Home Page Wireframe Placeholder |
+| --- |
+| Replace this box with the home page wireframe screenshot. |
+
+#### **Dashboard Wireframe**
+
+This wireframe shows the logged-in dashboard layout, with the main summary cards, quick links, and the areas used to guide users toward mood tracking, journaling, assessments, and resources.
+
+| Dashboard Wireframe Placeholder |
+| --- |
+| Replace this box with the dashboard wireframe screenshot. |
+
+#### **Journal Page Wireframe**
+
+This wireframe shows the structure planned for journal content, including entry listing, writing space, and the layout used to keep the page simple and easy to use.
+
+| Journal Page Wireframe Placeholder |
+| --- |
+| Replace this box with the journal page wireframe screenshot. |
+
+#### **Pricing Page Wireframe**
+
+This wireframe shows the pricing page layout, including the free and premium comparison, subscription messaging, and the call-to-action area for upgrading.
+
+| Pricing Page Wireframe Placeholder |
+| --- |
+| Replace this box with the pricing page wireframe screenshot. |
 
 ### **Overview**
 
