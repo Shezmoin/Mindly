@@ -112,7 +112,7 @@ Testing was conducted continuously throughout development using multiple methodo
 Visual evidence of each core user journey captured during live testing on Heroku:
 
 #### MT-01: Registration Success
-<img src="screenshots/test/test-01-register-success.png" alt="Registration Success - Post-registration page" width="28.125%">
+<img src="screenshots/test/test-01-register-success.png" alt="Registration Success - Post-registration page" width="35.15625%">
 
 #### MT-02: Login Success
 <img src="screenshots/test/test-02-login-success.png" alt="Login Success - Dashboard or home page" width="28.125%">
@@ -133,16 +133,16 @@ Visual evidence of each core user journey captured during live testing on Heroku
 <img src="screenshots/test/test-07-payment-success.png" alt="Payment Success" width="28.125%">
 
 #### MT-08: Premium Upgrade (Dashboard)
-<img src="screenshots/test/test-08-premium-upgrade.png" alt="Premium Upgrade Dashboard" width="28.125%">
+<img src="screenshots/test/test-08-premium-upgrade.png" alt="Premium Upgrade Dashboard" width="35.15625%">
 
 #### MT-09: Premium Resource Access
 <img src="screenshots/test/test-09-premium-resource-access.png" alt="Premium Resource Access" width="28.125%">
 
 #### MT-10: Premium Subscription Cancellation
-<img src="screenshots/test/test-10-premium-cancellation.png" alt="Premium Subscription Cancellation" width="28.125%">
+<img src="screenshots/test/test-10-premium-cancellation.png" alt="Premium Subscription Cancellation" width="35.15625%">
 
 #### MT-11: Logout Success Message
-<img src="screenshots/test/test-11-logout-success-message.png" alt="Logout Success Message" width="28.125%">
+<img src="screenshots/test/test-11-logout-success-message.png" alt="Logout Success Message" width="35.15625%">
 
 ---
 
