@@ -466,7 +466,7 @@ Comprehensive automated testing implemented using Django's TestCase framework.
 
 ### **Desktop**
 
-<img src="screenshots/testing-lighthouse-desktop.png" alt="Lighthouse Desktop Score" width="75%">
+<img src="screenshots/testing-lighthouse-desktop.png" alt="Lighthouse Desktop Score" width="50%">
 
 - Performance: 85+
 - Accessibility: 90+
@@ -475,7 +475,7 @@ Comprehensive automated testing implemented using Django's TestCase framework.
 
 ### **Mobile**
 
-<img src="screenshots/testing-lighthouse-mobile.png" alt="Lighthouse Mobile Score" width="75%">
+<img src="screenshots/testing-lighthouse-mobile.png" alt="Lighthouse Mobile Score" width="50%">
 
 - Performance: 75+
 - Accessibility: 90+
