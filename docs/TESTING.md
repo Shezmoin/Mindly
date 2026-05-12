@@ -112,37 +112,37 @@ Testing was conducted continuously throughout development using multiple methodo
 Visual evidence of each core user journey captured during live testing on Heroku:
 
 #### MT-01: Registration Success
-*[Screenshot Placeholder: test-01-register-success.png]*
+<img src="screenshots/test/test-01-register-success.png" alt="Registration Success - Post-registration page" width="50%">
 
 #### MT-02: Login Success
-*[Screenshot Placeholder: test-02-login-success.png]*
+<img src="screenshots/test/test-02-login-success.png" alt="Login Success - Dashboard or home page" width="50%">
 
 #### MT-03: Mood Entry Creation
-*[Screenshot Placeholder: test-03-mood-create.png]*
+<img src="screenshots/test/test-03-mood-create.png" alt="Mood Entry Creation" width="50%">
 
 #### MT-04: Journal Entry Creation
-*[Screenshot Placeholder: test-04-journal-create.png]*
+<img src="screenshots/test/test-04-journal-create.png" alt="Journal Entry Creation" width="50%">
 
 #### MT-05: Pricing Page (Free User)
-*[Screenshot Placeholder: test-05-pricing-free-user.png]*
+<img src="screenshots/test/test-05-pricing-free-user.png" alt="Pricing Page - Free User" width="50%">
 
 #### MT-06: Stripe Checkout Page
-*[Screenshot Placeholder: test-06-stripe-checkout.png]*
+<img src="screenshots/test/test-06-stripe-checkout.png" alt="Stripe Checkout Page" width="50%">
 
 #### MT-07: Payment Success
-*[Screenshot Placeholder: test-07-payment-success.png]*
+<img src="screenshots/test/test-07-payment-success.png" alt="Payment Success" width="50%">
 
 #### MT-08: Premium Upgrade (Dashboard)
-*[Screenshot Placeholder: test-08-premium-upgrade.png]*
+<img src="screenshots/test/test-08-premium-upgrade.png" alt="Premium Upgrade Dashboard" width="50%">
 
 #### MT-09: Premium Resource Access
-*[Screenshot Placeholder: test-09-premium-resource-access.png]*
+<img src="screenshots/test/test-09-premium-resource-access.png" alt="Premium Resource Access" width="50%">
 
 #### MT-10: Premium Subscription Cancellation
-*[Screenshot Placeholder: test-10-premium-cancellation.png]*
+<img src="screenshots/test/test-10-premium-cancellation.png" alt="Premium Subscription Cancellation" width="50%">
 
 #### MT-11: Logout Success Message
-*[Screenshot Placeholder: test-11-logout-success-message.png]*
+<img src="screenshots/test/test-11-logout-success-message.png" alt="Logout Success Message" width="50%">
 
 ---
 
