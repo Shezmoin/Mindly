@@ -17,14 +17,20 @@ def register_view(request):
             auth.login(request, user)
             messages.success(
                 request,
-                'Registration successful. Welcome to Mindly!',
+                'You have successfully registered to Mindly.',
                 extra_tags='persist',
             )
-            return redirect('pages:home')
+            return redirect('users:register-success')
     else:
         form = UserRegistrationForm()
 
     return render(request, 'users/register.html', {'form': form})
+
+
+@login_required
+def register_success_view(request):
+    """Render a post-registration success page with key navigation actions."""
+    return render(request, 'users/register_success.html')
 
 
 def login_view(request):

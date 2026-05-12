@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Registration Successful - Mindly{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card card-hover p-4 text-center">
+            <h1 class="h3 mb-3">Registration Successful</h1>
+            <p class="mb-4">You have successfully registered to Mindly.</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center flex-wrap">
+                <a href="{% url 'pages:home' %}" class="btn btn-outline-secondary">Go Home</a>
+                <a href="{% url 'assessments:index' %}" class="btn btn-mindly">Assessments</a>
+                <a href="{% url 'pages:resources' %}" class="btn btn-outline-secondary">Resources</a>
+                <a href="{% url 'journal:index' %}" class="btn btn-outline-secondary">Journal</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

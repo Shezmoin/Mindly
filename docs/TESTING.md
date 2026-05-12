@@ -95,7 +95,7 @@ Testing was conducted continuously throughout development using multiple methodo
 
 | Test ID | Feature | Test Steps | Expected Result | Actual Result | Pass/Fail |
 |---------|---------|------------|-----------------|---------------|-----------|
-| MT-01 | Register new user | Open Register page, enter valid username/email/password, submit form | Account is created and user is logged in or redirected appropriately | Registration succeeded with valid user details | Pass |
+| MT-01 | Register new user | Open Register page, enter valid username/email/password, submit form | Account is created, user is logged in, and registration success message is shown | Registration succeeded, success message displayed, and user reached post-registration page | Pass |
 | MT-02 | Login with valid credentials | Open Login page, enter valid username and password, submit | User is authenticated and redirected to dashboard/home | Valid credentials authenticated and redirected successfully | Pass |
 | MT-03 | Login with wrong password | Open Login page, enter valid username and incorrect password, submit | Login fails and validation error is shown | Invalid password was rejected and validation message displayed | Pass |
 | MT-04 | Login with non-existent username | Open Login page, enter unknown username and any password, submit | Login fails and validation error is shown | Non-existent username was rejected with validation message | Pass |

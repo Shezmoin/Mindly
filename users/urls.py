@@ -8,6 +8,7 @@ app_name = 'users'
 # URL patterns for users app
 urlpatterns = [
     path('register/', views.register_view, name='register'),
+    path('register/success/', views.register_success_view, name='register-success'),
     path('login/', views.login_view, name='login'),
     path('profile/', views.profile_view, name='profile'),
     path('profile/edit/', views.profile_edit_view, name='profile-edit'),
