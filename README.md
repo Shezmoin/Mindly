@@ -85,6 +85,16 @@ The app is designed for two clear user groups:
 
 This domain focus justified building secure authentication, user-owned records, and subscription-aware access controls instead of a static content site.
 
+### **What Success Looks Like**
+
+For this project, success means:
+- Users can register, log in, and manage their own data safely
+- Core CRUD flows work clearly for mood and journal features
+- Premium upgrade works through Stripe checkout and webhook confirmation
+- Premium-only pages are correctly blocked for free users
+- The app is responsive and usable on mobile, tablet, and desktop
+- The project is deployable, tested, and documented to professional standard
+
 ## **Development Strategy**
 
 Mindly was developed using a domain-driven multi-app Django structure so each app maps to a natural product boundary:
@@ -99,6 +109,14 @@ Key architecture decisions:
 - Use Stripe Checkout + webhook verification for secure payment lifecycle handling
 - Use Bootstrap + custom CSS for responsive UI consistency across mobile/desktop
 - Deploy on Heroku with environment-variable based secrets and production hardening
+
+### **Build Constraints and Decisions**
+
+- Kept app boundaries strict so each app has one clear responsibility
+- Stored sensitive values in environment variables only
+- Treated webhook signature verification as mandatory in production
+- Prioritized clarity over complexity in UI and feature flows
+- Focused on traceable evidence: tests, screenshots, and deployment checks
 
 ---
 
@@ -745,6 +763,17 @@ See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including
 * Code validation (PEP8, HTML, CSS, JavaScript)
 * Known issues (if any)
 
+### **Requirement to Evidence Map**
+
+| Requirement Area | Where Implemented | Evidence |
+|----------|-----------|----------|
+| Authentication and access control | `users/views.py`, `users/decorators.py`, `users/tests.py` | [docs/TESTING.md](./docs/TESTING.md), [docs/ERROR_LOG.md](./docs/ERROR_LOG.md) |
+| Full CRUD for user-owned data | `journal/views.py`, `journal/forms.py`, `journal/tests.py` | [docs/TESTING.md](./docs/TESTING.md) |
+| Relational data model | `users/models.py`, `journal/models.py`, `assessments/models.py` | Data Model section in README |
+| Payment and subscription lifecycle | `payments/views.py`, `payments/tests.py` | [docs/TESTING.md](./docs/TESTING.md), Stripe Integration section |
+| Robust error handling | `payments/views.py`, custom `404.html` and `500.html` templates | [docs/ERROR_LOG.md](./docs/ERROR_LOG.md) |
+| Deployment readiness | `Procfile`, environment config, static handling | [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) |
+
 ### **Final Verification Summary**
 
 All non-cleanup verification checks were completed and recorded before submission finalization.
@@ -831,9 +860,9 @@ Security controls are implemented in both code and deployment configuration:
 | User exits checkout without completing | Session expires; `checkout.session.completed` is never fired; no upgrade occurs |
 | Webhook receives unexpected event type | Handler returns `200 OK` silently — only `checkout.session.completed` triggers upgrade logic |
 | Webhook signature verification fails | Returns `400 Bad Request`; event is discarded without processing |
-| `checkout.session.completed` has no email | Falls back to matching `client_reference_id` (user ID); if neither matches, no upgrade and error is logged |
+| `checkout.session.completed` has no email | Falls back to metadata `user_id`; if no user matches, no upgrade and warning is logged |
 | Donation payment (one-time) received | Webhook detects `mode != subscription`; marks donation only — premium tier is **not** set |
-| User reaches `/payments/success/` without a valid session | View attempts session recovery; redirects to home if session cannot be found |
+| User reaches `/payments/success/` without a valid session | View renders success page but only applies premium upgrade when a valid subscription session can be confirmed |
 | Custom 404 page | Served by `templates/404.html` when `DEBUG=False` and a route is not found |
 | Custom 500 page | Served by `templates/500.html` when `DEBUG=False` and an unhandled exception occurs |
 
