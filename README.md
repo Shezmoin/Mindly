@@ -111,25 +111,25 @@ The live application is available here: [**Mindly on Heroku**](https://mindly-sh
 ### **Key Interface Screenshots**
 
 #### Home Page
-<img src="docs/screenshots/readme-02-home-page.png" alt="Home Page" width="75%">
+<img src="docs/screenshots/readme-02-home-page.png" alt="Home Page" width="56.25%">
 
 #### Dashboard Page
-<img src="docs/screenshots/readme-03-dashboard-page.png" alt="Dashboard Page" width="75%">
+<img src="docs/screenshots/readme-03-dashboard-page.png" alt="Dashboard Page" width="56.25%">
 
 #### Journal Page
-<img src="docs/screenshots/readme-04-journal-page.png" alt="Journal Page" width="75%">
+<img src="docs/screenshots/readme-04-journal-page.png" alt="Journal Page" width="56.25%">
 
 #### Mood Form Page
-<img src="docs/screenshots/readme-05-mood-form-page.png" alt="Mood Form Page" width="75%">
+<img src="docs/screenshots/readme-05-mood-form-page.png" alt="Mood Form Page" width="56.25%">
 
 #### Pricing Page
-<img src="docs/screenshots/readme-06-pricing-page.png" alt="Pricing Page" width="75%">
+<img src="docs/screenshots/readme-06-pricing-page.png" alt="Pricing Page" width="56.25%">
 
 #### Premium Content Page
-<img src="docs/screenshots/readme-11-payment-success-page.png" alt="Premium Content Page" width="50%">
+<img src="docs/screenshots/readme-11-payment-success-page.png" alt="Premium Content Page" width="37.5%">
 
 #### Payment Success Page
-<img src="docs/screenshots/readme-10-premium-content-page.png" alt="Payment Success Page" width="50%">
+<img src="docs/screenshots/readme-10-premium-content-page.png" alt="Payment Success Page" width="37.5%">
 
 ---
 
