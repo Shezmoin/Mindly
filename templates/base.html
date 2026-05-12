@@ -134,7 +134,7 @@
             <!-- Django messages for alerts/notifications -->
             {% if messages %}
                 {% for message in messages %}
-                    <div class="alert {% if 'success' in message.tags %}alert-success{% elif 'error' in message.tags %}alert-danger{% elif 'warning' in message.tags %}alert-warning{% elif 'info' in message.tags %}alert-info{% else %}alert-secondary{% endif %} alert-dismissible fade show" role="alert" data-auto-dismiss="true">
+                    <div class="alert {% if 'success' in message.tags %}alert-success{% elif 'error' in message.tags %}alert-danger{% elif 'warning' in message.tags %}alert-warning{% elif 'info' in message.tags %}alert-info{% else %}alert-secondary{% endif %} alert-dismissible fade show" role="alert" data-auto-dismiss="{% if 'persist' in message.tags %}false{% else %}true{% endif %}">
                         {{ message }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
