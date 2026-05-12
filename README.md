@@ -911,11 +911,15 @@ Python documentation, Django official documentation, Stripe API documentation, B
 
 ### **Media**
 
-Project screenshots are now embedded in this README. Remaining visual evidence screenshots (testing/validation/audit) are tracked in [docs/TESTING.md](docs/TESTING.md).
+Project screenshots are embedded in this README. Remaining visual evidence screenshots (testing/validation/audit) are tracked in [docs/TESTING.md](docs/TESTING.md).
 
 ### **Acknowledgements**
 
-Developed as a professional portfolio project demonstrating full-stack development capabilities.
+I am very grateful to my wife and my family for their full support throughout my challenging health condition. Their encouragement and patience helped me keep moving forward during difficult periods.
+
+I am especially grateful to my tutor, Manuel Perez, for his extraordinary support, guidance, and understanding of my health situation and physical limitations. This project would not have been possible without that support.
+
+I am also thankful for the free educational material available on YouTube, which helped me clear up confusion and gave me helpful ideas and inspiration during this journey.
 
 ---
 
