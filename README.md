@@ -216,7 +216,7 @@ A free-tier user attempting to access premium content is blocked and redirected 
 
 Mindly is designed to be calm, supportive, and user-friendly. The interface prioritises clarity, accessibility, and ease of use to encourage consistent wellbeing tracking and journaling without overwhelming the user.
 
-<img src="docs/screenshots/readme-07-design-overview.png" alt="Design Overview" width="75%">
+<img src="docs/screenshots/readme-07-design-overview.png" alt="Design Overview" width="56.25%">
 
 ---
 
@@ -224,7 +224,7 @@ Mindly is designed to be calm, supportive, and user-friendly. The interface prio
 
 A warm, supportive colour palette is chosen to create a positive, welcoming environment that encourages mental health reflection and action.
 
-<img src="docs/screenshots/readme-08-colour-scheme-chart.png" alt="Colour Scheme" width="75%">
+<img src="docs/screenshots/readme-08-colour-scheme-chart.png" alt="Colour Scheme" width="56.25%">
 
 #### **Primary Colours:**
 
@@ -249,7 +249,7 @@ A warm, supportive colour palette is chosen to create a positive, welcoming envi
 * **Body Text:** Soft, approachable sans-serif for calm reading experience.
 * **Font Family:** System fonts optimized for accessibility and performance.
 
-<img src="docs/screenshots/readme-09-typography-examples.png" alt="Typography Examples" width="75%">
+<img src="docs/screenshots/readme-09-typography-examples.png" alt="Typography Examples" width="56.25%">
 
 ---
 
