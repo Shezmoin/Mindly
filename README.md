@@ -550,8 +550,12 @@ All entries are scoped to logged-in user via `request.user` for data privacy.
 3. Stripe sends `checkout.session.completed` event to `payments/webhook/`
 4. Webhook verifies signature with `STRIPE_WEBHOOK_SECRET`
 5. Matching user is identified from metadata/email
-6. `UserProfile.subscription_tier` is updated to `premium`
+6. Only `mode=subscription` events upgrade `UserProfile.subscription_tier` to `premium`
 7. Premium-protected views become accessible through the `@premium_required` gate
+
+Fallback note: when a user returns to `payments/success/` with `session_id`,
+`success_view` also confirms Stripe session state and applies the premium upgrade
+if required.
 
 ### **Sequence Diagram: Premium Upgrade Request-Response Path**
 
@@ -560,6 +564,7 @@ sequenceDiagram
   participant Browser
   participant DjangoView as payments/checkout_view
   participant Stripe
+  participant Success as payments/success_view
   participant Webhook as payments/webhook_view
   participant DB as UserProfile
 
@@ -568,9 +573,23 @@ sequenceDiagram
   Stripe-->>Browser: Hosted checkout URL
   Stripe->>Webhook: checkout.session.completed
   Webhook->>Webhook: Verify webhook signature
-  Webhook->>DB: Update subscription_tier to premium
-  DB-->>Webhook: Save successful
+  alt Session mode is subscription
+    Webhook->>DB: Update subscription_tier to premium
+    DB-->>Webhook: Save successful
+  else Session mode is payment (donation)
+    Webhook->>Webhook: Log donation only
+  end
   Webhook-->>Stripe: HTTP 200
+
+  Browser->>Success: Redirect with session_id
+  Success->>Stripe: Retrieve Checkout Session
+  alt Subscription + complete
+    Success->>DB: Ensure subscription_tier is premium
+    DB-->>Success: Save successful
+  else Non-subscription or incomplete
+    Success->>Success: No tier change
+  end
+  Success-->>Browser: Render success page
 ```
 
 ---
@@ -580,14 +599,14 @@ sequenceDiagram
 ```
 mindly/
 ├── manage.py                           # Django management script
-├── db.sqlite3                          # Development database
+├── Procfile                            # Heroku process declaration
+├── .python-version                     # Runtime Python version pin
+├── .flake8                             # Linting configuration
 ├── requirements.txt                    # Python dependencies
 ├── README.md                           # Project documentation
-├── launch_safe.bat                     # Safe launch script (Windows)
 ├── .env                                # Environment variables (local, not committed)
 ├── .env.example                        # Environment variable template
 ├── .gitignore                          # Git ignore file
-├── .git/                               # Git repository
 ├── mindly/                             # Project settings
 │   ├── settings.py                     # Django configuration
 │   ├── urls.py                         # Root URL router
@@ -638,7 +657,7 @@ mindly/
 │   └── ERROR_LOG.md                    # Error log with fixes
 ├── errors/                             # Error capture logs and session records
 │   └── README.md                       # Error notes
-└── venv/                               # Python virtual environment
+└── docs/screenshots/                   # Evidence screenshots used in documentation
 ```
 
 ---
@@ -712,7 +731,7 @@ Python checked with flake8.
 See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including:
 
 * Automated test coverage summary
-* Manual test matrix (MT-01 to MT-10): [Jump to manual test table](./docs/TESTING.md#manual-test-matrix-mt-01-to-mt-10)
+* Manual test matrix (MT-01 to MT-11): [Jump to manual test table](./docs/TESTING.md#manual-test-matrix-mt-01-to-mt-11)
 
 * Testing strategy and methodology
 * User story validation
