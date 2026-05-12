@@ -112,37 +112,37 @@ Testing was conducted continuously throughout development using multiple methodo
 Visual evidence of each core user journey captured during live testing on Heroku:
 
 #### MT-01: Registration Success
-<img src="screenshots/test/test-01-register-success.png" alt="Registration Success - Post-registration page" width="37.5%">
+<img src="screenshots/test/test-01-register-success.png" alt="Registration Success - Post-registration page" width="18.75%">
 
 #### MT-02: Login Success
-<img src="screenshots/test/test-02-login-success.png" alt="Login Success - Dashboard or home page" width="37.5%">
+<img src="screenshots/test/test-02-login-success.png" alt="Login Success - Dashboard or home page" width="18.75%">
 
 #### MT-03: Mood Entry Creation
-<img src="screenshots/test/test-03-mood-create.png" alt="Mood Entry Creation" width="37.5%">
+<img src="screenshots/test/test-03-mood-create.png" alt="Mood Entry Creation" width="18.75%">
 
 #### MT-04: Journal Entry Creation
-<img src="screenshots/test/test-04-journal-create.png" alt="Journal Entry Creation" width="37.5%">
+<img src="screenshots/test/test-04-journal-create.png" alt="Journal Entry Creation" width="18.75%">
 
 #### MT-05: Pricing Page (Free User)
-<img src="screenshots/test/test-05-pricing-free-user.png" alt="Pricing Page - Free User" width="37.5%">
+<img src="screenshots/test/test-05-pricing-free-user.png" alt="Pricing Page - Free User" width="18.75%">
 
 #### MT-06: Stripe Checkout Page
-<img src="screenshots/test/test-06-stripe-checkout.png" alt="Stripe Checkout Page" width="37.5%">
+<img src="screenshots/test/test-06-stripe-checkout.png" alt="Stripe Checkout Page" width="18.75%">
 
 #### MT-07: Payment Success
-<img src="screenshots/test/test-07-payment-success.png" alt="Payment Success" width="37.5%">
+<img src="screenshots/test/test-07-payment-success.png" alt="Payment Success" width="18.75%">
 
 #### MT-08: Premium Upgrade (Dashboard)
-<img src="screenshots/test/test-08-premium-upgrade.png" alt="Premium Upgrade Dashboard" width="37.5%">
+<img src="screenshots/test/test-08-premium-upgrade.png" alt="Premium Upgrade Dashboard" width="18.75%">
 
 #### MT-09: Premium Resource Access
-<img src="screenshots/test/test-09-premium-resource-access.png" alt="Premium Resource Access" width="37.5%">
+<img src="screenshots/test/test-09-premium-resource-access.png" alt="Premium Resource Access" width="18.75%">
 
 #### MT-10: Premium Subscription Cancellation
-<img src="screenshots/test/test-10-premium-cancellation.png" alt="Premium Subscription Cancellation" width="37.5%">
+<img src="screenshots/test/test-10-premium-cancellation.png" alt="Premium Subscription Cancellation" width="18.75%">
 
 #### MT-11: Logout Success Message
-<img src="screenshots/test/test-11-logout-success-message.png" alt="Logout Success Message" width="37.5%">
+<img src="screenshots/test/test-11-logout-success-message.png" alt="Logout Success Message" width="18.75%">
 
 ---
 
