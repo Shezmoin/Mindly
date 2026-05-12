@@ -15,6 +15,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             auth.login(request, user)
+            messages.success(request, 'Registration successful. Welcome to Mindly!')
             return redirect('pages:home')
     else:
         form = UserRegistrationForm()

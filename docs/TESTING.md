@@ -91,7 +91,7 @@ Testing was conducted continuously throughout development using multiple methodo
 
 ## **Manual Feature Testing**
 
-### **Manual Test Matrix (MT-01 to MT-10)**
+### **Manual Test Matrix (MT-01 to MT-11)**
 
 | Test ID | Feature | Test Steps | Expected Result | Actual Result | Pass/Fail |
 |---------|---------|------------|-----------------|---------------|-----------|
@@ -105,6 +105,7 @@ Testing was conducted continuously throughout development using multiple methodo
 | MT-08 | Navbar links on desktop | On desktop width, click each navbar link once | All links route to the correct pages without errors | All desktop navbar links worked as expected | Pass |
 | MT-09 | Navbar on 375px mobile | Open DevTools, set viewport to 375px, open menu and test links | Mobile navbar is usable and links work correctly | Mobile navbar menu and links worked correctly | Pass |
 | MT-10 | Skip-to-content accessibility | Reload page, press Tab once, activate Skip to content link | Keyboard focus jumps to main content area | Skip-to-content link worked with Tab and Enter | Pass |
+| MT-11 | Logout success message | Log in, click Logout, check logout page/banner | A clear logout confirmation message is shown | Logout confirmation message displayed correctly | Pass |
 
 ### **Manual Test Evidence Screenshots**
 
@@ -139,6 +140,9 @@ Visual evidence of each core user journey captured during live testing on Heroku
 
 #### MT-10: Premium Subscription Cancellation
 *[Screenshot Placeholder: test-10-premium-cancellation.png]*
+
+#### MT-11: Logout Success Message
+*[Screenshot Placeholder: test-11-logout-success-message.png]*
 
 ---
 
