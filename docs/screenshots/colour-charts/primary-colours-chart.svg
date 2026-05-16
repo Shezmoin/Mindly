@@ -1,78 +1,31 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="130" viewBox="0 0 1100 130" role="img" aria-labelledby="title desc">
   <title id="title">Primary Colours Chart</title>
-  <desc id="desc">Primary colour swatches for Mindly with names, hex codes, and brief usage notes.</desc>
+  <desc id="desc">Primary colour swatches for Mindly with names and hex codes.</desc>
   <style>
+    .title { font: 700 18px Arial, sans-serif; fill: #2e2f31; }
+    .swatchTextDark { font: 700 14px Arial, sans-serif; fill: #2e2f31; }
+    .swatchTextLight { font: 700 14px Arial, sans-serif; fill: #ffffff; }
     .panel { fill: #ffffff; stroke: #d8d8d8; stroke-width: 1; }
-    .swatchTextLight { font: 700 16px Arial, sans-serif; fill: #ffffff; }
-    .swatchTextDark { font: 700 16px Arial, sans-serif; fill: #2e2f31; }
-    .metaTitle { font: 700 14px Arial, sans-serif; fill: #ffffff; letter-spacing: .3px; }
-    .metaText { font: 13px Arial, sans-serif; fill: #2e2f31; }
-    .metaTextLight { font: 13px Arial, sans-serif; fill: #ffffff; }
-    .border { stroke: #d8d8d8; stroke-width: 1; }
   </style>
 
-  <rect class="panel" x="0" y="0" width="1200" height="280" rx="14"/>
+  <text class="title" x="18" y="22">Primary Colours</text>
 
-  <g transform="translate(24,18)">
-    <rect x="0" y="0" width="270" height="84" rx="10" fill="#f5f3ef" class="border"/>
-    <rect x="286" y="0" width="270" height="84" rx="10" fill="#fffdf9" class="border"/>
-    <rect x="572" y="0" width="270" height="84" rx="10" fill="#6c9b7f" class="border"/>
-    <rect x="858" y="0" width="270" height="84" rx="10" fill="#4a5d54" class="border"/>
+  <g transform="translate(18,38)">
+    <rect x="0" y="0" width="260" height="62" rx="8" fill="#f5f3ef" class="panel"/>
+    <rect x="270" y="0" width="260" height="62" rx="8" fill="#fffdf9" class="panel"/>
+    <rect x="540" y="0" width="260" height="62" rx="8" fill="#6c9b7f" class="panel"/>
+    <rect x="810" y="0" width="260" height="62" rx="8" fill="#4a5d54" class="panel"/>
 
-    <text class="swatchTextDark" x="135" y="34" text-anchor="middle">Background</text>
-    <text class="swatchTextDark" x="135" y="58" text-anchor="middle">#f5f3ef</text>
+    <text class="swatchTextDark" x="130" y="25" text-anchor="middle">Background</text>
+    <text class="swatchTextDark" x="130" y="44" text-anchor="middle">#f5f3ef</text>
 
-    <text class="swatchTextDark" x="421" y="34" text-anchor="middle">Container</text>
-    <text class="swatchTextDark" x="421" y="58" text-anchor="middle">#fffdf9</text>
+    <text class="swatchTextDark" x="400" y="25" text-anchor="middle">Container</text>
+    <text class="swatchTextDark" x="400" y="44" text-anchor="middle">#fffdf9</text>
 
-    <text class="swatchTextLight" x="707" y="34" text-anchor="middle">Primary Action</text>
-    <text class="swatchTextLight" x="707" y="58" text-anchor="middle">#6c9b7f</text>
+    <text class="swatchTextLight" x="670" y="25" text-anchor="middle">Primary Action</text>
+    <text class="swatchTextLight" x="670" y="44" text-anchor="middle">#6c9b7f</text>
 
-    <text class="swatchTextLight" x="993" y="34" text-anchor="middle">Secondary</text>
-    <text class="swatchTextLight" x="993" y="58" text-anchor="middle">#4a5d54</text>
-  </g>
-
-  <g transform="translate(24,124)">
-    <rect x="0" y="0" width="1152" height="132" rx="10" fill="#ffffff" class="border"/>
-    <rect x="0" y="0" width="240" height="32" fill="#2e2f31" class="border"/>
-    <rect x="240" y="0" width="180" height="32" fill="#2e2f31" class="border"/>
-    <rect x="420" y="0" width="732" height="32" fill="#2e2f31" class="border"/>
-
-    <text class="metaTitle" x="16" y="21">Colour</text>
-    <text class="metaTitle" x="256" y="21">Hex</text>
-    <text class="metaTitle" x="436" y="21">Use</text>
-
-    <g transform="translate(0,32)">
-      <rect x="0" y="0" width="240" height="25" fill="#ffffff" class="border"/>
-      <rect x="240" y="0" width="180" height="25" fill="#f5f3ef" class="border"/>
-      <rect x="420" y="0" width="732" height="25" fill="#ffffff" class="border"/>
-      <text class="metaText" x="12" y="17">Background</text>
-      <text class="metaText" x="256" y="17">#f5f3ef</text>
-      <text class="metaText" x="436" y="17">Calming page background</text>
-    </g>
-    <g transform="translate(0,57)">
-      <rect x="0" y="0" width="240" height="25" fill="#ffffff" class="border"/>
-      <rect x="240" y="0" width="180" height="25" fill="#fffdf9" class="border"/>
-      <rect x="420" y="0" width="732" height="25" fill="#ffffff" class="border"/>
-      <text class="metaText" x="12" y="17">Container</text>
-      <text class="metaText" x="256" y="17">#fffdf9</text>
-      <text class="metaText" x="436" y="17">Card/content background</text>
-    </g>
-    <g transform="translate(0,82)">
-      <rect x="0" y="0" width="240" height="25" fill="#ffffff" class="border"/>
-      <rect x="240" y="0" width="180" height="25" fill="#6c9b7f" class="border"/>
-      <rect x="420" y="0" width="732" height="25" fill="#ffffff" class="border"/>
-      <text class="metaText" x="12" y="17">Primary Action</text>
-      <text class="metaTextLight" x="256" y="17">#6c9b7f</text>
-      <text class="metaText" x="436" y="17">Buttons, CTAs</text>
-    </g>
-    <g transform="translate(0,107)">
-      <rect x="0" y="0" width="240" height="25" fill="#ffffff" class="border"/>
-      <rect x="240" y="0" width="180" height="25" fill="#4a5d54" class="border"/>
-      <rect x="420" y="0" width="732" height="25" fill="#ffffff" class="border"/>
-      <text class="metaText" x="12" y="17">Secondary</text>
-      <text class="metaTextLight" x="256" y="17">#4a5d54</text>
-      <text class="metaText" x="436" y="17">Navigation, text emphasis</text>
-    </g>
+    <text class="swatchTextLight" x="940" y="25" text-anchor="middle">Secondary</text>
+    <text class="swatchTextLight" x="940" y="44" text-anchor="middle">#4a5d54</text>
   </g>
 </svg>

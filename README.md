@@ -280,11 +280,11 @@ A warm, supportive colour palette is chosen to create a positive, welcoming envi
 
 #### **Primary Colours:**
 
-<img src="docs/screenshots/colour-charts/primary-colours-chart.svg" alt="Primary Colours Chart" width="100%">
+<img src="docs/screenshots/colour-charts/primary-colours-chart.svg" alt="Primary Colours Chart" width="82%">
 
 #### **Accent Colours:**
 
-<img src="docs/screenshots/colour-charts/accent-colours-chart.svg" alt="Accent Colours Chart" width="100%">
+<img src="docs/screenshots/colour-charts/accent-colours-chart.svg" alt="Accent Colours Chart" width="82%">
 
 ---
 

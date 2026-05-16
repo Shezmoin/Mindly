@@ -1,90 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="140" viewBox="0 0 1100 140" role="img" aria-labelledby="title desc">
   <title id="title">Accent Colours Chart</title>
-  <desc id="desc">Accent colour swatches for Mindly with names, hex codes, and brief usage notes.</desc>
+  <desc id="desc">Accent colour swatches for Mindly with names and hex codes.</desc>
   <style>
+    .title { font: 700 18px Arial, sans-serif; fill: #2e2f31; }
+    .swatchTextLight { font: 700 14px Arial, sans-serif; fill: #ffffff; }
+    .swatchTextDark { font: 700 14px Arial, sans-serif; fill: #2e2f31; }
     .panel { fill: #ffffff; stroke: #d8d8d8; stroke-width: 1; }
-    .swatchTextLight { font: 700 15px Arial, sans-serif; fill: #ffffff; }
-    .swatchTextDark { font: 700 15px Arial, sans-serif; fill: #2e2f31; }
-    .metaTitle { font: 700 14px Arial, sans-serif; fill: #ffffff; letter-spacing: .3px; }
-    .metaText { font: 13px Arial, sans-serif; fill: #2e2f31; }
-    .metaTextLight { font: 13px Arial, sans-serif; fill: #ffffff; }
-    .border { stroke: #d8d8d8; stroke-width: 1; }
   </style>
 
-  <rect class="panel" x="0" y="0" width="1200" height="330" rx="14"/>
+  <text class="title" x="18" y="22">Accent Colours</text>
 
-  <g transform="translate(24,18)">
-    <rect x="0" y="0" width="216" height="84" rx="10" fill="#5fa97f" class="border"/>
-    <rect x="228" y="0" width="216" height="84" rx="10" fill="#e8a538" class="border"/>
-    <rect x="456" y="0" width="216" height="84" rx="10" fill="#d96a6a" class="border"/>
-    <rect x="684" y="0" width="216" height="84" rx="10" fill="#2e2f31" class="border"/>
-    <rect x="912" y="0" width="216" height="84" rx="10" fill="#e6efe9" class="border"/>
+  <g transform="translate(18,38)">
+    <rect x="0" y="0" width="200" height="62" rx="8" fill="#5fa97f" class="panel"/>
+    <rect x="210" y="0" width="200" height="62" rx="8" fill="#e8a538" class="panel"/>
+    <rect x="420" y="0" width="200" height="62" rx="8" fill="#d96a6a" class="panel"/>
+    <rect x="630" y="0" width="200" height="62" rx="8" fill="#2e2f31" class="panel"/>
+    <rect x="840" y="0" width="240" height="62" rx="8" fill="#e6efe9" class="panel"/>
 
-    <text class="swatchTextLight" x="108" y="34" text-anchor="middle">Success</text>
-    <text class="swatchTextLight" x="108" y="58" text-anchor="middle">#5fa97f</text>
+    <text class="swatchTextLight" x="100" y="25" text-anchor="middle">Success</text>
+    <text class="swatchTextLight" x="100" y="44" text-anchor="middle">#5fa97f</text>
 
-    <text class="swatchTextDark" x="336" y="34" text-anchor="middle">Warning</text>
-    <text class="swatchTextDark" x="336" y="58" text-anchor="middle">#e8a538</text>
+    <text class="swatchTextDark" x="310" y="25" text-anchor="middle">Warning</text>
+    <text class="swatchTextDark" x="310" y="44" text-anchor="middle">#e8a538</text>
 
-    <text class="swatchTextLight" x="564" y="34" text-anchor="middle">Error</text>
-    <text class="swatchTextLight" x="564" y="58" text-anchor="middle">#d96a6a</text>
+    <text class="swatchTextLight" x="520" y="25" text-anchor="middle">Error</text>
+    <text class="swatchTextLight" x="520" y="44" text-anchor="middle">#d96a6a</text>
 
-    <text class="swatchTextLight" x="792" y="34" text-anchor="middle">Text</text>
-    <text class="swatchTextLight" x="792" y="58" text-anchor="middle">#2e2f31</text>
+    <text class="swatchTextLight" x="730" y="25" text-anchor="middle">Text</text>
+    <text class="swatchTextLight" x="730" y="44" text-anchor="middle">#2e2f31</text>
 
-    <text class="swatchTextDark" x="1020" y="34" text-anchor="middle">Hover</text>
-    <text class="swatchTextDark" x="1020" y="58" text-anchor="middle">#e6efe9</text>
-  </g>
-
-  <g transform="translate(24,124)">
-    <rect x="0" y="0" width="1152" height="182" rx="10" fill="#ffffff" class="border"/>
-    <rect x="0" y="0" width="240" height="32" fill="#2e2f31" class="border"/>
-    <rect x="240" y="0" width="180" height="32" fill="#2e2f31" class="border"/>
-    <rect x="420" y="0" width="732" height="32" fill="#2e2f31" class="border"/>
-
-    <text class="metaTitle" x="16" y="21">Colour</text>
-    <text class="metaTitle" x="256" y="21">Hex</text>
-    <text class="metaTitle" x="436" y="21">Use</text>
-
-    <g transform="translate(0,32)">
-      <rect x="0" y="0" width="240" height="30" fill="#ffffff" class="border"/>
-      <rect x="240" y="0" width="180" height="30" fill="#5fa97f" class="border"/>
-      <rect x="420" y="0" width="732" height="30" fill="#ffffff" class="border"/>
-      <text class="metaText" x="12" y="19">Success</text>
-      <text class="metaTextLight" x="256" y="19">#5fa97f</text>
-      <text class="metaText" x="436" y="19">Positive feedback</text>
-    </g>
-    <g transform="translate(0,62)">
-      <rect x="0" y="0" width="240" height="30" fill="#ffffff" class="border"/>
-      <rect x="240" y="0" width="180" height="30" fill="#e8a538" class="border"/>
-      <rect x="420" y="0" width="732" height="30" fill="#ffffff" class="border"/>
-      <text class="metaText" x="12" y="19">Warning</text>
-      <text class="metaText" x="256" y="19">#e8a538</text>
-      <text class="metaText" x="436" y="19">Alerts, warnings</text>
-    </g>
-    <g transform="translate(0,92)">
-      <rect x="0" y="0" width="240" height="30" fill="#ffffff" class="border"/>
-      <rect x="240" y="0" width="180" height="30" fill="#d96a6a" class="border"/>
-      <rect x="420" y="0" width="732" height="30" fill="#ffffff" class="border"/>
-      <text class="metaText" x="12" y="19">Error</text>
-      <text class="metaTextLight" x="256" y="19">#d96a6a</text>
-      <text class="metaText" x="436" y="19">Error states</text>
-    </g>
-    <g transform="translate(0,122)">
-      <rect x="0" y="0" width="240" height="30" fill="#ffffff" class="border"/>
-      <rect x="240" y="0" width="180" height="30" fill="#2e2f31" class="border"/>
-      <rect x="420" y="0" width="732" height="30" fill="#ffffff" class="border"/>
-      <text class="metaText" x="12" y="19">Text</text>
-      <text class="metaTextLight" x="256" y="19">#2e2f31</text>
-      <text class="metaText" x="436" y="19">Main readable text</text>
-    </g>
-    <g transform="translate(0,152)">
-      <rect x="0" y="0" width="240" height="30" fill="#ffffff" class="border"/>
-      <rect x="240" y="0" width="180" height="30" fill="#e6efe9" class="border"/>
-      <rect x="420" y="0" width="732" height="30" fill="#ffffff" class="border"/>
-      <text class="metaText" x="12" y="19">Hover</text>
-      <text class="metaText" x="256" y="19">#e6efe9</text>
-      <text class="metaText" x="436" y="19">Interactive hover states</text>
-    </g>
+    <text class="swatchTextDark" x="960" y="25" text-anchor="middle">Hover</text>
+    <text class="swatchTextDark" x="960" y="44" text-anchor="middle">#e6efe9</text>
   </g>
 </svg>
