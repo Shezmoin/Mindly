@@ -280,96 +280,11 @@ A warm, supportive colour palette is chosen to create a positive, welcoming envi
 
 #### **Primary Colours:**
 
-<table>
-  <tr>
-    <td style="background:#f5f3ef;width:56px;height:28px;border:1px solid #999;"></td>
-    <td>Background</td>
-    <td style="background:#fffdf9;width:56px;height:28px;border:1px solid #999;"></td>
-    <td>Container</td>
-    <td style="background:#6c9b7f;width:56px;height:28px;border:1px solid #999;"></td>
-    <td>Primary Action</td>
-    <td style="background:#4a5d54;width:56px;height:28px;border:1px solid #999;"></td>
-    <td>Secondary</td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <th>Colour</th>
-    <th>Hex</th>
-    <th>Use</th>
-  </tr>
-  <tr>
-    <td>Background</td>
-    <td style="background:#f5f3ef;color:#2e2f31;font-weight:600;">#f5f3ef</td>
-    <td>Calming page background</td>
-  </tr>
-  <tr>
-    <td>Container</td>
-    <td style="background:#fffdf9;color:#2e2f31;font-weight:600;">#fffdf9</td>
-    <td>Card/content background</td>
-  </tr>
-  <tr>
-    <td>Primary Action</td>
-    <td style="background:#6c9b7f;color:#fffdf9;font-weight:600;">#6c9b7f</td>
-    <td>Buttons, CTAs</td>
-  </tr>
-  <tr>
-    <td>Secondary</td>
-    <td style="background:#4a5d54;color:#fffdf9;font-weight:600;">#4a5d54</td>
-    <td>Navigation, text emphasis</td>
-  </tr>
-</table>
+<img src="docs/screenshots/colour-charts/primary-colours-chart.svg" alt="Primary Colours Chart" width="100%">
 
 #### **Accent Colours:**
 
-<table>
-  <tr>
-    <td style="background:#5fa97f;width:56px;height:28px;border:1px solid #999;"></td>
-    <td>Success</td>
-    <td style="background:#e8a538;width:56px;height:28px;border:1px solid #999;"></td>
-    <td>Warning</td>
-    <td style="background:#d96a6a;width:56px;height:28px;border:1px solid #999;"></td>
-    <td>Error</td>
-    <td style="background:#2e2f31;width:56px;height:28px;border:1px solid #999;"></td>
-    <td>Text</td>
-    <td style="background:#e6efe9;width:56px;height:28px;border:1px solid #999;"></td>
-    <td>Hover</td>
-  </tr>
-</table>
-
-<table>
-  <tr>
-    <th>Colour</th>
-    <th>Hex</th>
-    <th>Use</th>
-  </tr>
-  <tr>
-    <td>Success</td>
-    <td style="background:#5fa97f;color:#fffdf9;font-weight:600;">#5fa97f</td>
-    <td>Positive feedback</td>
-  </tr>
-  <tr>
-    <td>Warning</td>
-    <td style="background:#e8a538;color:#2e2f31;font-weight:600;">#e8a538</td>
-    <td>Alerts, warnings</td>
-  </tr>
-  <tr>
-    <td>Error</td>
-    <td style="background:#d96a6a;color:#fffdf9;font-weight:600;">#d96a6a</td>
-    <td>Error states</td>
-  </tr>
-  <tr>
-    <td>Text</td>
-    <td style="background:#2e2f31;color:#fffdf9;font-weight:600;">#2e2f31</td>
-    <td>Main readable text</td>
-  </tr>
-  <tr>
-    <td>Hover</td>
-    <td style="background:#e6efe9;color:#2e2f31;font-weight:600;">#e6efe9</td>
-    <td>Interactive hover states</td>
-  </tr>
-</table>
+<img src="docs/screenshots/colour-charts/accent-colours-chart.svg" alt="Accent Colours Chart" width="100%">
 
 ---
 

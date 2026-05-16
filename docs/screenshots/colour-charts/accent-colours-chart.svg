@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-labelledby="title desc">
+  <title id="title">Accent Colours Chart</title>
+  <desc id="desc">Accent colour swatches for Mindly with names and reference grid.</desc>
+  <style>
+    .bg { fill: #ffffff; }
+    .title { font: 700 30px Arial, sans-serif; fill: #2e2f31; }
+    .label { font: 600 22px Arial, sans-serif; fill: #ffffff; }
+    .dark { fill: #2e2f31; }
+    .tableHead { font: 700 18px Arial, sans-serif; fill: #ffffff; }
+    .tableText { font: 16px Arial, sans-serif; fill: #2e2f31; }
+    .tableTextLight { font: 16px Arial, sans-serif; fill: #ffffff; }
+    .border { stroke: #c8c8c8; stroke-width: 1; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="1200" height="500" rx="16"/>
+  <text class="title" x="36" y="44">Accent Colours</text>
+
+  <!-- Horizontal chart -->
+  <g transform="translate(24,76)">
+    <rect x="0" y="0" width="192" height="66" fill="#5fa97f" class="border"/>
+    <rect x="192" y="0" width="120" height="66" fill="#ffffff" class="border"/>
+    <rect x="312" y="0" width="192" height="66" fill="#e8a538" class="border"/>
+    <rect x="504" y="0" width="120" height="66" fill="#ffffff" class="border"/>
+    <rect x="624" y="0" width="192" height="66" fill="#d96a6a" class="border"/>
+    <rect x="816" y="0" width="120" height="66" fill="#ffffff" class="border"/>
+    <rect x="936" y="0" width="110" height="66" fill="#2e2f31" class="border"/>
+    <rect x="1046" y="0" width="72" height="66" fill="#ffffff" class="border"/>
+    <rect x="1118" y="0" width="58" height="66" fill="#e6efe9" class="border"/>
+
+    <text class="label" x="96" y="41" text-anchor="middle">Success</text>
+    <text class="label dark" x="252" y="41" text-anchor="middle">Warning</text>
+    <text class="label" x="408" y="41" text-anchor="middle">Error</text>
+    <text class="label" x="570" y="41" text-anchor="middle">Text</text>
+    <text class="label dark" x="1087" y="41" text-anchor="middle">Hover</text>
+  </g>
+
+  <!-- Reference grid -->
+  <g transform="translate(24,176)">
+    <rect x="0" y="0" width="1150" height="237" fill="#ffffff" class="border"/>
+    <rect x="0" y="0" width="260" height="42" fill="#2e2f31" class="border"/>
+    <rect x="260" y="0" width="240" height="42" fill="#2e2f31" class="border"/>
+    <rect x="500" y="0" width="650" height="42" fill="#2e2f31" class="border"/>
+
+    <text class="tableHead" x="24" y="27">Colour</text>
+    <text class="tableHead" x="284" y="27">Hex</text>
+    <text class="tableHead" x="524" y="27">Use</text>
+
+    <g transform="translate(0,42)">
+      <rect x="0" y="0" width="260" height="39" fill="#ffffff" class="border"/>
+      <rect x="260" y="0" width="240" height="39" fill="#5fa97f" class="border"/>
+      <rect x="500" y="0" width="650" height="39" fill="#ffffff" class="border"/>
+      <text class="tableText" x="16" y="25">Success</text>
+      <text class="tableTextLight" x="284" y="25">#5fa97f</text>
+      <text class="tableText" x="516" y="25">Positive feedback</text>
+    </g>
+    <g transform="translate(0,81)">
+      <rect x="0" y="0" width="260" height="39" fill="#ffffff" class="border"/>
+      <rect x="260" y="0" width="240" height="39" fill="#e8a538" class="border"/>
+      <rect x="500" y="0" width="650" height="39" fill="#ffffff" class="border"/>
+      <text class="tableText" x="16" y="25">Warning</text>
+      <text class="tableText" x="284" y="25">#e8a538</text>
+      <text class="tableText" x="516" y="25">Alerts, warnings</text>
+    </g>
+    <g transform="translate(0,120)">
+      <rect x="0" y="0" width="260" height="39" fill="#ffffff" class="border"/>
+      <rect x="260" y="0" width="240" height="39" fill="#d96a6a" class="border"/>
+      <rect x="500" y="0" width="650" height="39" fill="#ffffff" class="border"/>
+      <text class="tableText" x="16" y="25">Error</text>
+      <text class="tableTextLight" x="284" y="25">#d96a6a</text>
+      <text class="tableText" x="516" y="25">Error states</text>
+    </g>
+    <g transform="translate(0,159)">
+      <rect x="0" y="0" width="260" height="39" fill="#ffffff" class="border"/>
+      <rect x="260" y="0" width="240" height="39" fill="#2e2f31" class="border"/>
+      <rect x="500" y="0" width="650" height="39" fill="#ffffff" class="border"/>
+      <text class="tableText" x="16" y="25">Text</text>
+      <text class="tableTextLight" x="284" y="25">#2e2f31</text>
+      <text class="tableText" x="516" y="25">Main readable text</text>
+    </g>
+    <g transform="translate(0,198)">
+      <rect x="0" y="0" width="260" height="39" fill="#ffffff" class="border"/>
+      <rect x="260" y="0" width="240" height="39" fill="#e6efe9" class="border"/>
+      <rect x="500" y="0" width="650" height="39" fill="#ffffff" class="border"/>
+      <text class="tableText" x="16" y="25">Hover</text>
+      <text class="tableText" x="284" y="25">#e6efe9</text>
+      <text class="tableText" x="516" y="25">Interactive hover states</text>
+    </g>
+  </g>
+</svg>
