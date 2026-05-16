@@ -280,18 +280,96 @@ A warm, supportive colour palette is chosen to create a positive, welcoming envi
 
 #### **Primary Colours:**
 
-* Background: `#f5f3ef` (Warm Cream) - Calming page background
-* Container: `#fffdf9` (Soft Ivory) - Card/content background
-* Primary Action: `#6c9b7f` (Wellness Green) - Buttons, CTAs
-* Secondary: `#4a5d54` (Deep Teal) - Navigation, text emphasis
+<table>
+  <tr>
+    <td style="background:#f5f3ef;width:56px;height:28px;border:1px solid #999;"></td>
+    <td>Background</td>
+    <td style="background:#fffdf9;width:56px;height:28px;border:1px solid #999;"></td>
+    <td>Container</td>
+    <td style="background:#6c9b7f;width:56px;height:28px;border:1px solid #999;"></td>
+    <td>Primary Action</td>
+    <td style="background:#4a5d54;width:56px;height:28px;border:1px solid #999;"></td>
+    <td>Secondary</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Colour</th>
+    <th>Hex</th>
+    <th>Use</th>
+  </tr>
+  <tr>
+    <td>Background</td>
+    <td>#f5f3ef</td>
+    <td>Calming page background</td>
+  </tr>
+  <tr>
+    <td>Container</td>
+    <td>#fffdf9</td>
+    <td>Card/content background</td>
+  </tr>
+  <tr>
+    <td>Primary Action</td>
+    <td>#6c9b7f</td>
+    <td>Buttons, CTAs</td>
+  </tr>
+  <tr>
+    <td>Secondary</td>
+    <td>#4a5d54</td>
+    <td>Navigation, text emphasis</td>
+  </tr>
+</table>
 
 #### **Accent Colours:**
 
-* Success: `#5fa97f` (Success Green) - Positive feedback
-* Warning: `#e8a538` (Warm Amber) - Alerts, warnings
-* Error: `#d96a6a` (Calm Red) - Error states
-* Text: `#2e2f31` (Dark Charcoal) - Main readable text
-* Hover: `#e6efe9` (Light Mint) - Interactive hover states
+<table>
+  <tr>
+    <td style="background:#5fa97f;width:56px;height:28px;border:1px solid #999;"></td>
+    <td>Success</td>
+    <td style="background:#e8a538;width:56px;height:28px;border:1px solid #999;"></td>
+    <td>Warning</td>
+    <td style="background:#d96a6a;width:56px;height:28px;border:1px solid #999;"></td>
+    <td>Error</td>
+    <td style="background:#2e2f31;width:56px;height:28px;border:1px solid #999;"></td>
+    <td>Text</td>
+    <td style="background:#e6efe9;width:56px;height:28px;border:1px solid #999;"></td>
+    <td>Hover</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Colour</th>
+    <th>Hex</th>
+    <th>Use</th>
+  </tr>
+  <tr>
+    <td>Success</td>
+    <td>#5fa97f</td>
+    <td>Positive feedback</td>
+  </tr>
+  <tr>
+    <td>Warning</td>
+    <td>#e8a538</td>
+    <td>Alerts, warnings</td>
+  </tr>
+  <tr>
+    <td>Error</td>
+    <td>#d96a6a</td>
+    <td>Error states</td>
+  </tr>
+  <tr>
+    <td>Text</td>
+    <td>#2e2f31</td>
+    <td>Main readable text</td>
+  </tr>
+  <tr>
+    <td>Hover</td>
+    <td>#e6efe9</td>
+    <td>Interactive hover states</td>
+  </tr>
+</table>
 
 ---
 
