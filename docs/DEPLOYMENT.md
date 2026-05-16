@@ -152,13 +152,13 @@ Server starts at `http://127.0.0.1:8000/`
 
 ### **Windows Quick Launch**
 
-On Windows, run all steps in one command:
+After completing the setup steps above, run this command on Windows to start the local server:
 
 ```bash
 python manage.py runserver
 ```
 
-This starts the local development server after you complete the setup steps above.
+This command starts the local development server.
 
 ---
 

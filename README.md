@@ -25,11 +25,12 @@ Wireframe preparation is listed in the Design section below so the planning work
    - [First-time Users](#first-time-users)
    - [Returning Premium Users](#returning-premium-users)
 8. [Design](#design)
-   - [Wireframes & Planning](#wireframes--planning)
-   - [Overview](#overview)
-   - [Colour Scheme](#colour-scheme)
-   - [Typography](#typography)
-   - [Accessibility](#accessibility)
+  - [Wireframes & Planning](#wireframes--planning)
+  - [Wireframe to Final Changes](#wireframe-to-final-changes)
+  - [Overview](#overview)
+  - [Colour Scheme](#colour-scheme)
+  - [Typography](#typography)
+  - [Accessibility in Design](#accessibility-in-design)
 9. [Features](#features)
    - [All Pages Features](#all-pages-features)
    - [Authentication Features](#authentication-features)
@@ -48,7 +49,7 @@ Wireframe preparation is listed in the Design section below so the planning work
 18. [Deployment](#deployment)
 19. [Security](#security)
 20. [Stripe Integration](#stripe-integration)
-21. [Accessibility](#accessibility)
+21. [Accessibility (Project)](#accessibility)
 22. [Originality Statement](#originality-statement)
 23. [Credits & Acknowledgements](#credits--acknowledgements)
 24. [Known Bugs](#known-bugs)
@@ -256,6 +257,13 @@ This wireframe shows the pricing page layout, including the free and premium com
 
 <img src="docs/screenshots/wireframes/wireframe-04-pricing-page.png" alt="Pricing Page Wireframe" width="56.25%">
 
+### **Wireframe to Final Changes**
+
+- **Home page**: The final page keeps the same hero-first structure from the wireframe, but adds stronger visual hierarchy and clearer call-to-action styling.
+- **Assessment page**: The final page keeps the same question-to-result flow, with clearer score feedback and supportive text for better readability.
+- **Journal page**: The final page keeps the same create/list layout, with cleaner spacing and clearer action controls for create, edit, and delete.
+- **Pricing page**: The final page keeps the same free-vs-premium comparison block, with clearer tier messaging and stronger upgrade button emphasis.
+
 ### **Overview**
 
 Mindly is designed to be calm, supportive, and user-friendly. The interface prioritises clarity, accessibility, and ease of use to encourage consistent wellbeing tracking and journaling without overwhelming the user.
@@ -297,7 +305,7 @@ A warm, supportive colour palette is chosen to create a positive, welcoming envi
 
 ---
 
-### **Accessibility**
+### **Accessibility in Design**
 
 Mindly follows WCAG accessibility best practices:
 
