@@ -38,106 +38,36 @@ Wireframe preparation is listed in the Design section below so the planning work
    - [Journal Features](#journal-features)
    - [Premium Features](#premium-features)
    - [Payment Features](#payment-features)
-10. [Future Features](#future-features)
-11. [Data Model / Schema](#data-model--schema)
-12. [Backend-Frontend Flow Examples](#backend-frontend-flow-examples)
-13. [Project Structure](#mindly-project-structure)
-14. [App Structure Justification](#app-structure-justification)
-15. [Technologies Used](#technologies-used)
-16. [Testing](#testing)
-17. [Errors](#errors)
-18. [Deployment](#deployment)
-19. [Security](#security)
-20. [Stripe Integration](#stripe-integration)
-21. [Accessibility (Project)](#accessibility)
-22. [Originality Statement](#originality-statement)
-23. [Credits & Acknowledgements](#credits--acknowledgements)
-24. [Known Bugs](#known-bugs)
+## **Data Model / Schema**
 
----
+Mindly uses one custom user model with a small set of linked profile, mood, journal, and assessment records.
 
-## **Project Goals**
+### **Model Summary**
 
-The goal of this project was to design and build a full-stack mental health and wellbeing application that demonstrates:
-- Advanced backend development with Django framework
-- Secure user authentication and authorization
-- Relational database design and management
-- Payment processing integration with Stripe
-- Responsive, accessible frontend design
-- Professional security practices (environment variables, secret management, DEBUG disabled)
-- Comprehensive testing and validation
-- Industry-standard deployment practices
+| Model | Key fields |
+| --- | --- |
+| `CustomUser` | `username`, `email`, `bio`, `profile_picture` |
+| `UserProfile` | `user`, `subscription_tier`, `joined_date`, `reminder_time` |
+| `MoodEntry` | `user`, `mood_score`, `note`, `created_at` |
+| `JournalEntry` | `user`, `title`, `content`, `is_private`, `created_at`, `updated_at` |
+| `AssessmentResult` | `user`, `assessment_type`, `q1_score` to `q4_score`, `total_score`, `level`, `created_at` |
 
-## **Real-World Rationale**
+### **Relationships**
 
-Mindly addresses a practical real-world problem: many users need a private, low-friction place to monitor mental wellbeing, reflect consistently, and access supportive resources without switching between multiple tools.
+- `CustomUser` → `UserProfile` (`1-to-1`)
+- `CustomUser` → `MoodEntry` (`1-to-many`)
+- `CustomUser` → `JournalEntry` (`1-to-many`)
+- `CustomUser` → `AssessmentResult` (`1-to-many`)
 
-The app is designed for two clear user groups:
-- **Free users** who need reliable daily support (mood tracking, journaling, and core resources)
-- **Premium users** who need deeper guidance and expanded content access
+### **ERD (ASCII)**
 
-This domain focus justified building secure authentication, user-owned records, and subscription-aware access controls instead of a static content site.
-
-### **What Success Looks Like**
-
-For this project, success means:
-- Users can register, log in, and manage their own data safely
-- Core CRUD flows work clearly for mood and journal features
-- Premium upgrade works through Stripe checkout and webhook confirmation
-- Premium-only pages are correctly blocked for free users
-- The app is responsive and usable on mobile, tablet, and desktop
-- The project is deployable, tested, and documented to professional standard
-
-## **Development Strategy**
-
-Mindly was developed using a domain-driven multi-app Django structure so each app maps to a natural product boundary:
-- `users`: identity, profile, subscription state
-- `journal`: mood/journal CRUD operations
-- `assessments`: interactive self-check tools and persisted result records
-- `payments`: Stripe checkout, webhook processing, and premium upgrade flow
-- `pages`: static and premium resource views
-
-Key architecture decisions:
-- Use Django ORM for safe relational data handling and owner-scoped query patterns
-- Use Stripe Checkout + webhook verification for secure payment lifecycle handling
-- Use Bootstrap + custom CSS for responsive UI consistency across mobile/desktop
-- Deploy on Heroku with environment-variable based secrets and production hardening
-
-### **Build Constraints and Decisions**
-
-- Kept app boundaries strict so each app has one clear responsibility
-- Stored sensitive values in environment variables only
-- Treated webhook signature verification as mandatory in production
-- Prioritized clarity over complexity in UI and feature flows
-- Focused on traceable evidence: tests, screenshots, and deployment checks
-
-### **Development Process and Version Control**
-
-The project was built in small stages and committed to GitHub regularly during development. I used Git and GitHub throughout the project to save progress, track changes, and keep a clear record of feature work, fixes, testing updates, and documentation updates.
-
-This matters for the project criteria because version control is not only about having a repository. It is also evidence that the project was developed in a steady and traceable way rather than uploaded all at once at the end.
-
----
-
-### **Live Project**
-
-Mindly is deployed and accessible for public testing.
-
-The live application is available here: [**Mindly on Heroku**](https://mindly-shez-9ca695ee4969.herokuapp.com/)
-
-### **Key Interface Screenshots**
-
-#### Home Page
-<img src="docs/screenshots/readme-02-home-page.png" alt="Home Page" width="56.25%">
-
-#### Dashboard Page
-<img src="docs/screenshots/readme-03-dashboard-page.png" alt="Dashboard Page" width="56.25%">
-
-#### Journal Page
-<img src="docs/screenshots/readme-04-journal-page.png" alt="Journal Page" width="56.25%">
-
-#### Mood Form Page
-<img src="docs/screenshots/readme-05-mood-form-page.png" alt="Mood Form Page" width="56.25%">
+```text
+CustomUser
+  ├── UserProfile        (1-to-1)
+  ├── MoodEntry          (1-to-many)
+  ├── JournalEntry       (1-to-many)
+  └── AssessmentResult   (1-to-many)
+```
 
 #### Pricing Page
 <img src="docs/screenshots/readme-06-pricing-page.png" alt="Pricing Page" width="56.25%">
@@ -418,164 +348,6 @@ Mindly follows WCAG accessibility best practices:
 * Payment method management for subscribers
 
 ---
-
-## **Data Model / Schema**
-
-Mindly's data model supports secure user account management, mood tracking, journaling, and subscription management.
-
-### **CustomUser Table**
-
-Custom user model extending Django's AbstractUser.
-
-| Column          | Type            | Description                    |
-| --------------- | --------------- | ------------------------------ |
-| id              | INTEGER (PK)    | Unique user ID                 |
-| username        | VARCHAR(150)    | Unique username                |
-| email           | VARCHAR(254)    | User email address             |
-| password        | VARCHAR(128)    | Hashed password                |
-| first_name      | VARCHAR(150)    | User's first name              |
-| last_name       | VARCHAR(150)    | User's last name               |
-| bio             | TEXT            | Optional short bio             |
-| profile_picture | IMAGE           | Optional profile picture       |
-| is_active       | BOOLEAN         | Account activation status      |
-| date_joined     | DATETIME        | Account creation timestamp     |
-
-### **UserProfile Table**
-
-Extended user profile for subscription and wellbeing tracking.
-
-| Column           | Type            | Description                    |
-| ---------------- | --------------- | ------------------------------ |
-| id               | INTEGER (PK)    | Unique profile ID              |
-| user_id          | INTEGER (FK)    | Link to CustomUser             |
-| subscription_tier| VARCHAR(10)     | 'free' or 'premium'            |
-| joined_date      | DATE            | Profile creation date          |
-| reminder_time    | TIME (Optional) | Optional reminder time         |
-
-**Subscription Tiers:**
-- `free`: Free tier user (default)
-- `premium`: Premium subscriber (set via Stripe webhook)
-
-### **MoodEntry Table**
-
-Daily mood tracking records.
-
-| Column      | Type            | Description                    |
-| ----------- | --------------- | ------------------------------ |
-| id          | INTEGER (PK)    | Unique entry ID                |
-| user_id     | INTEGER (FK)    | Link to CustomUser             |
-| mood_score  | INTEGER         | Mood rating 1-10               |
-| note        | TEXT (Optional) | Optional mood note             |
-| created_at  | DATETIME        | Entry creation timestamp       |
-
-### **JournalEntry Table**
-
-Longer-form reflection and journaling.
-
-| Column      | Type            | Description                    |
-| ----------- | --------------- | ------------------------------ |
-| id          | INTEGER (PK)    | Unique entry ID                |
-| user_id     | INTEGER (FK)    | Link to CustomUser             |
-| title       | VARCHAR(200)    | Entry title                    |
-| content     | TEXT            | Full journal content           |
-| is_private  | BOOLEAN         | Privacy flag (default: True)   |
-| created_at  | DATETIME        | Entry creation timestamp       |
-| updated_at  | DATETIME        | Entry modification timestamp   |
-
-### **AssessmentResult Table**
-
-Persisted self-check submissions for authenticated users.
-
-| Column          | Type            | Description                                 |
-| --------------- | --------------- | ------------------------------------------- |
-| id              | INTEGER (PK)    | Unique result ID                            |
-| user_id         | INTEGER (FK)    | Link to CustomUser                          |
-| assessment_type | VARCHAR(20)     | Tool key (`mood`, `stress`, `sleep`)        |
-| q1_score        | INTEGER         | Question 1 score (0-3)                      |
-| q2_score        | INTEGER         | Question 2 score (0-3)                      |
-| q3_score        | INTEGER         | Question 3 score (0-3)                      |
-| q4_score        | INTEGER         | Question 4 score (0-3)                      |
-| total_score     | INTEGER         | Sum of all question scores (0-12)           |
-| level           | VARCHAR(20)     | Result level (`Low/Moderate/Higher concern`)|
-| created_at      | DATETIME        | Submission timestamp                         |
-
-**Note:** `MoodEntry` and `JournalEntry` are both defined in the `journal` app (`journal/models.py`).
-
-### **Relationships**
-
-- `CustomUser` → `UserProfile` (1-to-1)
-- `CustomUser` → `MoodEntry` (1-to-many)
-- `CustomUser` → `JournalEntry` (1-to-many)
-- `CustomUser` → `AssessmentResult` (1-to-many)
-
-### **ERD (ASCII)**
-
-```text
-┌──────────────────────┐
-│      CustomUser      │
-│ id (PK)              │
-│ username             │
-│ email                │
-│ ...                  │
-└─────────┬────────────┘
-          │ 1
-          │
-          │ 1
-┌─────────▼────────────┐
-│      UserProfile     │
-│ id (PK)              │
-│ user_id (FK, unique) │
-│ subscription_tier    │
-│ joined_date          │
-└──────────────────────┘
-
-┌──────────────────────┐
-│      CustomUser      │
-└─────────┬────────────┘
-          │ 1
-          │
-          │ N
-┌─────────▼────────────┐
-│       MoodEntry      │
-│ id (PK)              │
-│ user_id (FK)         │
-│ mood_score           │
-│ note                 │
-└──────────────────────┘
-
-┌──────────────────────┐
-│      CustomUser      │
-└─────────┬────────────┘
-          │ 1
-          │
-          │ N
-┌─────────▼────────────┐
-│     JournalEntry     │
-│ id (PK)              │
-│ user_id (FK)         │
-│ title                │
-│ content              │
-│ is_private           │
-└──────────────────────┘
-
-┌──────────────────────┐
-│      CustomUser      │
-└─────────┬────────────┘
-          │ 1
-          │
-          │ N
-┌─────────▼────────────┐
-│   AssessmentResult   │
-│ id (PK)              │
-│ user_id (FK)         │
-│ assessment_type      │
-│ q1_score ... q4_score│
-│ total_score          │
-│ level                │
-└──────────────────────┘
-```
-
-All entries are scoped to logged-in user via `request.user` for data privacy.
 
 ## **Backend-Frontend Flow Examples**
 
