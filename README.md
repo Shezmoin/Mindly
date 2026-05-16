@@ -1,6 +1,6 @@
 # **Mindly - Mental Health and Wellbeing Platform**
 
-### Milestone Project 4
+## Milestone Project 4
 
 Mindly is a full-stack web application that empowers users to track their mental wellbeing, journal their thoughts, and access premium support services. The platform combines mood tracking, journaling, and optional premium content behind a secure Stripe subscription system.
 
@@ -14,55 +14,44 @@ This project demonstrates professional backend development, full-stack integrati
 
 Wireframe preparation is listed in the Design section below so the planning work is easy to find.
 
-<ol>
-  <li><a href="#project-goals">Project Goals</a></li>
-  <li><a href="#real-world-rationale">Real-World Rationale</a></li>
-  <li><a href="#development-strategy">Development Strategy</a></li>
-  <li><a href="#live-project">Live Project</a></li>
-  <li><a href="#repository">Repository</a></li>
-  <li><a href="#badges">Badges</a></li>
-  <li><a href="#user-experience">User Experience</a>
-    <ul style="list-style-type: disc;">
-      <li><a href="#user-stories">User Stories</a></li>
-      <li><a href="#first-time-users">First-time Users</a></li>
-      <li><a href="#returning-premium-users">Returning Premium Users</a></li>
-    </ul>
-  </li>
-  <li><a href="#design">Design</a>
-    <ul style="list-style-type: disc;">
-      <li><a href="#wireframes--planning">Wireframes & Planning</a></li>
-      <li><a href="#overview">Overview</a></li>
-      <li><a href="#colour-scheme">Colour Scheme</a></li>
-      <li><a href="#typography">Typography</a></li>
-      <li><a href="#accessibility">Accessibility</a></li>
-    </ul>
-  </li>
-  <li><a href="#features">Features</a>
-    <ul style="list-style-type: disc;">
-      <li><a href="#all-pages-features">All Pages Features</a></li>
-      <li><a href="#authentication-features">Authentication Features</a></li>
-      <li><a href="#mood-tracking-features">Mood Tracking Features</a></li>
-      <li><a href="#journal-features">Journal Features</a></li>
-      <li><a href="#premium-features">Premium Features</a></li>
-      <li><a href="#payment-features">Payment Features</a></li>
-    </ul>
-  </li>
-  <li><a href="#future-features">Future Features</a></li>
-  <li><a href="#data-model--schema">Data Model / Schema</a></li>
-  <li><a href="#backend-frontend-flow-examples">Backend-Frontend Flow Examples</a></li>
-  <li><a href="#mindly-project-structure">Project Structure</a></li>
-  <li><a href="#app-structure-justification">App Structure Justification</a></li>
-  <li><a href="#technologies-used">Technologies Used</a></li>
-  <li><a href="#testing">Testing</a></li>
-  <li><a href="#errors">Errors</a></li>
-  <li><a href="#deployment">Deployment</a></li>
-  <li><a href="#security">Security</a></li>
-  <li><a href="#stripe-integration">Stripe Integration</a></li>
-  <li><a href="#accessibility">Accessibility</a></li>
-  <li><a href="#originality-statement">Originality Statement</a></li>
-  <li><a href="#credits--acknowledgements">Credits & Acknowledgements</a></li>
-  <li><a href="#known-bugs">Known Bugs</a></li>
-</ol>
+1. [Project Goals](#project-goals)
+2. [Real-World Rationale](#real-world-rationale)
+3. [Development Strategy](#development-strategy)
+4. [Live Project](#live-project)
+5. [Repository](#repository)
+6. [Badges](#badges)
+7. [User Experience](#user-experience)
+   - [User Stories](#user-stories)
+   - [First-time Users](#first-time-users)
+   - [Returning Premium Users](#returning-premium-users)
+8. [Design](#design)
+   - [Wireframes & Planning](#wireframes--planning)
+   - [Overview](#overview)
+   - [Colour Scheme](#colour-scheme)
+   - [Typography](#typography)
+   - [Accessibility](#accessibility)
+9. [Features](#features)
+   - [All Pages Features](#all-pages-features)
+   - [Authentication Features](#authentication-features)
+   - [Mood Tracking Features](#mood-tracking-features)
+   - [Journal Features](#journal-features)
+   - [Premium Features](#premium-features)
+   - [Payment Features](#payment-features)
+10. [Future Features](#future-features)
+11. [Data Model / Schema](#data-model--schema)
+12. [Backend-Frontend Flow Examples](#backend-frontend-flow-examples)
+13. [Project Structure](#mindly-project-structure)
+14. [App Structure Justification](#app-structure-justification)
+15. [Technologies Used](#technologies-used)
+16. [Testing](#testing)
+17. [Errors](#errors)
+18. [Deployment](#deployment)
+19. [Security](#security)
+20. [Stripe Integration](#stripe-integration)
+21. [Accessibility](#accessibility)
+22. [Originality Statement](#originality-statement)
+23. [Credits & Acknowledgements](#credits--acknowledgements)
+24. [Known Bugs](#known-bugs)
 
 ---
 
