@@ -1,35 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="140" viewBox="0 0 1100 140" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="98" viewBox="0 0 1100 98" role="img" aria-labelledby="title desc">
   <title id="title">Accent Colours Chart</title>
   <desc id="desc">Accent colour swatches for Mindly with names and hex codes.</desc>
   <style>
-    .title { font: 700 18px Arial, sans-serif; fill: #2e2f31; }
-    .swatchTextLight { font: 700 14px Arial, sans-serif; fill: #ffffff; }
-    .swatchTextDark { font: 700 14px Arial, sans-serif; fill: #2e2f31; }
-    .panel { fill: #ffffff; stroke: #d8d8d8; stroke-width: 1; }
+    .title { font: 700 16px Arial, sans-serif; fill: #2e2f31; }
+    .swatchTextLight { font: 700 13px Arial, sans-serif; fill: #ffffff; }
+    .swatchTextDark { font: 700 13px Arial, sans-serif; fill: #2e2f31; }
   </style>
 
-  <text class="title" x="18" y="22">Accent Colours</text>
+  <text class="title" x="18" y="18">Accent Colours</text>
 
-  <g transform="translate(18,38)">
-    <rect x="0" y="0" width="200" height="62" rx="8" fill="#5fa97f" class="panel"/>
-    <rect x="210" y="0" width="200" height="62" rx="8" fill="#e8a538" class="panel"/>
-    <rect x="420" y="0" width="200" height="62" rx="8" fill="#d96a6a" class="panel"/>
-    <rect x="630" y="0" width="200" height="62" rx="8" fill="#2e2f31" class="panel"/>
-    <rect x="840" y="0" width="240" height="62" rx="8" fill="#e6efe9" class="panel"/>
+  <g transform="translate(18,30)">
+    <rect x="0" y="0" width="200" height="44" rx="6" fill="#5fa97f"/>
+    <rect x="210" y="0" width="200" height="44" rx="6" fill="#e8a538"/>
+    <rect x="420" y="0" width="200" height="44" rx="6" fill="#d96a6a"/>
+    <rect x="630" y="0" width="200" height="44" rx="6" fill="#2e2f31"/>
+    <rect x="840" y="0" width="240" height="44" rx="6" fill="#e6efe9"/>
 
-    <text class="swatchTextLight" x="100" y="25" text-anchor="middle">Success</text>
-    <text class="swatchTextLight" x="100" y="44" text-anchor="middle">#5fa97f</text>
+    <text class="swatchTextLight" x="100" y="18" text-anchor="middle">Success</text>
+    <text class="swatchTextLight" x="100" y="33" text-anchor="middle">#5fa97f</text>
 
-    <text class="swatchTextDark" x="310" y="25" text-anchor="middle">Warning</text>
-    <text class="swatchTextDark" x="310" y="44" text-anchor="middle">#e8a538</text>
+    <text class="swatchTextDark" x="310" y="18" text-anchor="middle">Warning</text>
+    <text class="swatchTextDark" x="310" y="33" text-anchor="middle">#e8a538</text>
 
-    <text class="swatchTextLight" x="520" y="25" text-anchor="middle">Error</text>
-    <text class="swatchTextLight" x="520" y="44" text-anchor="middle">#d96a6a</text>
+    <text class="swatchTextLight" x="520" y="18" text-anchor="middle">Error</text>
+    <text class="swatchTextLight" x="520" y="33" text-anchor="middle">#d96a6a</text>
 
-    <text class="swatchTextLight" x="730" y="25" text-anchor="middle">Text</text>
-    <text class="swatchTextLight" x="730" y="44" text-anchor="middle">#2e2f31</text>
+    <text class="swatchTextLight" x="730" y="18" text-anchor="middle">Text</text>
+    <text class="swatchTextLight" x="730" y="33" text-anchor="middle">#2e2f31</text>
 
-    <text class="swatchTextDark" x="960" y="25" text-anchor="middle">Hover</text>
-    <text class="swatchTextDark" x="960" y="44" text-anchor="middle">#e6efe9</text>
+    <text class="swatchTextDark" x="960" y="18" text-anchor="middle">Hover</text>
+    <text class="swatchTextDark" x="960" y="33" text-anchor="middle">#e6efe9</text>
   </g>
 </svg>
