@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="92" viewBox="0 0 1100 92" role="img" aria-labelledby="title desc">
+  <title id="title">Primary Colours Chart</title>
+  <desc id="desc">Primary colour swatches for Mindly with names and hex codes.</desc>
+  <style>
+    .title { font: 700 16px Arial, sans-serif; fill: #2e2f31; }
+    .label-dark { font: 700 13px Arial, sans-serif; fill: #2e2f31; }
+    .label-light { font: 700 13px Arial, sans-serif; fill: #ffffff; }
+    .shadow { fill: #000000; opacity: 0.03; }
+  </style>
+
+  <text class="title" x="18" y="18">Primary Colours</text>
+
+  <g transform="translate(18,30)">
+    <rect x="0" y="0" width="260" height="44" rx="6" class="shadow"/>
+    <rect x="270" y="0" width="260" height="44" rx="6" class="shadow"/>
+    <rect x="540" y="0" width="260" height="44" rx="6" class="shadow"/>
+    <rect x="810" y="0" width="260" height="44" rx="6" class="shadow"/>
+
+    <rect x="0" y="0" width="260" height="44" rx="6" fill="#f5f3ef"/>
+    <rect x="270" y="0" width="260" height="44" rx="6" fill="#fffdf9"/>
+    <rect x="540" y="0" width="260" height="44" rx="6" fill="#6c9b7f"/>
+    <rect x="810" y="0" width="260" height="44" rx="6" fill="#4a5d54"/>
+
+    <text class="label-dark" x="130" y="18" text-anchor="middle">Background</text>
+    <text class="label-dark" x="130" y="33" text-anchor="middle">#f5f3ef</text>
+
+    <text class="label-dark" x="400" y="18" text-anchor="middle">Container</text>
+    <text class="label-dark" x="400" y="33" text-anchor="middle">#fffdf9</text>
+
+    <text class="label-light" x="670" y="18" text-anchor="middle">Primary Action</text>
+    <text class="label-light" x="670" y="33" text-anchor="middle">#6c9b7f</text>
+
+    <text class="label-light" x="940" y="18" text-anchor="middle">Secondary</text>
+    <text class="label-light" x="940" y="33" text-anchor="middle">#4a5d54</text>
+  </g>
+</svg>

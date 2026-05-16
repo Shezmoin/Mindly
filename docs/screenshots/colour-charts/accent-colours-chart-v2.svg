@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="98" viewBox="0 0 1100 98" role="img" aria-labelledby="title desc">
+  <title id="title">Accent Colours Chart</title>
+  <desc id="desc">Accent colour swatches for Mindly with names and hex codes.</desc>
+  <style>
+    .title { font: 700 16px Arial, sans-serif; fill: #2e2f31; }
+    .label-dark { font: 700 13px Arial, sans-serif; fill: #2e2f31; }
+    .label-light { font: 700 13px Arial, sans-serif; fill: #ffffff; }
+    .shadow { fill: #000000; opacity: 0.03; }
+  </style>
+
+  <text class="title" x="18" y="18">Accent Colours</text>
+
+  <g transform="translate(18,30)">
+    <rect x="0" y="0" width="200" height="44" rx="6" class="shadow"/>
+    <rect x="210" y="0" width="200" height="44" rx="6" class="shadow"/>
+    <rect x="420" y="0" width="200" height="44" rx="6" class="shadow"/>
+    <rect x="630" y="0" width="200" height="44" rx="6" class="shadow"/>
+    <rect x="840" y="0" width="240" height="44" rx="6" class="shadow"/>
+
+    <rect x="0" y="0" width="200" height="44" rx="6" fill="#5fa97f"/>
+    <rect x="210" y="0" width="200" height="44" rx="6" fill="#e8a538"/>
+    <rect x="420" y="0" width="200" height="44" rx="6" fill="#d96a6a"/>
+    <rect x="630" y="0" width="200" height="44" rx="6" fill="#2e2f31"/>
+    <rect x="840" y="0" width="240" height="44" rx="6" fill="#e6efe9"/>
+
+    <text class="label-light" x="100" y="18" text-anchor="middle">Success</text>
+    <text class="label-light" x="100" y="33" text-anchor="middle">#5fa97f</text>
+
+    <text class="label-dark" x="310" y="18" text-anchor="middle">Warning</text>
+    <text class="label-dark" x="310" y="33" text-anchor="middle">#e8a538</text>
+
+    <text class="label-light" x="520" y="18" text-anchor="middle">Error</text>
+    <text class="label-light" x="520" y="33" text-anchor="middle">#d96a6a</text>
+
+    <text class="label-light" x="730" y="18" text-anchor="middle">Text</text>
+    <text class="label-light" x="730" y="33" text-anchor="middle">#2e2f31</text>
+
+    <text class="label-dark" x="960" y="18" text-anchor="middle">Hover</text>
+    <text class="label-dark" x="960" y="33" text-anchor="middle">#e6efe9</text>
+  </g>
+</svg>
