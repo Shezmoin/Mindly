@@ -1,78 +1,78 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280" role="img" aria-labelledby="title desc">
   <title id="title">Primary Colours Chart</title>
-  <desc id="desc">Primary colour swatches for Mindly with names and reference grid.</desc>
+  <desc id="desc">Primary colour swatches for Mindly with names, hex codes, and brief usage notes.</desc>
   <style>
-    .bg { fill: #ffffff; }
-    .title { font: 700 30px Arial, sans-serif; fill: #ffffff; }
-    .label { font: 600 22px Arial, sans-serif; fill: #ffffff; }
-    .dark { fill: #2e2f31; }
-    .tableHead { font: 700 18px Arial, sans-serif; fill: #ffffff; }
-    .tableText { font: 16px Arial, sans-serif; fill: #2e2f31; }
-    .tableTextLight { font: 16px Arial, sans-serif; fill: #ffffff; }
-    .border { stroke: #c8c8c8; stroke-width: 1; }
+    .panel { fill: #ffffff; stroke: #d8d8d8; stroke-width: 1; }
+    .swatchTextLight { font: 700 16px Arial, sans-serif; fill: #ffffff; }
+    .swatchTextDark { font: 700 16px Arial, sans-serif; fill: #2e2f31; }
+    .metaTitle { font: 700 14px Arial, sans-serif; fill: #ffffff; letter-spacing: .3px; }
+    .metaText { font: 13px Arial, sans-serif; fill: #2e2f31; }
+    .metaTextLight { font: 13px Arial, sans-serif; fill: #ffffff; }
+    .border { stroke: #d8d8d8; stroke-width: 1; }
   </style>
 
-  <rect class="bg" x="0" y="0" width="1200" height="420" rx="16"/>
-  <text class="title" x="36" y="44" fill="#2e2f31">Primary Colours</text>
+  <rect class="panel" x="0" y="0" width="1200" height="280" rx="14"/>
 
-  <!-- Horizontal chart -->
-  <g transform="translate(24,76)">
-    <rect x="0" y="0" width="230" height="66" fill="#f5f3ef" class="border"/>
-    <rect x="230" y="0" width="190" height="66" fill="#ffffff" class="border"/>
-    <rect x="420" y="0" width="230" height="66" fill="#fffdf9" class="border"/>
-    <rect x="650" y="0" width="190" height="66" fill="#ffffff" class="border"/>
-    <rect x="840" y="0" width="230" height="66" fill="#6c9b7f" class="border"/>
-    <rect x="1070" y="0" width="130" height="66" fill="#ffffff" class="border"/>
+  <g transform="translate(24,18)">
+    <rect x="0" y="0" width="270" height="84" rx="10" fill="#f5f3ef" class="border"/>
+    <rect x="286" y="0" width="270" height="84" rx="10" fill="#fffdf9" class="border"/>
+    <rect x="572" y="0" width="270" height="84" rx="10" fill="#6c9b7f" class="border"/>
+    <rect x="858" y="0" width="270" height="84" rx="10" fill="#4a5d54" class="border"/>
 
-    <text class="label dark" x="115" y="41" text-anchor="middle">Background</text>
-    <text class="label dark" x="325" y="41" text-anchor="middle">Container</text>
-    <text class="label dark" x="535" y="41" text-anchor="middle">Primary Action</text>
-    <text class="label dark" x="775" y="41" text-anchor="middle">Secondary</text>
-    <text class="label" x="955" y="41" text-anchor="middle">Wellness Green</text>
+    <text class="swatchTextDark" x="135" y="34" text-anchor="middle">Background</text>
+    <text class="swatchTextDark" x="135" y="58" text-anchor="middle">#f5f3ef</text>
+
+    <text class="swatchTextDark" x="421" y="34" text-anchor="middle">Container</text>
+    <text class="swatchTextDark" x="421" y="58" text-anchor="middle">#fffdf9</text>
+
+    <text class="swatchTextLight" x="707" y="34" text-anchor="middle">Primary Action</text>
+    <text class="swatchTextLight" x="707" y="58" text-anchor="middle">#6c9b7f</text>
+
+    <text class="swatchTextLight" x="993" y="34" text-anchor="middle">Secondary</text>
+    <text class="swatchTextLight" x="993" y="58" text-anchor="middle">#4a5d54</text>
   </g>
 
-  <!-- Reference grid -->
-  <g transform="translate(24,176)">
-    <rect x="0" y="0" width="1150" height="198" fill="#ffffff" class="border"/>
-    <rect x="0" y="0" width="260" height="42" fill="#2e2f31" class="border"/>
-    <rect x="260" y="0" width="240" height="42" fill="#2e2f31" class="border"/>
-    <rect x="500" y="0" width="650" height="42" fill="#2e2f31" class="border"/>
+  <g transform="translate(24,124)">
+    <rect x="0" y="0" width="1152" height="132" rx="10" fill="#ffffff" class="border"/>
+    <rect x="0" y="0" width="240" height="32" fill="#2e2f31" class="border"/>
+    <rect x="240" y="0" width="180" height="32" fill="#2e2f31" class="border"/>
+    <rect x="420" y="0" width="732" height="32" fill="#2e2f31" class="border"/>
 
-    <text class="tableHead" x="24" y="27">Colour</text>
-    <text class="tableHead" x="284" y="27">Hex</text>
-    <text class="tableHead" x="524" y="27">Use</text>
+    <text class="metaTitle" x="16" y="21">Colour</text>
+    <text class="metaTitle" x="256" y="21">Hex</text>
+    <text class="metaTitle" x="436" y="21">Use</text>
 
-    <g transform="translate(0,42)">
-      <rect x="0" y="0" width="260" height="39" fill="#ffffff" class="border"/>
-      <rect x="260" y="0" width="240" height="39" fill="#f5f3ef" class="border"/>
-      <rect x="500" y="0" width="650" height="39" fill="#ffffff" class="border"/>
-      <text class="tableText" x="16" y="25">Background</text>
-      <text class="tableText" x="284" y="25">#f5f3ef</text>
-      <text class="tableText" x="516" y="25">Calming page background</text>
+    <g transform="translate(0,32)">
+      <rect x="0" y="0" width="240" height="25" fill="#ffffff" class="border"/>
+      <rect x="240" y="0" width="180" height="25" fill="#f5f3ef" class="border"/>
+      <rect x="420" y="0" width="732" height="25" fill="#ffffff" class="border"/>
+      <text class="metaText" x="12" y="17">Background</text>
+      <text class="metaText" x="256" y="17">#f5f3ef</text>
+      <text class="metaText" x="436" y="17">Calming page background</text>
     </g>
-    <g transform="translate(0,81)">
-      <rect x="0" y="0" width="260" height="39" fill="#ffffff" class="border"/>
-      <rect x="260" y="0" width="240" height="39" fill="#fffdf9" class="border"/>
-      <rect x="500" y="0" width="650" height="39" fill="#ffffff" class="border"/>
-      <text class="tableText" x="16" y="25">Container</text>
-      <text class="tableText" x="284" y="25">#fffdf9</text>
-      <text class="tableText" x="516" y="25">Card/content background</text>
+    <g transform="translate(0,57)">
+      <rect x="0" y="0" width="240" height="25" fill="#ffffff" class="border"/>
+      <rect x="240" y="0" width="180" height="25" fill="#fffdf9" class="border"/>
+      <rect x="420" y="0" width="732" height="25" fill="#ffffff" class="border"/>
+      <text class="metaText" x="12" y="17">Container</text>
+      <text class="metaText" x="256" y="17">#fffdf9</text>
+      <text class="metaText" x="436" y="17">Card/content background</text>
     </g>
-    <g transform="translate(0,120)">
-      <rect x="0" y="0" width="260" height="39" fill="#ffffff" class="border"/>
-      <rect x="260" y="0" width="240" height="39" fill="#6c9b7f" class="border"/>
-      <rect x="500" y="0" width="650" height="39" fill="#ffffff" class="border"/>
-      <text class="tableText" x="16" y="25">Primary Action</text>
-      <text class="tableTextLight" x="284" y="25">#6c9b7f</text>
-      <text class="tableText" x="516" y="25">Buttons, CTAs</text>
+    <g transform="translate(0,82)">
+      <rect x="0" y="0" width="240" height="25" fill="#ffffff" class="border"/>
+      <rect x="240" y="0" width="180" height="25" fill="#6c9b7f" class="border"/>
+      <rect x="420" y="0" width="732" height="25" fill="#ffffff" class="border"/>
+      <text class="metaText" x="12" y="17">Primary Action</text>
+      <text class="metaTextLight" x="256" y="17">#6c9b7f</text>
+      <text class="metaText" x="436" y="17">Buttons, CTAs</text>
     </g>
-    <g transform="translate(0,159)">
-      <rect x="0" y="0" width="260" height="39" fill="#ffffff" class="border"/>
-      <rect x="260" y="0" width="240" height="39" fill="#4a5d54" class="border"/>
-      <rect x="500" y="0" width="650" height="39" fill="#ffffff" class="border"/>
-      <text class="tableText" x="16" y="25">Secondary</text>
-      <text class="tableTextLight" x="284" y="25">#4a5d54</text>
-      <text class="tableText" x="516" y="25">Navigation, text emphasis</text>
+    <g transform="translate(0,107)">
+      <rect x="0" y="0" width="240" height="25" fill="#ffffff" class="border"/>
+      <rect x="240" y="0" width="180" height="25" fill="#4a5d54" class="border"/>
+      <rect x="420" y="0" width="732" height="25" fill="#ffffff" class="border"/>
+      <text class="metaText" x="12" y="17">Secondary</text>
+      <text class="metaTextLight" x="256" y="17">#4a5d54</text>
+      <text class="metaText" x="436" y="17">Navigation, text emphasis</text>
     </g>
   </g>
 </svg>
