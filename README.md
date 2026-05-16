@@ -237,25 +237,25 @@ This section is for the early wireframes used to plan the main pages before fina
 
 This wireframe shows the landing page structure, including the welcome section, key call-to-action areas, and the main route into registration, login, and premium information.
 
-<img src="docs/screenshots/wireframes/wireframe-01-home-page.png" alt="Home Page Wireframe" width="56.25%">
+<img src="docs/screenshots/wireframes/wireframe-01-home-page.png" alt="Home Page Wireframe" width="45%">
 
 #### **Assessment Page Wireframe**
 
 This wireframe shows the assessment page layout, with the question area, score or result area, and the clear action buttons used to submit and review the self-check.
 
-<img src="docs/screenshots/wireframes/wireframe-02-assessment-page.png" alt="Assessment Page Wireframe" width="56.25%">
+<img src="docs/screenshots/wireframes/wireframe-02-assessment-page.png" alt="Assessment Page Wireframe" width="45%">
 
 #### **Journal Page Wireframe**
 
 This wireframe shows the structure planned for journal content, including entry listing, writing space, and the layout used to keep the page simple and easy to use.
 
-<img src="docs/screenshots/wireframes/wireframe-03-journal-page.png" alt="Journal Page Wireframe" width="56.25%">
+<img src="docs/screenshots/wireframes/wireframe-03-journal-page.png" alt="Journal Page Wireframe" width="45%">
 
 #### **Pricing Page Wireframe**
 
 This wireframe shows the pricing page layout, including the free and premium comparison, subscription messaging, and the call-to-action area for upgrading.
 
-<img src="docs/screenshots/wireframes/wireframe-04-pricing-page.png" alt="Pricing Page Wireframe" width="56.25%">
+<img src="docs/screenshots/wireframes/wireframe-04-pricing-page.png" alt="Pricing Page Wireframe" width="45%">
 
 ### **Wireframe to Final Changes**
 
