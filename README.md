@@ -12,75 +12,116 @@ This project demonstrates professional backend development, full-stack integrati
 
 ## **Table of Contents**
 
-1. [Milestone Project 4](#milestone-project-4)
-2. [Project Goals](#project-goals)
-3. [Real-World Rationale](#real-world-rationale)
-   - [What Success Looks Like](#what-success-looks-like)
-4. [Development Strategy](#development-strategy)
-   - [Build Constraints and Decisions](#build-constraints-and-decisions)
-   - [Development Process and Version Control](#development-process-and-version-control)
-5. [Live Project](#live-project)
-   - [Key Interface Screenshots](#key-interface-screenshots)
-   - [Error and Edge-Case Screenshots](#error-and-edge-case-screenshots)
-6. [Repository](#repository)
-7. [Badges](#badges)
-8. [User Experience](#user-experience)
-   - [User Stories](#user-stories)
-   - [First-time Users](#first-time-users)
-   - [Returning Premium Users](#returning-premium-users)
-9. [Design](#design)
-   - [Wireframes and Planning](#wireframes-and-planning)
-   - [Wireframe to Final Changes](#wireframe-to-final-changes)
-   - [Design Overview](#design-overview)
-   - [Colour Scheme](#colour-scheme)
-   - [Typography](#typography)
-   - [Accessibility in Design](#accessibility-in-design)
-10. [Features](#features)
-   - [All Pages Features](#all-pages-features)
-   - [Authentication Features](#authentication-features)
-   - [Mood Tracking Features](#mood-tracking-features)
-   - [Journal Features](#journal-features)
-   - [Assessment Features](#assessment-features)
-   - [Premium Features](#premium-features)
-   - [Resource Library](#resource-library)
-   - [Payment Features](#payment-features)
-11. [Future Features](#future-features)
-   - [User Experience Improvements](#user-experience-improvements)
-   - [Premium Content Expansion](#premium-content-expansion)
-   - [Technical Enhancements](#technical-enhancements)
-12. [Data Model and Schema](#data-model-and-schema)
-   - [Model Summary](#model-summary)
-   - [Relationships](#relationships)
-   - [ERD (ASCII)](#erd-ascii)
-13. [Backend-Frontend Flow Examples](#backend-frontend-flow-examples)
-   - [Flow 1: Journal CRUD (Create example)](#flow-1-journal-crud-create-example)
-   - [Flow 2: Premium Upgrade via Stripe Webhook](#flow-2-premium-upgrade-via-stripe-webhook)
-   - [Sequence Diagram: Premium Upgrade Request-Response Path](#sequence-diagram-premium-upgrade-request-response-path)
-14. [Mindly Project Structure](#mindly-project-structure)
-15. [App Structure Justification](#app-structure-justification)
-16. [Technologies Used](#technologies-used)
-   - [Languages Used](#languages-used)
-   - [Frameworks, Libraries & Tools](#frameworks-libraries--tools)
-   - [Current Status Note](#current-status-note)
-17. [Testing](#testing)
-   - [Python Validation](#python-validation)
-   - [Requirement to Evidence Map](#requirement-to-evidence-map)
-   - [Final Verification Summary](#final-verification-summary)
-18. [Errors](#errors)
-19. [Deployment](#deployment)
-20. [Security](#security)
-21. [Stripe Integration](#stripe-integration)
-   - [Payment Architecture](#payment-architecture)
-   - [Security Features](#security-features)
-   - [Error Handling & Recovery](#error-handling--recovery)
-   - [Local Webhook Testing](#local-webhook-testing)
-22. [Accessibility](#accessibility)
-23. [Originality Statement](#originality-statement)
-24. [Credits and Acknowledgements](#credits-and-acknowledgements)
-   - [Code](#code)
-   - [Media](#media)
-   - [Acknowledgements](#acknowledgements)
-25. [Known Bugs](#known-bugs)
+<ol>
+   <li><a href="#milestone-project-4">Milestone Project 4</a></li>
+   <li><a href="#project-goals">Project Goals</a></li>
+   <li><a href="#real-world-rationale">Real-World Rationale</a>
+      <ul>
+         <li><a href="#what-success-looks-like">What Success Looks Like</a></li>
+      </ul>
+   </li>
+   <li><a href="#development-strategy">Development Strategy</a>
+      <ul>
+         <li><a href="#build-constraints-and-decisions">Build Constraints and Decisions</a></li>
+         <li><a href="#development-process-and-version-control">Development Process and Version Control</a></li>
+      </ul>
+   </li>
+   <li><a href="#live-project">Live Project</a>
+      <ul>
+         <li><a href="#key-interface-screenshots">Key Interface Screenshots</a></li>
+         <li><a href="#error-and-edge-case-screenshots">Error and Edge-Case Screenshots</a></li>
+      </ul>
+   </li>
+   <li><a href="#repository">Repository</a></li>
+   <li><a href="#badges">Badges</a></li>
+   <li><a href="#user-experience">User Experience</a>
+      <ul>
+         <li><a href="#user-stories">User Stories</a></li>
+         <li><a href="#first-time-users">First-time Users</a></li>
+         <li><a href="#returning-premium-users">Returning Premium Users</a></li>
+      </ul>
+   </li>
+   <li><a href="#design">Design</a>
+      <ul>
+         <li><a href="#wireframes-and-planning">Wireframes and Planning</a></li>
+         <li><a href="#wireframe-to-final-changes">Wireframe to Final Changes</a></li>
+         <li><a href="#design-overview">Design Overview</a></li>
+         <li><a href="#colour-scheme">Colour Scheme</a></li>
+         <li><a href="#typography">Typography</a></li>
+         <li><a href="#accessibility-in-design">Accessibility in Design</a></li>
+      </ul>
+   </li>
+   <li><a href="#features">Features</a>
+      <ul>
+         <li><a href="#all-pages-features">All Pages Features</a></li>
+         <li><a href="#authentication-features">Authentication Features</a></li>
+         <li><a href="#mood-tracking-features">Mood Tracking Features</a></li>
+         <li><a href="#journal-features">Journal Features</a></li>
+         <li><a href="#assessment-features">Assessment Features</a></li>
+         <li><a href="#premium-features">Premium Features</a></li>
+         <li><a href="#resource-library">Resource Library</a></li>
+         <li><a href="#payment-features">Payment Features</a></li>
+      </ul>
+   </li>
+   <li><a href="#future-features">Future Features</a>
+      <ul>
+         <li><a href="#user-experience-improvements">User Experience Improvements</a></li>
+         <li><a href="#premium-content-expansion">Premium Content Expansion</a></li>
+         <li><a href="#technical-enhancements">Technical Enhancements</a></li>
+      </ul>
+   </li>
+   <li><a href="#data-model-and-schema">Data Model and Schema</a>
+      <ul>
+         <li><a href="#model-summary">Model Summary</a></li>
+         <li><a href="#relationships">Relationships</a></li>
+         <li><a href="#erd-ascii">ERD (ASCII)</a></li>
+      </ul>
+   </li>
+   <li><a href="#backend-frontend-flow-examples">Backend-Frontend Flow Examples</a>
+      <ul>
+         <li><a href="#flow-1-journal-crud-create-example">Flow 1: Journal CRUD (Create example)</a></li>
+         <li><a href="#flow-2-premium-upgrade-via-stripe-webhook">Flow 2: Premium Upgrade via Stripe Webhook</a></li>
+         <li><a href="#sequence-diagram-premium-upgrade-request-response-path">Sequence Diagram: Premium Upgrade Request-Response Path</a></li>
+      </ul>
+   </li>
+   <li><a href="#mindly-project-structure">Mindly Project Structure</a></li>
+   <li><a href="#app-structure-justification">App Structure Justification</a></li>
+   <li><a href="#technologies-used">Technologies Used</a>
+      <ul>
+         <li><a href="#languages-used">Languages Used</a></li>
+         <li><a href="#frameworks-libraries--tools">Frameworks, Libraries &amp; Tools</a></li>
+         <li><a href="#current-status-note">Current Status Note</a></li>
+      </ul>
+   </li>
+   <li><a href="#testing">Testing</a>
+      <ul>
+         <li><a href="#python-validation">Python Validation</a></li>
+         <li><a href="#requirement-to-evidence-map">Requirement to Evidence Map</a></li>
+         <li><a href="#final-verification-summary">Final Verification Summary</a></li>
+      </ul>
+   </li>
+   <li><a href="#errors">Errors</a></li>
+   <li><a href="#deployment">Deployment</a></li>
+   <li><a href="#security">Security</a></li>
+   <li><a href="#stripe-integration">Stripe Integration</a>
+      <ul>
+         <li><a href="#payment-architecture">Payment Architecture</a></li>
+         <li><a href="#security-features">Security Features</a></li>
+         <li><a href="#error-handling--recovery">Error Handling &amp; Recovery</a></li>
+         <li><a href="#local-webhook-testing">Local Webhook Testing</a></li>
+      </ul>
+   </li>
+   <li><a href="#accessibility">Accessibility</a></li>
+   <li><a href="#originality-statement">Originality Statement</a></li>
+   <li><a href="#credits-and-acknowledgements">Credits and Acknowledgements</a>
+      <ul>
+         <li><a href="#code">Code</a></li>
+         <li><a href="#media">Media</a></li>
+         <li><a href="#acknowledgements">Acknowledgements</a></li>
+      </ul>
+   </li>
+   <li><a href="#known-bugs">Known Bugs</a></li>
+</ol>
 
 ---
 
