@@ -12,26 +12,30 @@ This project demonstrates professional backend development, full-stack integrati
 
 ## **Table of Contents**
 
-Wireframe preparation is listed in the Design section below so the planning work is easy to find.
-
-1. [Project Goals](#project-goals)
-2. [Real-World Rationale](#real-world-rationale)
-3. [Development Strategy](#development-strategy)
-4. [Live Project](#live-project)
-5. [Repository](#repository)
-6. [Badges](#badges)
-7. [User Experience](#user-experience)
+1. [Milestone Project 4](#milestone-project-4)
+2. [Project Goals](#project-goals)
+3. [Real-World Rationale](#real-world-rationale)
+  - [What Success Looks Like](#what-success-looks-like)
+4. [Development Strategy](#development-strategy)
+  - [Build Constraints and Decisions](#build-constraints-and-decisions)
+  - [Development Process and Version Control](#development-process-and-version-control)
+5. [Live Project](#live-project)
+  - [Key Interface Screenshots](#key-interface-screenshots)
+  - [Error and Edge-Case Screenshots](#error-and-edge-case-screenshots)
+6. [Repository](#repository)
+7. [Badges](#badges)
+8. [User Experience](#user-experience)
    - [User Stories](#user-stories)
    - [First-time Users](#first-time-users)
    - [Returning Premium Users](#returning-premium-users)
-8. [Design](#design)
-   - [Wireframes & Planning](#wireframes--planning)
+9. [Design](#design)
+  - [Wireframes and Planning](#wireframes-and-planning)
    - [Wireframe to Final Changes](#wireframe-to-final-changes)
-   - [Overview](#overview)
+  - [Design Overview](#design-overview)
    - [Colour Scheme](#colour-scheme)
    - [Typography](#typography)
    - [Accessibility in Design](#accessibility-in-design)
-9. [Features](#features)
+10. [Features](#features)
    - [All Pages Features](#all-pages-features)
    - [Authentication Features](#authentication-features)
    - [Mood Tracking Features](#mood-tracking-features)
@@ -40,27 +44,43 @@ Wireframe preparation is listed in the Design section below so the planning work
    - [Premium Features](#premium-features)
   - [Resource Library](#resource-library)
    - [Payment Features](#payment-features)
-10. [Future Features](#future-features)
+11. [Future Features](#future-features)
    - [User Experience Improvements](#user-experience-improvements)
    - [Premium Content Expansion](#premium-content-expansion)
    - [Technical Enhancements](#technical-enhancements)
-11. [Data Model / Schema](#data-model--schema)
-12. [Backend-Frontend Flow Examples](#backend-frontend-flow-examples)
+12. [Data Model and Schema](#data-model-and-schema)
+  - [Model Summary](#model-summary)
+  - [Relationships](#relationships)
+  - [ERD (ASCII)](#erd-ascii)
+13. [Backend-Frontend Flow Examples](#backend-frontend-flow-examples)
    - [Flow 1: Journal CRUD (Create example)](#flow-1-journal-crud-create-example)
    - [Flow 2: Premium Upgrade via Stripe Webhook](#flow-2-premium-upgrade-via-stripe-webhook)
    - [Sequence Diagram: Premium Upgrade Request-Response Path](#sequence-diagram-premium-upgrade-request-response-path)
-13. [Project Structure](#mindly-project-structure)
-14. [App Structure Justification](#app-structure-justification)
-15. [Technologies Used](#technologies-used)
-16. [Testing](#testing)
-17. [Errors](#errors)
-18. [Deployment](#deployment)
-19. [Security](#security)
-20. [Stripe Integration](#stripe-integration)
-21. [Accessibility (Project)](#accessibility)
-22. [Originality Statement](#originality-statement)
-23. [Credits & Acknowledgements](#credits--acknowledgements)
-24. [Known Bugs](#known-bugs)
+14. [Mindly Project Structure](#mindly-project-structure)
+15. [App Structure Justification](#app-structure-justification)
+16. [Technologies Used](#technologies-used)
+  - [Languages Used](#languages-used)
+  - [Frameworks, Libraries & Tools](#frameworks-libraries--tools)
+  - [Current Status Note](#current-status-note)
+17. [Testing](#testing)
+  - [Python Validation](#python-validation)
+  - [Requirement to Evidence Map](#requirement-to-evidence-map)
+  - [Final Verification Summary](#final-verification-summary)
+18. [Errors](#errors)
+19. [Deployment](#deployment)
+20. [Security](#security)
+21. [Stripe Integration](#stripe-integration)
+  - [Payment Architecture](#payment-architecture)
+  - [Security Features](#security-features)
+  - [Error Handling & Recovery](#error-handling--recovery)
+  - [Local Webhook Testing](#local-webhook-testing)
+22. [Accessibility](#accessibility)
+23. [Originality Statement](#originality-statement)
+24. [Credits and Acknowledgements](#credits-and-acknowledgements)
+  - [Code](#code)
+  - [Media](#media)
+  - [Acknowledgements](#acknowledgements)
+25. [Known Bugs](#known-bugs)
 
 ---
 
@@ -158,7 +178,7 @@ The live application is available here: [**Mindly on Heroku**](https://mindly-sh
 
 ---
 
-### **Error & Edge-Case Screenshots**
+### **Error and Edge-Case Screenshots**
 
 These screenshots demonstrate how Mindly handles error states and access-control boundaries.
 
@@ -237,7 +257,7 @@ A free-tier user attempting to access premium content is blocked and redirected 
 
 ## **Design**
 
-### **Wireframes & Planning**
+### **Wireframes and Planning**
 
 This section is for the early wireframes used to plan the main pages before final styling and content were added. These wireframes show the intended layout, content structure, and key navigation areas for the main user journey.
 
@@ -272,7 +292,7 @@ This wireframe shows the pricing page layout, including the free and premium com
 - **Journal page**: The final page keeps the same create/list layout, with cleaner spacing and clearer action controls for create, edit, and delete.
 - **Pricing page**: The final page keeps the same free-vs-premium comparison block, with clearer tier messaging and stronger upgrade button emphasis.
 
-### **Overview**
+### **Design Overview**
 
 Mindly is designed to be calm, supportive, and user-friendly. The interface prioritises clarity, accessibility, and ease of use to encourage consistent wellbeing tracking and journaling without overwhelming the user.
 
@@ -427,7 +447,7 @@ Mindly follows WCAG accessibility best practices:
 
 ---
 
-## **Data Model / Schema**
+## **Data Model and Schema**
 
 Mindly uses one custom user model with a small set of linked profile, mood, journal, and assessment records.
 
@@ -813,7 +833,7 @@ Mindly is an independently designed and implemented project. It is not based on 
 
 ---
 
-## **Credits & Acknowledgements**
+## **Credits and Acknowledgements**
 
 ### **Code**
 
