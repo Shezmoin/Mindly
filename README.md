@@ -12,200 +12,62 @@ This project demonstrates professional backend development, full-stack integrati
 
 ## **Table of Contents**
 
-<ol>
-   <li><a href="#milestone-project-4">Milestone Project 4</a></li>
-   <li><a href="#project-goals">Project Goals</a></li>
-   <li><a href="#real-world-rationale">Real-World Rationale</a>
-      <ul>
-         <li><a href="#what-success-looks-like">What Success Looks Like</a></li>
-      </ul>
-   </li>
-   <li><a href="#development-strategy">Development Strategy</a>
-      <ul>
-         <li><a href="#build-constraints-and-decisions">Build Constraints and Decisions</a></li>
-         <li><a href="#development-process-and-version-control">Development Process and Version Control</a></li>
-      </ul>
-   </li>
-   <li><a href="#live-project">Live Project</a>
-      <ul>
-         <li><a href="#key-interface-screenshots">Key Interface Screenshots</a></li>
-         <li><a href="#error-and-edge-case-screenshots">Error and Edge-Case Screenshots</a></li>
-      </ul>
-   </li>
-   <li><a href="#repository">Repository</a></li>
-   <li><a href="#badges">Badges</a></li>
-   <li><a href="#user-experience">User Experience</a>
-      <ul>
-         <li><a href="#user-stories">User Stories</a></li>
-         <li><a href="#first-time-users">First-time Users</a></li>
-         <li><a href="#returning-premium-users">Returning Premium Users</a></li>
-      </ul>
-   </li>
-   <li><a href="#design">Design</a>
-      <ul>
-         <li><a href="#wireframes-and-planning">Wireframes and Planning</a></li>
-         <li><a href="#wireframe-to-final-changes">Wireframe to Final Changes</a></li>
-         <li><a href="#design-overview">Design Overview</a></li>
-         <li><a href="#colour-scheme">Colour Scheme</a></li>
-         <li><a href="#typography">Typography</a></li>
-         <li><a href="#accessibility-in-design">Accessibility in Design</a></li>
-      </ul>
-   </li>
-   <li><a href="#features">Features</a>
-      <ul>
-         <li><a href="#all-pages-features">All Pages Features</a></li>
-         <li><a href="#authentication-features">Authentication Features</a></li>
-         <li><a href="#mood-tracking-features">Mood Tracking Features</a></li>
-         <li><a href="#journal-features">Journal Features</a></li>
-         <li><a href="#assessment-features">Assessment Features</a></li>
-         <li><a href="#premium-features">Premium Features</a></li>
-         <li><a href="#resource-library">Resource Library</a></li>
-         <li><a href="#payment-features">Payment Features</a></li>
-      </ul>
-   </li>
-   <li><a href="#future-features">Future Features</a>
-      <ul>
-         <li><a href="#user-experience-improvements">User Experience Improvements</a></li>
-         <li><a href="#premium-content-expansion">Premium Content Expansion</a></li>
-         <li><a href="#technical-enhancements">Technical Enhancements</a></li>
-      </ul>
-   </li>
-   <li><a href="#data-model-and-schema">Data Model and Schema</a>
-      <ul>
-         <li><a href="#model-summary">Model Summary</a></li>
-         <li><a href="#relationships">Relationships</a></li>
-         <li><a href="#erd-ascii">ERD (ASCII)</a></li>
-      </ul>
-   </li>
-   <li><a href="#backend-frontend-flow-examples">Backend-Frontend Flow Examples</a>
-      <ul>
-         <li><a href="#flow-1-journal-crud-create-example">Flow 1: Journal CRUD (Create example)</a></li>
-         <li><a href="#flow-2-premium-upgrade-via-stripe-webhook">Flow 2: Premium Upgrade via Stripe Webhook</a></li>
-         <li><a href="#sequence-diagram-premium-upgrade-request-response-path">Sequence Diagram: Premium Upgrade Request-Response Path</a></li>
-      </ul>
-   </li>
-   <li><a href="#mindly-project-structure">Mindly Project Structure</a></li>
-   <li><a href="#app-structure-justification">App Structure Justification</a></li>
-   <li><a href="#technologies-used">Technologies Used</a>
-      <ul>
-         <li><a href="#languages-used">Languages Used</a></li>
-         <li><a href="#frameworks-libraries--tools">Frameworks, Libraries &amp; Tools</a></li>
-         <li><a href="#current-status-note">Current Status Note</a></li>
-      </ul>
-   </li>
-   <li><a href="#testing">Testing</a>
-      <ul>
-         <li><a href="#python-validation">Python Validation</a></li>
-         <li><a href="#requirement-to-evidence-map">Requirement to Evidence Map</a></li>
-         <li><a href="#final-verification-summary">Final Verification Summary</a></li>
-      </ul>
-   </li>
-   <li><a href="#errors">Errors</a></li>
-   <li><a href="#deployment">Deployment</a></li>
-   <li><a href="#security">Security</a></li>
-   <li><a href="#stripe-integration">Stripe Integration</a>
-      <ul>
-         <li><a href="#payment-architecture">Payment Architecture</a></li>
-         <li><a href="#security-features">Security Features</a></li>
-         <li><a href="#error-handling--recovery">Error Handling &amp; Recovery</a></li>
-         <li><a href="#local-webhook-testing">Local Webhook Testing</a></li>
-      </ul>
-   </li>
-   <li><a href="#accessibility">Accessibility</a></li>
-   <li><a href="#originality-statement">Originality Statement</a></li>
-   <li><a href="#credits-and-acknowledgements">Credits and Acknowledgements</a>
-      <ul>
-         <li><a href="#code">Code</a></li>
-         <li><a href="#media">Media</a></li>
-         <li><a href="#acknowledgements">Acknowledgements</a></li>
-      </ul>
-   </li>
-   <li><a href="#known-bugs">Known Bugs</a></li>
-</ol>
+Wireframe preparation is listed in the Design section below so the planning work is easy to find.
 
----
+1. [Project Goals](#project-goals)
+2. [Real-World Rationale](#real-world-rationale)
+3. [Development Strategy](#development-strategy)
+4. [Live Project](#live-project)
+5. [Repository](#repository)
+6. [Badges](#badges)
+7. [User Experience](#user-experience)
+   - [User Stories](#user-stories)
+   - [First-time Users](#first-time-users)
+   - [Returning Premium Users](#returning-premium-users)
+8. [Design](#design)
+   - [Wireframes & Planning](#wireframes--planning)
+   - [Wireframe to Final Changes](#wireframe-to-final-changes)
+   - [Overview](#overview)
+   - [Colour Scheme](#colour-scheme)
+   - [Typography](#typography)
+   - [Accessibility in Design](#accessibility-in-design)
+9. [Features](#features)
+   - [All Pages Features](#all-pages-features)
+   - [Authentication Features](#authentication-features)
+   - [Mood Tracking Features](#mood-tracking-features)
+   - [Journal Features](#journal-features)
+   - [Premium Features](#premium-features)
+   - [Payment Features](#payment-features)
+## **Data Model / Schema**
 
-## **Project Goals**
+Mindly uses one custom user model with a small set of linked profile, mood, journal, and assessment records.
 
-The goal of this project was to design and build a full-stack mental health and wellbeing application that demonstrates:
-- Advanced backend development with Django framework
-- Secure user authentication and authorization
-- Relational database design and management
-- Payment processing integration with Stripe
-- Responsive, accessible frontend design
-- Professional security practices (environment variables, secret management, DEBUG disabled)
-- Comprehensive testing and validation
-- Industry-standard deployment practices
+### **Model Summary**
 
-## **Real-World Rationale**
+| Model | Key fields |
+| --- | --- |
+| `CustomUser` | `username`, `email`, `bio`, `profile_picture` |
+| `UserProfile` | `user`, `subscription_tier`, `joined_date`, `reminder_time` |
+| `MoodEntry` | `user`, `mood_score`, `note`, `created_at` |
+| `JournalEntry` | `user`, `title`, `content`, `is_private`, `created_at`, `updated_at` |
+| `AssessmentResult` | `user`, `assessment_type`, `q1_score` to `q4_score`, `total_score`, `level`, `created_at` |
 
-Mindly addresses a practical real-world problem: many users need a private, low-friction place to monitor mental wellbeing, reflect consistently, and access supportive resources without switching between multiple tools.
+### **Relationships**
 
-The app is designed for two clear user groups:
-- **Free users** who need reliable daily support (mood tracking, journaling, and core resources)
-- **Premium users** who need deeper guidance and expanded content access
+- `CustomUser` → `UserProfile` (`1-to-1`)
+- `CustomUser` → `MoodEntry` (`1-to-many`)
+- `CustomUser` → `JournalEntry` (`1-to-many`)
+- `CustomUser` → `AssessmentResult` (`1-to-many`)
 
+### **ERD (ASCII)**
 
-### **What Success Looks Like**
-
-For this project, success means:
-- Users can register, log in, and manage their own data safely
-- Core CRUD flows work clearly for mood and journal features
-- Premium upgrade works through Stripe checkout and webhook confirmation
-- Premium-only pages are correctly blocked for free users
-- The app is responsive and usable on mobile, tablet, and desktop
-- The project is deployable, tested, and documented to professional standard
-
-## **Development Strategy**
-
-Mindly was developed using a domain-driven multi-app Django structure so each app maps to a natural product boundary:
-- `users`: identity, profile, subscription state
-- `journal`: mood/journal CRUD operations
-- `assessments`: interactive self-check tools and persisted result records
-- `payments`: Stripe checkout, webhook processing, and premium upgrade flow
-- `pages`: static and premium resource views
-
-Key architecture decisions:
-- Use Django ORM for safe relational data handling and owner-scoped query patterns
-- Use Stripe Checkout + webhook verification for secure payment lifecycle handling
-- Use Bootstrap + custom CSS for responsive UI consistency across mobile/desktop
-- Deploy on Heroku with environment-variable based secrets and production hardening
-
-### **Build Constraints and Decisions**
-
-- Kept app boundaries strict so each app has one clear responsibility
-- Stored sensitive values in environment variables only
-- Treated webhook signature verification as mandatory in production
-- Prioritized clarity over complexity in UI and feature flows
-- Focused on traceable evidence: tests, screenshots, and deployment checks
-
-### **Development Process and Version Control**
-
-The project was built in small stages and committed to GitHub regularly during development. I used Git and GitHub throughout the project to save progress, track changes, and keep a clear record of feature work, fixes, testing updates, and documentation updates.
-
-This matters for the project criteria because version control is not only about having a repository. It is also evidence that the project was developed in a steady and traceable way rather than uploaded all at once at the end.
-
----
-
-## **Live Project**
-
-Mindly is deployed and accessible for public testing.
-
-The live application is available here: [**Mindly on Heroku**](https://mindly-shez-9ca695ee4969.herokuapp.com/)
-
-### **Key Interface Screenshots**
-
-#### Home Page
-<img src="docs/screenshots/readme-02-home-page.png" alt="Home Page" width="56.25%">
-
-#### Dashboard Page
-<img src="docs/screenshots/readme-03-dashboard-page.png" alt="Dashboard Page" width="56.25%">
-
-#### Journal Page
-<img src="docs/screenshots/readme-04-journal-page.png" alt="Journal Page" width="56.25%">
-
-#### Mood Form Page
-<img src="docs/screenshots/readme-05-mood-form-page.png" alt="Mood Form Page" width="56.25%">
+```text
+CustomUser
+  ├── UserProfile        (1-to-1)
+  ├── MoodEntry          (1-to-many)
+  ├── JournalEntry       (1-to-many)
+  └── AssessmentResult   (1-to-many)
+```
 
 #### Pricing Page
 <img src="docs/screenshots/readme-06-pricing-page.png" alt="Pricing Page" width="56.25%">
@@ -218,9 +80,24 @@ The live application is available here: [**Mindly on Heroku**](https://mindly-sh
 
 ---
 
-### **Error and Edge-Case Screenshots**
+### **Error & Edge-Case Screenshots**
 
-These screenshots demonstrate how Mindly handles error states and access-control boundaries. Full visual evidence is documented in [TESTING.md](./docs/doumentation/TESTING.md#error-and-edge-case-screenshots).
+These screenshots demonstrate how Mindly handles error states and access-control boundaries.
+
+#### 404 – Page Not Found
+Navigating to an invalid URL displays Mindly's custom 404 error page.
+
+<img src="docs/screenshots/error/error-01-404-page.png" alt="Custom 404 Page" width="25%">
+
+#### Stripe Checkout Error
+An invalid or declined card triggers a clear error message on the Stripe checkout page.
+
+<img src="docs/screenshots/error/error-03-checkout-error.png" alt="Stripe Checkout Error" width="25%">
+
+#### Premium Access Denied
+A free-tier user attempting to access premium content is blocked and redirected with an appropriate message.
+
+<img src="docs/screenshots/error/error-04-premium-access-denied-v3.png" alt="Premium Access Denied" width="25%">
 
 ---
 
@@ -238,7 +115,7 @@ These screenshots demonstrate how Mindly handles error states and access-control
 * **Stripe:** Payment processing
 * **SQLite/PostgreSQL:** Relational database
 * **Git & GitHub:** Version control
-* **Heroku:** Ready for deployment
+* **Deployed:** Ready for production
 
 ---
 
@@ -282,7 +159,7 @@ These screenshots demonstrate how Mindly handles error states and access-control
 
 ## **Design**
 
-### **Wireframes and Planning**
+### **Wireframes & Planning**
 
 This section is for the early wireframes used to plan the main pages before final styling and content were added. These wireframes show the intended layout, content structure, and key navigation areas for the main user journey.
 
@@ -317,7 +194,7 @@ This wireframe shows the pricing page layout, including the free and premium com
 - **Journal page**: The final page keeps the same create/list layout, with cleaner spacing and clearer action controls for create, edit, and delete.
 - **Pricing page**: The final page keeps the same free-vs-premium comparison block, with clearer tier messaging and stronger upgrade button emphasis.
 
-### **Design Overview**
+### **Overview**
 
 Mindly is designed to be calm, supportive, and user-friendly. The interface prioritises clarity, accessibility, and ease of use to encourage consistent wellbeing tracking and journaling without overwhelming the user.
 
@@ -360,6 +237,7 @@ Mindly follows WCAG accessibility best practices:
 * Keyboard navigation supported for all interactive elements
 * Sufficient colour contrast maintained (WCAG AA standard)
 * Responsive design ensures usability on all device sizes
+* Alt text provided for all non-decorative images
 * Form validation provides clear error messages
 
 ---
@@ -380,10 +258,12 @@ Mindly follows WCAG accessibility best practices:
 
 * Secure user registration with username and email
 * Username-based login with password verification
+* Password reset via email link (1-hour token expiry)
 * Secure logout functionality
 * Profile page for logged-in users with editable email and bio
 * Premium users can cancel subscription from the profile page
 * @login_required decorators on protected views
+* CSRF protection on all forms
 
 ### **Mood Tracking Features**
 
@@ -398,6 +278,7 @@ Mindly follows WCAG accessibility best practices:
 ### **Journal Features**
 
 * Create full journal entries with title and body content
+* Mark entries as private for personal use
 * Edit journal entries to update content
 * Delete journal entries with confirmation
 * View all journal entries with summaries
@@ -441,7 +322,6 @@ Mindly follows WCAG accessibility best practices:
 ## **Future Features**
 * Expand the resource library with clinician-reviewed articles and downloadable worksheets.
 * Add searchable categories and saved favourites for premium users.
-
 ### **User Experience Improvements**
 
 * Mood analytics with charts and trends
@@ -466,40 +346,7 @@ Mindly follows WCAG accessibility best practices:
 * Data backup and recovery features
 * Two-factor authentication (2FA)
 * API for mobile app development
-* Multiple payment methods Apple pay google pay
-
----
-
-## **Data Model and Schema**
-
-Mindly uses one custom user model with a small set of linked profile, mood, journal, and assessment records.
-
-### **Model Summary**
-
-| Model | Key fields |
-| --- | --- |
-| `CustomUser` | `username`, `email`, `bio`, `profile_picture` |
-| `UserProfile` | `user`, `subscription_tier`, `joined_date` |
-| `MoodEntry` | `user`, `mood_score`, `note`, `created_at` |
-| `JournalEntry` | `user`, `title`, `content`, `is_private`, `created_at`, `updated_at` |
-| `AssessmentResult` | `user`, `assessment_type`, `q1_score` to `q4_score`, `total_score`, `level`, `created_at` |
-
-### **Relationships**
-
-- `CustomUser` → `UserProfile` (`1-to-1`)
-- `CustomUser` → `MoodEntry` (`1-to-many`)
-- `CustomUser` → `JournalEntry` (`1-to-many`)
-- `CustomUser` → `AssessmentResult` (`1-to-many`)
-
-### **ERD (ASCII)**
-
-```text
-CustomUser
-  ├── UserProfile        (1-to-1)
-  ├── MoodEntry          (1-to-many)
-  ├── JournalEntry       (1-to-many)
-  └── AssessmentResult   (1-to-many)
-```
+* Payment method management for subscribers
 
 ---
 
@@ -623,20 +470,12 @@ mindly/
 │   └── css/
 │       └── style.css                   # Custom styles
 ├── docs/                               # Documentation
-│   ├── doumentation/                   # All markdown documentation
-│   │   ├── TESTING.md                  # Testing documentation
-│   │   ├── DEPLOYMENT.md               # Deployment guide
-│   │   ├── ERROR_LOG.md                # Error log with fixes
-│   │   ├── ACCESSIBILITY.md            # Accessibility standards and audit
-│   │   └── BUG_LOG.md                  # Feature-level bug records
-│   └── screenshots/                    # Evidence screenshots used in documentation
-│       ├── error/                      # Error and edge-case screenshots
-│       ├── audit/                      # Accessibility audit screenshots
-│       ├── colour-charts/              # Design colour palette charts
-│       ├── wireframes/                 # Wireframe planning images
-│       └── test/                       # Testing evidence screenshots
-├── errors/                             # Local error capture logs (git-ignored)
+│   ├── TESTING.md                      # Testing documentation
+│   ├── DEPLOYMENT.md                   # Deployment guide
+│   └── ERROR_LOG.md                    # Error log with fixes
+├── errors/                             # Error capture logs and session records
 │   └── README.md                       # Error notes
+└── docs/screenshots/                   # Evidence screenshots used in documentation
 ```
 
 ---
@@ -707,10 +546,10 @@ Python checked with flake8.
 * Proper syntax and structure
 * No unused variables/imports
 
-See [**TESTING.md**](./docs/doumentation/TESTING.md) for full testing documentation including:
+See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including:
 
 * Automated test coverage summary
-* Manual test matrix (MT-01 to MT-11): [Jump to manual test table](./docs/doumentation/TESTING.md#manual-test-matrix-mt-01-to-mt-11)
+* Manual test matrix (MT-01 to MT-11): [Jump to manual test table](./docs/TESTING.md#manual-test-matrix-mt-01-to-mt-11)
 
 * Testing strategy and methodology
 * User story validation
@@ -718,7 +557,7 @@ See [**TESTING.md**](./docs/doumentation/TESTING.md) for full testing documentat
 * Form validation testing
 * Browser compatibility testing
 * Responsiveness testing
-* Accessibility testing (WCAG 2.1 AA/AAA contrast verification; see [ACCESSIBILITY.md](./docs/doumentation/ACCESSIBILITY.md) for the 8.08:1 contrast ratio used in the navbar)
+* Accessibility testing (WCAG 2.1 AA/AAA contrast verification; see [ACCESSIBILITY.md](./docs/ACCESSIBILITY.md) for the 8.08:1 contrast ratio used in the navbar)
 * Security testing
 * Lighthouse performance scores
 * Code validation (PEP8, HTML, CSS, JavaScript)
@@ -728,12 +567,12 @@ See [**TESTING.md**](./docs/doumentation/TESTING.md) for full testing documentat
 
 | Requirement Area | Where Implemented | Evidence |
 |----------|-----------|----------|
-| Authentication and access control | `users/views.py`, `users/decorators.py`, `users/tests.py` | [docs/TESTING.md](./docs/doumentation/TESTING.md), [docs/ERROR_LOG.md](./docs/doumentation/ERROR_LOG.md) |
-| Full CRUD for user-owned data | `journal/views.py`, `journal/forms.py`, `journal/tests.py` | [docs/TESTING.md](./docs/doumentation/TESTING.md) |
+| Authentication and access control | `users/views.py`, `users/decorators.py`, `users/tests.py` | [docs/TESTING.md](./docs/TESTING.md), [docs/ERROR_LOG.md](./docs/ERROR_LOG.md) |
+| Full CRUD for user-owned data | `journal/views.py`, `journal/forms.py`, `journal/tests.py` | [docs/TESTING.md](./docs/TESTING.md) |
 | Relational data model | `users/models.py`, `journal/models.py`, `assessments/models.py` | Data Model section in README |
-| Payment and subscription lifecycle | `payments/views.py`, `payments/tests.py` | [docs/TESTING.md](./docs/doumentation/TESTING.md), Stripe Integration section |
-| Robust error handling | `payments/views.py`, custom `404.html` and `500.html` templates | [docs/ERROR_LOG.md](./docs/doumentation/ERROR_LOG.md) |
-| Deployment readiness | `Procfile`, environment config, static handling | [docs/DEPLOYMENT.md](./docs/doumentation/DEPLOYMENT.md) |
+| Payment and subscription lifecycle | `payments/views.py`, `payments/tests.py` | [docs/TESTING.md](./docs/TESTING.md), Stripe Integration section |
+| Robust error handling | `payments/views.py`, custom `404.html` and `500.html` templates | [docs/ERROR_LOG.md](./docs/ERROR_LOG.md) |
+| Deployment readiness | `Procfile`, environment config, static handling | [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) |
 
 ### **Final Verification Summary**
 
@@ -752,7 +591,7 @@ All non-cleanup verification checks were completed and recorded before submissio
 
 All errors encountered during development have been documented with investigations and solutions.
 
-See [**ERROR_LOG.md**](./docs/doumentation/ERROR_LOG.md) for complete error documentation including:
+See [**ERROR_LOG.md**](./docs/ERROR_LOG.md) for complete error documentation including:
 
 * Error description and symptoms
 * Investigation methodology
@@ -766,7 +605,7 @@ See [**ERROR_LOG.md**](./docs/doumentation/ERROR_LOG.md) for complete error docu
 
 Mindly is deployed following professional security and deployment practices.
 
-See [**DEPLOYMENT.md**](docs/doumentation/DEPLOYMENT.md) for comprehensive deployment documentation including:
+See [**DEPLOYMENT.md**](docs/DEPLOYMENT.md) for comprehensive deployment documentation including:
 
 * Local development setup
 * Production deployment on Heroku (step-by-step)
@@ -778,7 +617,7 @@ See [**DEPLOYMENT.md**](docs/doumentation/DEPLOYMENT.md) for comprehensive deplo
 * Deployment verification steps
 * Troubleshooting guide
 
-For Heroku setup from scratch, follow the numbered production steps in [**DEPLOYMENT.md - Production Deployment (Heroku)**](./docs/doumentation/DEPLOYMENT.md#production-deployment-heroku).
+For Heroku setup from scratch, follow the numbered production steps in [**DEPLOYMENT.md - Production Deployment (Heroku)**](./docs/DEPLOYMENT.md#production-deployment-heroku).
 
 ---
 
@@ -834,7 +673,7 @@ stripe login
 stripe listen --forward-to 127.0.0.1:8000/payments/webhook/
 ```
 
-See [**DEPLOYMENT.md**](./docs/doumentation/DEPLOYMENT.md) for complete Stripe setup and testing instructions.
+See [**DEPLOYMENT.md**](./docs/DEPLOYMENT.md) for complete Stripe setup and testing instructions.
 
 ---
 
@@ -864,7 +703,7 @@ Mindly is an independently designed and implemented project. It is not based on 
 
 ---
 
-## **Credits and Acknowledgements**
+## **Credits & Acknowledgements**
 
 ### **Code**
 
@@ -872,7 +711,7 @@ Python documentation, Django official documentation, Stripe API documentation, B
 
 ### **Media**
 
-Project screenshots are embedded in this README. Remaining visual evidence screenshots (testing/validation/audit) are tracked in [docs/TESTING.md](./docs/doumentation/TESTING.md).
+Project screenshots are embedded in this README. Remaining visual evidence screenshots (testing/validation/audit) are tracked in [docs/TESTING.md](docs/TESTING.md).
 
 ### **Acknowledgements**
 
