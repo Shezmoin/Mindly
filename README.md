@@ -122,8 +122,8 @@ Comprehensive guides for deployment, testing, and development:
 
 * **[TESTING.md](TESTING.md)** - Manual testing guide covering:
   - Test environment setup
-  - Complete test cases for all features (AT, PR, MO, JO, AS, PM tests)
-  - Password reset testing procedures (9 test cases)
+  - Complete test cases for all features (AT, AR, MO, JO, AS, PM, PF, SEC, RD tests)
+  - Account recovery testing procedures (9 test cases: AR-01 through AR-09)
   - Security and responsive design testing
   - Test data cleanup
   - Regression testing checklist
@@ -281,27 +281,29 @@ Mindly follows WCAG accessibility best practices:
 
 * Secure user registration with username and email
 * Username-based login with password verification
-* Password reset via email link (1-hour token expiry)
+* Account recovery via email link (username + password reset, 1-hour token expiry)
 * Secure logout functionality
 * Profile page for logged-in users with editable email and bio
 * Premium users can cancel subscription from the profile page
 * @login_required decorators on protected views
 * CSRF protection on all forms
 
-#### **Password Reset Feature Details**
+#### **Account Recovery Feature Details**
 
-Password reset allows users to securely recover their accounts when they forget their passwords.
+Account recovery allows users to securely recover their accounts when they forget their **username or password**. A single recovery flow serves both needs.
 
 **User Flow:**
-1. User clicks "Forgot your password?" on the login page
-2. User enters their email address on the reset request form
-3. Django generates a secure token and sends an email with a reset link (token valid for 1 hour)
-4. User clicks the link in their email
-5. User enters a new password on the secure reset form
-6. New password is validated and stored securely
-7. User can log in with their new password
+1. User clicks "Forgot username or password?" on the login page
+2. User enters their email address on the recovery request form
+3. Django generates a secure token and sends an email with a recovery link (token valid for 1 hour)
+4. System displays confirmation page with username (if account found)
+5. User clicks the link in their email
+6. User enters a new password on the secure recovery form
+7. New password is validated and stored securely
+8. User can log in with their username and new password
 
 **Technical Implementation:**
+- Custom `PasswordResetView` in `users/views.py` captures username from session
 - Uses Django 4.2's built-in authentication views (`PasswordResetView`, `PasswordResetDoneView`, `PasswordResetConfirmView`, `PasswordResetCompleteView`)
 - All 4 templates styled with Mindly's forest green colour scheme and consistent design
 - Email configuration supports:
@@ -309,14 +311,20 @@ Password reset allows users to securely recover their accounts when they forget 
   - **Production:** SMTP via environment variables (Gmail, SendGrid, Mailgun, or custom SMTP server)
 - Token generation uses Django's cryptographically secure token generator (PBKDF2-SHA256)
 - Token expiry: 1 hour (configurable via `PASSWORD_RESET_TIMEOUT = 3600` in settings)
+- Username stored in session and displayed on confirmation page for user reference
 - No sensitive data exposed in URLs (tokens are hashed)
 - Invalid/expired tokens show user-friendly error messages with recovery options
 
 **Templates with Mindly Styling:**
-- `password_reset.html` - Email entry form with instructions and minimal design
-- `password_reset_done.html` - Confirmation page with envelope icon and helpful text
-- `password_reset_confirm.html` - New password form with valid/invalid token handling
+- `password_reset.html` - Email entry form with "Recover Your Account" heading and recovery link button
+  - ![Password Recovery Form Placeholder](docs/screenshots/password-recovery/01-recovery-form.png) *(Screenshot pending)*
+- `password_reset_done.html` - Confirmation page with envelope icon, username display box, and helpful text
+  - ![Password Recovery Confirmation Placeholder](docs/screenshots/password-recovery/02-confirmation-page.png) *(Screenshot pending)*
+- `password_reset_confirm.html` - New password form with valid/invalid token handling and green/red icons
+  - ![Password Recovery New Password Placeholder](docs/screenshots/password-recovery/03-new-password-form.png) *(Screenshot pending)*
+  - ![Invalid Recovery Link Placeholder](docs/screenshots/password-recovery/03b-invalid-link.png) *(Screenshot pending)*
 - `password_reset_complete.html` - Success message with green check icon and login link
+  - ![Password Recovery Success Placeholder](docs/screenshots/password-recovery/04-success-page.png) *(Screenshot pending)*
 
 **Email Configuration:**
 See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions for:
@@ -327,15 +335,15 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions for:
 
 **Testing Instructions:**
 See [TESTING.md](TESTING.md) for comprehensive testing procedures:
-- Test PR-01: Password Reset Request Form
-- Test PR-02: Email Submission & Confirmation
-- Test PR-03: Email Content Verification
-- Test PR-04: Non-existent Email Handling
-- Test PR-05: Valid Token Reset Form
-- Test PR-06: Password Reset Submission
-- Test PR-07: Login with New Password
-- Test PR-08: Expired Token Handling
-- Test PR-09: Form Validation
+- Test AR-01: Account Recovery Request Form
+- Test AR-02: Email Submission & Username Display
+- Test AR-03: Email Content Verification
+- Test AR-04: Non-existent Email Handling
+- Test AR-05: Valid Token Recovery Form
+- Test AR-06: Password Reset Submission
+- Test AR-07: Login with Recovered Username & New Password
+- Test AR-08: Expired Token Handling
+- Test AR-09: Form Validation
 
 ### **Mood Tracking Features**
 

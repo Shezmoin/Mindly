@@ -201,6 +201,34 @@ footer.mindly-footer {
     box-shadow: 0 5px 15px rgba(27, 67, 50, 0.35);
 }
 
+.btn-outline-mindly {
+    background-color: transparent;
+    color: var(--mindly-primary);
+    padding: 12px 30px;
+    border-radius: 25px;
+    border: 2px solid var(--mindly-primary);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-mindly:hover {
+    background-color: var(--mindly-primary);
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(27, 67, 50, 0.35);
+}
+
+[data-theme="dark"] .btn-outline-mindly {
+    color: #95D5B2;
+    border-color: #95D5B2;
+}
+
+[data-theme="dark"] .btn-outline-mindly:hover {
+    background-color: #95D5B2;
+    color: #1B4332;
+    border-color: #95D5B2;
+}
+
 /* Calm background for forms and content sections */
 .calm-bg {
     background-color: var(--muted-surface);
@@ -246,6 +274,19 @@ footer.mindly-footer {
 [data-theme="dark"] .mindly-panel .form-label,
 [data-theme="dark"] .mindly-panel label {
     color: #E8F5EF;
+}
+
+.mindly-recovery-alert {
+    background-color: #e8f5e9;
+    border: 1px solid #2D6A4F;
+    color: #1B4332;
+    border-radius: 8px;
+}
+
+[data-theme="dark"] .mindly-recovery-alert {
+    background-color: #1f3a2a;
+    border-color: #587766;
+    color: #95D5B2;
 }
 
 /* Custom footer styling */

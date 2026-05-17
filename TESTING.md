@@ -2,7 +2,7 @@
 
 ## Test Overview
 
-This document covers manual testing procedures for all Mindly features, with special emphasis on the password reset functionality.
+This document covers manual testing procedures for all Mindly features, with special emphasis on the **account recovery** functionality (username + password reset).
 
 ---
 
@@ -15,7 +15,7 @@ python manage.py runserver
 ```
 
 ### Development Email Backend
-Emails print to console instead of being sent. Check terminal output for email content when testing password reset.
+Emails print to console instead of being sent. Check terminal output for email content when testing account recovery.
 
 ### Create Test User
 ```bash
@@ -71,83 +71,89 @@ python manage.py createsuperuser
 
 ---
 
-## Password Reset Testing
+## Account Recovery Testing
 
-### Test PR-01: Password Reset - Request Form
-**Objective:** Verify password reset request page loads and displays correctly
+### Test AR-01: Account Recovery - Request Form
+**Objective:** Verify account recovery request page loads and displays correctly
 
 1. Navigate to `/users/login/`
-2. **Expected:** "Forgot your password?" link is visible (below Log In button)
+2. **Expected:** "Forgot username or password?" link is visible (below Log In button)
+   - ![Login with Recovery Link Placeholder](docs/screenshots/password-recovery/00-login-page.png) *(Screenshot pending)*
 3. Click the link
 4. **Expected:** Redirected to `/users/password-reset/` with:
-   - Heading: "Reset Your Password"
-   - Description text about entering email
+   - Heading: "Recover Your Account"
+   - Description text: "Enter the email address associated with your account. We'll send you a link to recover your username or reset your password."
    - Email input field
-   - "Send Reset Link" button
+   - "Send Recovery Link" button
    - "Back to login" link
    - Mindly styling (forest green colours, card panel)
+   - ![Account Recovery Form Placeholder](docs/screenshots/password-recovery/01-recovery-form.png) *(Screenshot pending)*
 
-### Test PR-02: Password Reset - Email Submission
-**Objective:** Verify email submission triggers reset email and shows confirmation page
+### Test AR-02: Account Recovery - Email Submission & Username Display
+**Objective:** Verify email submission triggers recovery email and shows confirmation page with username
 
-1. Complete Test PR-01
+1. Complete Test AR-01
 2. Enter email: `test@example.com` (must be registered account)
-3. Click "Send Reset Link"
+3. Click "Send Recovery Link"
 4. **Expected:**
    - Redirected to `/users/password-reset/done/`
    - Page displays: "Check Your Email"
+   - **Username displayed in code box** (new feature - shows "Your username: testuser")
    - Envelope icon (green)
-   - Message about checking email/spam folder
+   - Message about checking email and mentions username in the link
    - "Back to Home" button
    - Mindly styling applied
+   - ![Account Recovery Confirmation with Username Placeholder](docs/screenshots/password-recovery/02-confirmation-page.png) *(Screenshot pending)*
 
-### Test PR-03: Password Reset - Email Content (Development)
-**Objective:** Verify reset email contains correct information
+### Test AR-03: Account Recovery - Email Content (Development)
+**Objective:** Verify recovery email contains correct information
 
 **In Development (Console Backend):**
-1. Complete Test PR-02
+1. Complete Test AR-02
 2. Check terminal output for email content
 3. **Expected:** Email contains:
    - Subject: something like "Password reset on..."
-   - Reset link with token: `/users/password-reset/<uidb64>/<token>/`
+   - Recovery link with token: `/users/password-reset/<uidb64>/<token>/`
    - Expiry notice (1 hour)
    - Instructions to ignore if didn't request
+   - Note about username and password reset capability
 
-### Test PR-04: Password Reset - Invalid Email
-**Objective:** Verify system accepts non-existent emails gracefully
+### Test AR-04: Account Recovery - Non-existent Email
+**Objective:** Verify system accepts non-existent emails gracefully (security)
 
 1. Navigate to `/users/password-reset/`
 2. Enter email: `nonexistent@example.com` (not registered)
-3. Click "Send Reset Link"
-4. **Expected:** Still shows "Check Your Email" page (for security, doesn't reveal if email exists)
+3. Click "Send Recovery Link"
+4. **Expected:** Still shows "Check Your Email" page (for security, doesn't reveal if email exists or not)
 
-### Test PR-05: Password Reset - Valid Token
-**Objective:** Verify reset link with valid token shows password form
+### Test AR-05: Account Recovery - Valid Token Form
+**Objective:** Verify recovery link with valid token shows password form
 
 **Setup:**
-1. Complete Test PR-02 (email confirmation page)
-2. Copy reset link from console output (development) or email (production)
+1. Complete Test AR-02 (email confirmation page with username)
+2. Copy recovery link from console output (development) or email (production)
 3. Paste link in new browser tab
 
 **Test:**
-1. Navigate to reset link: `/users/password-reset/<uidb64>/<token>/`
+1. Navigate to recovery link: `/users/password-reset/<uidb64>/<token>/`
 2. **Expected:**
-   - Page loads: "Set Your New Password" or similar
+   - Page loads: "Set Your New Password"
+   - **Green check-circle icon** at top (new feature)
    - Password input fields
    - Password strength/requirements shown
-   - "Reset Password" button
+   - "Confirm New Password" button (updated label)
    - "Back to login" link
-   - Green check-circle icon
    - Mindly styling applied
+   - ![Account Recovery New Password Form Placeholder](docs/screenshots/password-recovery/03-new-password-form.png) *(Screenshot pending)*
 
-### Test PR-06: Password Reset - Form Submission
+### Test AR-06: Account Recovery - Form Submission
 **Objective:** Verify new password is set successfully
 
-1. Complete Test PR-05 (valid token page)
+1. Complete Test AR-05 (valid token page)
 2. Enter:
    - New Password: `NewSecurePass456!`
    - Confirm Password: `NewSecurePass456!`
-3. Click "Reset Password"
+3. Click "Confirm New Password"
 4. **Expected:**
    - Redirected to `/users/password-reset/complete/`
    - Page displays: "Password Successfully Reset"
@@ -155,44 +161,47 @@ python manage.py createsuperuser
    - Success message
    - "Back to Login" button
    - Mindly styling applied
+   - ![Account Recovery Success Placeholder](docs/screenshots/password-recovery/04-success-page.png) *(Screenshot pending)*
 
-### Test PR-07: Password Reset - Login with New Password
-**Objective:** Verify user can log in with newly reset password
+### Test AR-07: Account Recovery - Login with Recovered Credentials
+**Objective:** Verify user can log in with recovered username and new password
 
 1. Navigate to `/users/login/`
-2. Enter:
-   - Username: `test`
+2. Enter (using username from confirmation page):
+   - Username: `test` (from confirmation email/page)
    - Password: `NewSecurePass456!`
 3. Click "Log In"
 4. **Expected:** Successfully logged in, redirected to home/dashboard
 
-### Test PR-08: Password Reset - Expired Token
-**Objective:** Verify system rejects expired reset tokens
+### Test AR-08: Account Recovery - Expired Token
+**Objective:** Verify system rejects expired recovery tokens
 
 **Setup:**
-1. Wait 1 hour after requesting password reset OR
+1. Wait 1 hour after requesting account recovery OR
 2. Manually modify token in URL (e.g., change last character)
-3. Navigate to reset link with expired/invalid token
+3. Navigate to recovery link with expired/invalid token
 
 **Test:**
 1. Access `/users/password-reset/<uidb64>/<expired-token>/`
 2. **Expected:**
    - Page loads with error message
-   - "The password reset link is invalid or has expired"
-   - "Request a new password reset" link
-   - Red exclamation-circle icon
+   - **Red exclamation-circle icon** (new feature)
+   - "Invalid Recovery Link" (updated message from "Invalid Reset Link")
+   - "This recovery link is invalid or has expired. Please request a new one to continue."
+   - "Request New Recovery Link" button (updated label)
    - Mindly styling applied
    - Form NOT displayed
+   - ![Invalid Recovery Link Placeholder](docs/screenshots/password-recovery/03b-invalid-link.png) *(Screenshot pending)*
 
-### Test PR-09: Password Reset - Form Validation
+### Test AR-09: Account Recovery - Form Validation
 **Objective:** Verify password form validates input properly
 
-1. Complete Test PR-05 (valid token page)
+1. Complete Test AR-05 (valid token page)
 2. Try submitting with:
    - Empty fields → **Expected:** Error "This field is required"
-   - Mismatched passwords → **Expected:** Error "Passwords don't match"
-   - Too short password → **Expected:** Error if minimum length
-3. **Expected:** Form stays on same page, errors displayed
+   - Mismatched passwords → **Expected:** Error "The two password fields didn't match"
+   - Too short password → **Expected:** Error if minimum length requirement
+3. **Expected:** Form stays on same page, errors displayed in red
 
 ---
 
@@ -429,7 +438,7 @@ Tester: [Your name]
 Before each deployment, verify:
 - [ ] User registration works
 - [ ] User login works
-- [ ] Password reset flow works end-to-end
+- [ ] Account recovery flow works end-to-end (username + password reset)
 - [ ] Mood entries create/read/update/delete
 - [ ] Journal entries create/read/update/delete
 - [ ] Assessments display and submit
@@ -445,7 +454,7 @@ Before each deployment, verify:
 ## Known Issues & Limitations
 
 1. **Email in Development:** Prints to console, not sent
-2. **Password Reset Token:** Expires after 1 hour
+2. **Recovery Token:** Expires after 1 hour (used for both username recovery and password reset)
 3. **Free User Limits:** Monthly journal entries limited
 4. **Premium Gating:** Some resources only for premium users
 
