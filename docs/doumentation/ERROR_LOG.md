@@ -55,7 +55,7 @@ Medium - Routing gap in early app scaffolding
 
 ### Visual Evidence
 
-![Users App 404 Error](error-documentation/users_app_error.png)
+![Users App 404 Error](../screenshots/error/users_app_error.png)
 
 ### Root Cause
 
@@ -93,7 +93,7 @@ High - Core page inaccessible during early implementation
 
 ### Visual Evidence
 
-![Assessments Template Error](error-documentation/assessments_template_error.png)
+![Assessments Template Error](../screenshots/error/assessments_template_error.png)
 
 ### Root Cause
 
@@ -132,7 +132,7 @@ High - Core page inaccessible during early implementation
 
 ### Visual Evidence
 
-![Journal Template Error](error-documentation/journal_template_error.png)
+![Journal Template Error](../screenshots/error/journal_template_error.png)
 
 ### Root Cause
 

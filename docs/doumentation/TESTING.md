@@ -113,37 +113,37 @@ Testing was conducted continuously throughout development using multiple methodo
 Visual evidence of each core user journey captured during live testing on Heroku:
 
 #### MT-01: Registration Success
-<img src="screenshots/test/test-01-register-success.png" alt="Registration Success - Post-registration page" width="35.15625%">
+<img src="../screenshots/test/test-01-register-success.png" alt="Registration Success - Post-registration page" width="35.15625%">
 
 #### MT-02: Login Success
-<img src="screenshots/test/test-02-login-success.png" alt="Login Success - Dashboard or home page" width="28.125%">
+<img src="../screenshots/test/test-02-login-success.png" alt="Login Success - Dashboard or home page" width="28.125%">
 
 #### MT-03: Mood Entry Creation
-<img src="screenshots/test/test-03-mood-create.png" alt="Mood Entry Creation" width="28.125%">
+<img src="../screenshots/test/test-03-mood-create.png" alt="Mood Entry Creation" width="28.125%">
 
 #### MT-04: Journal Entry Creation
-<img src="screenshots/test/test-04-journal-create.png" alt="Journal Entry Creation" width="28.125%">
+<img src="../screenshots/test/test-04-journal-create.png" alt="Journal Entry Creation" width="28.125%">
 
 #### MT-05: Pricing Page (Free User)
-<img src="screenshots/test/test-05-pricing-free-user.png" alt="Pricing Page - Free User" width="28.125%">
+<img src="../screenshots/test/test-05-pricing-free-user.png" alt="Pricing Page - Free User" width="28.125%">
 
 #### MT-06: Stripe Checkout Page
-<img src="screenshots/test/test-06-stripe-checkout.png" alt="Stripe Checkout Page" width="28.125%">
+<img src="../screenshots/test/test-06-stripe-checkout.png" alt="Stripe Checkout Page" width="28.125%">
 
 #### MT-07: Payment Success
-<img src="screenshots/test/test-07-payment-success.png" alt="Payment Success" width="28.125%">
+<img src="../screenshots/test/test-07-payment-success.png" alt="Payment Success" width="28.125%">
 
 #### MT-08: Premium Upgrade (Dashboard)
-<img src="screenshots/test/test-08-premium-upgrade.png" alt="Premium Upgrade Dashboard" width="35.15625%">
+<img src="../screenshots/test/test-08-premium-upgrade.png" alt="Premium Upgrade Dashboard" width="35.15625%">
 
 #### MT-09: Premium Resource Access
-<img src="screenshots/test/test-09-premium-resource-access.png" alt="Premium Resource Access" width="28.125%">
+<img src="../screenshots/test/test-09-premium-resource-access.png" alt="Premium Resource Access" width="28.125%">
 
 #### MT-10: Premium Subscription Cancellation
-<img src="screenshots/test/test-10-premium-cancellation.png" alt="Premium Subscription Cancellation" width="35.15625%">
+<img src="../screenshots/test/test-10-premium-cancellation.png" alt="Premium Subscription Cancellation" width="35.15625%">
 
 #### MT-11: Logout Success Message
-<img src="screenshots/test/test-11-logout-success-message.png" alt="Logout Success Message" width="35.15625%">
+<img src="../screenshots/test/test-11-logout-success-message.png" alt="Logout Success Message" width="35.15625%">
 
 ---
 
@@ -332,7 +332,7 @@ Tested across multiple device sizes using Chrome DevTools and real devices.
 
 Flake8 run on the full project with results:
 
-<img src="screenshots/testing-validation-python.jpg" alt="Python Validation Results" width="75%">
+<img src="../screenshots/testing-validation-python.jpg" alt="Python Validation Results" width="75%">
 
 ```
 flake8 . : Clean (no E or W violations)
@@ -367,7 +367,7 @@ The following checks are intentionally scheduled for later release stages:
 
 All templates validated with W3C HTML Validator.
 
-<img src="screenshots/testing-validation-html.png" alt="W3C HTML Validation Results" width="75%">
+<img src="../screenshots/testing-validation-html.png" alt="W3C HTML Validation Results" width="75%">
 
 - No errors
 - All semantic tags properly used
@@ -377,7 +377,7 @@ All templates validated with W3C HTML Validator.
 
 Stylesheet validated with W3C CSS Validator.
 
-<img src="screenshots/testing-validation-css.png" alt="W3C CSS Validation Results" width="75%">
+<img src="../screenshots/testing-validation-css.png" alt="W3C CSS Validation Results" width="75%">
 
 - No errors
 - Vendor prefixes where needed
@@ -387,7 +387,7 @@ Stylesheet validated with W3C CSS Validator.
 
 JavaScript checked with Esprima.
 
-<img src="screenshots/testing-validation-js.png" alt="JavaScript Validation Results" width="75%">
+<img src="../screenshots/testing-validation-js.png" alt="JavaScript Validation Results" width="75%">
 
 - No critical errors
 - Proper syntax and structure
@@ -467,7 +467,7 @@ Comprehensive automated testing implemented using Django's TestCase framework.
 
 ### **Desktop**
 
-<img src="screenshots/testing-lighthouse-desktop.png" alt="Lighthouse Desktop Score" width="50%">
+<img src="../screenshots/testing-lighthouse-desktop.png" alt="Lighthouse Desktop Score" width="50%">
 
 - Performance: 85+
 - Accessibility: 90+
@@ -476,7 +476,7 @@ Comprehensive automated testing implemented using Django's TestCase framework.
 
 ### **Mobile**
 
-<img src="screenshots/testing-lighthouse-mobile.png" alt="Lighthouse Mobile Score" width="50%">
+<img src="../screenshots/testing-lighthouse-mobile.png" alt="Lighthouse Mobile Score" width="50%">
 
 - Performance: 75+
 - Accessibility: 90+

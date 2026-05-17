@@ -22,7 +22,7 @@ This document provides comprehensive deployment instructions for running Mindly 
 
 Mindly is deployed on **Heroku** — a cloud platform that supports Django applications with managed PostgreSQL, environment config vars, and automatic HTTPS.
 
-<img src="screenshots/testing-heroku-dashboard-mindly-app.png" alt="Heroku Dashboard - Mindly App" width="75%">
+<img src="../screenshots/testing-heroku-dashboard-mindly-app.png" alt="Heroku Dashboard - Mindly App" width="75%">
 
 ---
 
