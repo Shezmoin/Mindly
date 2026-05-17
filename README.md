@@ -650,13 +650,20 @@ mindly/
       missing content (!)
 
 ├── docs/                               # Documentation
-│   ├── TESTING.md                      # Testing documentation
-│   ├── DEPLOYMENT.md                   # Deployment guide
-│   └── ERROR_LOG.md                    # Error log with fixes
-      accessanility(!)
-├── errors/                             # Error capture logs and session records
+│   ├── doumentation/                   # All markdown documentation
+│   │   ├── TESTING.md                  # Testing documentation
+│   │   ├── DEPLOYMENT.md               # Deployment guide
+│   │   ├── ERROR_LOG.md                # Error log with fixes
+│   │   ├── ACCESSIBILITY.md            # Accessibility standards and audit
+│   │   └── BUG_LOG.md                  # Feature-level bug records
+│   └── screenshots/                    # Evidence screenshots used in documentation
+│       ├── error/                      # Error and edge-case screenshots
+│       ├── audit/                      # Accessibility audit screenshots
+│       ├── colour-charts/              # Design colour palette charts
+│       ├── wireframes/                 # Wireframe planning images
+│       └── test/                       # Testing evidence screenshots
+├── errors/                             # Local error capture logs (git-ignored)
 │   └── README.md                       # Error notes
-└── docs/screenshots/                   # Evidence screenshots used in documentation
 ```
 
 ---
@@ -892,7 +899,7 @@ Python documentation, Django official documentation, Stripe API documentation, B
 
 ### **Media**
 
-Project screenshots are embedded in this README. Remaining visual evidence screenshots (testing/validation/audit) are tracked in [docs/TESTING.md](docs/TESTING.md).
+Project screenshots are embedded in this README. Remaining visual evidence screenshots (testing/validation/audit) are tracked in [docs/TESTING.md](./docs/doumentation/TESTING.md).
 
 ### **Acknowledgements**
 
