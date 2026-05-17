@@ -45,10 +45,33 @@ Wireframe preparation is listed in the Design section below so the planning work
       <li><a href="#authentication-features">Authentication Features</a></li>
       <li><a href="#mood-tracking-features">Mood Tracking Features</a></li>
       <li><a href="#journal-features">Journal Features</a></li>
+      <li><a href="#assessment-features">Assessment Features</a></li>
       <li><a href="#premium-features">Premium Features</a></li>
+      <li><a href="#resource-library">Resource Library</a></li>
       <li><a href="#payment-features">Payment Features</a></li>
     </ul>
   </li>
+  <li><a href="#data-model--schema">Data Model / Schema</a></li>
+  <li><a href="#future-features">Future Features</a>
+    <ul>
+      <li><a href="#user-experience-improvements">User Experience Improvements</a></li>
+      <li><a href="#premium-content-expansion">Premium Content Expansion</a></li>
+      <li><a href="#technical-enhancements">Technical Enhancements</a></li>
+    </ul>
+  </li>
+  <li><a href="#backend-frontend-flow-examples">Backend-Frontend Flow Examples</a></li>
+  <li><a href="#mindly-project-structure">Mindly Project Structure</a></li>
+  <li><a href="#app-structure-justification">App Structure Justification</a></li>
+  <li><a href="#technologies-used">Technologies Used</a></li>
+  <li><a href="#testing">Testing</a></li>
+  <li><a href="#errors">Errors</a></li>
+  <li><a href="#deployment">Deployment</a></li>
+  <li><a href="#security">Security</a></li>
+  <li><a href="#stripe-integration">Stripe Integration</a></li>
+  <li><a href="#accessibility">Accessibility</a></li>
+  <li><a href="#originality-statement">Originality Statement</a></li>
+  <li><a href="#credits--acknowledgements">Credits &amp; Acknowledgements</a></li>
+  <li><a href="#known-bugs">Known Bugs</a></li>
 </ol>
 ## **Data Model / Schema**
 
