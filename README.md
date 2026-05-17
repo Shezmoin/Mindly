@@ -169,7 +169,7 @@ Key architecture decisions:
 - Use Django ORM for safe relational data handling and owner-scoped query patterns
 - Use Stripe Checkout + webhook verification for secure payment lifecycle handling
 - Use Bootstrap + custom CSS for responsive UI consistency across mobile/desktop
-- Deploy on Heroku with environment-variable based secrets and production hardening
+- Deploy on Heroku with environment-variable based secrets and production hardening (!)
 
 ### **Build Constraints and Decisions**
 
