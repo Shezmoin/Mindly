@@ -14,31 +14,42 @@ This project demonstrates professional backend development, full-stack integrati
 
 Wireframe preparation is listed in the Design section below so the planning work is easy to find.
 
-1. [Project Goals](#project-goals)
-2. [Real-World Rationale](#real-world-rationale)
-3. [Development Strategy](#development-strategy)
-4. [Live Project](#live-project)
-5. [Repository](#repository)
-6. [Documentation](#documentation)
-7. [Badges](#badges)
-8. [User Experience](#user-experience)
-   - [User Stories](#user-stories)
-   - [First-time Users](#first-time-users)
-   - [Returning Premium Users](#returning-premium-users)
-9. [Design](#design)
-   - [Wireframes & Planning](#wireframes--planning)
-   - [Wireframe to Final Changes](#wireframe-to-final-changes)
-   - [Overview](#overview)
-   - [Colour Scheme](#colour-scheme)
-   - [Typography](#typography)
-   - [Accessibility in Design](#accessibility-in-design)
-10. [Features](#features)
-   - [All Pages Features](#all-pages-features)
-   - [Authentication Features](#authentication-features)
-   - [Mood Tracking Features](#mood-tracking-features)
-   - [Journal Features](#journal-features)
-   - [Premium Features](#premium-features)
-   - [Payment Features](#payment-features)
+<ol>
+  <li><a href="#project-goals">Project Goals</a></li>
+  <li><a href="#real-world-rationale">Real-World Rationale</a></li>
+  <li><a href="#development-strategy">Development Strategy</a></li>
+  <li><a href="#live-project">Live Project</a></li>
+  <li><a href="#repository">Repository</a></li>
+  <li><a href="#documentation">Documentation</a></li>
+  <li><a href="#badges">Badges</a></li>
+  <li><a href="#user-experience">User Experience</a>
+    <ul>
+      <li><a href="#user-stories">User Stories</a></li>
+      <li><a href="#first-time-users">First-time Users</a></li>
+      <li><a href="#returning-premium-users">Returning Premium Users</a></li>
+    </ul>
+  </li>
+  <li><a href="#design">Design</a>
+    <ul>
+      <li><a href="#wireframes--planning">Wireframes &amp; Planning</a></li>
+      <li><a href="#wireframe-to-final-changes">Wireframe to Final Changes</a></li>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#colour-scheme">Colour Scheme</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#accessibility-in-design">Accessibility in Design</a></li>
+    </ul>
+  </li>
+  <li><a href="#features">Features</a>
+    <ul>
+      <li><a href="#all-pages-features">All Pages Features</a></li>
+      <li><a href="#authentication-features">Authentication Features</a></li>
+      <li><a href="#mood-tracking-features">Mood Tracking Features</a></li>
+      <li><a href="#journal-features">Journal Features</a></li>
+      <li><a href="#premium-features">Premium Features</a></li>
+      <li><a href="#payment-features">Payment Features</a></li>
+    </ul>
+  </li>
+</ol>
 ## **Data Model / Schema**
 
 Mindly uses one custom user model with a small set of linked profile, mood, journal, and assessment records.
@@ -78,27 +89,6 @@ CustomUser
 
 #### Payment Success Page
 <img src="docs/screenshots/readme-10-premium-content-page.png" alt="Payment Success Page" width="18.75%">
-
----
-
-### **Error & Edge-Case Screenshots**
-
-These screenshots demonstrate how Mindly handles error states and access-control boundaries.
-
-#### 404 – Page Not Found
-Navigating to an invalid URL displays Mindly's custom 404 error page.
-
-<img src="docs/screenshots/error/error-01-404-page.png" alt="Custom 404 Page" width="25%">
-
-#### Stripe Checkout Error
-An invalid or declined card triggers a clear error message on the Stripe checkout page.
-
-<img src="docs/screenshots/error/error-03-checkout-error.png" alt="Stripe Checkout Error" width="25%">
-
-#### Premium Access Denied
-A free-tier user attempting to access premium content is blocked and redirected with an appropriate message.
-
-<img src="docs/screenshots/error/error-04-premium-access-denied-v3.png" alt="Premium Access Denied" width="25%">
 
 ---
 

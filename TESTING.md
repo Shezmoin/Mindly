@@ -371,6 +371,27 @@ python manage.py createsuperuser
 
 ---
 
+## Error & Edge-Case Screenshots
+
+These screenshots demonstrate how Mindly handles error states and access-control boundaries.
+
+### 404 – Page Not Found
+Navigating to an invalid URL displays Mindly's custom 404 error page.
+
+<img src="docs/screenshots/error/error-01-404-page.png" alt="Custom 404 Page" width="25%">
+
+### Stripe Checkout Error
+An invalid or declined card triggers a clear error message on the Stripe checkout page.
+
+<img src="docs/screenshots/error/error-03-checkout-error.png" alt="Stripe Checkout Error" width="25%">
+
+### Premium Access Denied
+A free-tier user attempting to access premium content is blocked and redirected with an appropriate message.
+
+<img src="docs/screenshots/error/error-04-premium-access-denied-v3.png" alt="Premium Access Denied" width="25%">
+
+---
+
 ## Responsive Design Testing
 
 ### Test RD-01: Mobile View
