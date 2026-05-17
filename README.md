@@ -36,38 +36,116 @@ Wireframe preparation is listed in the Design section below so the planning work
    - [Authentication Features](#authentication-features)
    - [Mood Tracking Features](#mood-tracking-features)
    - [Journal Features](#journal-features)
+  - [Assessment Features](#assessment-features)
    - [Premium Features](#premium-features)
+  - [Resource Library](#resource-library)
    - [Payment Features](#payment-features)
-## **Data Model / Schema**
+10. [Future Features](#future-features)
+   - [User Experience Improvements](#user-experience-improvements)
+   - [Premium Content Expansion](#premium-content-expansion)
+   - [Technical Enhancements](#technical-enhancements)
+11. [Data Model / Schema](#data-model--schema)
+12. [Backend-Frontend Flow Examples](#backend-frontend-flow-examples)
+   - [Flow 1: Journal CRUD (Create example)](#flow-1-journal-crud-create-example)
+   - [Flow 2: Premium Upgrade via Stripe Webhook](#flow-2-premium-upgrade-via-stripe-webhook)
+   - [Sequence Diagram: Premium Upgrade Request-Response Path](#sequence-diagram-premium-upgrade-request-response-path)
+13. [Project Structure](#mindly-project-structure)
+14. [App Structure Justification](#app-structure-justification)
+15. [Technologies Used](#technologies-used)
+16. [Testing](#testing)
+17. [Errors](#errors)
+18. [Deployment](#deployment)
+19. [Security](#security)
+20. [Stripe Integration](#stripe-integration)
+21. [Accessibility (Project)](#accessibility)
+22. [Originality Statement](#originality-statement)
+23. [Credits & Acknowledgements](#credits--acknowledgements)
+24. [Known Bugs](#known-bugs)
 
-Mindly uses one custom user model with a small set of linked profile, mood, journal, and assessment records.
+---
 
-### **Model Summary**
+## **Project Goals**
 
-| Model | Key fields |
-| --- | --- |
-| `CustomUser` | `username`, `email`, `bio`, `profile_picture` |
-| `UserProfile` | `user`, `subscription_tier`, `joined_date`, `reminder_time` |
-| `MoodEntry` | `user`, `mood_score`, `note`, `created_at` |
-| `JournalEntry` | `user`, `title`, `content`, `is_private`, `created_at`, `updated_at` |
-| `AssessmentResult` | `user`, `assessment_type`, `q1_score` to `q4_score`, `total_score`, `level`, `created_at` |
+The goal of this project was to design and build a full-stack mental health and wellbeing application that demonstrates:
+- Advanced backend development with Django framework
+- Secure user authentication and authorization
+- Relational database design and management
+- Payment processing integration with Stripe
+- Responsive, accessible frontend design
+- Professional security practices (environment variables, secret management, DEBUG disabled)
+- Comprehensive testing and validation
+- Industry-standard deployment practices
 
-### **Relationships**
+## **Real-World Rationale**
 
-- `CustomUser` → `UserProfile` (`1-to-1`)
-- `CustomUser` → `MoodEntry` (`1-to-many`)
-- `CustomUser` → `JournalEntry` (`1-to-many`)
-- `CustomUser` → `AssessmentResult` (`1-to-many`)
+Mindly addresses a practical real-world problem: many users need a private, low-friction place to monitor mental wellbeing, reflect consistently, and access supportive resources without switching between multiple tools.
 
-### **ERD (ASCII)**
+The app is designed for two clear user groups:
+- **Free users** who need reliable daily support (mood tracking, journaling, and core resources)
+- **Premium users** who need deeper guidance and expanded content access
 
-```text
-CustomUser
-  ├── UserProfile        (1-to-1)
-  ├── MoodEntry          (1-to-many)
-  ├── JournalEntry       (1-to-many)
-  └── AssessmentResult   (1-to-many)
-```
+This domain focus justified building secure authentication, user-owned records, and subscription-aware access controls instead of a static content site.
+
+### **What Success Looks Like**
+
+For this project, success means:
+- Users can register, log in, and manage their own data safely
+- Core CRUD flows work clearly for mood and journal features
+- Premium upgrade works through Stripe checkout and webhook confirmation
+- Premium-only pages are correctly blocked for free users
+- The app is responsive and usable on mobile, tablet, and desktop
+- The project is deployable, tested, and documented to professional standard
+
+## **Development Strategy**
+
+Mindly was developed using a domain-driven multi-app Django structure so each app maps to a natural product boundary:
+- `users`: identity, profile, subscription state
+- `journal`: mood/journal CRUD operations
+- `assessments`: interactive self-check tools and persisted result records
+- `payments`: Stripe checkout, webhook processing, and premium upgrade flow
+- `pages`: static and premium resource views
+
+Key architecture decisions:
+- Use Django ORM for safe relational data handling and owner-scoped query patterns
+- Use Stripe Checkout + webhook verification for secure payment lifecycle handling
+- Use Bootstrap + custom CSS for responsive UI consistency across mobile/desktop
+- Deploy on Heroku with environment-variable based secrets and production hardening
+
+### **Build Constraints and Decisions**
+
+- Kept app boundaries strict so each app has one clear responsibility
+- Stored sensitive values in environment variables only
+- Treated webhook signature verification as mandatory in production
+- Prioritized clarity over complexity in UI and feature flows
+- Focused on traceable evidence: tests, screenshots, and deployment checks
+
+### **Development Process and Version Control**
+
+The project was built in small stages and committed to GitHub regularly during development. I used Git and GitHub throughout the project to save progress, track changes, and keep a clear record of feature work, fixes, testing updates, and documentation updates.
+
+This matters for the project criteria because version control is not only about having a repository. It is also evidence that the project was developed in a steady and traceable way rather than uploaded all at once at the end.
+
+---
+
+## **Live Project**
+
+Mindly is deployed and accessible for public testing.
+
+The live application is available here: [**Mindly on Heroku**](https://mindly-shez-9ca695ee4969.herokuapp.com/)
+
+### **Key Interface Screenshots**
+
+#### Home Page
+<img src="docs/screenshots/readme-02-home-page.png" alt="Home Page" width="56.25%">
+
+#### Dashboard Page
+<img src="docs/screenshots/readme-03-dashboard-page.png" alt="Dashboard Page" width="56.25%">
+
+#### Journal Page
+<img src="docs/screenshots/readme-04-journal-page.png" alt="Journal Page" width="56.25%">
+
+#### Mood Form Page
+<img src="docs/screenshots/readme-05-mood-form-page.png" alt="Mood Form Page" width="56.25%">
 
 #### Pricing Page
 <img src="docs/screenshots/readme-06-pricing-page.png" alt="Pricing Page" width="56.25%">
@@ -346,6 +424,39 @@ Mindly follows WCAG accessibility best practices:
 * Two-factor authentication (2FA)
 * API for mobile app development
 * Payment method management for subscribers
+
+---
+
+## **Data Model / Schema**
+
+Mindly uses one custom user model with a small set of linked profile, mood, journal, and assessment records.
+
+### **Model Summary**
+
+| Model | Key fields |
+| --- | --- |
+| `CustomUser` | `username`, `email`, `bio`, `profile_picture` |
+| `UserProfile` | `user`, `subscription_tier`, `joined_date`, `reminder_time` |
+| `MoodEntry` | `user`, `mood_score`, `note`, `created_at` |
+| `JournalEntry` | `user`, `title`, `content`, `is_private`, `created_at`, `updated_at` |
+| `AssessmentResult` | `user`, `assessment_type`, `q1_score` to `q4_score`, `total_score`, `level`, `created_at` |
+
+### **Relationships**
+
+- `CustomUser` → `UserProfile` (`1-to-1`)
+- `CustomUser` → `MoodEntry` (`1-to-many`)
+- `CustomUser` → `JournalEntry` (`1-to-many`)
+- `CustomUser` → `AssessmentResult` (`1-to-many`)
+
+### **ERD (ASCII)**
+
+```text
+CustomUser
+  ├── UserProfile        (1-to-1)
+  ├── MoodEntry          (1-to-many)
+  ├── JournalEntry       (1-to-many)
+  └── AssessmentResult   (1-to-many)
+```
 
 ---
 
