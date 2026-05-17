@@ -1,11 +1,12 @@
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import PasswordResetView as DjangoPasswordResetView
 from django.shortcuts import redirect, render
 from django.views.decorators.http import require_POST
 
 from .forms import UserProfileEditForm, UserRegistrationForm
-from .models import UserProfile
+from .models import CustomUser, UserProfile
 
 
 def register_view(request):
@@ -102,3 +103,24 @@ def logout_view(request):
     auth.logout(request)
     messages.info(request, 'You have been logged out successfully.')
     return render(request, 'users/logout.html')
+
+
+class PasswordResetView(DjangoPasswordResetView):
+    """Custom password reset view that captures username for recovery."""
+    
+    template_name = 'users/password_reset.html'
+    success_url = '/users/password-reset/done/'
+    
+    def form_valid(self, form):
+        """Store the username in session for the done template to display."""
+        email = form.cleaned_data['email']
+        try:
+            user = CustomUser.objects.get(email=email)
+            # Store username and email in session for done template
+            self.request.session['reset_username'] = user.username
+            self.request.session['reset_email'] = email
+        except CustomUser.DoesNotExist:
+            # Email not found - still process normally for security
+            # (don't reveal if email exists or not)
+            pass
+        return super().form_valid(form)
