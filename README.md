@@ -145,7 +145,6 @@ The app is designed for two clear user groups:
 - **Free users** who need reliable daily support (mood tracking, journaling, and core resources)
 - **Premium users** who need deeper guidance and expanded content access
 
-This domain focus justified building secure authentication, user-owned records, and subscription-aware access controls instead of a static content site.
 
 ### **What Success Looks Like**
 
