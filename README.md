@@ -727,10 +727,10 @@ Python checked with flake8.
 * Proper syntax and structure
 * No unused variables/imports
 
-See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including:
+See [**TESTING.md**](./docs/doumentation/TESTING.md) for full testing documentation including:
 
 * Automated test coverage summary
-* Manual test matrix (MT-01 to MT-11): [Jump to manual test table](./docs/TESTING.md#manual-test-matrix-mt-01-to-mt-11)
+* Manual test matrix (MT-01 to MT-11): [Jump to manual test table](./docs/doumentation/TESTING.md#manual-test-matrix-mt-01-to-mt-11)
 
 * Testing strategy and methodology
 * User story validation
@@ -738,7 +738,7 @@ See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including
 * Form validation testing
 * Browser compatibility testing
 * Responsiveness testing
-* Accessibility testing (WCAG 2.1 AA/AAA contrast verification; see [ACCESSIBILITY.md](./docs/ACCESSIBILITY.md) for the 8.08:1 contrast ratio used in the navbar)
+* Accessibility testing (WCAG 2.1 AA/AAA contrast verification; see [ACCESSIBILITY.md](./docs/doumentation/ACCESSIBILITY.md) for the 8.08:1 contrast ratio used in the navbar)
 * Security testing
 * Lighthouse performance scores
 * Code validation (PEP8, HTML, CSS, JavaScript)
@@ -748,12 +748,12 @@ See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including
 
 | Requirement Area | Where Implemented | Evidence |
 |----------|-----------|----------|
-| Authentication and access control | `users/views.py`, `users/decorators.py`, `users/tests.py` | [docs/TESTING.md](./docs/TESTING.md), [docs/ERROR_LOG.md](./docs/ERROR_LOG.md) |
-| Full CRUD for user-owned data | `journal/views.py`, `journal/forms.py`, `journal/tests.py` | [docs/TESTING.md](./docs/TESTING.md) |
+| Authentication and access control | `users/views.py`, `users/decorators.py`, `users/tests.py` | [docs/TESTING.md](./docs/doumentation/TESTING.md), [docs/ERROR_LOG.md](./docs/doumentation/ERROR_LOG.md) |
+| Full CRUD for user-owned data | `journal/views.py`, `journal/forms.py`, `journal/tests.py` | [docs/TESTING.md](./docs/doumentation/TESTING.md) |
 | Relational data model | `users/models.py`, `journal/models.py`, `assessments/models.py` | Data Model section in README |
-| Payment and subscription lifecycle | `payments/views.py`, `payments/tests.py` | [docs/TESTING.md](./docs/TESTING.md), Stripe Integration section |
-| Robust error handling | `payments/views.py`, custom `404.html` and `500.html` templates | [docs/ERROR_LOG.md](./docs/ERROR_LOG.md) |
-| Deployment readiness | `Procfile`, environment config, static handling | [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) |
+| Payment and subscription lifecycle | `payments/views.py`, `payments/tests.py` | [docs/TESTING.md](./docs/doumentation/TESTING.md), Stripe Integration section |
+| Robust error handling | `payments/views.py`, custom `404.html` and `500.html` templates | [docs/ERROR_LOG.md](./docs/doumentation/ERROR_LOG.md) |
+| Deployment readiness | `Procfile`, environment config, static handling | [docs/DEPLOYMENT.md](./docs/doumentation/DEPLOYMENT.md) |
 
 ### **Final Verification Summary**
 
@@ -772,7 +772,7 @@ All non-cleanup verification checks were completed and recorded before submissio
 
 All errors encountered during development have been documented with investigations and solutions.
 
-See [**ERROR_LOG.md**](./docs/ERROR_LOG.md) for complete error documentation including:
+See [**ERROR_LOG.md**](./docs/doumentation/ERROR_LOG.md) for complete error documentation including:
 
 * Error description and symptoms
 * Investigation methodology
@@ -786,7 +786,7 @@ See [**ERROR_LOG.md**](./docs/ERROR_LOG.md) for complete error documentation inc
 
 Mindly is deployed following professional security and deployment practices.
 
-See [**DEPLOYMENT.md**](docs/DEPLOYMENT.md) for comprehensive deployment documentation including:
+See [**DEPLOYMENT.md**](docs/doumentation/DEPLOYMENT.md) for comprehensive deployment documentation including:
 
 * Local development setup
 * Production deployment on Heroku (step-by-step)
@@ -798,7 +798,7 @@ See [**DEPLOYMENT.md**](docs/DEPLOYMENT.md) for comprehensive deployment documen
 * Deployment verification steps
 * Troubleshooting guide
 
-For Heroku setup from scratch, follow the numbered production steps in [**DEPLOYMENT.md - Production Deployment (Heroku)**](./docs/DEPLOYMENT.md#production-deployment-heroku).
+For Heroku setup from scratch, follow the numbered production steps in [**DEPLOYMENT.md - Production Deployment (Heroku)**](./docs/doumentation/DEPLOYMENT.md#production-deployment-heroku).
 
 ---
 
@@ -854,7 +854,7 @@ stripe login
 stripe listen --forward-to 127.0.0.1:8000/payments/webhook/
 ```
 
-See [**DEPLOYMENT.md**](./docs/DEPLOYMENT.md) for complete Stripe setup and testing instructions.
+See [**DEPLOYMENT.md**](./docs/doumentation/DEPLOYMENT.md) for complete Stripe setup and testing instructions.
 
 ---
 
