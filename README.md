@@ -145,7 +145,6 @@ The app is designed for two clear user groups:
 - **Free users** who need reliable daily support (mood tracking, journaling, and core resources)
 - **Premium users** who need deeper guidance and expanded content access
 
-This domain focus justified building secure authentication, user-owned records, and subscription-aware access controls instead of a static content site.
 
 ### **What Success Looks Like**
 
@@ -170,7 +169,7 @@ Key architecture decisions:
 - Use Django ORM for safe relational data handling and owner-scoped query patterns
 - Use Stripe Checkout + webhook verification for secure payment lifecycle handling
 - Use Bootstrap + custom CSS for responsive UI consistency across mobile/desktop
-- Deploy on Heroku with environment-variable based secrets and production hardening
+- Deploy on Heroku with environment-variable based secrets and production hardening (!)
 
 ### **Build Constraints and Decisions**
 
@@ -219,7 +218,7 @@ The live application is available here: [**Mindly on Heroku**](https://mindly-sh
 
 ---
 
-### **Error and Edge-Case Screenshots**
+### **Error and Edge-Case Screenshots** (!)
 
 These screenshots demonstrate how Mindly handles error states and access-control boundaries.
 
@@ -254,7 +253,7 @@ A free-tier user attempting to access premium content is blocked and redirected 
 * **Stripe:** Payment processing
 * **SQLite/PostgreSQL:** Relational database
 * **Git & GitHub:** Version control
-* **Deployed:** Ready for production
+* **Deployed:** Ready for production (!) Heroku ready for deployment
 
 ---
 
@@ -292,7 +291,7 @@ A free-tier user attempting to access premium content is blocked and redirected 
 * As a returning user, I want to create, edit, and delete my mood entries and journal entries.
 * As a returning user, I want my data to remain private and accessible only to me.
 * As a premium subscriber, I want to receive immediate access to premium features upon successful payment.
-* As a premium subscriber, I want to manage my subscription and see my current tier status.
+* As a premium subscriber, I want to manage my subscription and see my current tier status.(!)does it exist
 
 ---
 
@@ -376,7 +375,7 @@ Mindly follows WCAG accessibility best practices:
 * Keyboard navigation supported for all interactive elements
 * Sufficient colour contrast maintained (WCAG AA standard)
 * Responsive design ensures usability on all device sizes
-* Alt text provided for all non-decorative images
+* Alt text provided for all non-decorative images(!)
 * Form validation provides clear error messages
 
 ---
@@ -385,23 +384,23 @@ Mindly follows WCAG accessibility best practices:
 
 ### **All Pages Features**
 
-* Responsive navigation bar with user status indicator
+* Responsive navigation bar with user status indicator(!)what does it mean
 * Bootstrap-based responsive grid layout
 * Clear visual hierarchy and consistent branding
 * Mobile-optimized interface for all screen sizes
 * Accessible form controls and labels
-* User authentication status visible throughout
+* User authentication status visible throughout(!)
 * Dark mode / Light mode toggle (persisted via localStorage)
 
 ### **Authentication Features**
 
 * Secure user registration with username and email
-* Username-based login with password verification
+* Username-based login with password verification(!)Forgotten password?
 * Secure logout functionality
 * Profile page for logged-in users with editable email and bio
 * Premium users can cancel subscription from the profile page
 * @login_required decorators on protected views
-* CSRF protection on all forms
+* CSRF protection on all forms(!)
 
 ### **Mood Tracking Features**
 
@@ -416,11 +415,11 @@ Mindly follows WCAG accessibility best practices:
 ### **Journal Features**
 
 * Create full journal entries with title and body content
-* Mark entries as private for personal use
+* Mark entries as private for personal use(!) if public then where is it
 * Edit journal entries to update content
 * Delete journal entries with confirmation
 * View all journal entries with summaries
-* Search journal entries by title
+* Search journal entries by title(!)check the pop up message
 * Timestamp tracking for entry creation/modification
 
 ### **Assessment Features**
@@ -450,7 +449,7 @@ Mindly follows WCAG accessibility best practices:
 * Stripe Checkout integration for secure payments
 * Monthly recurring subscription at £9.99
 * Subscription pricing page with Free/Premium comparison
-* Payment success confirmation page
+* Payment success confirmation page(!)preuimum subscriber can subscibe again and diuble pay
 * Payment cancellation handling
 * Webhook integration to auto-upgrade users
 * Secure environment variable management for API keys
@@ -460,6 +459,7 @@ Mindly follows WCAG accessibility best practices:
 ## **Future Features**
 * Expand the resource library with clinician-reviewed articles and downloadable worksheets.
 * Add searchable categories and saved favourites for premium users.
+
 ### **User Experience Improvements**
 
 * Mood analytics with charts and trends
@@ -484,7 +484,7 @@ Mindly follows WCAG accessibility best practices:
 * Data backup and recovery features
 * Two-factor authentication (2FA)
 * API for mobile app development
-* Payment method management for subscribers
+* Payment method management for subscribers(!)multiple payment methods Apple pay googlepay
 
 ---
 
@@ -497,7 +497,7 @@ Mindly uses one custom user model with a small set of linked profile, mood, jour
 | Model | Key fields |
 | --- | --- |
 | `CustomUser` | `username`, `email`, `bio`, `profile_picture` |
-| `UserProfile` | `user`, `subscription_tier`, `joined_date`, `reminder_time` |
+| `UserProfile` | `user`, `subscription_tier`, `joined_date`, `reminder_time` |(!)what is reminertime
 | `MoodEntry` | `user`, `mood_score`, `note`, `created_at` |
 | `JournalEntry` | `user`, `title`, `content`, `is_private`, `created_at`, `updated_at` |
 | `AssessmentResult` | `user`, `assessment_type`, `q1_score` to `q4_score`, `total_score`, `level`, `created_at` |
@@ -601,6 +601,7 @@ mindly/
 │   ├── urls.py                         # Root URL router
 │   ├── wsgi.py                         # WSGI application
 │   └── asgi.py                         # ASGI application
+         _init_.py (!)
 ├── users/                              # Authentication & profile app
 │   ├── models.py                       # CustomUser, UserProfile models
 │   ├── views.py                        # Auth views (register/login/logout), profile edit, premium cancellation
@@ -609,12 +610,16 @@ mindly/
 │   ├── tests.py                        # User model tests
 │   ├── forms.py                        # Auth forms
 │   └── templates/users/                # User templates
+      missing content (!)
+
 ├── journal/                            # Journal app
 │   ├── models.py                       # JournalEntry and MoodEntry models
 │   ├── views.py                        # Journal and mood CRUD views
 │   ├── urls.py                         # Journal URLs
 │   ├── tests.py                        # Journal tests
 │   └── templates/journal/              # Journal templates
+      missing content (!)
+
 ├── assessments/                        # Assessment self-check tools
 │   ├── models.py                       # AssessmentResult model for persisted self-check submissions
 │   ├── views.py                        # Mood/stress/sleep self-check logic
@@ -637,13 +642,18 @@ mindly/
 │   ├── journal/                        # Journal & mood entry templates
 │   ├── payments/                       # Pricing, checkout, success pages
 │   └── users/                          # Register, login, profile templates
+      missing content (!)
+
 ├── static/                             # Static files
 │   └── css/
 │       └── style.css                   # Custom styles
+      missing content (!)
+
 ├── docs/                               # Documentation
 │   ├── TESTING.md                      # Testing documentation
 │   ├── DEPLOYMENT.md                   # Deployment guide
 │   └── ERROR_LOG.md                    # Error log with fixes
+      accessanility(!)
 ├── errors/                             # Error capture logs and session records
 │   └── README.md                       # Error notes
 └── docs/screenshots/                   # Evidence screenshots used in documentation
