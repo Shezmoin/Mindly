@@ -125,7 +125,11 @@ def journal_list_view(request):
         user=request.user,
         title__icontains=query,
     ).order_by('-updated_at')
-    return render(request, 'journal/journal_list.html', {'entries': entries})
+    return render(
+        request,
+        'journal/journal_list.html',
+        {'entries': entries, 'query': query},
+    )
 
 
 @login_required

@@ -96,10 +96,14 @@
     </div>
 {% else %}
     <div class="mindly-panel-soft text-center">
-        <p class="mb-3">No journal entries yet - write your first reflection.</p>
-        <div>
-            <a href="{% url 'journal:journal-create' %}" class="btn btn-mindly">Create First Entry</a>
-        </div>
+        {% if query %}
+            <p class="mb-3">No journal entries found matching "{{ query }}".</p>
+        {% else %}
+            <p class="mb-3">No journal entries yet - write your first reflection.</p>
+            <div>
+                <a href="{% url 'journal:journal-create' %}" class="btn btn-mindly">Create First Entry</a>
+            </div>
+        {% endif %}
     </div>
 {% endif %}
         </div>
