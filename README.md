@@ -19,19 +19,20 @@ Wireframe preparation is listed in the Design section below so the planning work
 3. [Development Strategy](#development-strategy)
 4. [Live Project](#live-project)
 5. [Repository](#repository)
-6. [Badges](#badges)
-7. [User Experience](#user-experience)
+6. [Documentation](#documentation)
+7. [Badges](#badges)
+8. [User Experience](#user-experience)
    - [User Stories](#user-stories)
    - [First-time Users](#first-time-users)
    - [Returning Premium Users](#returning-premium-users)
-8. [Design](#design)
+9. [Design](#design)
    - [Wireframes & Planning](#wireframes--planning)
    - [Wireframe to Final Changes](#wireframe-to-final-changes)
    - [Overview](#overview)
    - [Colour Scheme](#colour-scheme)
    - [Typography](#typography)
    - [Accessibility in Design](#accessibility-in-design)
-9. [Features](#features)
+10. [Features](#features)
    - [All Pages Features](#all-pages-features)
    - [Authentication Features](#authentication-features)
    - [Mood Tracking Features](#mood-tracking-features)
@@ -104,6 +105,28 @@ A free-tier user attempting to access premium content is blocked and redirected 
 ### **Repository**
 
 [**GitHub Repository**](https://github.com/Shezmoin/Mindly)
+
+---
+
+### **Documentation**
+
+Comprehensive guides for deployment, testing, and development:
+
+* **[DEPLOYMENT.md](DEPLOYMENT.md)** - Production deployment guide covering:
+  - Environment variable setup
+  - Email configuration (Gmail, SendGrid, Mailgun)
+  - Heroku deployment steps
+  - SSL/HTTPS configuration
+  - Database setup and migration
+  - Troubleshooting common issues
+
+* **[TESTING.md](TESTING.md)** - Manual testing guide covering:
+  - Test environment setup
+  - Complete test cases for all features (AT, PR, MO, JO, AS, PM tests)
+  - Password reset testing procedures (9 test cases)
+  - Security and responsive design testing
+  - Test data cleanup
+  - Regression testing checklist
 
 ---
 
@@ -264,6 +287,55 @@ Mindly follows WCAG accessibility best practices:
 * Premium users can cancel subscription from the profile page
 * @login_required decorators on protected views
 * CSRF protection on all forms
+
+#### **Password Reset Feature Details**
+
+Password reset allows users to securely recover their accounts when they forget their passwords.
+
+**User Flow:**
+1. User clicks "Forgot your password?" on the login page
+2. User enters their email address on the reset request form
+3. Django generates a secure token and sends an email with a reset link (token valid for 1 hour)
+4. User clicks the link in their email
+5. User enters a new password on the secure reset form
+6. New password is validated and stored securely
+7. User can log in with their new password
+
+**Technical Implementation:**
+- Uses Django 4.2's built-in authentication views (`PasswordResetView`, `PasswordResetDoneView`, `PasswordResetConfirmView`, `PasswordResetCompleteView`)
+- All 4 templates styled with Mindly's forest green colour scheme and consistent design
+- Email configuration supports:
+  - **Development:** Console backend (emails print to terminal for testing)
+  - **Production:** SMTP via environment variables (Gmail, SendGrid, Mailgun, or custom SMTP server)
+- Token generation uses Django's cryptographically secure token generator (PBKDF2-SHA256)
+- Token expiry: 1 hour (configurable via `PASSWORD_RESET_TIMEOUT = 3600` in settings)
+- No sensitive data exposed in URLs (tokens are hashed)
+- Invalid/expired tokens show user-friendly error messages with recovery options
+
+**Templates with Mindly Styling:**
+- `password_reset.html` - Email entry form with instructions and minimal design
+- `password_reset_done.html` - Confirmation page with envelope icon and helpful text
+- `password_reset_confirm.html` - New password form with valid/invalid token handling
+- `password_reset_complete.html` - Success message with green check icon and login link
+
+**Email Configuration:**
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions for:
+- Gmail (recommended for quick setup)
+- SendGrid (enterprise alternative)
+- Mailgun (popular alternative)
+- Custom SMTP servers
+
+**Testing Instructions:**
+See [TESTING.md](TESTING.md) for comprehensive testing procedures:
+- Test PR-01: Password Reset Request Form
+- Test PR-02: Email Submission & Confirmation
+- Test PR-03: Email Content Verification
+- Test PR-04: Non-existent Email Handling
+- Test PR-05: Valid Token Reset Form
+- Test PR-06: Password Reset Submission
+- Test PR-07: Login with New Password
+- Test PR-08: Expired Token Handling
+- Test PR-09: Form Validation
 
 ### **Mood Tracking Features**
 
