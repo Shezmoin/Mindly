@@ -219,7 +219,7 @@ CustomUser
 
 Comprehensive guides for deployment, testing, and development:
 
-* **[DEPLOYMENT.md](DEPLOYMENT.md)** - Production deployment guide covering:
+* **[DEPLOYMENT.md](docs/doumentation/DEPLOYMENT.md)** - Production deployment guide covering:
   - Environment variable setup
   - Email configuration (Gmail, SendGrid, Mailgun)
   - Heroku deployment steps
@@ -227,7 +227,7 @@ Comprehensive guides for deployment, testing, and development:
   - Database setup and migration
   - Troubleshooting common issues
 
-* **[TESTING.md](TESTING.md)** - Manual testing guide covering:
+* **[TESTING.md](docs/doumentation/TESTING.md)** - Manual testing guide covering:
   - Test environment setup
   - Complete test cases for all features (AT, AR, MO, JO, AS, PM, PF, SEC, RD tests)
   - Account recovery testing procedures (9 test cases: AR-01 through AR-09)
@@ -453,11 +453,11 @@ Success page with confirmation message and login action.
 
 ##### **Email Configuration**
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for full email and SMTP setup details.
+See [DEPLOYMENT.md](docs/doumentation/DEPLOYMENT.md) for full email and SMTP setup details.
 
 ##### **Testing Instructions**
 
-See [TESTING.md](TESTING.md) for complete Account Recovery test coverage and execution steps.
+See [TESTING.md](docs/doumentation/TESTING.md) for complete Account Recovery test coverage and execution steps.
 
 ### **Mood Tracking Features**
 
@@ -740,10 +740,10 @@ Python checked with flake8.
 * Proper syntax and structure
 * No unused variables/imports
 
-See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including:
+See [**TESTING.md**](docs/doumentation/TESTING.md) for full testing documentation including:
 
 * Automated test coverage summary
-* Manual test matrix (MT-01 to MT-11): [Jump to manual test table](./docs/TESTING.md#manual-test-matrix-mt-01-to-mt-11)
+* Manual test matrix (MT-01 to MT-11): [Jump to manual test table](docs/doumentation/TESTING.md#manual-test-matrix-mt-01-to-mt-11)
 
 * Testing strategy and methodology
 * User story validation
@@ -751,7 +751,7 @@ See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including
 * Form validation testing
 * Browser compatibility testing
 * Responsiveness testing
-* Accessibility testing (WCAG 2.1 AA/AAA contrast verification; see [ACCESSIBILITY.md](./docs/ACCESSIBILITY.md) for the 8.08:1 contrast ratio used in the navbar)
+* Accessibility testing (WCAG 2.1 AA/AAA contrast verification; see [ACCESSIBILITY.md](docs/doumentation/ACCESSIBILITY.md) for the 8.08:1 contrast ratio used in the navbar)
 * Security testing
 * Lighthouse performance scores
 * Code validation (PEP8, HTML, CSS, JavaScript)
@@ -761,12 +761,12 @@ See [**TESTING.md**](./docs/TESTING.md) for full testing documentation including
 
 | Requirement Area | Where Implemented | Evidence |
 |----------|-----------|----------|
-| Authentication and access control | `users/views.py`, `users/decorators.py`, `users/tests.py` | [docs/TESTING.md](./docs/TESTING.md), [docs/ERROR_LOG.md](./docs/ERROR_LOG.md) |
-| Full CRUD for user-owned data | `journal/views.py`, `journal/forms.py`, `journal/tests.py` | [docs/TESTING.md](./docs/TESTING.md) |
+| Authentication and access control | `users/views.py`, `users/decorators.py`, `users/tests.py` | [docs/TESTING.md](docs/doumentation/TESTING.md), [docs/ERROR_LOG.md](docs/doumentation/ERROR_LOG.md) |
+| Full CRUD for user-owned data | `journal/views.py`, `journal/forms.py`, `journal/tests.py` | [docs/TESTING.md](docs/doumentation/TESTING.md) |
 | Relational data model | `users/models.py`, `journal/models.py`, `assessments/models.py` | Data Model section in README |
-| Payment and subscription lifecycle | `payments/views.py`, `payments/tests.py` | [docs/TESTING.md](./docs/TESTING.md), Stripe Integration section |
-| Robust error handling | `payments/views.py`, custom `404.html` and `500.html` templates | [docs/ERROR_LOG.md](./docs/ERROR_LOG.md) |
-| Deployment readiness | `Procfile`, environment config, static handling | [docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md) |
+| Payment and subscription lifecycle | `payments/views.py`, `payments/tests.py` | [docs/TESTING.md](docs/doumentation/TESTING.md), Stripe Integration section |
+| Robust error handling | `payments/views.py`, custom `404.html` and `500.html` templates | [docs/ERROR_LOG.md](docs/doumentation/ERROR_LOG.md) |
+| Deployment readiness | `Procfile`, environment config, static handling | [docs/DEPLOYMENT.md](docs/doumentation/DEPLOYMENT.md) |
 
 ### **Final Verification Summary**
 
