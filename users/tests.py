@@ -66,3 +66,23 @@ class TestCustomUser(TestCase):
         self.assertEqual(self.user.profile.subscription_tier, UserProfile.TIER_FREE)
         self.assertRedirects(response, reverse('users:profile'))
         self.assertContains(response, 'already on the free plan')
+
+    def test_password_reset_handles_duplicate_email_without_error(self):
+        duplicate_user = self.user_model.objects.create_user(
+            username='seconduser',
+            email='test@example.com',
+            password='AnotherStrongPass123!',
+        )
+
+        response = self.client.post(
+            reverse('users:password-reset'),
+            {'email': 'test@example.com'},
+            follow=False,
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('users:password-reset-done'), fetch_redirect_response=False)
+
+        session = self.client.session
+        self.assertEqual(session.get('reset_username'), 'testuser')
+        self.assertEqual(session.get('reset_email'), 'test@example.com')

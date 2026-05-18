@@ -114,13 +114,9 @@ class PasswordResetView(DjangoPasswordResetView):
     def form_valid(self, form):
         """Store the username in session for the done template to display."""
         email = form.cleaned_data['email']
-        try:
-            user = CustomUser.objects.get(email=email)
+        user = CustomUser.objects.filter(email=email).only('username').first()
+        if user is not None:
             # Store username and email in session for done template
             self.request.session['reset_username'] = user.username
             self.request.session['reset_email'] = email
-        except CustomUser.DoesNotExist:
-            # Email not found - still process normally for security
-            # (don't reveal if email exists or not)
-            pass
         return super().form_valid(form)
