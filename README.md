@@ -12,8 +12,6 @@ This project demonstrates professional backend development, full-stack integrati
 
 ## **Table of Contents**
 
-Wireframe preparation is listed in the Design section below so the planning work is easy to find.
-
 <ol>
   <li><a href="#project-goals">Project Goals</a></li>
   <li><a href="#real-world-rationale">Real-World Rationale</a></li>
@@ -30,7 +28,7 @@ Wireframe preparation is listed in the Design section below so the planning work
     <ul>
       <li><a href="#wireframes--planning">Wireframes &amp; Planning</a></li>
       <li><a href="#wireframe-to-final-changes">Wireframe to Final Changes</a></li>
-      <li><a href="#overview">Overview</a></li>
+      <li><a href="#design-overview">Design Overview</a></li>
       <li><a href="#colour-scheme">Colour Scheme</a></li>
       <li><a href="#typography">Typography</a></li>
       <li><a href="#accessibility-in-design">Accessibility in Design</a></li>
@@ -309,7 +307,7 @@ This wireframe shows the pricing page layout, including the free and premium com
 - **Journal page**: The final page keeps the same create/list layout, with cleaner spacing and clearer action controls for create, edit, and delete.
 - **Pricing page**: The final page keeps the same free-vs-premium comparison block, with clearer tier messaging and stronger upgrade button emphasis.
 
-### **Overview**
+### **Design Overview**
 
 Mindly is designed to be calm, supportive, and user-friendly. The interface prioritises clarity, accessibility, and ease of use to encourage consistent wellbeing tracking and journaling without overwhelming the user.
 
@@ -374,8 +372,7 @@ Mindly follows WCAG 2.1 AA accessibility standards including semantic HTML, keyb
 
 #### **Account Recovery Feature Details**
 
-Account recovery allows users to securely recover their accounts. For complete implementation details, screenshots, and testing procedures, see [Account Recovery Feature Details](docs/doumentation/TESTING.md#account-recovery-feature-details) in TESTING.md.
-
+Account recovery allows users to securely recover their accounts. For complete implementation details, screenshots, and testing procedures, see [Account Recovery Feature Details in TESTING.md](docs/doumentation/TESTING.md#account-recovery-feature-details).
 
 ### **Mood Tracking Features**
 
