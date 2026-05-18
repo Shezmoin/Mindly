@@ -78,7 +78,7 @@ python manage.py createsuperuser
 
 1. Navigate to `/users/login/`
 2. **Expected:** "Forgot username or password?" link is visible (below Log In button)
-   - ![Login with Recovery Link Placeholder](docs/screenshots/password-recovery/00-login-page.png) *(Screenshot pending)*
+   - ![Login with Recovery Link Placeholder](docs/screenshots/password-recovery/00-login-page.png)
 3. Click the link
 4. **Expected:** Redirected to `/users/password-reset/` with:
    - Heading: "Recover Your Account"
@@ -87,7 +87,7 @@ python manage.py createsuperuser
    - "Send Recovery Link" button
    - "Back to login" link
    - Mindly styling (forest green colours, card panel)
-   - ![Account Recovery Form Placeholder](docs/screenshots/password-recovery/01-recovery-form.png) *(Screenshot pending)*
+   - ![Account Recovery Form Placeholder](docs/screenshots/password-recovery/01-recovery-form.png)
 
 ### Test AR-02: Account Recovery - Email Submission & Username Display
 **Objective:** Verify email submission triggers recovery email and shows confirmation page with username
@@ -103,7 +103,7 @@ python manage.py createsuperuser
    - Message about checking email and mentions username in the link
    - "Back to Home" button
    - Mindly styling applied
-   - ![Account Recovery Confirmation with Username Placeholder](docs/screenshots/password-recovery/02-confirmation-page.png) *(Screenshot pending)*
+   - ![Account Recovery Confirmation with Username Placeholder](docs/screenshots/password-recovery/02-confirmation-page.png)
 
 ### Test AR-03: Account Recovery - Email Content (Development)
 **Objective:** Verify recovery email contains correct information
@@ -144,7 +144,7 @@ python manage.py createsuperuser
    - "Confirm New Password" button (updated label)
    - "Back to login" link
    - Mindly styling applied
-   - ![Account Recovery New Password Form Placeholder](docs/screenshots/password-recovery/03-new-password-form.png) *(Screenshot pending)*
+   - ![Account Recovery New Password Form Placeholder](docs/screenshots/password-recovery/03-new-password-form.png)
 
 ### Test AR-06: Account Recovery - Form Submission
 **Objective:** Verify new password is set successfully
@@ -161,7 +161,7 @@ python manage.py createsuperuser
    - Success message
    - "Back to Login" button
    - Mindly styling applied
-   - ![Account Recovery Success Placeholder](docs/screenshots/password-recovery/04-success-page.png) *(Screenshot pending)*
+   - ![Account Recovery Success Placeholder](docs/screenshots/password-recovery/04-success-page.png)
 
 ### Test AR-07: Account Recovery - Login with Recovered Credentials
 **Objective:** Verify user can log in with recovered username and new password
@@ -191,7 +191,7 @@ python manage.py createsuperuser
    - "Request New Recovery Link" button (updated label)
    - Mindly styling applied
    - Form NOT displayed
-   - ![Invalid Recovery Link Placeholder](docs/screenshots/password-recovery/03b-invalid-link.png) *(Screenshot pending)*
+   - ![Invalid Recovery Link Placeholder](docs/screenshots/password-recovery/03b-invalid-link.png)
 
 ### Test AR-09: Account Recovery - Form Validation
 **Objective:** Verify password form validates input properly

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "users_app_error",
+    "url": "http://localhost:8000/users/",
+    "description": "Users app root URL - no route configured",
+    "screenshot": "errors\\session_20260401_144909\\users_app_error.png",
+    "title": "Page not found at /users/",
+    "status_code": 404,
+    "timestamp": "2026-04-01T14:49:11.947479",
+    "error_detected": true
+  },
+  {
+    "name": "assessments_template_error",
+    "url": "http://localhost:8000/assessments/",
+    "description": "Assessments app - missing template",
+    "screenshot": "errors\\session_20260401_144909\\assessments_template_error.png",
+    "title": "TemplateDoesNotExist at /assessments/",
+    "status_code": 500,
+    "timestamp": "2026-04-01T14:49:13.251183",
+    "error_detected": false
+  },
+  {
+    "name": "journal_template_error",
+    "url": "http://localhost:8000/journal/",
+    "description": "Journal app - missing template",
+    "screenshot": "errors\\session_20260401_144909\\journal_template_error.png",
+    "title": "TemplateDoesNotExist at /journal/",
+    "status_code": 500,
+    "timestamp": "2026-04-01T14:49:14.459611",
+    "error_detected": false
+  }
+]

@@ -1,12 +1,20 @@
+import logging
+
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.views import PasswordResetView as DjangoPasswordResetView
+from django.contrib.auth.views import (
+    PasswordResetConfirmView as DjangoPasswordResetConfirmView,
+    PasswordResetView as DjangoPasswordResetView,
+)
 from django.shortcuts import redirect, render
 from django.views.decorators.http import require_POST
 
 from .forms import UserProfileEditForm, UserRegistrationForm
 from .models import CustomUser, UserProfile
+
+
+logger = logging.getLogger(__name__)
 
 
 def register_view(request):
@@ -119,4 +127,16 @@ class PasswordResetView(DjangoPasswordResetView):
             # Store username and email in session for done template
             self.request.session['reset_username'] = user.username
             self.request.session['reset_email'] = email
-        return super().form_valid(form)
+
+        try:
+            return super().form_valid(form)
+        except Exception:
+            logger.exception('Password reset email failed for %s', email)
+            return redirect(self.success_url)
+
+
+class PasswordResetConfirmView(DjangoPasswordResetConfirmView):
+    """Custom password reset confirm view that redirects to the Mindly completion page."""
+
+    template_name = 'users/password_reset_confirm.html'
+    success_url = '/users/password-reset/complete/'

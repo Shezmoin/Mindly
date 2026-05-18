@@ -424,14 +424,14 @@ Account recovery allows users to securely recover their accounts when they forge
 
 **Templates with Mindly Styling:**
 - `password_reset.html` - Email entry form with "Recover Your Account" heading and recovery link button
-  - ![Password Recovery Form Placeholder](docs/screenshots/password-recovery/01-recovery-form.png) *(Screenshot pending)*
+  - ![Password Recovery Form Placeholder](docs/screenshots/password-recovery/01-recovery-form.png)
 - `password_reset_done.html` - Confirmation page with envelope icon, username display box, and helpful text
-  - ![Password Recovery Confirmation Placeholder](docs/screenshots/password-recovery/02-confirmation-page.png) *(Screenshot pending)*
+  - ![Password Recovery Confirmation Placeholder](docs/screenshots/password-recovery/02-confirmation-page.png)
 - `password_reset_confirm.html` - New password form with valid/invalid token handling and green/red icons
-  - ![Password Recovery New Password Placeholder](docs/screenshots/password-recovery/03-new-password-form.png) *(Screenshot pending)*
-  - ![Invalid Recovery Link Placeholder](docs/screenshots/password-recovery/03b-invalid-link.png) *(Screenshot pending)*
+  - ![Password Recovery New Password Placeholder](docs/screenshots/password-recovery/03-new-password-form.png)
+  - ![Invalid Recovery Link Placeholder](docs/screenshots/password-recovery/03b-invalid-link.png)
 - `password_reset_complete.html` - Success message with green check icon and login link
-  - ![Password Recovery Success Placeholder](docs/screenshots/password-recovery/04-success-page.png) *(Screenshot pending)*
+  - ![Password Recovery Success Placeholder](docs/screenshots/password-recovery/04-success-page.png)
 
 **Email Configuration:**
 See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions for:

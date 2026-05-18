@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
+from unittest.mock import patch
 
 from users.models import UserProfile
 
@@ -68,7 +69,7 @@ class TestCustomUser(TestCase):
         self.assertContains(response, 'already on the free plan')
 
     def test_password_reset_handles_duplicate_email_without_error(self):
-        duplicate_user = self.user_model.objects.create_user(
+        self.user_model.objects.create_user(
             username='seconduser',
             email='test@example.com',
             password='AnotherStrongPass123!',
@@ -86,3 +87,15 @@ class TestCustomUser(TestCase):
         session = self.client.session
         self.assertEqual(session.get('reset_username'), 'testuser')
         self.assertEqual(session.get('reset_email'), 'test@example.com')
+
+    def test_password_reset_redirects_even_if_email_send_fails(self):
+        with patch('django.contrib.auth.views.PasswordResetView.form_valid', side_effect=Exception('smtp failed')):
+            response = self.client.post(
+                reverse('users:password-reset'),
+                {'email': 'test@example.com'},
+                follow=False,
+            )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertRedirects(response, reverse('users:password-reset-done'), fetch_redirect_response=False)
+
