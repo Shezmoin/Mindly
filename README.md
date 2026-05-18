@@ -453,24 +453,11 @@ Success page with confirmation message and login action.
 
 ##### **Email Configuration**
 
-See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed setup instructions for:
-- Gmail (recommended for quick setup)
-- SendGrid (enterprise alternative)
-- Mailgun (popular alternative)
-- Custom SMTP servers
+See [DEPLOYMENT.md](DEPLOYMENT.md) for full email and SMTP setup details.
 
 ##### **Testing Instructions**
 
-See [TESTING.md](TESTING.md) for comprehensive testing procedures:
-- Test AR-01: Account Recovery Request Form
-- Test AR-02: Email Submission & Username Display
-- Test AR-03: Email Content Verification
-- Test AR-04: Non-existent Email Handling
-- Test AR-05: Valid Token Recovery Form
-- Test AR-06: Password Reset Submission
-- Test AR-07: Login with Recovered Username & New Password
-- Test AR-08: Expired Token Handling
-- Test AR-09: Form Validation
+See [TESTING.md](TESTING.md) for complete Account Recovery test coverage and execution steps.
 
 ### **Mood Tracking Features**
 
