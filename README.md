@@ -173,10 +173,10 @@ Mindly uses one custom user model with a small set of linked profile, mood, jour
 
 ### **Relationships**
 
-- `CustomUser` → `UserProfile` (`1-to-1`)
-- `CustomUser` → `MoodEntry` (`1-to-many`)
-- `CustomUser` → `JournalEntry` (`1-to-many`)
-- `CustomUser` → `AssessmentResult` (`1-to-many`)
+- `CustomUser` → `UserProfile` (1-to-1)
+- `CustomUser` → `MoodEntry` (1-to-many)
+- `CustomUser` → `JournalEntry` (1-to-many)
+- `CustomUser` → `AssessmentResult` (1-to-many)
 
 ### **ERD (ASCII)**
 
