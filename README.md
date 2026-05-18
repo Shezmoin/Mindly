@@ -19,9 +19,6 @@ Wireframe preparation is listed in the Design section below so the planning work
   <li><a href="#real-world-rationale">Real-World Rationale</a></li>
   <li><a href="#development-strategy">Development Strategy</a></li>
   <li><a href="#live-project">Live Project</a></li>
-  <li><a href="#repository">Repository</a></li>
-  <li><a href="#documentation">Documentation</a></li>
-  <li><a href="#badges">Badges</a></li>
   <li><a href="#user-experience">User Experience</a>
     <ul>
       <li><a href="#user-stories">User Stories</a></li>
@@ -51,7 +48,16 @@ Wireframe preparation is listed in the Design section below so the planning work
       <li><a href="#payment-features">Payment Features</a></li>
     </ul>
   </li>
-  <li><a href="#data-model--schema">Data Model / Schema</a></li>
+  <li><a href="#data-model--schema">Data Model / Schema</a>
+    <ul>
+      <li><a href="#model-summary">Model Summary</a></li>
+      <li><a href="#relationships">Relationships</a></li>
+      <li><a href="#erd-ascii">ERD (ASCII)</a></li>
+      <li><a href="#repository">Repository</a></li>
+      <li><a href="#documentation">Documentation</a></li>
+      <li><a href="#badges">Badges</a></li>
+    </ul>
+  </li>
   <li><a href="#future-features">Future Features</a>
     <ul>
       <li><a href="#user-experience-improvements">User Experience Improvements</a></li>

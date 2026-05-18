@@ -20,10 +20,10 @@ This document outlines the comprehensive testing process carried out during deve
 - [Lighthouse Performance Scores](#lighthouse-performance-scores)
 - [Django System Checks](#django-system-checks)
 - [Error and Edge-Case Screenshots](#error-and-edge-case-screenshots)
+- [Known Issues](#known-issues)
 - [Additional Manual Test Cases](#additional-manual-test-cases-mt-21-to-mt-30)
 - [Account Recovery Feature Details](#account-recovery-feature-details)
 - [Payment & Webhook Bug Log](#payment--webhook-bug-log)
-- [Known Issues](#known-issues)
 - [Future Testing Improvements](#future-testing-improvements)
 
 ---
