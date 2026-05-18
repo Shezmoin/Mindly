@@ -424,29 +424,29 @@ Account recovery allows users to securely recover their accounts when they forge
 - No sensitive data exposed in URLs (tokens are hashed)
 - Invalid/expired tokens show user-friendly error messages with recovery options
 
-##### **Recovery Screens (Mindly UI)**
+#### **Recovery Screens**
 
-###### **1. Recovery Form** (`password_reset.html`)
+##### **1. Recovery Form**
 Email entry form with "Recover Your Account" heading and recovery link button.
 
 <img src="docs/screenshots/password-recovery/01-recovery-form.png" alt="Password Recovery Form" width="45%">
 
-###### **2. Confirmation Page** (`password_reset_done.html`)
+##### **2. Confirmation Page**
 Confirmation page with envelope icon, username display box, and recovery guidance text.
 
 <img src="docs/screenshots/password-recovery/02-confirmation-page.png" alt="Password Recovery Confirmation" width="45%">
 
-###### **3. New Password Form** (`password_reset_confirm.html` - valid link)
+##### **3. New Password Form**
 Valid recovery link state with green check icon and password form.
 
 <img src="docs/screenshots/password-recovery/03-new-password-form.png" alt="Password Recovery New Password Form" width="45%">
 
-###### **4. Invalid Recovery Link** (`password_reset_confirm.html` - invalid/expired link)
+##### **4. Invalid Recovery Link**
 Invalid link state with red alert icon and recovery re-request action.
 
 <img src="docs/screenshots/password-recovery/03b-invalid-link.png" alt="Invalid Recovery Link" width="45%">
 
-###### **5. Recovery Complete** (`password_reset_complete.html`)
+##### **5. Recovery Complete**
 Success page with confirmation message and login action.
 
 <img src="docs/screenshots/password-recovery/04-success-page.png" alt="Password Recovery Complete" width="45%">
