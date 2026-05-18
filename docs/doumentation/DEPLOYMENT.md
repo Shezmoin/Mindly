@@ -12,6 +12,7 @@ This document provides comprehensive deployment instructions for running Mindly 
 - [Environment Variables Reference](#environment-variables-reference)
 - [Database Setup](#database-setup)
 - [Stripe Setup](#stripe-setup)
+- [Stripe Integration](#stripe-integration)
 - [Troubleshooting](#troubleshooting)
 - [Deployment Checklist (Heroku)](#deployment-checklist-heroku)
 - [Deployment Notes](#deployment-notes)
@@ -414,6 +415,50 @@ Copy printed webhook secret to `.env`.
 4. Events: `checkout.session.completed`
 5. Copy signing secret
 6. Run: `heroku config:set STRIPE_WEBHOOK_SECRET=whsec_...`
+
+---
+
+## **Stripe Integration**
+
+### **Payment Architecture**
+
+1. **Checkout Flow:** User clicks "Subscribe Now" → Django creates Stripe Checkout Session → Stripe hosts secure payment page
+2. **Payment Processing:** Stripe processes card securely on Stripe's hosted page
+3. **Webhook Flow:** Stripe sends `checkout.session.completed` event → Webhook view verifies signature → User profile upgraded to premium tier
+4. **Access Control:** `@premium_required` decorator gates all premium views
+
+### **Security Features**
+
+* API keys stored in environment variables (never hardcoded)
+* Webhook signature verification with `STRIPE_WEBHOOK_SECRET`
+* CSRF protection on all forms
+* `@login_required` on sensitive endpoints
+* Custom `@premium_required` decorator for tier verification
+* Debug mode disabled in production
+
+### **Error Handling & Recovery**
+
+| Scenario | Behaviour |
+|----------|-----------|
+| User cancels at Stripe checkout | Redirected to `payments/cancel/` — subscription is **not** created, account unchanged |
+| Stripe checkout fails (card declined, etc.) | Stripe shows an in-page error on the hosted checkout; user can retry or exit |
+| User exits checkout without completing | Session expires; `checkout.session.completed` is never fired; no upgrade occurs |
+| Webhook receives unexpected event type | Handler returns `200 OK` silently — only `checkout.session.completed` triggers upgrade logic |
+| Webhook signature verification fails | Returns `400 Bad Request`; event is discarded without processing |
+| `checkout.session.completed` has no email | Falls back to metadata `user_id`; if no user matches, no upgrade and warning is logged |
+| Donation payment (one-time) received | Webhook detects `mode != subscription`; marks donation only — premium tier is **not** set |
+| User reaches `/payments/success/` without a valid session | View renders success page but only applies premium upgrade when a valid subscription session can be confirmed |
+| Custom 404 page | Served by `templates/404.html` when `DEBUG=False` and a route is not found |
+| Custom 500 page | Served by `templates/500.html` when `DEBUG=False` and an unhandled exception occurs |
+
+### **Local Webhook Testing**
+
+```bash
+stripe login
+stripe listen --forward-to 127.0.0.1:8000/payments/webhook/
+```
+
+Copy the printed webhook secret to your local `.env` as `STRIPE_WEBHOOK_SECRET`.
 
 ---
 

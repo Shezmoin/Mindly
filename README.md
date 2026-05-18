@@ -120,32 +120,9 @@ For this project, success means:
 
 ## **Development Strategy**
 
-Mindly was developed using a domain-driven multi-app Django structure so each app maps to a natural product boundary:
-- `users`: identity, profile, subscription state
-- `journal`: mood/journal CRUD operations
-- `assessments`: interactive self-check tools and persisted result records
-- `payments`: Stripe checkout, webhook processing, and premium upgrade flow
-- `pages`: static and premium resource views
+Mindly was developed using a domain-driven multi-app Django structure where each app maps to a single product boundary. Django ORM, Stripe Checkout with webhook verification, Bootstrap, and Heroku deployment were chosen to meet project requirements cleanly. The project was committed regularly to GitHub to evidence traceable, incremental development.
 
-Key architecture decisions:
-- Use Django ORM for safe relational data handling and owner-scoped query patterns
-- Use Stripe Checkout + webhook verification for secure payment lifecycle handling
-- Use Bootstrap + custom CSS for responsive UI consistency across mobile/desktop
-- Deploy on Heroku with environment-variable based secrets and production hardening
-
-### **Build Constraints and Decisions**
-
-- Kept app boundaries strict so each app has one clear responsibility
-- Stored sensitive values in environment variables only
-- Treated webhook signature verification as mandatory in production
-- Prioritized clarity over complexity in UI and feature flows
-- Focused on traceable evidence: tests, screenshots, and deployment checks
-
-### **Development Process and Version Control**
-
-The project was built in small stages and committed to GitHub regularly during development. I used Git and GitHub throughout the project to save progress, track changes, and keep a clear record of feature work, fixes, testing updates, and documentation updates.
-
-This matters for the project criteria because version control is not only about having a repository. It is also evidence that the project was developed in a steady and traceable way rather than uploaded all at once at the end.
+See [**ARCHITECTURE.md**](docs/doumentation/ARCHITECTURE.md) for full development strategy, build constraints, and version control approach.
 
 ---
 
@@ -223,23 +200,25 @@ CustomUser
 
 ### **Documentation**
 
-Comprehensive guides for deployment, testing, and development:
+Comprehensive guides for deployment, testing, architecture, and accessibility:
 
 * **[DEPLOYMENT.md](docs/doumentation/DEPLOYMENT.md)** - Production deployment guide covering:
   - Environment variable setup
-  - Email configuration (Gmail, SendGrid, Mailgun)
   - Heroku deployment steps
-  - SSL/HTTPS configuration
   - Database setup and migration
+  - Stripe integration and webhook configuration
   - Troubleshooting common issues
 
-* **[TESTING.md](docs/doumentation/TESTING.md)** - Manual testing guide covering:
-  - Test environment setup
-  - Complete test cases for all features (AT, AR, MO, JO, AS, PM, PF, SEC, RD tests)
-  - Account recovery testing procedures (9 test cases: AR-01 through AR-09)
-  - Security and responsive design testing
-  - Test data cleanup
-  - Regression testing checklist
+* **[TESTING.md](docs/doumentation/TESTING.md)** - Testing guide covering:
+  - Manual test matrix (MT-01 to MT-30)
+  - Code validation with screenshots (PEP8, HTML, CSS, JavaScript)
+  - Requirement to Evidence Map and Final Verification Summary
+  - Accessibility, security, and responsiveness testing
+
+* **[ARCHITECTURE.md](docs/doumentation/ARCHITECTURE.md)** - Architecture guide covering:
+  - Development strategy and build constraints
+  - App structure justification
+  - Backend-frontend request-response flows and sequence diagrams
 
 ---
 
@@ -366,15 +345,7 @@ A warm, supportive colour palette is chosen to create a positive, welcoming envi
 
 ### **Accessibility in Design**
 
-Mindly follows WCAG accessibility best practices:
-
-* Semantic HTML used throughout for screen reader compatibility
-* Labels associated with all form inputs for clarity
-* Keyboard navigation supported for all interactive elements
-* Sufficient colour contrast maintained (WCAG AA standard)
-* Responsive design ensures usability on all device sizes
-* Alt text provided for all non-decorative images
-* Form validation provides clear error messages
+Mindly follows WCAG 2.1 AA accessibility standards including semantic HTML, keyboard navigation, sufficient colour contrast, and screen reader compatibility. See [**ACCESSIBILITY.md**](docs/doumentation/ACCESSIBILITY.md) for full accessibility implementation details.
 
 ---
 
@@ -493,63 +464,9 @@ Account recovery allows users to securely recover their accounts. For complete i
 
 ## **Backend-Frontend Flow Examples**
 
-### **Flow 1: Journal CRUD (Create example)**
+Mindly's two primary request-response paths are the Journal CRUD flow (create/edit/delete) and the Stripe Premium Upgrade flow via Checkout and webhook.
 
-1. User submits the journal form in the template (`templates/journal/journal_form.html`)
-2. POST request is handled by `journal_create_view` in `journal/views.py`
-3. Django form validates inputs and binds the entry to `request.user`
-4. ORM saves `JournalEntry` into the database
-5. User is redirected to journal list with a success message
-6. Template renders updated list using query results for that logged-in user only
-
-### **Flow 2: Premium Upgrade via Stripe Webhook**
-
-1. User starts checkout from pricing/support page
-2. `payments/checkout_view` creates Stripe Checkout Session
-3. Stripe sends `checkout.session.completed` event to `payments/webhook/`
-4. Webhook verifies signature with `STRIPE_WEBHOOK_SECRET`
-5. Matching user is identified from metadata/email
-6. Only `mode=subscription` events upgrade `UserProfile.subscription_tier` to `premium`
-7. Premium-protected views become accessible through the `@premium_required` gate
-
-Fallback note: when a user returns to `payments/success/` with `session_id`,
-`success_view` also confirms Stripe session state and applies the premium upgrade
-if required.
-
-### **Sequence Diagram: Premium Upgrade Request-Response Path**
-
-```mermaid
-sequenceDiagram
-  participant Browser
-  participant DjangoView as payments/checkout_view
-  participant Stripe
-  participant Success as payments/success_view
-  participant Webhook as payments/webhook_view
-  participant DB as UserProfile
-
-  Browser->>DjangoView: Click "Go Premium"
-  DjangoView->>Stripe: Create Checkout Session
-  Stripe-->>Browser: Hosted checkout URL
-  Stripe->>Webhook: checkout.session.completed
-  Webhook->>Webhook: Verify webhook signature
-  alt Session mode is subscription
-    Webhook->>DB: Update subscription_tier to premium
-    DB-->>Webhook: Save successful
-  else Session mode is payment (donation)
-    Webhook->>Webhook: Log donation only
-  end
-  Webhook-->>Stripe: HTTP 200
-
-  Browser->>Success: Redirect with session_id
-  Success->>Stripe: Retrieve Checkout Session
-  alt Subscription + complete
-    Success->>DB: Ensure subscription_tier is premium
-    DB-->>Success: Save successful
-  else Non-subscription or incomplete
-    Success->>Success: No tier change
-  end
-  Success-->>Browser: Render success page
-```
+See [**ARCHITECTURE.md - Backend-Frontend Flow Examples**](docs/doumentation/ARCHITECTURE.md#backend-frontend-flow-examples) for detailed step-by-step flows and the full Stripe upgrade sequence diagram.
 
 ---
 
@@ -610,30 +527,25 @@ mindly/
 ├── static/                             # Static files
 │   └── css/
 │       └── style.css                   # Custom styles
-├── docs/                               # Documentation
-│   ├── TESTING.md                      # Testing documentation
-│   ├── DEPLOYMENT.md                   # Deployment guide
-│   └── ERROR_LOG.md                    # Error log with fixes
+├── docs/                               # Documentation and screenshots
+│   ├── doumentation/                   # Documentation files
+│   │   ├── ARCHITECTURE.md             # Architecture and design decisions
+│   │   ├── ACCESSIBILITY.md            # Accessibility documentation
+│   │   ├── DEPLOYMENT.md               # Deployment guide
+│   │   ├── TESTING.md                  # Testing documentation
+│   │   └── ERROR_LOG.md                # Error log with fixes
+│   └── screenshots/                    # Evidence screenshots
 ├── errors/                             # Error capture logs and session records
 │   └── README.md                       # Error notes
-└── docs/screenshots/                   # Evidence screenshots used in documentation
 ```
 
 ---
 
 ## **App Structure Justification**
 
-Each Django app in Mindly has a single, well-defined domain responsibility. The table below explains why each boundary was drawn where it was.
+Each Django app maps to a single domain responsibility. Cross-app communication uses model relationships and URL routing only — no app imports another's views directly.
 
-| App | Domain | Reason for boundary |
-|-----|---------|---------------------|
-| `users` | Authentication, profiles, premium state | Handles all identity concerns independently so auth logic never leaks into feature apps |
-| `journal` | Journal entries and mood tracking | Groups related CRUD models (`JournalEntry`, `MoodEntry`) under one owner-scoped domain |
-| `assessments` | Guided self-check tools and result persistence | Isolated so self-check scoring and result history can evolve without touching journal or payment logic |
-| `payments` | Stripe checkout, webhooks, subscription management | Payment concerns are sensitive and externally integrated — strict isolation reduces risk and simplifies testing |
-| `pages` | Static pages, dashboard, public and premium resources | Thin presentation layer; separating it keeps feature apps free of generic page routing |
-
-Cross-app communication is handled exclusively through model relationships and Django's URL routing. No app imports another app's views directly, preserving clean separation of concerns.
+See [**ARCHITECTURE.md - App Structure Justification**](docs/doumentation/ARCHITECTURE.md#app-structure-justification) for the full justification table.
 
 ---
 
@@ -673,58 +585,23 @@ Core application functionality is implemented and actively tested. Heroku deploy
 
 ## **Testing**
 
-Comprehensive testing has been carried out to ensure functionality, security, usability, and reliability across all features.
+Comprehensive testing has been carried out across all features — CRUD operations, authentication, payment flows, responsive design, accessibility, and code validation.
 
-Automated Django test modules are maintained across the main apps (`users`, `journal`, `payments`, `pages`, `assessments`) and are run with `python manage.py test` as part of routine verification.
+Automated Django test modules are maintained across all apps (`users`, `journal`, `payments`, `pages`, `assessments`) and are run with `python manage.py test` as part of routine verification.
 
-### **Python Validation**
-
-Python checked with flake8.
-
-![Python Validation Results](docs/screenshots/testing-validation-python.jpg)
-
-* No critical errors
-* Proper syntax and structure
-* No unused variables/imports
-
-See [**TESTING.md**](docs/doumentation/TESTING.md) for full testing documentation including:
-
-* Automated test coverage summary
-* Manual test matrix (MT-01 to MT-11): [Jump to manual test table](docs/doumentation/TESTING.md#manual-test-matrix-mt-01-to-mt-11)
+See [**TESTING.md**](docs/doumentation/TESTING.md) for complete testing documentation including:
 
 * Testing strategy and methodology
 * User story validation
-* Feature testing (CRUD, payments, authentication)
-* Form validation testing
-* Browser compatibility testing
-* Responsiveness testing
-* Accessibility testing (WCAG 2.1 AA/AAA contrast verification; see [ACCESSIBILITY.md](docs/doumentation/ACCESSIBILITY.md) for the 8.08:1 contrast ratio used in the navbar)
+* Manual test matrix (MT-01 to MT-30)
+* Form validation, browser compatibility, and responsiveness testing
+* Accessibility testing (WCAG 2.1 AA/AAA; see [ACCESSIBILITY.md](docs/doumentation/ACCESSIBILITY.md))
 * Security testing
+* Code validation with screenshots (PEP8, HTML, CSS, JavaScript)
 * Lighthouse performance scores
-* Code validation (PEP8, HTML, CSS, JavaScript)
-* Known issues (if any)
-
-### **Requirement to Evidence Map**
-
-| Requirement Area | Where Implemented | Evidence |
-|----------|-----------|----------|
-| Authentication and access control | `users/views.py`, `users/decorators.py`, `users/tests.py` | [docs/TESTING.md](docs/doumentation/TESTING.md), [docs/ERROR_LOG.md](docs/doumentation/ERROR_LOG.md) |
-| Full CRUD for user-owned data | `journal/views.py`, `journal/forms.py`, `journal/tests.py` | [docs/TESTING.md](docs/doumentation/TESTING.md) |
-| Relational data model | `users/models.py`, `journal/models.py`, `assessments/models.py` | Data Model section in README |
-| Payment and subscription lifecycle | `payments/views.py`, `payments/tests.py` | [docs/TESTING.md](docs/doumentation/TESTING.md), Stripe Integration section |
-| Robust error handling | `payments/views.py`, custom `404.html` and `500.html` templates | [docs/ERROR_LOG.md](docs/doumentation/ERROR_LOG.md) |
-| Deployment readiness | `Procfile`, environment config, static handling | [docs/DEPLOYMENT.md](docs/doumentation/DEPLOYMENT.md) |
-
-### **Final Verification Summary**
-
-All non-cleanup verification checks were completed and recorded before submission finalization.
-
-* Authentication checks completed (valid login, invalid login handling, logout flow)
-* Profile and owner-scoped feature checks completed (profile update persistence, journal and mood owner scope)
-* Payment and subscription checks completed (Stripe checkout flow, cancellation path, webhook confirmation at `200 OK`)
-* Error-state checks completed (custom 404 and checkout failure behavior)
-* UI validation checks completed (responsive checks, dark mode checks, consistency/robustness sweeps)
-* Deployment and platform checks completed (Heroku health/config checks and PostgreSQL verification)
+* [Requirement to Evidence Map](docs/doumentation/TESTING.md#requirement-to-evidence-map)
+* [Final Verification Summary](docs/doumentation/TESTING.md#final-verification-summary)
+* Known issues
 
 ---
 
@@ -732,7 +609,7 @@ All non-cleanup verification checks were completed and recorded before submissio
 
 All errors encountered during development have been documented with investigations and solutions.
 
-See [**ERROR_LOG.md**](./docs/ERROR_LOG.md) for complete error documentation including:
+See [**ERROR_LOG.md**](docs/doumentation/ERROR_LOG.md) for complete error documentation including:
 
 * Error description and symptoms
 * Investigation methodology
@@ -746,7 +623,7 @@ See [**ERROR_LOG.md**](./docs/ERROR_LOG.md) for complete error documentation inc
 
 Mindly is deployed following professional security and deployment practices.
 
-See [**DEPLOYMENT.md**](docs/DEPLOYMENT.md) for comprehensive deployment documentation including:
+See [**DEPLOYMENT.md**](docs/doumentation/DEPLOYMENT.md) for comprehensive deployment documentation including:
 
 * Local development setup
 * Production deployment on Heroku (step-by-step)
@@ -758,7 +635,7 @@ See [**DEPLOYMENT.md**](docs/DEPLOYMENT.md) for comprehensive deployment documen
 * Deployment verification steps
 * Troubleshooting guide
 
-For Heroku setup from scratch, follow the numbered production steps in [**DEPLOYMENT.md - Production Deployment (Heroku)**](./docs/DEPLOYMENT.md#production-deployment-heroku).
+For Heroku setup from scratch, follow the numbered production steps in [**DEPLOYMENT.md - Production Deployment (Heroku)**](docs/doumentation/DEPLOYMENT.md#production-deployment-heroku).
 
 ---
 
@@ -776,45 +653,9 @@ Security controls are implemented in both code and deployment configuration:
 
 ## **Stripe Integration**
 
-### **Payment Architecture**
+Mindly uses Stripe Checkout for secure monthly subscription payments. The webhook handler verifies signatures and differentiates between subscription upgrades and one-time donations.
 
-1. **Checkout Flow:** User clicks "Subscribe Now" → Django creates Stripe Checkout Session → Stripe hosts secure payment page
-2. **Payment Processing:** Stripe processes card securely
-3. **Webhook Flow:** Stripe sends checkout.session.completed event → Webhook view verifies signature → User profile upgraded to premium tier
-4. **Access Control:** @premium_required decorator gates premium views
-
-### **Security Features**
-
-* API keys stored in environment variables (never hardcoded)
-* Webhook signature verification with STRIPE_WEBHOOK_SECRET
-* CSRF protection on all forms
-* @login_required on sensitive endpoints
-* Custom @premium_required decorator for tier verification
-* Debug mode disabled in production
-
-### **Error Handling & Recovery**
-
-| Scenario | Behaviour |
-|----------|-----------|
-| User cancels at Stripe checkout | Redirected to `payments/cancel/` — subscription is **not** created, account unchanged |
-| Stripe checkout fails (card declined, etc.) | Stripe shows an in-page error on the hosted checkout; user can retry or exit |
-| User exits checkout without completing | Session expires; `checkout.session.completed` is never fired; no upgrade occurs |
-| Webhook receives unexpected event type | Handler returns `200 OK` silently — only `checkout.session.completed` triggers upgrade logic |
-| Webhook signature verification fails | Returns `400 Bad Request`; event is discarded without processing |
-| `checkout.session.completed` has no email | Falls back to metadata `user_id`; if no user matches, no upgrade and warning is logged |
-| Donation payment (one-time) received | Webhook detects `mode != subscription`; marks donation only — premium tier is **not** set |
-| User reaches `/payments/success/` without a valid session | View renders success page but only applies premium upgrade when a valid subscription session can be confirmed |
-| Custom 404 page | Served by `templates/404.html` when `DEBUG=False` and a route is not found |
-| Custom 500 page | Served by `templates/500.html` when `DEBUG=False` and an unhandled exception occurs |
-
-### **Local Webhook Testing**
-
-```bash
-stripe login
-stripe listen --forward-to 127.0.0.1:8000/payments/webhook/
-```
-
-See [**DEPLOYMENT.md**](./docs/DEPLOYMENT.md) for complete Stripe setup and testing instructions.
+See [**DEPLOYMENT.md - Stripe Integration**](docs/doumentation/DEPLOYMENT.md#stripe-integration) for complete architecture, security features, error handling scenarios, and local webhook testing setup.
 
 ---
 
@@ -852,7 +693,7 @@ Python documentation, Django official documentation, Stripe API documentation, B
 
 ### **Media**
 
-Project screenshots are embedded in this README. Remaining visual evidence screenshots (testing/validation/audit) are tracked in [docs/TESTING.md](docs/TESTING.md).
+Project screenshots are embedded in this README. Remaining visual evidence screenshots (testing/validation/audit) are tracked in [TESTING.md](docs/doumentation/TESTING.md).
 
 ### **Acknowledgements**
 

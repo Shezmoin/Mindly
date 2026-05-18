@@ -24,6 +24,8 @@ This document outlines the comprehensive testing process carried out during deve
 - [Additional Manual Test Cases](#additional-manual-test-cases-mt-21-to-mt-30)
 - [Account Recovery Feature Details](#account-recovery-feature-details)
 - [Payment & Webhook Bug Log](#payment--webhook-bug-log)
+- [Requirement to Evidence Map](#requirement-to-evidence-map)
+- [Final Verification Summary](#final-verification-summary)
 - [Future Testing Improvements](#future-testing-improvements)
 
 ---
@@ -619,6 +621,32 @@ Critical issues identified and fixed during payment integration testing:
 | 2026-04-13-2 | Donation grants premium (any user)            | Donate as any user, become premium | Webhook did not check session mode            | Webhook checks mode, only upgrades for subscription | Fixed  |
 
 **Impact:** Both issues affected subscription/donation distinction. Fixes ensure donations don't falsely upgrade tier and success messages are type-appropriate.
+
+---
+
+## **Requirement to Evidence Map**
+
+| Requirement Area | Where Implemented | Evidence |
+|----------|-----------|----------|
+| Authentication and access control | `users/views.py`, `users/decorators.py`, `users/tests.py` | [TESTING.md](TESTING.md), [ERROR_LOG.md](ERROR_LOG.md) |
+| Full CRUD for user-owned data | `journal/views.py`, `journal/forms.py`, `journal/tests.py` | [TESTING.md](TESTING.md) |
+| Relational data model | `users/models.py`, `journal/models.py`, `assessments/models.py` | Data Model section in README |
+| Payment and subscription lifecycle | `payments/views.py`, `payments/tests.py` | [TESTING.md](TESTING.md), [Stripe Integration](DEPLOYMENT.md#stripe-integration) |
+| Robust error handling | `payments/views.py`, custom `404.html` and `500.html` templates | [ERROR_LOG.md](ERROR_LOG.md) |
+| Deployment readiness | `Procfile`, environment config, static handling | [DEPLOYMENT.md](DEPLOYMENT.md) |
+
+---
+
+## **Final Verification Summary**
+
+All non-cleanup verification checks were completed and recorded before submission finalization.
+
+* Authentication checks completed (valid login, invalid login handling, logout flow)
+* Profile and owner-scoped feature checks completed (profile update persistence, journal and mood owner scope)
+* Payment and subscription checks completed (Stripe checkout flow, cancellation path, webhook confirmation at `200 OK`)
+* Error-state checks completed (custom 404 and checkout failure behavior)
+* UI validation checks completed (responsive checks, dark mode checks, consistency/robustness sweeps)
+* Deployment and platform checks completed (Heroku health/config checks and PostgreSQL verification)
 
 ---
 
