@@ -21,6 +21,7 @@ This document outlines the comprehensive testing process carried out during deve
 - [Django System Checks](#django-system-checks)
 - [Error and Edge-Case Screenshots](#error-and-edge-case-screenshots)
 - [Additional Manual Test Cases](#additional-manual-test-cases-mt-21-to-mt-30)
+- [Account Recovery Feature Details](#account-recovery-feature-details)
 - [Payment & Webhook Bug Log](#payment--webhook-bug-log)
 - [Known Issues](#known-issues)
 - [Future Testing Improvements](#future-testing-improvements)
@@ -545,6 +546,66 @@ Supplementary tests covering premium features, responsiveness edge cases, and ac
 | MT-28   | Responsive @ 768px             | Resize browser to 768px width, view main pages                             | Layout adapts to tablet size, all content accessible  | Pass   |
 | MT-29   | Responsive @ 1280px            | Resize browser to 1280px width, view main pages                            | Layout is desktop-optimized, no layout issues         | Pass   |
 | MT-30   | Keyboard Navigation            | Use Tab key to navigate all interactive elements                           | All controls accessible, visible focus indicators     | Pass   |
+
+---
+
+## **Account Recovery Feature Details**
+
+Account recovery allows users to securely recover their accounts when they forget their **username or password**. A single recovery flow serves both needs.
+
+### **User Flow**
+
+1. User clicks "Forgot username or password?" on the login page
+2. User enters their email address on the recovery request form
+3. Django generates a secure token and sends an email with a recovery link (token valid for 1 hour)
+4. System displays confirmation page with username (if account found)
+5. User clicks the link in their email
+6. User enters a new password on the secure recovery form
+7. New password is validated and stored securely
+8. User can log in with their username and new password
+
+### **Technical Implementation**
+
+- Custom `PasswordResetView` in `users/views.py` captures username from session
+- Uses Django 4.2's built-in authentication views (`PasswordResetView`, `PasswordResetDoneView`, `PasswordResetConfirmView`, `PasswordResetCompleteView`)
+- All 4 templates styled with Mindly's forest green colour scheme and consistent design
+- Email configuration supports:
+  - **Development:** Console backend (emails print to terminal for testing)
+  - **Production:** SMTP via environment variables (Gmail, SendGrid, Mailgun, or custom SMTP server)
+- Token generation uses Django's cryptographically secure token generator (PBKDF2-SHA256)
+- Token expiry: 1 hour (configurable via `PASSWORD_RESET_TIMEOUT = 3600` in settings)
+- Username stored in session and displayed on confirmation page for user reference
+- No sensitive data exposed in URLs (tokens are hashed)
+- Invalid/expired tokens show user-friendly error messages with recovery options
+
+For full email and SMTP setup details, see [DEPLOYMENT.md](DEPLOYMENT.md).
+
+### **Recovery Screens**
+
+#### **1. Recovery Form**
+Email entry form with "Recover Your Account" heading and recovery link button.
+
+<img src="../screenshots/password-recovery/01-recovery-form.png" alt="Password Recovery Form" width="45%">
+
+#### **2. Confirmation Page**
+Confirmation page with envelope icon, username display box, and recovery guidance text.
+
+<img src="../screenshots/password-recovery/02-confirmation-page.png" alt="Password Recovery Confirmation" width="45%">
+
+#### **3. New Password Form**
+Valid recovery link state with green check icon and password form.
+
+<img src="../screenshots/password-recovery/03-new-password-form.png" alt="Password Recovery New Password Form" width="45%">
+
+#### **4. Invalid Recovery Link**
+Invalid link state with red alert icon and recovery re-request action.
+
+<img src="../screenshots/password-recovery/03b-invalid-link.png" alt="Invalid Recovery Link" width="45%">
+
+#### **5. Recovery Complete**
+Success page with confirmation message and login action.
+
+<img src="../screenshots/password-recovery/04-success-page.png" alt="Password Recovery Complete" width="45%">
 
 ---
 
