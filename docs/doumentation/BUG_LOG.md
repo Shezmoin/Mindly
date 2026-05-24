@@ -2,7 +2,7 @@
 
 **Scope:** Feature-level functional bugs and requirement gaps discovered during application testing and refinement.
 
-## [2026-04-14]
+## [2026-05-22]
 
 ### 0. Resource cards had no linked detail content
 - Description: The resource cards originally displayed summaries only, with no actual detail pages or guidance content behind them.

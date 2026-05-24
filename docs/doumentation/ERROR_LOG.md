@@ -38,7 +38,7 @@ This is the single source of truth for development errors, investigation notes, 
 
 ### Date Identified
 
-April 1, 2026
+22 May 2026
 
 ### Severity
 
@@ -76,7 +76,7 @@ RESOLVED
 
 ### Date Identified
 
-April 1, 2026 (with detailed trace captured April 4, 2026)
+22 May 2026 (with detailed trace captured 22 May 2026)
 
 ### Severity
 
@@ -115,7 +115,7 @@ RESOLVED
 
 ### Date Identified
 
-April 1, 2026 (with detailed trace captured April 4, 2026)
+22 May 2026 (with detailed trace captured 22 May 2026)
 
 ### Severity
 
@@ -156,7 +156,7 @@ RESOLVED
 
 ### Date Identified
 
-April 11, 2026
+22 May 2026
 
 ### Severity
 
@@ -326,7 +326,7 @@ RESOLVED
 
 ### Date Identified
 
-April 2026
+22 May 2026
 
 ### Severity
 
@@ -354,7 +354,7 @@ RESOLVED
 
 ### Date Identified
 
-April 2026
+22 May 2026
 
 ### Severity
 
@@ -383,7 +383,7 @@ RESOLVED
 
 ### Date Identified
 
-April 2026
+22 May 2026
 
 ### Severity
 
@@ -440,4 +440,4 @@ Currently: None
 
 ---
 
-Shehzad Moin, 2026
+Shehzad Moin, 22 May 2026

@@ -69,6 +69,7 @@ This project demonstrates professional backend development, full-stack integrati
   <li><a href="#technologies-used">Technologies Used</a></li>
   <li><a href="#testing">Testing</a></li>
   <li><a href="#errors">Errors</a></li>
+  <li><a href="#bug-log--resolved-issues">Bug Log / Resolved Issues</a></li>
   <li><a href="#deployment">Deployment</a></li>
   <li><a href="#security">Security</a></li>
   <li><a href="#stripe-integration">Stripe Integration</a></li>
@@ -226,7 +227,7 @@ Comprehensive guides for deployment, testing, architecture, and accessibility:
 * **Stripe:** Payment processing
 * **SQLite/PostgreSQL:** Relational database
 * **Git & GitHub:** Version control
-* **Deployed:** Ready for production
+* **Heroku:** Deployed
 
 ---
 
@@ -614,6 +615,12 @@ See [**ERROR_LOG.md**](docs/doumentation/ERROR_LOG.md) for complete error docume
 
 ---
 
+## **Bug Log / Resolved Issues**
+
+Development-time bugs and requirement gaps that were identified and resolved are recorded in [**BUG_LOG.md**](docs/doumentation/BUG_LOG.md).
+
+---
+
 ## **Deployment**
 
 Mindly is deployed following professional security and deployment practices.
@@ -682,21 +689,11 @@ Mindly is an independently designed and implemented project. It is not based on 
 
 ## **Credits & Acknowledgements**
 
-### **Code**
-
-Python documentation, Django official documentation, Stripe API documentation, Bootstrap documentation, and Django best practices from community sources.
-
-### **Media**
-
-Project screenshots are embedded in this README. Remaining visual evidence screenshots (testing/validation/audit) are tracked in [TESTING.md](docs/doumentation/TESTING.md).
-
 ### **Acknowledgements**
 
 I am very grateful to my wife and my family for their full support throughout my challenging health condition. Their encouragement and patience helped me keep moving forward during difficult periods.
 
 I am especially grateful to my tutor, Manuel Perez, for his extraordinary support, guidance, and understanding of my health situation and physical limitations. This project would not have been possible without that support.
-
-I am also thankful for the free educational material available on YouTube, which helped me clear up confusion and gave me helpful ideas and inspiration during this journey.
 
 ---
 
@@ -706,4 +703,4 @@ No confirmed functional bugs are currently open in production-critical flows.
 
 ---
 
-**Shehzad Moin, 2026**
+**Shehzad Moin, 22 May 2026**

@@ -24,8 +24,8 @@ This document outlines the comprehensive testing process carried out during deve
 - [Additional Manual Test Cases](#additional-manual-test-cases-mt-21-to-mt-30)
 - [Account Recovery Feature Details](#account-recovery-feature-details)
 - [Payment & Webhook Bug Log](#payment--webhook-bug-log)
-- [Requirement to Evidence Map](#requirement-to-evidence-map)
-- [Final Verification Summary](#final-verification-summary)
+- Requirement to Evidence Map
+- Final Verification Summary
 - [Future Testing Improvements](#future-testing-improvements)
 
 ---
@@ -311,6 +311,19 @@ Tested across multiple device sizes using Chrome DevTools and real devices.
 | 3.2.4 Consistent Navigation | Navigation consistent across pages | Pass |
 | 1.3.1 Info and Relationships | Semantic HTML provides structure | Pass |
 | 4.1.2 Name, Role, Value | Form labels properly associated | Pass |
+
+### **Accessibility Testing Checklist**
+
+- All navbar links use {% url %} tags
+- Active page shows `.active` class
+- Active page has `aria-current="page"` attribute
+- Skip link present and functional
+- Skip link hidden until focused
+- Main content has `id="main-content"` anchor
+- HTML structure validated
+- Navbar color contrast meets WCAG AAA
+- Icons have `aria-hidden="true"` where decorative
+- Navigation has proper `aria-label`
 
 ---
 
@@ -617,8 +630,8 @@ Critical issues identified and fixed during payment integration testing:
 
 | Bug ID | Description                                      | Steps to Reproduce                | Root Cause                                   | Fix                                              | Status |
 |--------|--------------------------------------------------|-----------------------------------|-----------------------------------------------|---------------------------------------------------|--------|
-| 2026-04-13-1 | Premium message after donation (premium user) | Donate as premium user, see message| Success page did not check payment type       | Pass payment type, show message only for subscription | Fixed  |
-| 2026-04-13-2 | Donation grants premium (any user)            | Donate as any user, become premium | Webhook did not check session mode            | Webhook checks mode, only upgrades for subscription | Fixed  |
+| 2026-05-22-1 | Premium message after donation (premium user) | Donate as premium user, see message| Success page did not check payment type       | Pass payment type, show message only for subscription | Fixed  |
+| 2026-05-22-2 | Donation grants premium (any user)            | Donate as any user, become premium | Webhook did not check session mode            | Webhook checks mode, only upgrades for subscription | Fixed  |
 
 **Impact:** Both issues affected subscription/donation distinction. Fixes ensure donations don't falsely upgrade tier and success messages are type-appropriate.
 
@@ -630,7 +643,7 @@ Critical issues identified and fixed during payment integration testing:
 |----------|-----------|----------|
 | Authentication and access control | `users/views.py`, `users/decorators.py`, `users/tests.py` | [TESTING.md](TESTING.md), [ERROR_LOG.md](ERROR_LOG.md) |
 | Full CRUD for user-owned data | `journal/views.py`, `journal/forms.py`, `journal/tests.py` | [TESTING.md](TESTING.md) |
-| Relational data model | `users/models.py`, `journal/models.py`, `assessments/models.py` | Data Model section in README |
+| Relational data model | `users/models.py`, `journal/models.py`, `assessments/models.py` | [Data Model / Schema section in README](../../README.md#data-model--schema) |
 | Payment and subscription lifecycle | `payments/views.py`, `payments/tests.py` | [TESTING.md](TESTING.md), [Stripe Integration](DEPLOYMENT.md#stripe-integration) |
 | Robust error handling | `payments/views.py`, custom `404.html` and `500.html` templates | [ERROR_LOG.md](ERROR_LOG.md) |
 | Deployment readiness | `Procfile`, environment config, static handling | [DEPLOYMENT.md](DEPLOYMENT.md) |
@@ -661,4 +674,4 @@ All non-cleanup verification checks were completed and recorded before submissio
 
 ---
 
-**Shehzad Moin, 2026**
+**Shehzad Moin, 22 May 2026**

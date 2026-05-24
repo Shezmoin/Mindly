@@ -1,14 +1,13 @@
 
 # Accessibility Improvements - Documentation
 
-## Date: April 1, 2026
+## Date: 22 May 2026
 
 ---
 
 ## Table of Contents
 
 - [Completed Improvements](#completed-improvements)
-- [Additional Changes Made](#additional-changes-made)
 - [Testing Checklist](#testing-checklist)
 - [Accessibility Compliance Summary](#accessibility-compliance-summary)
 - [References](#references)
@@ -62,7 +61,6 @@ Implemented dynamic active state detection using `request.resolver_match`:
 - Register (checks url_name == 'register')
 
 **Benefits:**
-- Screen readers announce current page
 - Visual highlighting of active page
 - WCAG 2.1 compliance for navigation
 
@@ -141,35 +139,6 @@ Added skip link at the top of page for keyboard and screen reader users:
 
 ---
 
-## Additional Changes Made
-
-### New URL Patterns Added
-Added placeholder URLs for user profile and logout (will be implemented later):
-- `users:profile` → `/users/profile/`
-- `users:logout` → `/users/logout/`
-
-### New Views Added
-Created placeholder views in `users/views.py`:
-- `profile_view()`
-- `logout_view()`
-
----
-
-## Testing Checklist
-
-- [x] All navbar links use {% url %} tags
-- [x] Active page shows `.active` class
-- [x] Active page has `aria-current="page"` attribute
-- [x] Skip link present and functional
-- [x] Skip link hidden until focused
-- [x] Main content has `id="main-content"` anchor
-- [x] HTML structure validated
-- [x] Navbar color contrast meets WCAG AAA
-- [x] Icons have `aria-hidden="true"` where decorative
-- [x] Navigation has proper `aria-label`
-
----
-
 ## Accessibility Compliance Summary
 
 **WCAG 2.1 Level A:**
@@ -195,5 +164,5 @@ Created placeholder views in `users/views.py`:
 
 ---
 
-*Last Updated: April 22, 2026*
+*Last Updated: 22 May 2026*
 *Status: All accessibility improvements complete and tested*

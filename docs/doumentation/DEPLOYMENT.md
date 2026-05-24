@@ -11,6 +11,7 @@ This document provides comprehensive deployment instructions for running Mindly 
 - [Production Deployment (Heroku)](#production-deployment-heroku)
 - [Environment Variables Reference](#environment-variables-reference)
 - [Database Setup](#database-setup)
+- [Email / SMTP Setup](#email--smtp-setup)
 - [Stripe Setup](#stripe-setup)
 - [Stripe Integration](#stripe-integration)
 - [Troubleshooting](#troubleshooting)
@@ -318,6 +319,17 @@ heroku logs --tail
 |----------|---------|---------|
 | `DATABASE_URL` | postgresql://user:pass@localhost/db | Production database |
 
+### **Email / SMTP Configuration**
+
+| Variable | Example | Purpose |
+|----------|---------|---------|
+| `EMAIL_HOST` | smtp.gmail.com | SMTP server hostname |
+| `EMAIL_PORT` | 587 | SMTP server port |
+| `EMAIL_USE_TLS` | True | Enable TLS for SMTP |
+| `EMAIL_HOST_USER` | your-email@example.com | SMTP login username |
+| `EMAIL_HOST_PASSWORD` | app-password-or-smtp-password | SMTP login password |
+| `DEFAULT_FROM_EMAIL` | noreply@mindly.app | Sender address used by password reset emails |
+
 ### **Stripe Credentials**
 
 | Variable | Example | Purpose |
@@ -371,6 +383,36 @@ heroku run python manage.py createsuperuser
 ```
 
 Access admin at `https://mindly-app.herokuapp.com/admin`
+
+---
+
+## **Email / SMTP Setup**
+
+Mindly uses Django's console email backend during development and SMTP in production for password reset and account recovery emails.
+
+### **Development**
+
+- `DEBUG=True` uses `django.core.mail.backends.console.EmailBackend`
+- Recovery emails print to the terminal instead of being sent
+- This keeps local testing simple and avoids real email delivery during development
+
+### **Production**
+
+- `DEBUG=False` switches to `django.core.mail.backends.smtp.EmailBackend`
+- Configure the SMTP settings in Heroku config vars or `.env`
+- Recommended values match the Django settings already used by the project:
+   - `EMAIL_HOST`
+   - `EMAIL_PORT`
+   - `EMAIL_USE_TLS`
+   - `EMAIL_HOST_USER`
+   - `EMAIL_HOST_PASSWORD`
+   - `DEFAULT_FROM_EMAIL`
+
+### **Setup Notes**
+
+1. Use a provider such as Gmail, SendGrid, Mailgun, or another SMTP service.
+2. If using Gmail, generate an App Password rather than your normal login password.
+3. Verify password reset by requesting a recovery email through the account recovery flow.
 
 ---
 
@@ -585,4 +627,4 @@ Before going live, verify:
 
 ---
 
-**Shehzad Moin, 2026**
+**Shehzad Moin, 22 May 2026**
