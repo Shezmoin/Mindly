@@ -63,7 +63,7 @@ Cross-app communication is handled exclusively through model relationships and D
 
 ## **Backend-Frontend Flow Examples**
 
-### **Flow 1: Journal CRUD (Create example)**
+### **Flow 1: Journal CRUD**
 
 1. User submits the journal form in the template (`templates/journal/journal_form.html`)
 2. POST request is handled by `journal_create_view` in `journal/views.py`
