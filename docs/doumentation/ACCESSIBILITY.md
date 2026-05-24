@@ -1,14 +1,9 @@
 
 # Accessibility Improvements - Documentation
 
-## Date: 22 May 2026
-
----
-
 ## Table of Contents
 
 - [Completed Improvements](#completed-improvements)
-- [Testing Checklist](#testing-checklist)
 - [Accessibility Compliance Summary](#accessibility-compliance-summary)
 - [References](#references)
 
@@ -164,5 +159,5 @@ Added skip link at the top of page for keyboard and screen reader users:
 
 ---
 
-*Last Updated: 22 May 2026*
+*Updated 22nd May 2026*
 *Status: All accessibility improvements complete and tested*

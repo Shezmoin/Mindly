@@ -197,25 +197,13 @@ CustomUser
 
 ### **Documentation**
 
-Comprehensive guides for deployment, testing, architecture, and accessibility:
+Comprehensive guides for deployment, testing, architecture, accessibility, and resolved development issues:
 
-* **[DEPLOYMENT.md](docs/doumentation/DEPLOYMENT.md)** - Production deployment guide covering:
-  - Environment variable setup
-  - Heroku deployment steps
-  - Database setup and migration
-  - Stripe integration and webhook configuration
-  - Troubleshooting common issues
-
-* **[TESTING.md](docs/doumentation/TESTING.md)** - Testing guide covering:
-  - Manual test matrix (MT-01 to MT-30)
-  - Code validation with screenshots (PEP8, HTML, CSS, JavaScript)
-  - Requirement to Evidence Map and Final Verification Summary
-  - Accessibility, security, and responsiveness testing
-
-* **[ARCHITECTURE.md](docs/doumentation/ARCHITECTURE.md)** - Architecture guide covering:
-  - Development strategy and build constraints
-  - App structure justification
-  - Backend-frontend request-response flows and sequence diagrams
+* **[DEPLOYMENT.md](docs/doumentation/DEPLOYMENT.md)** - Deployment setup, environment configuration, and production release guidance.
+* **[TESTING.md](docs/doumentation/TESTING.md)** - Testing evidence, validation summaries, and feature verification records.
+* **[ARCHITECTURE.md](docs/doumentation/ARCHITECTURE.md)** - Development strategy, app boundaries, and request-response architecture flows.
+* **[ACCESSIBILITY.md](docs/doumentation/ACCESSIBILITY.md)** - Accessibility implementation notes and WCAG-focused design improvements.
+* **[BUG_LOG.md](docs/doumentation/BUG_LOG.md)** - Bug log and resolved issues found during development and refinement.
 
 ---
 
@@ -703,4 +691,4 @@ No confirmed functional bugs are currently open in production-critical flows.
 
 ---
 
-**Shehzad Moin, 22 May 2026**
+**Updated 22nd May 2026**
