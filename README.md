@@ -120,8 +120,6 @@ For this project, success means:
 
 Mindly was developed using a domain-driven multi-app Django structure where each app maps to a single product boundary. Django ORM, Stripe Checkout with webhook verification, Bootstrap, and Heroku deployment were chosen to meet project requirements cleanly. The project was committed regularly to GitHub to evidence traceable, incremental development.
 
-See [**ARCHITECTURE.md**](docs/doumentation/ARCHITECTURE.md) for full development strategy, build constraints, and version control approach.
-
 ---
 
 ## **Live Project**
