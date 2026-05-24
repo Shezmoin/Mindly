@@ -595,8 +595,8 @@ See [**TESTING.md**](docs/doumentation/TESTING.md) for complete testing document
 * Security testing
 * Code validation with screenshots (PEP8, HTML, CSS, JavaScript)
 * Lighthouse performance scores
-* [Requirement to Evidence Map](docs/doumentation/TESTING.md#requirement-to-evidence-map)
-* [Final Verification Summary](docs/doumentation/TESTING.md#final-verification-summary)
+* Requirement to Evidence Map
+* Final Verification Summary
 * Known issues
 
 ---
